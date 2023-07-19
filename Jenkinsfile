@@ -22,7 +22,7 @@ pipeline {
                 dir("${projectDir}") {
                     echo ">>>> [Log] Git clone..."
 
-                    git branch: 'develop', credentialsId: 'Dasol-github', url: 'https://github.com/Sol-cito/Troinez-FE.git'
+                    git branch: 'develop', credentialsId: 'Dasol-github', url: 'https://github.com/Sol-cito/Troinez-FE'
 
                     echo ">>>> [Log] cloning succeeded"
                 }
