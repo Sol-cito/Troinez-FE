@@ -29,14 +29,14 @@ pipeline {
             }
         }
 
-        stage('Install dependencies (yarn install)') {
+        stage('Install dependencies (npm install)') {
             steps {
                 dir("${projectDir}") {
-                    echo ">>>> [Log] start yarn install..."
+                    echo ">>>> [Log] start npm install..."
 
-                    sh "sudo yarn install --save --legacy-peer-deps"
+                    sh "npm i --save --legacy-peer-deps"
 
-                    echo ">>>> [Log] yarn install ended"                    
+                    echo ">>>> [Log] npm install ended"                    
                 }
             }
         }
