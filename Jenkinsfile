@@ -70,6 +70,8 @@ pipeline {
                 dir("${projectDir}") {
                     echo ">>>> [Log] E2E Test on the test server...."
 
+                    sh "yarn test:e2e"
+
                     echo ">>>> [Log] E2E Test success!!!"
                 }                
             }
@@ -87,7 +89,7 @@ pipeline {
             }
         }
 
-        stage('Docker image build and run') {
+        stage('Docker image build') {
             steps {
                 dir("${projectDir}") {
                     echo ">>>> [Log] Docker image build start..."
@@ -95,6 +97,18 @@ pipeline {
                     sh "yarn docker-build:${PROFILE}"
 
                     echo ">>>> [Log] Docker image build success!!!"
+                }                
+            }
+        }
+
+        stage('Docker image run') {
+            steps {
+                dir("${projectDir}") {
+                    echo "[Log] Docker running..."
+
+                    sh "bash ./docker-deploy/dockerRun.sh ${PROFILE}"
+
+                    echo "[Log] Docker run success!!!"
                 }                
             }
         }

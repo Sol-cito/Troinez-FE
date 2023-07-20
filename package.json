@@ -7,10 +7,11 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
+    "test:e2e": "playwright test",
     "pm2:local": "pm2 start ./config/pm2/ecosystem.config.js --env local",
     "pm2:dev": "pm2 start ./config/pm2/ecosystem.config.js --env dev",
     "pm2:kill": "pm2 kill",
-    "docker-build:dev": "sudo docker build -f ./docker-deploy/Dockerfile.dev -t troisnez-fe:dev ."
+    "docker-build:dev": "docker build -f deploy/Dockerfile.dev -t troisnez-fe:dev ."
   },
   "dependencies": {
     "@types/node": "20.4.0",
@@ -27,5 +28,8 @@
     "sass": "^1.63.6",
     "tailwindcss": "3.3.2",
     "typescript": "5.1.6"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.36.1"
   }
 }
