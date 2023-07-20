@@ -10,7 +10,7 @@
     "pm2:local": "pm2 start ./config/pm2/ecosystem.config.js --env local",
     "pm2:dev": "pm2 start ./config/pm2/ecosystem.config.js --env dev",
     "pm2:kill": "pm2 kill",
-    "docker-build:dev": "docker build -f ./docker-deploy/Dockerfile.dev -t troisnez-fe:dev ."
+    "docker-build:dev": "sudo docker build -f ./docker-deploy/Dockerfile.dev -t troisnez-fe:dev ."
   },
   "dependencies": {
     "@types/node": "20.4.0",
