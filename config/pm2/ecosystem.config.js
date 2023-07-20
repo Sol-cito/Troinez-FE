@@ -11,12 +11,8 @@ module.exports = {
         PROFILE: "local",
       },
       env_development: {
-        PORT: "3000",
-        PROFILE: "dev",
-      },
-      env_production: {
-        PORT: "3000",
-        PROFILE: "prod",
+        PORT: "3001",
+        PROFILE: "test",
       },
     },
   ],

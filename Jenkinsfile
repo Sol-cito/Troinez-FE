@@ -53,26 +53,60 @@ pipeline {
             }
         }
 
-        stage('PM2 start or reload') {
+        stage('PM2 start as a Test server') {
             steps {
                 dir("${projectDir}") {
-                    echo ">>>> [Log] pm2 start or reload start..."
+                    echo ">>>> [Log] pm2 test server start..."
 
                     sh "yarn pm2:${PROFILE}"
 
-                    echo ">>>> [Log] pm2 start or reload success!!!"
+                    echo ">>>> [Log] pm2 test server up success!!!"
                 }                
             }
         }
 
-        stage('Nextjs Server health check') {
+        stage('Playwrite E2E test') {
             steps {
-                dir("${deployScriptDir}") {
-                    echo ">>>> [Log] Nextjs healthcheck start"
+                dir("${projectDir}") {
+                    echo ">>>> [Log] E2E Test on the test server...."
 
-                    // sh "bash healthCheck.sh ${PROFILE}"
+                    echo ">>>> [Log] E2E Test success!!!"
+                }                
+            }
+        }
 
-                    echo ">>>> [Log] Nextjs healthCheck success!!"
+        stage('Kill PM2 test server') {
+            steps {
+                dir("${projectDir}") {
+                    echo ">>>> [Log] Killing PM2 Test server..."
+
+                    sh "yarn pm2:kill"
+
+                    echo ">>>> [Log] Killing PM2 Test server success!!!"
+                }                
+            }
+        }
+
+        stage('Docker image build and run') {
+            steps {
+                dir("${projectDir}") {
+                    echo ">>>> [Log] Docker image build start..."
+
+                    sh "yarn docker-build:${PROFILE}"
+
+                    echo ">>>> [Log] Docker image build success!!!"
+                }                
+            }
+        }
+
+        stage('Nestjs Server health check') {
+            steps {
+                dir("${projectDir}") {
+                    echo "[Log] Docker Next image healthcheck start"
+
+                    sh "bash ./docker-deploy/healthCheck.sh ${PROFILE}"
+
+                    echo "[Log] Next healthCheck success!!"
                 }
             }
         }
