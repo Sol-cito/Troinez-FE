@@ -70,8 +70,6 @@ pipeline {
                 dir("${projectDir}") {
                     echo ">>>> [Log] E2E Test on the test server...."
 
-                    sh "npx playwright install-deps"
-
                     sh "yarn test:e2e"
 
                     echo ">>>> [Log] E2E Test success!!!"
