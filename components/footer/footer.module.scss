@@ -1,6 +1,50 @@
+$footer-font-size: 0.8rem;
+$footer-icon-size: 10vh;
+
 .footer {
-  height: 20vh;
+  font-size: $footer-font-size;
+  height: 70vh;
   background-color: black;
+  color: white;
   display: flex;
-  flex-direction: column;
+}
+
+.footer > div {
+  margin-top: 20vh;
+}
+
+.footer p {
+ margin: 0;
+ line-height: 6vh;
+}
+
+.footer__left{
+  width: 40%;
+}
+
+.footer__left > div{
+  margin-left: $footer-icon-size;
+}
+
+.footer__left > div:first-child > p{
+  font-weight: bold;
+  margin-bottom: 5vh;
+}
+
+.footer__mid{
+  width: 40%;
+}
+
+.footer__right{
+  width: 20%;
+}
+
+.footer__right > div {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.footer__right > div > img {
+  margin-right: 5vh;
+  height: $footer-icon-size;  
 }
