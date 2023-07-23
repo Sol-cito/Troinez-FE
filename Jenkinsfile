@@ -70,7 +70,7 @@ pipeline {
                 dir("${projectDir}") {
                     echo ">>>> [Log] E2E Test on the test server...."
 
-                    // sh "yarn test:e2e"
+                    sh "npm run test:e2e"
 
                     echo ">>>> [Log] E2E Test success!!!"
                 }                
