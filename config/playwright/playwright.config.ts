@@ -7,7 +7,7 @@ const baseURL = `http://localhost:${PORT}`;
 const config: PlaywrightTestConfig = {
   timeout: 30 * 1000,
   testDir: path.join("../../"),
-  retries: 2,
+  retries: 1,
   outputDir: "e2e-result",
 
   use: {
