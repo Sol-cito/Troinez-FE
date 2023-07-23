@@ -1,5 +1,5 @@
 type contentType = {
-  content: React.ReactNode;
+  content: React.ReactNode,
 };
 
 export default function ContentWrapper(props: contentType) {
