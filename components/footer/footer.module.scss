@@ -1,21 +1,21 @@
 $footer-font-size: 0.8rem;
-$footer-icon-size: 10vh;
+$footer-icon-size: 2rem;
 
 .footer {
   font-size: $footer-font-size;
-  height: 70vh;
+  height: 15rem;
   background-color: black;
   color: white;
   display: flex;
 }
 
 .footer > div {
-  margin-top: 20vh;
+  margin-top: 3rem;
 }
 
 .footer p {
  margin: 0;
- line-height: 6vh;
+ line-height: 1.2rem;
 }
 
 .footer__left{
@@ -28,7 +28,7 @@ $footer-icon-size: 10vh;
 
 .footer__left > div:first-child > p{
   font-weight: bold;
-  margin-bottom: 5vh;
+  margin-bottom: 1rem;
 }
 
 .footer__mid{
@@ -45,6 +45,9 @@ $footer-icon-size: 10vh;
 }
 
 .footer__right > div > img {
-  margin-right: 5vh;
+  margin-right: 1rem;
   height: $footer-icon-size;  
+}
+.footer__right > div > img:last-child {
+  margin-right: 3rem;
 }
