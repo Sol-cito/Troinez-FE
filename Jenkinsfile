@@ -65,12 +65,10 @@ pipeline {
             }
         }
 
-        stage('Playwrite E2E test') {
+        stage('Cypress E2E test') {
             steps {
                 dir("${projectDir}") {
                     echo ">>>> [Log] E2E Test on the test server...."
-
-                    sh "npx playwright install chrome"
 
                     sh "yarn test:e2e"
 
