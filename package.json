@@ -7,7 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "test:e2e": "cypress open",
+    "test:e2e": "cypress run --config-file ./config/cypress/cypress.config.ts",
     "pm2:local": "pm2 start ./config/pm2/ecosystem.config.js --env local",
     "pm2:dev": "pm2 start ./config/pm2/ecosystem.config.js --env dev",
     "pm2:kill": "pm2 kill",
