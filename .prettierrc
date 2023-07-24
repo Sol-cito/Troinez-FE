@@ -10,5 +10,6 @@
     "proseWrap": "preserve",
     "arrowParens": "always",
     "quoteProps": "as-needed"
+
   }
-   
+ 
