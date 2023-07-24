@@ -16,13 +16,19 @@ export default function Footer() {
     "이메일 : troisnezjun@naver.com"
   ]
   const iconInfoList = [
-    "/img/icons8-instagram.svg",
-    "/img/icon-naver.svg"
+    {
+      "src": "/common/icon/icons8-instagram.svg",
+      "url": "https://www.instagram.com/troisnez_fragrances"
+    },
+    {
+      "src": "/common/icon/icon-naver.svg",
+      "url": "https://smartstore.naver.com/troisnez"
+    }
   ]
 
   return (
     <footer className={styles.footer}>
-      <div className={styles.footer__left}>
+      <div className={styles.left}>
         <div>
           <p>{companyName}</p>
         </div>
@@ -32,15 +38,17 @@ export default function Footer() {
           ))}
         </div>
       </div>
-      <div className={styles.footer__mid}>
+      <div className={styles.mid}>
         {companyBusinessInfoList.map((businessInfo) => (
           <p key={businessInfo}>{businessInfo}</p>
         ))}
       </div>
-      <div className={styles.footer__right}>
+      <div className={styles.right}>
         <div>
           {iconInfoList.map((iconInfo) => (
-            <Image key={iconInfo} className={styles.footer__icon} src={iconInfo} alt="social icon" width={32} height={32}/>
+            <a href={iconInfo.url} target="_blank">
+              <Image key={iconInfo.src} className={styles.footer__icon} src={iconInfo.src} alt="social icon" width={32} height={32} />
+            </a>
           ))}
         </div>
       </div>
