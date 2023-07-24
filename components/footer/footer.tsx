@@ -46,7 +46,7 @@ export default function Footer() {
       <div className={styles.right}>
         <div>
           {iconInfoList.map((iconInfo) => (
-            <a href={iconInfo.url} target="_blank">
+            <a key={iconInfo.src} href={iconInfo.url} target="_blank">
               <Image key={iconInfo.src} className={styles.footer__icon} src={iconInfo.src} alt="social icon" width={32} height={32} />
             </a>
           ))}
