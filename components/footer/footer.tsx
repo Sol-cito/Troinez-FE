@@ -1,4 +1,5 @@
 import styles from "./footer.module.scss";
+import Image from "next/image";
 
 export default function Footer() {
   const companyName = "TROIS NEZ LABORATORY"
@@ -39,7 +40,7 @@ export default function Footer() {
       <div className={styles.footer__right}>
         <div>
           {iconInfoList.map((iconInfo) => (
-            <img className={styles.footer__icon} src={iconInfo} />
+            <Image key={iconInfo} className={styles.footer__icon} src={iconInfo} alt="social icon" width={32} height={32}/>
           ))}
         </div>
       </div>
