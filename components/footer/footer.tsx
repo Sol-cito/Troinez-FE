@@ -40,7 +40,7 @@ export default function Footer() {
       <div className={styles.footer__right}>
         <div>
           {iconInfoList.map((iconInfo) => (
-            <Image key={iconInfo} className={styles.footer__icon} src={iconInfo} alt="social icon"/>
+            <Image key={iconInfo} className={styles.footer__icon} src={iconInfo} alt="social icon" width={32} height={32}/>
           ))}
         </div>
       </div>
