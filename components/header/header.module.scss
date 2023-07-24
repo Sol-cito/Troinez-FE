@@ -1,12 +1,44 @@
+$header-height: 4rem;
+$header-fond-size : 0.8rem;
+
+.header {
+  text-align: center;
+  width: 70%;
+  margin: 0 auto;
+  font-size: $header-fond-size;
+  height: $header-height;
+}
+
 .nav {
+  display: flex;
+
   a {
+    line-height: 4rem;
+    display: inline-block;
+    text-align: center;
     margin-right: 30px;
+    text-decoration: none;
   }
+
   .logo {
     // margin: 0 0 0 0;
   }
 
   .menu_btn {
     // margin: 0 30px 0 30px;
+  }
+
+  .left {
+    width: 15rem;
+    font-weight: bold;
+    
+    a{
+      margin-left: 1rem;
+    }
+  }
+
+  .right {
+    margin-left: auto;
+    width: 26rem;
   }
 }
