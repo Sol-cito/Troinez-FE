@@ -1,6 +1,5 @@
 $footer-height: 15rem;
 $footer-font-size: 0.8rem;
-// $footer-icon-size: 2rem;
 
 .footer {
   width: 70%;
@@ -10,48 +9,50 @@ $footer-font-size: 0.8rem;
   background-color: black;
   color: white;
   display: flex;
-}
 
-.footer>div {
-  margin-top: 3rem;
-}
+  >div {
+    margin-top: 3rem;
+  }
 
-.footer p {
-  margin: 0;
-  line-height: 1.2rem;
-}
+  p {
+    margin: 0;
+    line-height: 1.2rem;
+  }
 
-.footer__left {
-  width: 40%;
-}
+  .left {
+    width: 40%;
 
-.footer__left>div {
-  margin-left: 2rem;
-}
+    div {
+      margin-left: 2rem;
+    }
 
-.footer__left>div:first-child>p {
-  font-weight: bold;
-  margin-bottom: 1rem;
-}
+    div:first-child {
+      p {
+        font-weight: bold;
+        margin-bottom: 1rem;
+      }
+    }
+  }
 
-.footer__mid {
-  width: 40%;
-}
+  .mid {
+    width: 40%;
+  }
 
-.footer__right {
-  width: 20%;
-}
+  .right {
+    width: 20%;
 
-.footer__right>div {
-  display: flex;
-  justify-content: flex-end;
-}
+    div {
+      display: flex;
+      justify-content: flex-end;
 
-.footer__right>div>img {
-  margin-right: 1rem;
-  // height: $footer-icon-size;
-}
+      a {
+        margin-right: 1rem;
+        // height: $footer-icon-size;
+      }
 
-.footer__right>div>img:last-child {
-  margin-right: 3rem;
+      a:last-child {
+        margin-right: 3rem;
+      }
+    }
+  }
 }
