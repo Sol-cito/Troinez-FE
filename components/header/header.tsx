@@ -8,7 +8,7 @@ function Header() {
       <nav className={styles.nav}>
         <div className={styles.left}>
           <Link href="/" className={styles.logo}>
-            IN GOLD WE TRUST PARIS
+            IN GOLD WE TRUST PARIS®
           </Link>
         </div>
         <div className={styles.right}>

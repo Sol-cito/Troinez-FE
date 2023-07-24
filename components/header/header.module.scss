@@ -7,14 +7,13 @@ $header-fond-size : 0.8rem;
   margin: 0 auto;
   font-size: $header-fond-size;
   height: $header-height;
-  background: ivory;
 }
 
 .nav {
   display: flex;
 
   a {
-    line-height: 3rem;
+    line-height: 4rem;
     display: inline-block;
     text-align: center;
     margin-right: 30px;
@@ -30,8 +29,12 @@ $header-fond-size : 0.8rem;
   }
 
   .left {
-    width: 13rem;
+    width: 15rem;
     font-weight: bold;
+    
+    a{
+      margin-left: 1rem;
+    }
   }
 
   .right {
