@@ -7,7 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "test:e2e": "playwright test",
+    "test:e2e": "cypress run --config-file ./config/cypress/cypress.config.ts",
     "pm2:local": "pm2 start ./config/pm2/ecosystem.config.js --env local",
     "pm2:dev": "pm2 start ./config/pm2/ecosystem.config.js --env dev",
     "pm2:kill": "pm2 kill",
@@ -30,6 +30,8 @@
     "typescript": "5.1.6"
   },
   "devDependencies": {
-    "@playwright/test": "^1.36.1"
+    "@playwright/test": "^1.36.1",
+    "@testing-library/cypress": "^9.0.0",
+    "cypress": "^12.17.2"
   }
 }

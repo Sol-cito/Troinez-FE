@@ -65,14 +65,14 @@ pipeline {
             }
         }
 
-        stage('Playwrite E2E test') {
+        stage('Cypress E2E test') {
             steps {
                 dir("${projectDir}") {
-                    echo ">>>> [Log] E2E Test on the test server...."
+                    // echo ">>>> [Log] E2E Test on the test server...."
 
                     // sh "yarn test:e2e"
 
-                    echo ">>>> [Log] E2E Test success!!!"
+                    // echo ">>>> [Log] E2E Test success!!!"
                 }                
             }
         }
