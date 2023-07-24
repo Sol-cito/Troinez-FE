@@ -10,45 +10,46 @@ $footer-icon-size: 2rem;
   display: flex;
 }
 
-.footer > div {
+.footer>div {
   margin-top: 3rem;
 }
 
 .footer p {
- margin: 0;
- line-height: 1.2rem;
+  margin: 0;
+  line-height: 1.2rem;
 }
 
-.footer__left{
+.footer__left {
   width: 40%;
 }
 
-.footer__left > div{
+.footer__left>div {
   margin-left: $footer-icon-size;
 }
 
-.footer__left > div:first-child > p{
+.footer__left>div:first-child>p {
   font-weight: bold;
   margin-bottom: 1rem;
 }
 
-.footer__mid{
+.footer__mid {
   width: 40%;
 }
 
-.footer__right{
+.footer__right {
   width: 20%;
 }
 
-.footer__right > div {
+.footer__right>div {
   display: flex;
   justify-content: flex-end;
 }
 
-.footer__right > div > img {
+.footer__right>div>img {
   margin-right: 1rem;
-  height: $footer-icon-size;  
+  height: $footer-icon-size;
 }
-.footer__right > div > img:last-child {
+
+.footer__right>div>img:last-child {
   margin-right: 3rem;
 }
