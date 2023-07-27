@@ -3,5 +3,5 @@ type contentType = {
 };
 
 export default function ContentWrapper(props: contentType) {
-  return <>{props.content}</>;
+  return <div>{props.content}</div>;
 }
