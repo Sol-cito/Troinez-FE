@@ -5,11 +5,9 @@
     "tabWidth": 2,
     "trailingComma": "es5",
     "printWidth": 80,
-    "parser": "babel",
     "bracketSpacing": true,
     "proseWrap": "preserve",
     "arrowParens": "always",
     "quoteProps": "as-needed"
-
   }
  
