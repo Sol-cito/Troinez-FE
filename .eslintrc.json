@@ -12,8 +12,6 @@
     "airbnb-typescript"
   ],
   "rules": {
-    // airbnb 설정 덮어쓰기. (airbnb lint에서는 single quotes 가 표준 )
-    "@typescript-eslint/quotes": ["error", "double"],
     // iteration 시 key props 없으면 에러 발생
     "react/jsx-key": "error",
     // import react 안해도 이슈 발생하지 않도록 설정

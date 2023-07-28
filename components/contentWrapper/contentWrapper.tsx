@@ -1,7 +1,8 @@
-type contentType = {
-  content: React.ReactNode,
+type ContentType = {
+  content: React.ReactNode;
 };
 
-export default function ContentWrapper(props: contentType) {
-  return <div>{props.content}</div>;
+export default function ContentWrapper(props: ContentType) {
+  const { content } = props;
+  return <div>{content}</div>;
 }

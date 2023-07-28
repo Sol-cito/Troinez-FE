@@ -1,15 +1,13 @@
-"use client";
+'use client';
 
-import Link from "next/link";
-import React from "react";
-import styles from "./header.module.scss";
-import { useLocale } from "next-intl";
+import Link from 'next/link';
+import React from 'react';
+import { useLocale } from 'next-intl';
+import styles from './header.module.scss';
 
 function Header() {
   const locale: string = useLocale();
-  const switchLocale = (): string => {
-    return locale === "ko" ? "en" : "ko";
-  };
+  const switchLocale = (): string => (locale === 'ko' ? 'en' : 'ko');
 
   return (
     <header className={styles.header}>
