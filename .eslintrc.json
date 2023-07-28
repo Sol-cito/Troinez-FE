@@ -1,3 +1,23 @@
 {
-  "extends": "next/core-web-vitals"
+  "root": true,
+  "parser": "@typescript-eslint/parser",
+  "plugins": ["@typescript-eslint"],
+  "parserOptions": {
+    "project": "./tsconfig.json"
+  },
+  "extends": [
+    "plugin:@typescript-eslint/recommended",
+    "next/core-web-vitals",
+    "airbnb",
+    "airbnb-typescript"
+  ],
+  "rules": {
+    // iteration 시 key props 없으면 에러 발생
+    "react/jsx-key": "error",
+    // import react 안해도 이슈 발생하지 않도록 설정
+    // nextjs가 react를 내장하고있으므로 import 안해도됨.
+    "react/react-in-jsx-scope": "off",
+    // ts와 tsx 파일에 대해 JSX문법을 사용하는 확장자 지정
+    "react/jsx-filename-extension": [1, { "extensions": [".ts", ".tsx"] }]
+  }
 }
