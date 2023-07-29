@@ -1,0 +1,13 @@
+$main-height: 23rem;
+.main {
+  width: 70%;
+  margin: 0 auto;
+  height: $main-height;
+  background-color: ivory;
+
+  :global(.control-dots > .dot) {
+    background-color: black;
+    width: 1.5rem;
+    height: 1.5rem;
+  }
+}
