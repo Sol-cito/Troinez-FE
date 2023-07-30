@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
 import Header from '@/components/header/header';
@@ -7,10 +8,6 @@ import { NextIntlClientProvider } from 'next-intl';
 import { notFound } from 'next/navigation';
 
 const inter = Inter({ subsets: ['latin'] });
-
-interface Locale {
-  locale: string;
-}
 
 export const metadata: Metadata = {
   title: 'Troinez',
@@ -22,7 +19,7 @@ export default async function RootLayout({
   params: { locale },
 }: {
   children: React.ReactNode;
-  params: Locale;
+  params: any;
 }) {
   let messages;
   try {
