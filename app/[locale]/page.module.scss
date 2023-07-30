@@ -5,9 +5,13 @@ $main-height: 23rem;
   height: $main-height;
   background-color: ivory;
 
+  :global(.carousel .carousel-status) {
+    display: none;
+  }
+
   :global(.control-dots > .dot) {
     background-color: black;
-    width: 1.5rem;
-    height: 1.5rem;
+    width: 1rem;
+    height: 1rem;
   }
 }
