@@ -41,6 +41,18 @@ pipeline {
             }
         }
 
+        stage('Eslint') {
+            steps {
+                dir("${projectDir}") {
+                    echo "[Log] check lint"
+
+                    sh "yarn lint"
+
+                    echo "[Log] lint success!!!"
+                }                
+            }
+        }
+
          stage('Build') {
             steps {
                 dir("${projectDir}") {
