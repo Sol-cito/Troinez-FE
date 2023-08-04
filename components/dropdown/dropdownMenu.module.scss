@@ -1,0 +1,16 @@
+.dropdownMenu {
+  min-height: 5vh;
+  padding: 0 1vw 0 1vw;
+}
+
+.mouseOn {
+  background-color: black;
+
+  .dropdownMenu {
+    color: white;
+  }
+}
+
+.mouseOut {
+  background-color: white;
+}
