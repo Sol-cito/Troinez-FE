@@ -25,8 +25,10 @@ function Header() {
             {locale.toLocaleUpperCase()}
           </Link>
           <DropdownBox
-            dropdownMenus={SHOP_DROPDOWN_LIST.map((ele) => {
-              return <DropdownMenu title={ele.title} href={ele.href} />;
+            dropdownMenus={SHOP_DROPDOWN_LIST.map((ele, idx) => {
+              return (
+                <DropdownMenu key={idx} title={ele.title} href={ele.href} />
+              );
             })}
           >
             <Link href={`/${locale}`} className={styles.menu_btn}>
