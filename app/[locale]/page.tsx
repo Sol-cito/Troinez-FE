@@ -27,6 +27,7 @@ export default function Home() {
         infiniteLoop
         interval={interval}
         transitionTime={transitionTime}
+        showThumbs={false}
       >
         {images.map((img) => (
           <Image
