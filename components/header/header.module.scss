@@ -11,11 +11,13 @@ $header-fond-size: 0.8rem;
 
 .nav {
   display: flex;
+  line-height: $header-height;
+  vertical-align: middle;
+  align-items: center;
 
   a {
-    line-height: 4rem;
+    height: $header-height;
     display: inline-block;
-    text-align: center;
     margin-right: 30px;
     text-decoration: none;
     color: black;
