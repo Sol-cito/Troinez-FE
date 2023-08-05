@@ -3,10 +3,10 @@
 import Link from 'next/link';
 import React from 'react';
 import { useLocale } from 'next-intl';
+import { SHOP_DROPDOWN_LIST } from '@/common/shopDropdownList';
 import styles from './header.module.scss';
 import DropdownMenu from '../dropdown/dropdownMenu';
 import DropdownBox from '../dropdown/dropdownBox';
-import { SHOP_DROPDOWN_LIST } from '@/common/shopDropdownList';
 
 function Header() {
   const locale: string = useLocale();
@@ -25,11 +25,9 @@ function Header() {
             {locale.toLocaleUpperCase()}
           </Link>
           <DropdownBox
-            dropdownMenus={SHOP_DROPDOWN_LIST.map((ele, idx) => {
-              return (
-                <DropdownMenu key={idx} title={ele.title} href={ele.href} />
-              );
-            })}
+            dropdownMenus={SHOP_DROPDOWN_LIST.map((ele) => (
+              <DropdownMenu key={ele.href} title={ele.title} href={ele.href} />
+            ))}
           >
             <Link href={`/${locale}`} className={styles.menu_btn}>
               SHOP

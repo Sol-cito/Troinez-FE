@@ -7,6 +7,7 @@ type ContainerProps = {
 };
 
 export default function DropdownBox(props: ContainerProps) {
+  const { children, dropdownMenus } = props;
   const [isMouseOver, setIsMouseOver] = useState(false);
 
   const handleMouseOver = () => {
@@ -21,17 +22,17 @@ export default function DropdownBox(props: ContainerProps) {
     <div
       className={styles.dropdown}
       onMouseOver={handleMouseOver}
+      onFocus={() => undefined}
       onMouseOut={handleMouseOut}
+      onBlur={() => undefined}
     >
-      {props.children}
+      {children}
       <div
         className={`${styles.dropdownMenus}  ${
           isMouseOver ? styles.mouseOn : styles.mouseOut
         }`}
       >
-        {props.dropdownMenus.map((element) => {
-          return element;
-        })}
+        {dropdownMenus.map((element) => element)}
       </div>
     </div>
   );
