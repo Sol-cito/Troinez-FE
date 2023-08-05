@@ -21,8 +21,10 @@ export default function DropdownBox(props: ContainerProps) {
   return (
     <div
       className={styles.dropdown}
-      onFocus={handleMouseOver}
-      onBlur={handleMouseOut}
+      onMouseOver={handleMouseOver}
+      onFocus={() => undefined}
+      onMouseOut={handleMouseOut}
+      onBlur={() => undefined}
     >
       {children}
       <div
