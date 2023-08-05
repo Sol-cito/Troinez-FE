@@ -29,7 +29,7 @@ export default function CarouselImages() {
         {images.map((img) => (
           <Image
             key={img}
-            priority={true}
+            priority
             quality={imageQuality}
             className={styles.carousel_image}
             src={img}
