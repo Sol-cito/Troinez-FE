@@ -1,6 +1,6 @@
+import { useState } from 'react';
 import Link from 'next/link';
 import styles from './dropdownMenu.module.scss';
-import { useState } from 'react';
 
 type DropdownMenuProps = {
   title: string;
@@ -8,6 +8,7 @@ type DropdownMenuProps = {
 };
 
 export default function DropdownMenu(props: DropdownMenuProps) {
+  const { title, href } = props;
   const [isMouseOver, setIsMouseOver] = useState(false);
 
   const handleMouseOver = () => {
@@ -22,11 +23,11 @@ export default function DropdownMenu(props: DropdownMenuProps) {
     <div className={`${isMouseOver ? styles.mouseOn : styles.mouseOut}`}>
       <Link
         className={styles.dropdownMenu}
-        href={props.href}
+        href={href}
         onMouseOver={handleMouseOver}
         onMouseOut={handleMouseOut}
       >
-        {props.title}
+        {title}
       </Link>
     </div>
   );
