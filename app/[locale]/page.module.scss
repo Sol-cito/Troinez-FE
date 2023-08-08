@@ -1,8 +1,7 @@
-$main-height: 23rem;
-.main {
+.home {
   width: 70%;
+  height: 100%;
   margin: 0 auto;
-  height: $main-height;
   background-color: ivory;
 
   :global(.carousel .carousel-status) {

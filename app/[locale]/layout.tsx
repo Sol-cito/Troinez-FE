@@ -1,13 +1,11 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import type { Metadata } from 'next';
-import { Inter } from 'next/font/google';
 import Header from '@/components/header/header';
 import Footer from '@/components/footer/footer';
-import ContentWrapper from '@/components/contentWrapper/contentWrapper';
 import { NextIntlClientProvider } from 'next-intl';
 import { notFound } from 'next/navigation';
-
-const inter = Inter({ subsets: ['latin'] });
+import MainWrapper from '@/components/mainWrapper/mainWrapper';
+import styles from './layout.module.scss';
 
 export const metadata: Metadata = {
   title: 'Troinez',
@@ -29,11 +27,11 @@ export default async function RootLayout({
   }
 
   return (
-    <html lang={locale}>
-      <body className={inter.className} id="bodytest">
+    <html className={styles.html} lang={locale}>
+      <body>
         <NextIntlClientProvider locale={locale} messages={messages}>
           <Header />
-          <ContentWrapper content={children} />
+          <MainWrapper content={children} />
           <Footer />
         </NextIntlClientProvider>
       </body>
