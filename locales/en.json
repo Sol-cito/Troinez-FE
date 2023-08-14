@@ -3,7 +3,20 @@
     "title": "Hello world!"
   },
   "About": {
-    "title": "Reset, Refresh for the Self"
+    "firstAbout": {
+      "title": "Your New Ritual",
+      "subTitle1": "리추얼 : 내면을 마주보는 일상의 의식",
+      "subTitle2": "Reset, Refresh for the Self",
+      "retualText": "우리는 넘쳐나는 이미지와 타인의 목소리, 소셜미디어가 쏟아내는 어지러운 잣대와 평가에 잠식된 시대를 살아가고 있습니다. 진실과 거짓, 현실과 허구의 경계가 모호해질수록 꾸밈없는 얼굴과 담담한 목소리는 내면의 틈새 속으로 깊이 숨어듭니다. 우리에게 정말 필요한 것은 어쩌면, 심오한 깨달음이 아닌지도 모릅니다. 바쁘게 흘러가는 시간 속에 나만을 위한 소박한 리추얼을 만드는 것. 어떤 목소리에도 휩쓸리지 않고 나 자신의 내면과 대화하는 경험. 논픽션의 이야기는 바로 그러한 순간으로부터 시작됩니다.",
+      "retualTestEng": "The world around us is brimmed over with images, voices, and muddling messages from media. Yet with the line between reality and fiction being blurred, genuineness of inner self and calmness in voice should seep deeper within. Stories of NONFICTION shall begin from starting simple rituals in the midst of all the hustles and listening closer to inner voice, not being swayed by messages from outside. Discover yourself again."
+    },
+    "secondAbout": {
+      "title": "Uncover Your Story",
+      "subTitle1": "발견 : 나만의 이야기에 귀 기울이는 시간",
+      "subTitle2": "Listening to Your Inner Self",
+      "retualText": "논픽션은 자신의 가장 솔직한 모습과 마주하는 시간을 위해 탄생한 라이프스타일 뷰티브랜드입니다. 최상의 원료와 섬세한 조항을 바탕으로 신비롭고 독특한 무드를 빚어내는 향수, 하루의 시작과 끝을 더욱 정성스럽게 만드는 바디케어 제품군을 선보입니다. 향을 매개로 내면의 힘을 표현하는 논픽션의 제품들은 오롯이 나에게 집중하고 내면의 이야기에 귀 기울이는 일상의 의식을 보다 깊고 내밀한 시간으로 만들어줍니다.",
+      "retualTestEng": "Nonfiction is a lifestyle beauty brand created for and inspired by you most honest self. Based on the finest raw materials and delicate perfumery, we present a fragrance line that creates a mysterious and unique mood, and a body card product line that completes the beginning to end of the day cycles."
+    }
   },
   "Footer": {
     "companyName": "TROIS NEZ LABORATORY",
