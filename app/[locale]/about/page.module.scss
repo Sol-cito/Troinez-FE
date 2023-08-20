@@ -1,3 +1,45 @@
-.test {
-  font-size: 100px;
+.about_wrapper {
+  display: flex;
+  flex-direction: column;
+  word-break: keep-all;
+
+  .flex_box {
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 5vh;
+
+    .image_box {
+      width: 40vw;
+      img {
+        position: relative !important;
+        width: 100%;
+        height: auto;
+      }
+    }
+
+    .text_box {
+      margin: 0 2vw 0 2vw;
+      max-width: 30vw;
+      line-height: 2;
+
+      .title {
+        font-size: 2rem;
+      }
+
+      .title,
+      .sub_title {
+        line-height: 0.5;
+        text-align: center;
+      }
+    }
+
+    .full_image_box {
+      width: 80vw;
+      img {
+        position: relative !important;
+        width: 100%;
+        height: auto;
+      }
+    }
+  }
 }
