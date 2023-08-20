@@ -6,8 +6,8 @@ import styles from './carouselImages.module.scss';
 export default function CarouselImages() {
   const interval: number = 5000;
   const transitionTime: number = 1500;
-  const imageWidthPixel: number = 600;
-  const imageHeightPixel: number = 400;
+  const imageWidthPixel: number = 900;
+  const imageHeightPixel: number = 600;
   const imageQuality: number = 80;
 
   const images: string[] = [
