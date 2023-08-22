@@ -8,9 +8,33 @@ import styles from './header.module.scss';
 import DropdownMenu from '../dropdown/dropdownMenu';
 import DropdownBox from '../dropdown/dropdownBox';
 
-function Header() {
+function Header({
+  isLogin,
+  token,
+}: {
+  isLogin: boolean;
+  token: string | undefined;
+}) {
   const locale: string = useLocale();
   const switchLocale = (): string => (locale === 'ko' ? 'en' : 'ko');
+
+  let loginoutLink;
+  if (isLogin) {
+    loginoutLink = (
+      <Link
+        href={`http://localhost:8080/api/logout/naver?token=${token}`}
+        className={styles.menu_btn}
+      >
+        LOGOUT
+      </Link>
+    );
+  } else {
+    loginoutLink = (
+      <Link href={`/${locale}/login`} className={styles.menu_btn}>
+        LOGIN
+      </Link>
+    );
+  }
 
   return (
     <header className={styles.header}>
@@ -36,9 +60,7 @@ function Header() {
           <Link href={`/${locale}/about`} className={styles.menu_btn}>
             ABOUT
           </Link>
-          <Link href={`/${locale}`} className={styles.menu_btn}>
-            LOGIN(LOGOUT)
-          </Link>
+          {loginoutLink}
           <Link href={`/${locale}`} className={styles.menu_btn}>
             CART
           </Link>
