@@ -1,0 +1,46 @@
+.login_wrapper {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background-color: #fff;
+
+  .login_left_title {
+    position: absolute;
+    left: 10px;
+    top: 20px;
+    font-weight: bold;
+  }
+
+  .login_header {
+    text-align: center;
+    .login_title {
+      margin-top: 20px;
+      margin-bottom: 0px;
+      font-size: 20px;
+      font-weight: bold;
+    }
+    .login_subtitle {
+      margin-top: 1px;
+      font-size: 13px;
+    }
+  }
+  .flex_box {
+    display: flex;
+    .image_box {
+      .login_box_title {
+        text-align: center;
+        font-size: 1.3vw;
+      }
+      margin: 50px auto;
+      width: 300px;
+      height: 70px;
+      img {
+        position: relative !important;
+        width: 100%;
+        height: auto;
+      }
+    }
+  }
+}
