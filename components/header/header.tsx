@@ -18,13 +18,12 @@ function Header({
   const locale: string = useLocale();
   const switchLocale = (): string => (locale === 'ko' ? 'en' : 'ko');
 
+  const logOutUri = process.env.NEXT_PUBLIC_NAVER_LOGOUT_REQUEST_URI;
+
   let loginoutLink;
   if (isLogin) {
     loginoutLink = (
-      <Link
-        href={`http://localhost:8080/api/logout/naver?token=${token}`}
-        className={styles.menu_btn}
-      >
+      <Link href={`${logOutUri}?token=${token}`} className={styles.menu_btn}>
         LOGOUT
       </Link>
     );
