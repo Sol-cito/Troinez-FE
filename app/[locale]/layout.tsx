@@ -5,6 +5,7 @@ import Footer from '@/components/footer/footer';
 import { NextIntlClientProvider } from 'next-intl';
 import { notFound } from 'next/navigation';
 import MainWrapper from '@/components/mainWrapper/mainWrapper';
+import { cookies } from 'next/headers';
 import styles from './layout.module.scss';
 
 export const metadata: Metadata = {
@@ -26,11 +27,18 @@ export default async function RootLayout({
     notFound();
   }
 
+  const cookieStore = cookies();
+  const token = cookieStore.get('token')?.value;
+  let isLogin = false;
+  if (token !== undefined) {
+    isLogin = true;
+  }
+
   return (
     <html className={styles.html} lang={locale}>
       <body>
         <NextIntlClientProvider locale={locale} messages={messages}>
-          <Header />
+          <Header isLogin={isLogin} token={token} />
           <MainWrapper content={children} />
           <Footer />
         </NextIntlClientProvider>
