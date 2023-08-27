@@ -1,4 +1,19 @@
 /** @type {import('next').NextConfig} */
-const nextConfig = {}
+const nextConfig = () => {
+  const BASE_API_HOST = process.env.NEXT_PUBLIC_BASE_API_HOST;
+  const BASE_API_PORT = process.env.NEXT_PUBLIC_BASE_API_PORT;
 
-module.exports = nextConfig
+  const rewrites = () => {
+    return [
+      {
+        source: '/api/:path*',
+        destination:
+          'http://' + BASE_API_HOST + ':' + BASE_API_PORT + '/api/:path*',
+      },
+    ];
+  };
+
+  return { rewrites };
+};
+
+module.exports = nextConfig;
