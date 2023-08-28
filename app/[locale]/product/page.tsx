@@ -1,12 +1,63 @@
 'use client';
 
-import Image from 'next/image';
 // import Link from 'next/link';
+import ProductItem from '@/components/product/productItem';
+import ProductData from '@/interfaces/product/productData';
 import styles from './page.module.scss';
 
 export default function Product() {
-  const productImg = '/common/product/img/D01.png';
-  const cartImg = '/common/product/img/cart-shopping-solid.svg';
+  // ProductList API로 Fetch
+  const productList: ProductData[] = [
+    {
+      id: 1,
+      name: 'TROISNEZ 트와네즈 디퓨저 D01 200ml',
+      price: 45000,
+      discountPrice: 36000,
+      discountRate: 20,
+      image: '/common/product/img/D01.png',
+    },
+    {
+      id: 2,
+      name: 'TROISNEZ 트와네즈 디퓨저 D02 200ml',
+      price: 45000,
+      discountPrice: 36000,
+      discountRate: 20,
+      image: '/common/product/img/D02.png',
+    },
+    {
+      id: 3,
+      name: 'TROISNEZ 트와네즈 디퓨저 D03 200ml',
+      price: 45000,
+      discountPrice: 36000,
+      discountRate: 20,
+      image: '/common/product/img/D03.png',
+    },
+    {
+      id: 2,
+      name: 'TROISNEZ 트와네즈 디퓨저 D04 200ml',
+      price: 45000,
+      discountPrice: 36000,
+      discountRate: 20,
+      image: '/common/product/img/D04.png',
+    },
+    {
+      id: 2,
+      name: 'TROISNEZ 트와네즈 디퓨저 D05 200ml',
+      price: 45000,
+      discountPrice: 36000,
+      discountRate: 20,
+      image: '/common/product/img/D05.png',
+    },
+    {
+      id: 2,
+      name: 'TROISNEZ 트와네즈 디퓨저 D06 200ml',
+      price: 45000,
+      discountPrice: 36000,
+      discountRate: 20,
+      image: '/common/product/img/D06.png',
+    },
+  ];
+
   return (
     <div>
       <div className={styles.product_list_title}>
@@ -16,35 +67,9 @@ export default function Product() {
         <span className={styles.title}>All Products</span>
       </div>
       <div className={styles.product_list_box}>
-        <div className={styles.product_list_item}>
-          <div className={styles.product_img}>
-            <Image src={productImg} alt="D01" fill />
-          </div>
-          <div className={styles.product_description_wrapper}>
-            <div className={styles.product_description}>
-              <p className={styles.product_name}>TROISNEZ D01</p>
-              <p className={styles.product_price}>420,0000원</p>
-              <p className={styles.product_sale_price}>
-                <span>할인 : </span>
-                <span>108,000원</span>
-                <span> 10% </span>
-              </p>
-              <p className={styles.newest_icon}>
-                <span className={styles.icon}>new</span>
-              </p>
-              <p>
-                <Image
-                  src={cartImg}
-                  className={styles.cart_icon}
-                  alt="cart"
-                  width={15}
-                  height={15}
-                />
-                <span> Cart</span>
-              </p>
-            </div>
-          </div>
-        </div>
+        {productList.map((productItem: ProductData) => (
+          <ProductItem key={productItem.id} product={productItem} />
+        ))}
       </div>
     </div>
   );
