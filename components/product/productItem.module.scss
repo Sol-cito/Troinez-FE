@@ -1,31 +1,31 @@
-.product_item {
+.item_box {
   display: inline-block;
   width: 30%;
   margin-left: 2.5%;
-  .product_img {
+  .item_img_box {
     img {
       position: relative !important;
       width: 100%;
       height: auto;
     }
   }
-  .product_description_wrapper {
-    .product_description {
+  .item_desc_box {
+    .item_desc {
       text-align: center;
 
-      .product_name {
+      .item_name {
         font-weight: bold;
       }
-      .product_price {
+      .item_price {
         text-decoration: line-through;
       }
-      .product_sale_price {
+      .item_disc_price {
         > span:first-child {
           font-weight: bold;
         }
       }
 
-      .newest_icon {
+      .item_newest_icon {
         .icon {
           width: 30px;
           font-family: Tahoma, dotum;

@@ -60,13 +60,13 @@ export default function Product() {
 
   return (
     <div>
-      <div className={styles.product_list_title}>
+      <div className={styles.title_box}>
         <span>
           <hr />
         </span>
         <span className={styles.title}>All Products</span>
       </div>
-      <div className={styles.product_list_box}>
+      <div className={styles.list_box}>
         {productList.map((productItem: ProductData) => (
           <ProductItem key={productItem.id} product={productItem} />
         ))}
