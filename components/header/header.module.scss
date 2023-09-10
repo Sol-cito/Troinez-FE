@@ -3,7 +3,7 @@ $header-fond-size: 0.8rem;
 
 .header {
   text-align: center;
-  width: 70%;
+  width: 75%;
   margin: 0 auto;
   font-size: $header-fond-size;
   height: $header-height;
@@ -34,6 +34,6 @@ $header-fond-size: 0.8rem;
 
   .right {
     margin-left: auto;
-    width: 26rem;
+    // width: 26rem;
   }
 }
