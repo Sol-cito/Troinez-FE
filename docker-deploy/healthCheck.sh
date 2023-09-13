@@ -1,10 +1,10 @@
 #!/bin/bash
 
-echo "[Log] Health check URL: http://15.164.113.48/:3000/"
+echo "[Log] Health check URL: http://15.164.113.48:3000/"
 
 for retry_count in $(seq 1 10)
 do
-  response=$(curl -s http://15.164.113.48/:3000/)
+  response=$(curl -s http://15.164.113.48:3000/)
   up_count=$(echo "$response" | grep 'IN GOLD WE TRUST PARIS' | wc -l)
 
   if [ "$up_count" -ge 1 ]
