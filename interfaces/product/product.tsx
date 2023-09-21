@@ -1,10 +1,11 @@
-export default interface ProductItem {
+import { ProductImage } from './product_image';
+
+export default interface Product {
   id: number;
   name: string;
-  price: number;
-  discountPrice: number;
+  productPrice: number;
+  discountedPrice: number;
   discountRate: number;
-  image: string;
 
   // 네이버페이 결재정보
   clientId: string;
@@ -16,4 +17,8 @@ export default interface ProductItem {
   totalPayAmount: number;
   taxScopeAmount: number;
   taxExScopeAmount: number;
+
+  productThumImage: ProductImage;
+  productSubImageList: ProductImage[];
+  productDetailImageList: ProductImage[];
 }
