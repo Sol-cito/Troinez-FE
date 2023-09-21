@@ -1,36 +1,44 @@
 /* eslint-disable object-curly-newline */
 import Image from 'next/image';
-import ProductData from '@/interfaces/product/productData';
 import styles from './productItem.module.scss';
+import { useTranslations } from 'next-intl';
+import Product from '@/interfaces/product/product';
 
-export default function ProductItem({
-  key,
-  product,
-}: {
-  key: number;
-  product: ProductData;
-}) {
+export default function ProductItem({ product }: { product: Product }) {
+  const productDetail = useTranslations('Product.detail');
+
   const cartImg = '/common/product/img/cart-shopping-solid.svg';
 
-  const { name, price, discountPrice, discountRate, image } = product;
-  const keyString = `${key}`;
-  const priceString = `${price}원`;
-  const discountPriceString = `${discountPrice}원 `;
-  const discountRateString = `${discountRate}%`;
-
   return (
-    <div className={styles.item_box} id={keyString}>
+    <div className={styles.item_box}>
       <div className={styles.item_img_box}>
-        <Image src={image} alt="D01" fill />
+        <Image
+          // TO-DO: image url 정해지면 아래 src 수정
+          src={
+            '/common/product/thum/' + product.productThumImage.productImageUrl
+          }
+          alt="D01"
+          fill
+        />
       </div>
       <div className={styles.item_desc_box}>
         <div className={styles.item_desc}>
-          <p className={styles.item_name}>{name}</p>
-          <p className={styles.item_price}>{priceString}</p>
+          <p className={styles.item_name}>{product.productName}</p>
+          <p className={styles.item_price}>
+            {product.productPrice}
+            {productDetail('price')}
+          </p>
           <p className={styles.item_disc_price}>
-            <span>할인 : </span>
-            <span>{discountPriceString}</span>
-            <span>{discountRateString}</span>
+            <span> {productDetail('discount')} : </span>
+            <span>
+              {product.discountedPrice}
+              {productDetail('price')}
+            </span>
+            <span>
+              {' '}
+              {product.discountRate}
+              {productDetail('percentage')}
+            </span>
           </p>
           <p className={styles.item_newest_icon}>
             <span className={styles.icon}>new</span>
