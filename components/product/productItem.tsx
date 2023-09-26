@@ -33,15 +33,15 @@ export default function ProductItem({ product }: { product: Product }) {
         <div className={styles.item_desc}>
           <p className={styles.item_name}>{product.productName}</p>
           <p className={styles.item_price}>
-            {product.productPrice}
+            {product.productPrice.toLocaleString()}
             {productDetail('price')}
           </p>
           <p className={styles.item_disc_price}>
             <span> {productDetail('discount')} : </span>
             <span>
-              {product.discountedPrice}
+              {product.discountedPrice.toLocaleString()}
               {productDetail('price')}
-            </span>
+            </span>{' '}
             <span>
               {product.discountRate}
               {productDetail('percentage')}
