@@ -22,7 +22,13 @@
     "detail": {
       "price": "won",
       "discount": "Discount",
-      "percentage": "%"
+      "percentage": "%",
+      "totalPrice": "total price",
+      "pieces": "pcs",
+      "buy": "buy",
+      "cart": "cart",
+      "NPay": "NPay buy",
+      "ward": "ward"
     }
   },
   "Footer": {
