@@ -1,18 +1,19 @@
 'use client';
 
-import Image from 'next/image';
-import styles from './page.module.scss';
-import { useEffect, useState } from 'react';
-import { GetParameter, getApiCall } from '@/service/restAPI.service';
-import { useLocale, useTranslations } from 'next-intl';
-import { Product } from '@/interfaces/product/product';
 import { ProductDetail } from '@/interfaces/product/productDetail';
+import { ProductImageType } from '@/interfaces/product/productImage';
+import { GetParameter, getApiCall } from '@/service/restAPI.service';
+import { useTranslations } from 'next-intl';
+import Image from 'next/image';
+import { useEffect, useState } from 'react';
+import styles from './page.module.scss';
+import CarouselImages from '@/components/carouselImages/carouselImages';
 
 export default function ProductDetail({ params: { id } }: { params: any }) {
-  const locale: string = useLocale();
   const productDetailTrans = useTranslations('Product.detail');
-
   const [productDetail, setProductDetail] = useState<ProductDetail>();
+
+  const [selectedProductNumber, setSelectedProductNumber] = useState<number>(1);
 
   const productId: number = id;
 
@@ -35,104 +36,137 @@ export default function ProductDetail({ params: { id } }: { params: any }) {
 
   return (
     <>
-      {productDetail ? (
-        <div className={styles.detail_box}>
-          <div className={styles.left_cont}>
-            <div className={styles.img_box}>
-              {/* TO-DO: image url 정해지면 아래 src 수정 */}
-              <Image
-                src={
-                  '/common/product/perfume/' +
-                  productDetail.productImageList[0].productImageUrl
-                }
-                alt="D01"
-                fill
+      {productDetail && (
+        <>
+          <div className={styles.detail_box}>
+            <div className={styles.left_cont}>
+              <CarouselImages
+                showIndicators={false}
+                showThumbs={true}
+                showArrow={true}
+                imageUrlList={productDetail.productImageList
+                  .filter((image) => {
+                    return image.productImageType !== ProductImageType.DETAIL;
+                  })
+                  .map((image) => {
+                    return '/common/product/perfume/' + image.productImageUrl;
+                  })}
               />
             </div>
-            <div className={styles.img_slide_box}>
-              <div className={styles.img_slide_inner_box}>
-                {/* TO-DO: image url 정해지면 아래 src 수정 */}
-                {/* {product.productDetailImageList.map((detailImage) => {
-                  return (
-                    <Image
-                      src={
-                        '/common/product/perfume/' + detailImage.productImageUrl
-                      }
-                      alt="D02"
-                      width={50}
-                      height={50}
-                    />
-                  );
-                })} */}
-              </div>
-            </div>
-          </div>
-          <div className={styles.right_cont}>
-            <div className={styles.desc_box}>
-              <p className={styles.desc_title}>{productDetail.productName}</p>
-              <p className={styles.desc_price}>
-                {productDetail.productPrice}
-                {productDetailTrans('price')}
-              </p>
-              <hr />
-              <p className={styles.desc_product_eng}>
+            <div className={styles.right_cont}>
+              <div className={styles.desc_box}>
+                <p className={styles.desc_title}>{productDetail.productName}</p>
+                <p className={styles.desc_price}>
+                  {productDetail.discountRate !== 0 && (
+                    <span className={styles.desc_original_price}>
+                      {productDetail.productPrice.toLocaleString()}
+                      {productDetailTrans('price')}
+                    </span>
+                  )}
+                  {productDetail.discountedPrice.toLocaleString()}
+                  {productDetailTrans('price')}
+                </p>
+                <hr />
                 {convertToHtml(productDetail.concept)}
-              </p>
-              <hr />
-              <p className={styles.desc_sub_title}>NOTES</p>
-              {convertToHtml(productDetail.notes)}
-              <p className={styles.desc_sub_title}>PERFUMER</p>
-              <p className={styles.desc_sub_elt}>{productDetail.perfumer}</p>
-              <p className={styles.desc_sub_title}>INGREDIENTS</p>
-              <p className={styles.desc_sub_elt}>{productDetail.ingredient}</p>
-              <p className={styles.desc_sub_title}>INFORMATION</p>
-              {convertToHtml(productDetail.information)}
-              <p className={styles.desc_sub_title}>CAUTION</p>
-              {convertToHtml(productDetail.caution)}
-              <hr />
-            </div>
-            <div className={styles.payment_box}>
-              <div className={styles.payment_select_box}>
-                <div className={styles.payment_select}>
-                  <div className={styles.payment_select_title}>
-                    {productDetail.productName}
-                  </div>
-                  <div>
-                    <button type="button">-</button>
-                    <input type="text" value="0" readOnly />
-                    <button type="button">+</button>
-                  </div>
-                  <div className={styles.payment_select_price}>
-                    {productDetail.discountedPrice}원
+                <hr />
+                <p className={styles.desc_sub_title}>NOTES</p>
+                {convertToHtml(productDetail.notes)}
+                <p className={styles.desc_sub_title}>PERFUMER</p>
+                <p className={styles.desc_sub_elt}>{productDetail.perfumer}</p>
+                <p className={styles.desc_sub_title}>INGREDIENTS</p>
+                <p className={styles.desc_sub_elt}>
+                  {productDetail.ingredient}
+                </p>
+                <p className={styles.desc_sub_title}>INFORMATION</p>
+                {convertToHtml(productDetail.information)}
+                <p className={styles.desc_sub_title}>CAUTION</p>
+                {convertToHtml(productDetail.caution)}
+                <hr />
+              </div>
+              <div className={styles.payment_box}>
+                <div className={styles.payment_select_box}>
+                  <div className={styles.payment_select}>
+                    <div className={styles.payment_select_title}>
+                      {productDetail.productName}
+                    </div>
+                    <div>
+                      <button
+                        type="button"
+                        onClick={() => {
+                          setSelectedProductNumber(
+                            Math.max(1, selectedProductNumber - 1)
+                          );
+                        }}
+                      >
+                        -
+                      </button>
+                      <input
+                        type="text"
+                        value={selectedProductNumber}
+                        readOnly
+                      />
+                      <button
+                        type="button"
+                        onClick={() => {
+                          setSelectedProductNumber(selectedProductNumber + 1);
+                        }}
+                      >
+                        +
+                      </button>
+                    </div>
+                    <div className={styles.payment_select_price}>
+                      {productDetail.discountedPrice.toLocaleString()}
+                      {productDetailTrans('price')}
+                    </div>
                   </div>
                 </div>
-              </div>
-              <div className={styles.payment_total_price_box}>
-                <span className={styles.payment_total_count}>
-                  총 상품금액 (1개)
-                </span>
-                <span className={styles.payment_total_price}>36,000원</span>
-              </div>
-              <div className={styles.payment_decision_box}>
-                <button type="button" className={styles.payment_decision_buy}>
-                  구매하기
-                </button>
-                <button
-                  type="button"
-                  className={styles.payment_decision_basket}
-                >
-                  장바구니
-                </button>
-              </div>
-              <hr />
-              <div className={styles.payment_naverpay}>
-                <button type="button">NPay 구매</button>
-                <button type="button">찜</button>
+                <div className={styles.payment_total_price_box}>
+                  <span className={styles.payment_total_count}>
+                    {productDetailTrans('totalPrice')}({selectedProductNumber}
+                    {productDetailTrans('pieces')})
+                  </span>
+                  <span className={styles.payment_total_price}>
+                    {(
+                      selectedProductNumber * productDetail.discountedPrice
+                    ).toLocaleString()}
+                    {productDetailTrans('price')}
+                  </span>
+                </div>
+                <div className={styles.payment_decision_box}>
+                  <button type="button" className={styles.payment_decision_buy}>
+                    {productDetailTrans('buy')}
+                  </button>
+                  <button
+                    type="button"
+                    className={styles.payment_decision_basket}
+                  >
+                    {productDetailTrans('cart')}
+                  </button>
+                </div>
+                <hr />
+                <div className={styles.payment_naverpay}>
+                  <button type="button">{productDetailTrans('NPay')}</button>
+                  <button type="button">{productDetailTrans('ward')}</button>
+                </div>
               </div>
             </div>
           </div>
-        </div>
-      ) : null}
+          <div className={styles.detail_image_box}>
+            {productDetail.productImageList.map((image) => {
+              return (
+                <Image
+                  key={image.productImageUrl}
+                  src={'/common/product/perfume/' + image.productImageUrl}
+                  alt="D01"
+                  quality={100}
+                  width={500}
+                  height={500}
+                />
+              );
+            })}
+          </div>
+        </>
+      )}
     </>
   );
 }
