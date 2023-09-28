@@ -16,7 +16,13 @@ export default function About() {
     <div className={styles.about_wrapper}>
       <div className={styles.flex_box}>
         <div className={styles.image_box}>
-          <Image src={aboutImage1} alt="first about image" fill />
+          <Image
+            src={aboutImage1}
+            alt="first about image"
+            fill
+            sizes="5vw"
+            priority
+          />
         </div>
         <div className={styles.text_box}>
           <p className={styles.title}>{firstAboutT('title')}</p>
