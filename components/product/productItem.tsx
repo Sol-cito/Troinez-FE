@@ -25,6 +25,8 @@ export default function ProductItem({ product }: { product: Product }) {
               '/common/product/perfume/' + product.productImage.productImageUrl
             }
             alt="D01"
+            sizes="20vw"
+            priority
             fill
           />
         </Link>
