@@ -113,27 +113,13 @@ pipeline {
             }
         }
 
-        stage('Docker image run') {
+        stage('Blue Green Deployment') {
             steps {
                 dir("${projectDir}") {
-                    echo "[Log] Docker running..."
+                    echo "[Log] Blue Green Deployment running..."
 
                     sh "bash ./docker-deploy/dockerRun.sh ${PROFILE}"
-
-                    echo "[Log] Docker run success!!!"
                 }                
-            }
-        }
-
-        stage('Nestjs Server health check') {
-            steps {
-                dir("${projectDir}") {
-                    echo "[Log] Docker Next image healthcheck start"
-
-                    sh "bash ./docker-deploy/healthCheck.sh ${PROFILE}"
-
-                    echo "[Log] Next healthCheck success!!"
-                }
             }
         }
     }
