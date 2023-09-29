@@ -1,9 +1,9 @@
 /* eslint-disable object-curly-newline */
 import Image from 'next/image';
-import styles from './productItem.module.scss';
 import { useLocale, useTranslations } from 'next-intl';
 import Link from 'next/link';
 import { Product } from '@/interfaces/product/product';
+import styles from './productItem.module.scss';
 
 export default function ProductItem({ product }: { product: Product }) {
   const locale: string = useLocale();
@@ -21,9 +21,9 @@ export default function ProductItem({ product }: { product: Product }) {
         >
           <Image
             // TO-DO: image url 정해지면 아래 src 수정
-            src={
-              '/common/product/perfume/' + product.productImage.productImageUrl
-            }
+            src={'/common/product/perfume/'.concat(
+              product.productImage.productImageUrl
+            )}
             alt="D01"
             sizes="20vw"
             priority
@@ -39,7 +39,7 @@ export default function ProductItem({ product }: { product: Product }) {
             {productDetail('price')}
           </p>
           <p className={styles.item_disc_price}>
-            <span> {productDetail('discount')} : </span>
+            <span> {productDetail('discount')}: </span>
             <span>
               {product.discountedPrice.toLocaleString()}
               {productDetail('price')}

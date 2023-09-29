@@ -19,26 +19,31 @@ export default function CarouselImages(props: CarouselImageProps) {
   const imageHeightPixel: number = 600;
   const imageQuality: number = 80;
 
+  const {
+    imageUrlList,
+    autoPlay,
+    showStatus,
+    showIndicators,
+    showArrow,
+    showThumbs,
+  } = props;
+
   return (
     <div className={styles.carouselBox}>
       <Carousel
-        autoPlay={props.autoPlay || false}
+        autoPlay={autoPlay || false}
         infiniteLoop
         interval={interval}
         transitionTime={transitionTime}
-        showStatus={props.showStatus || false}
-        showIndicators={props.showIndicators || false}
-        showThumbs={
-          (props.showThumbs && props.imageUrlList.length > 1) || false
-        }
-        showArrows={(props.showArrow && props.imageUrlList.length > 1) || false}
-        renderThumbs={(thumb) => {
-          return thumb;
-        }}
+        showStatus={showStatus || false}
+        showIndicators={showIndicators || false}
+        showThumbs={(showThumbs && imageUrlList.length > 1) || false}
+        showArrows={(showArrow && imageUrlList.length > 1) || false}
+        renderThumbs={(thumb) => thumb}
         className={styles.carousel}
       >
-        {props.imageUrlList &&
-          props.imageUrlList.map((url: string) => (
+        {imageUrlList &&
+          imageUrlList.map((url: string) => (
             <Image
               key={url}
               priority
@@ -54,3 +59,11 @@ export default function CarouselImages(props: CarouselImageProps) {
     </div>
   );
 }
+
+CarouselImages.defaultProps = {
+  autoPlay: false,
+  showStatus: false,
+  showIndicators: false,
+  showArrow: false,
+  showThumbs: false,
+};

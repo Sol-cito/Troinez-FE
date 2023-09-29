@@ -6,20 +6,21 @@ import { GetParameter, getApiCall } from '@/service/restAPI.service';
 import { useTranslations } from 'next-intl';
 import Image from 'next/image';
 import { useEffect, useState } from 'react';
-import styles from './page.module.scss';
 import CarouselImages from '@/components/carouselImages/carouselImages';
+import { Params } from 'next/dist/shared/lib/router/utils/route-matcher';
+import styles from './page.module.scss';
 
-export default function ProductDetail({ params: { id } }: { params: any }) {
+export default function ProductDetailPage({
+  params: { id },
+}: {
+  params: Params;
+}) {
   const productDetailTrans = useTranslations('Product.detail');
   const [productDetail, setProductDetail] = useState<ProductDetail>();
 
   const [selectedProductNumber, setSelectedProductNumber] = useState<number>(1);
 
   const productId: number = id;
-
-  useEffect(() => {
-    getProductDetail();
-  }, []);
 
   const getProductDetail = async () => {
     const getParameter: GetParameter = {
@@ -30,27 +31,32 @@ export default function ProductDetail({ params: { id } }: { params: any }) {
     setProductDetail(res);
   };
 
-  const convertToHtml = (target: string) => {
-    return <div dangerouslySetInnerHTML={{ __html: target }}></div>;
-  };
+  useEffect(() => {
+    getProductDetail();
+  }, []);
+
+  const convertToHtml = (target: string) => (
+    <div dangerouslySetInnerHTML={{ __html: target }} />
+  );
 
   return (
-    <>
+    <div>
       {productDetail && (
         <>
           <div className={styles.detail_box}>
             <div className={styles.left_cont}>
               <CarouselImages
                 showIndicators={false}
-                showThumbs={true}
-                showArrow={true}
+                showThumbs
+                showArrow
                 imageUrlList={productDetail.productImageList
-                  .filter((image) => {
-                    return image.productImageType !== ProductImageType.DETAIL;
-                  })
-                  .map((image) => {
-                    return '/common/product/perfume/' + image.productImageUrl;
-                  })}
+                  .filter(
+                    (image) =>
+                      image.productImageType !== ProductImageType.DETAIL
+                  )
+                  .map((image) =>
+                    '/common/product/perfume/'.concat(image.productImageUrl)
+                  )}
               />
             </div>
             <div className={styles.right_cont}>
@@ -152,21 +158,19 @@ export default function ProductDetail({ params: { id } }: { params: any }) {
             </div>
           </div>
           <div className={styles.detail_image_box}>
-            {productDetail.productImageList.map((image) => {
-              return (
-                <Image
-                  key={image.productImageUrl}
-                  src={'/common/product/perfume/' + image.productImageUrl}
-                  alt="D01"
-                  quality={100}
-                  width={500}
-                  height={500}
-                />
-              );
-            })}
+            {productDetail.productImageList.map((image) => (
+              <Image
+                key={image.productImageUrl}
+                src={'/common/product/perfume/'.concat(image.productImageUrl)}
+                alt="D01"
+                quality={100}
+                width={500}
+                height={500}
+              />
+            ))}
           </div>
         </>
       )}
-    </>
+    </div>
   );
 }

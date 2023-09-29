@@ -1,10 +1,10 @@
 'use client';
 
 import 'react-responsive-carousel/lib/styles/carousel.min.css';
-import styles from './page.module.scss';
 import CarouselImages from '@/components/carouselImages/carouselImages';
+import styles from './page.module.scss';
 
-export default function Home() {
+export default function HomePage() {
   const mainImageUrlList: string[] = [
     '/common/home/img/Main01.jpg',
     '/common/home/img/Main02.jpg',
@@ -15,7 +15,7 @@ export default function Home() {
   return (
     <div className={styles.home}>
       <CarouselImages
-        autoPlay={true}
+        autoPlay
         showIndicators={false}
         imageUrlList={mainImageUrlList}
       />

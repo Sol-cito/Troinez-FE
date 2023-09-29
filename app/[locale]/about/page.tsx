@@ -4,7 +4,7 @@ import { useTranslations } from 'next-intl';
 import Image from 'next/image';
 import styles from './page.module.scss';
 
-export default function About() {
+export default function AboutPage() {
   const firstAboutT = useTranslations('About.firstAbout');
   const secondAboutT = useTranslations('About.secondAbout');
 
