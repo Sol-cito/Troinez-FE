@@ -1,0 +1,19 @@
+.title_box {
+  text-align: center;
+  .title {
+    line-height: 4vw;
+  }
+  span {
+    width: 8vw;
+    hr {
+      margin-top: 0;
+      margin-bottom: 0;
+      width: 8vw;
+    }
+  }
+}
+.list_box {
+  display: flex;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+}

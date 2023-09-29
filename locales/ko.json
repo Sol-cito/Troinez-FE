@@ -18,6 +18,13 @@
       "retualTestEng": "Nonfiction is a lifestyle beauty brand created for and inspired by you most honest self. Based on the finest raw materials and delicate perfumery, we present a fragrance line that creates a mysterious and unique mood, and a body card product line that completes the beginning to end of the day cycles."
     }
   },
+  "Product": {
+    "detail": {
+      "price": "원",
+      "discount": "할인",
+      "percentage": "%"
+    }
+  },
   "Footer": {
     "companyName": "TROIS NEZ LABORATORY",
     "companyAddressInfoList": [

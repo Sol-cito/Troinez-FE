@@ -18,7 +18,7 @@ async function baseApiCall(
   props: BaseApiCallProps
 ): Promise<AxiosResponseModel> {
   const requestConfig: AxiosRequestConfig = {
-    url: '/api' + props.url,
+    url: '/api/v1' + props.url,
     method: props.method,
     data: props.data,
     params: props.params,

@@ -6,9 +6,9 @@ const nextConfig = () => {
   const rewrites = () => {
     return [
       {
-        source: '/api/:path*',
+        source: '/api/v1/:path*',
         destination:
-          'http://' + BASE_API_HOST + ':' + BASE_API_PORT + '/api/:path*',
+          'http://' + BASE_API_HOST + ':' + BASE_API_PORT + '/api/v1/:path*',
       },
     ];
   };

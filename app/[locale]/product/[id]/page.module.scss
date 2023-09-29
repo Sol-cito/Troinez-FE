@@ -1,0 +1,143 @@
+.detail_box {
+  display: flex;
+  justify-content: space-between;
+
+  .left_cont {
+    width: 40%;
+    margin: 2.5% 0 0 2.5%;
+    // background-color: lightcyan;
+    .img_box {
+      position: relative;
+      height: 30vw;
+    }
+    .img_slide_box {
+      margin-top: 0.5vw;
+      .img_slide_inner_box {
+        img {
+          border: 1px solid lightgray;
+        }
+      }
+    }
+  }
+
+  .right_cont {
+    width: 50%;
+    font-size: 0.9vw;
+    margin: 2.5% 2.5% 0 0;
+    // background-color: yellow;
+    .desc_box {
+      .desc_title {
+        font-size: 1.5vw;
+        font-weight: bold;
+        color: darkgray;
+      }
+      .desc_price {
+        font-size: 1vw;
+        font-weight: bold;
+      }
+      .desc_product_eng {
+        font-size: 0.9vw;
+        font-weight: bold;
+      }
+      .desc_product_kor {
+        font-size: 0.9vw;
+      }
+      .desc_sub_title {
+        margin: 1.5vw 0 0.5vw 0;
+        color: gray;
+        font-weight: bold;
+      }
+      .desc_sub_elt {
+        margin: 0 0;
+        color: gray;
+        font-weight: bold;
+      }
+
+      .desc_sub_elt:last-child {
+        margin-bottom: 10px;
+      }
+
+      .desc_caution {
+        font-weight: bolder;
+        margin: 0.5vw 0;
+      }
+
+      .delivery_title {
+        font-weight: bold;
+      }
+
+      .delivery_elt {
+        color: gray;
+        margin: 0 0;
+      }
+    }
+    .payment_box {
+      .payment_select_box {
+        .payment_select {
+          height: 4.5vw;
+          margin: 1vw 0;
+          background-color: whitesmoke;
+          display: flex;
+          justify-content: space-between;
+          div {
+            margin: auto 0;
+            input {
+              width: 2vw;
+              text-align: center;
+            }
+          }
+          .payment_select_title {
+            padding-left: 1vw;
+            font-size: 1vw;
+            font-weight: bold;
+            width: 16vw;
+          }
+          .payment_select_price {
+            padding-right: 1vw;
+            font-size: 1vw;
+            font-weight: bold;
+          }
+        }
+      }
+      .payment_total_price_box {
+        display: flex;
+        justify-content: space-between;
+        font-size: 1.1vw;
+        line-height: 2.5vw;
+        padding: 1vw;
+        .payment_total_count {
+          color: gray;
+        }
+        .payment_total_price {
+          font-weight: bold;
+        }
+      }
+      .payment_decision_box {
+        display: flex;
+        justify-content: space-between;
+        button {
+          width: 48%;
+          line-height: 3vw;
+        }
+        .payment_decision_buy {
+          background-color: darkgray;
+          border: 3px solid darkgray;
+          color: white;
+          font-weight: bold;
+          margin-left: 1%;
+        }
+        .payment_decision_basket {
+          background-color: white;
+          border: 3px solid whitesmoke;
+          font-weight: bold;
+          margin-right: 1%;
+        }
+      }
+      hr {
+        background-color: black;
+        height: 1px;
+        margin: 0.8vw 1%;
+      }
+    }
+  }
+}
