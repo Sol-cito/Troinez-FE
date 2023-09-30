@@ -15,7 +15,7 @@ export default function ProductItem({ product }: { product: Product }) {
         <Image
           // TO-DO: image url 정해지면 아래 src 수정
           src={
-            '/common/product/thum/' + product.productThumImage.productImageUrl
+            '/common/product/thum/' + product.productThumImage?.productImageUrl
           }
           alt="D01"
           fill
