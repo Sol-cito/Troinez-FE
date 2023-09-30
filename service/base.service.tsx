@@ -1,5 +1,6 @@
 import { HttpMethod, SuccessOrNot } from '@/model/common.enum';
 import axios, { AxiosRequestConfig, AxiosResponse } from 'axios';
+import { useTranslations } from 'next-intl';
 
 export interface AxiosResponseModel {
   successOrNot: string;
@@ -41,7 +42,21 @@ async function baseApiCall(
     axiosResponse.statusCode = response.status;
     axiosResponse.data = response.data;
   } catch (e: any) {
-    alert(e); // TO-DO : 별도 pop-up 만들기
+    let errorTitle: string = '[System Error]';
+    let errorDescription: string =
+      'Unexpected error occured. Please contact admin.';
+
+    if (e?.response?.data?.errorPopupMessage) {
+      errorDescription = e.response.data.errorPopupMessage
+        .concat('\nStatus code : ')
+        .concat(e.response.status);
+    }
+
+    const errorMessage: string = errorTitle
+      .concat('\n')
+      .concat(errorDescription);
+
+    alert(errorMessage);
     axiosResponse.successOrNot = SuccessOrNot.N;
   }
   return axiosResponse;
