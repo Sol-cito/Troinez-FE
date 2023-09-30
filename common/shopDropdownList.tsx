@@ -1,7 +1,7 @@
 export const SHOP_DROPDOWN_LIST = [
   {
     title: 'All Products',
-    href: '/allProducts',
+    href: '/product',
   },
   {
     title: 'Room Diffuser',

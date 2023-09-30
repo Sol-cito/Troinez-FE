@@ -25,6 +25,7 @@ export default function CarouselImages() {
         interval={interval}
         transitionTime={transitionTime}
         showThumbs={false}
+        showArrows={false}
       >
         {images.map((img) => (
           <Image
