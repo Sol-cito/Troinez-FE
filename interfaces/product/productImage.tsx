@@ -1,11 +1,9 @@
 export interface ProductImage {
-  id: number;
   productImageUrl: string;
-  productImageType: ProductImageType;
+  productImageType: string;
 }
 
 export enum ProductImageType {
   THUM = 'THUM',
-  SUB = 'SUB',
   DETAIL = 'DETAIL',
 }

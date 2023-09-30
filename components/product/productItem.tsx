@@ -1,10 +1,13 @@
 /* eslint-disable object-curly-newline */
 import Image from 'next/image';
+import { useLocale, useTranslations } from 'next-intl';
+import Link from 'next/link';
+import { Product } from '@/interfaces/product/product';
 import styles from './productItem.module.scss';
-import { useTranslations } from 'next-intl';
-import Product from '@/interfaces/product/product';
 
 export default function ProductItem({ product }: { product: Product }) {
+  const locale: string = useLocale();
+
   const productDetail = useTranslations('Product.detail');
 
   const cartImg = '/common/product/img/cart-shopping-solid.svg';
@@ -12,30 +15,36 @@ export default function ProductItem({ product }: { product: Product }) {
   return (
     <div className={styles.item_box}>
       <div className={styles.item_img_box}>
-        <Image
-          // TO-DO: image url 정해지면 아래 src 수정
-          src={
-            '/common/product/thum/' + product.productThumImage?.productImageUrl
-          }
-          alt="D01"
-          fill
-        />
+        <Link
+          href={`/${locale}/product/${product.id}`}
+          className={styles.menu_btn}
+        >
+          <Image
+            // TO-DO: image url 정해지면 아래 src 수정
+            src={'/common/product/perfume/'.concat(
+              product.productImage?.productImageUrl
+            )}
+            alt="D01"
+            sizes="20vw"
+            priority
+            fill
+          />
+        </Link>
       </div>
       <div className={styles.item_desc_box}>
         <div className={styles.item_desc}>
           <p className={styles.item_name}>{product.productName}</p>
           <p className={styles.item_price}>
-            {product.productPrice}
+            {product.productPrice.toLocaleString()}
             {productDetail('price')}
           </p>
           <p className={styles.item_disc_price}>
-            <span> {productDetail('discount')} : </span>
+            <span> {productDetail('discount')}: </span>
             <span>
-              {product.discountedPrice}
+              {product.discountedPrice.toLocaleString()}
               {productDetail('price')}
-            </span>
+            </span>{' '}
             <span>
-              {' '}
               {product.discountRate}
               {productDetail('percentage')}
             </span>

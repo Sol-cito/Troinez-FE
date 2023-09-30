@@ -1,16 +1,12 @@
 'use client';
 
 import ProductItem from '@/components/product/productItem';
-import styles from './page.module.scss';
 import { useEffect, useState } from 'react';
 import { GetParameter, getApiCall } from '@/service/restAPI.service';
-import Product from '@/interfaces/product/product';
+import { Product } from '@/interfaces/product/product';
+import styles from './page.module.scss';
 
-export default function Product() {
-  useEffect(() => {
-    getAllProducts();
-  }, []);
-
+export default function ProductPage() {
   const [productList, setProductList] = useState<Product[]>([]);
 
   const getAllProducts = async () => {
@@ -22,6 +18,10 @@ export default function Product() {
       setProductList(res);
     }
   };
+
+  useEffect(() => {
+    getAllProducts();
+  }, []);
 
   return (
     <div>

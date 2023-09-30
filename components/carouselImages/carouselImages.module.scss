@@ -1,7 +1,14 @@
-.carouselBody {
+.carouselBox {
   height: inherit;
 
   .carousel_image {
     height: inherit;
+  }
+  div {
+    margin: 0 !important;
+  }
+
+  ul {
+    padding: 0;
   }
 }
