@@ -22,7 +22,13 @@
     "detail": {
       "price": "원",
       "discount": "할인",
-      "percentage": "%"
+      "percentage": "%",
+      "totalPrice": "총 상품금액",
+      "pieces": "개",
+      "buy": "구매하기",
+      "cart": "장바구니",
+      "NPay": "NPay 구매",
+      "ward": "찜"
     }
   },
   "Footer": {

@@ -3,43 +3,67 @@ import { Carousel } from 'react-responsive-carousel';
 import Image from 'next/image';
 import styles from './carouselImages.module.scss';
 
-export default function CarouselImages() {
+export interface CarouselImageProps {
+  imageUrlList: string[];
+  autoPlay?: boolean;
+  showStatus?: boolean;
+  showIndicators?: boolean;
+  showArrow?: boolean;
+  showThumbs?: boolean;
+}
+
+export default function CarouselImages(props: CarouselImageProps) {
   const interval: number = 5000;
   const transitionTime: number = 1500;
   const imageWidthPixel: number = 900;
   const imageHeightPixel: number = 600;
   const imageQuality: number = 80;
 
-  const images: string[] = [
-    '/common/home/img/Main01.jpg',
-    '/common/home/img/Main02.jpg',
-    '/common/home/img/Main03.jpg',
-    '/common/home/img/Main04.jpg',
-  ];
+  const {
+    imageUrlList,
+    autoPlay,
+    showStatus,
+    showIndicators,
+    showArrow,
+    showThumbs,
+  } = props;
 
   return (
-    <div className={styles.carouselBody}>
+    <div className={styles.carouselBox}>
       <Carousel
-        autoPlay
+        autoPlay={autoPlay || false}
         infiniteLoop
         interval={interval}
         transitionTime={transitionTime}
-        showThumbs={false}
-        showArrows={false}
+        showStatus={showStatus || false}
+        showIndicators={showIndicators || false}
+        showThumbs={(showThumbs && imageUrlList.length > 1) || false}
+        showArrows={(showArrow && imageUrlList.length > 1) || false}
+        renderThumbs={(thumb) => thumb}
+        className={styles.carousel}
       >
-        {images.map((img) => (
-          <Image
-            key={img}
-            priority
-            quality={imageQuality}
-            className={styles.carousel_image}
-            src={img}
-            alt="img"
-            width={imageWidthPixel}
-            height={imageHeightPixel}
-          />
-        ))}
+        {imageUrlList &&
+          imageUrlList.map((url: string) => (
+            <Image
+              key={url}
+              priority
+              quality={imageQuality}
+              className={styles.carousel_image}
+              src={url}
+              alt="img"
+              width={imageWidthPixel}
+              height={imageHeightPixel}
+            />
+          ))}
       </Carousel>
     </div>
   );
 }
+
+CarouselImages.defaultProps = {
+  autoPlay: false,
+  showStatus: false,
+  showIndicators: false,
+  showArrow: false,
+  showThumbs: false,
+};

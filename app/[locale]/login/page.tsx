@@ -4,7 +4,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import styles from './page.module.scss';
 
-export default function Login() {
+export default function LoginPage() {
   const naverLoginImage = '/common/login/img/btnG_official.png';
   const clientId = process.env.NEXT_PUBLIC_NAVER_LOGIN_CLIENT_ID;
   const redirectUri = process.env.NEXT_PUBLIC_NAVER_LOGIN_REDIRECT_URI;
