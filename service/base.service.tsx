@@ -36,6 +36,7 @@ async function baseApiCall(
   };
 
   try {
+    alert(requestConfig.url);
     const response: AxiosResponse<any> = await axios.request(requestConfig);
     if (response.status !== 200) {
       throw new Error('Api request fail');
