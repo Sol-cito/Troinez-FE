@@ -8,9 +8,9 @@ module.exports = {
       {
         source: '/api/v1/:path*',
         destination: 'https://'
-          .concat(BASE_API_HOST)
+          .concat('test')
           .concat(':')
-          .concat(BASE_API_PORT)
+          .concat('1234')
           .concat('/api/v1/:path*'),
       },
     ];
