@@ -1,13 +1,17 @@
 /** @type {import('next').NextConfig} */
 module.exports = {
-  // rewrite
   async rewrites() {
+    const BASE_API_HOST = process.env.NEXT_PUBLIC_BASE_API_HOST;
+    const BASE_API_PORT = process.env.NEXT_PUBLIC_BASE_API_PORT;
+
     return [
       {
-        // source : 유저가 진입할 path
-        // destination : 유저가 이동할 path
         source: '/api/v1/:path*',
-        destination: 'https://troisnezdev.com:8080/api/v1/:path*',
+        destination: 'https://'
+          .concat(BASE_API_HOST)
+          .concat(':')
+          .concat(BASE_API_PORT)
+          .concat('/api/v1/:path*'),
       },
     ];
   },
