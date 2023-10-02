@@ -14,11 +14,13 @@ export interface BaseApiCallProps {
   data?: any;
 }
 
+const wasUrl = `${process.env.NEXT_PUBLIC_BASE_API_HOST}:${process.env.NEXT_PUBLIC_BASE_API_PORT}`;
+
 async function baseApiCall(
   props: BaseApiCallProps
 ): Promise<AxiosResponseModel> {
   const requestConfig: AxiosRequestConfig = {
-    url: `/api/v1${props.url}`,
+    url: `${wasUrl}/api/v1${props.url}`,
     method: props.method,
     data: props.data,
     params: props.params,
