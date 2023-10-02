@@ -8,7 +8,7 @@ const nextConfig = () => {
       {
         source: '/api/v1/:path*',
         destination:
-          'http://' + BASE_API_HOST + ':' + BASE_API_PORT + '/api/v1/:path*',
+          'https://' + BASE_API_HOST + ':' + BASE_API_PORT + '/api/v1/:path*',
       },
     ];
   };
