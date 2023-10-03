@@ -11,9 +11,11 @@ import DropdownBox from '../dropdown/dropdownBox';
 function Header({
   isLogin,
   token,
+  username,
 }: {
   isLogin: boolean;
   token: string | undefined;
+  username: string | undefined;
 }) {
   const locale: string = useLocale();
   const switchLocale = (): string => (locale === 'ko' ? 'en' : 'ko');
@@ -21,13 +23,20 @@ function Header({
   const logOutUri = process.env.NEXT_PUBLIC_NAVER_LOGOUT_REQUEST_URI;
 
   let loginoutLink;
+  let usernameBtn;
   if (isLogin) {
+    usernameBtn = (
+      <Link href="#none" className={styles.menu_btn}>
+        <strong>{username}</strong>님 환영합니다.
+      </Link>
+    );
     loginoutLink = (
       <Link href={`${logOutUri}?token=${token}`} className={styles.menu_btn}>
         LOGOUT
       </Link>
     );
   } else {
+    usernameBtn = '';
     loginoutLink = (
       <Link href={`/${locale}/login`} className={styles.menu_btn}>
         LOGIN
@@ -44,6 +53,7 @@ function Header({
           </Link>
         </div>
         <div className={styles.right}>
+          {usernameBtn}
           <Link href={`/${switchLocale()}`} className={styles.menu_btn}>
             {locale.toLocaleUpperCase()}
           </Link>
