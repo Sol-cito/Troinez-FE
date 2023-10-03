@@ -7,7 +7,7 @@ module.exports = {
     return [
       {
         source: '/api/v1/:path*',
-        destination: 'https://'
+        destination: (BASE_API_HOST === 'localhost' ? 'http://' : 'https://')
           .concat(BASE_API_HOST)
           .concat(':')
           .concat(BASE_API_PORT)
