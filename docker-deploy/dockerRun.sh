@@ -84,7 +84,7 @@ if [ "$container_count" == "0" ]; then
     fi
 else
     # deploy green and stop blue
-    start_container=$(docker container ls --filter "name=$docker_container_prefix" | grep -v grep | grep "01")
+    start_container=$(docker container ls --filter "name=$docker_container_prefix" | grep -v grep | grep "$docker_container_prefix""01")
 
     # 01번 container가 기동중인경우
     if [ -n "$start_container" ]; then
@@ -94,7 +94,7 @@ else
         green=("01")
         blue=("02")
     fi
-    echo "[INFO] Blue : troisnez-be0$blue Green : troisnez-be$green"
+    echo "[INFO] Blue : troisnez-be$blue Green : troisnez-be$green"
     # deploy green
     echo "[INFO] Deploy Green Container"
     deploy_container "$green"

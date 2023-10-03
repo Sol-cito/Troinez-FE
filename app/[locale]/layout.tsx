@@ -29,6 +29,7 @@ export default async function RootLayout({
 
   const cookieStore = cookies();
   const token = cookieStore.get('token')?.value;
+  const username = cookieStore.get('username')?.value;
   let isLogin = false;
   if (token !== undefined) {
     isLogin = true;
@@ -38,7 +39,7 @@ export default async function RootLayout({
     <html className={styles.html} lang={locale}>
       <body>
         <NextIntlClientProvider locale={locale} messages={messages}>
-          <Header isLogin={isLogin} token={token} />
+          <Header isLogin={isLogin} token={token} username={username} />
           <MainWrapper content={children} />
           <Footer />
         </NextIntlClientProvider>
