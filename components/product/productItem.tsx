@@ -22,7 +22,7 @@ export default function ProductItem({ product }: { product: Product }) {
           <Image
             // TO-DO: image url 정해지면 아래 src 수정
             src={'/common/product/perfume/'.concat(
-              product.productImage.productImageUrl
+              product.productImage?.productImageUrl
             )}
             alt="D01"
             sizes="20vw"
