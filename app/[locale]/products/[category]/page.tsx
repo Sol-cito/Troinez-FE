@@ -4,14 +4,20 @@ import ProductItem from '@/components/product/productItem';
 import { useEffect, useState } from 'react';
 import { GetParameter, getApiCall } from '@/service/restAPI.service';
 import { Product } from '@/interfaces/product/product';
+import { Params } from 'next/dist/shared/lib/router/utils/route-matcher';
 import styles from './page.module.scss';
 
-export default function ProductPage() {
+export default function ProductPage({
+  params: { category },
+}: {
+  params: Params;
+}) {
   const [productList, setProductList] = useState<Product[]>([]);
 
-  const getAllProducts = async () => {
+  const getProductsByCategory = async () => {
     const getParameter: GetParameter = {
       url: '/products',
+      params: category !== 'all' && { category },
     };
     const res: Product[] = await getApiCall(getParameter);
     if (res) {
@@ -20,7 +26,7 @@ export default function ProductPage() {
   };
 
   useEffect(() => {
-    getAllProducts();
+    getProductsByCategory();
   }, []);
 
   return (
