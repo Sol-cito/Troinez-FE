@@ -16,7 +16,7 @@ export default function ProductItem({ product }: { product: Product }) {
     <div className={styles.item_box}>
       <div className={styles.item_img_box}>
         <Link
-          href={`/${locale}/product/${product.id}`}
+          href={`/${locale}/products/item/${product.id}`}
           className={styles.menu_btn}
         >
           <Image

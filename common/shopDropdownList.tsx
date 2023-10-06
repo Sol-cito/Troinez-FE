@@ -1,14 +1,14 @@
 export const SHOP_DROPDOWN_LIST = [
   {
     title: 'All Products',
-    href: '/product',
+    href: '/products/all',
   },
   {
     title: 'Room Diffuser',
-    href: '/roomDiffuser',
+    href: '/products/room',
   },
   {
     title: 'Car Diffuser',
-    href: '/carDiffuser',
+    href: '/products/car',
   },
 ];
