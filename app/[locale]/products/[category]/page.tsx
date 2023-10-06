@@ -12,6 +12,7 @@ export default function ProductPage({
 }: {
   params: Params;
 }) {
+  const [title, setTitle] = useState('All Products');
   const [productList, setProductList] = useState<Product[]>([]);
 
   const getProductsByCategory = async () => {
@@ -19,6 +20,15 @@ export default function ProductPage({
       url: '/products',
       params: category !== 'all' && { category },
     };
+
+    if (category === 'room') {
+      setTitle('Room Diffuser');
+    } else if (category === 'car') {
+      setTitle('Car Diffuser');
+    } else {
+      setTitle('All Products');
+    }
+
     const res: Product[] = await getApiCall(getParameter);
     if (res) {
       setProductList(res);
@@ -35,7 +45,7 @@ export default function ProductPage({
         <span>
           <hr />
         </span>
-        <span className={styles.title}>All Products</span>
+        <span className={styles.title}>{title}</span>
       </div>
       <div className={styles.list_box}>
         {productList.map((product: Product) => (
