@@ -161,7 +161,9 @@ export default function ProductDetailPage({
             {productDetail.productImageList.map((image) => (
               <Image
                 key={image.productImageUrl}
-                src={'/common/product/perfume/'.concat(image.productImageUrl)}
+                src={'https://d3en4rwu5hlcjb.cloudfront.net/product/perfume/'.concat(
+                  image.productImageUrl
+                )}
                 alt="D01"
                 quality={100}
                 width={500}
