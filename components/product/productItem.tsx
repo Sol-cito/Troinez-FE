@@ -21,7 +21,7 @@ export default function ProductItem({ product }: { product: Product }) {
         >
           <Image
             // TO-DO: image url 정해지면 아래 src 수정
-            src={'/common/product/perfume/'.concat(
+            src={'https://d3en4rwu5hlcjb.cloudfront.net/product/perfume/'.concat(
               product.productImage?.productImageUrl
             )}
             alt="D01"
