@@ -55,7 +55,9 @@ export default function ProductDetailPage({
                       image.productImageType !== ProductImageType.DETAIL
                   )
                   .map((image) =>
-                    '/common/product/perfume/'.concat(image.productImageUrl)
+                    'https://d3en4rwu5hlcjb.cloudfront.net/product/perfume/'.concat(
+                      image.productImageUrl
+                    )
                   )}
               />
             </div>
