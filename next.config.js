@@ -15,4 +15,7 @@ module.exports = {
       },
     ];
   },
+  images: {
+    domains: ['d3en4rwu5hlcjb.cloudfront.net'],
+  },
 };
