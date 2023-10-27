@@ -41,7 +41,7 @@ function remove_container {
 function health_check {
     health_status="Ok"
 
-    health_check_url="https://troisnezdev.com"
+    health_check_url="https://troisnez.com"
 
     for retry_count in $(seq 1 10); do
         response=$(curl -s "$health_check_url")
@@ -99,7 +99,7 @@ else
     echo "[INFO] Deploy Green Container"
     deploy_container "$green"
     # stop blue
-    echo "[INFO] Stop Green Container"
+    echo "[INFO] Stop Blue Container"
     stop_container "$blue"
 
     sleep 5
