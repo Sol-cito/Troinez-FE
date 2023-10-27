@@ -45,6 +45,8 @@
       "Tel : 070-8755-2000",
       "Customer service : 10:00-17:00 (Closed on weekends and holidays.)",
       "EMail : troisnezjun@naver.com"
-    ]
+    ],
+    "termsOfService": "TermsOfService",
+    "privatePolicy": "PrivatePolicy"
   }
 }
