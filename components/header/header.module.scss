@@ -1,12 +1,11 @@
-$header-height: 8vh;
-$header-fond-size: 0.8rem;
+$header-height: 5vh;
+$header-fond-size: 0.8vw;
 
 .header {
   text-align: center;
   width: 75%;
   margin: 0 auto;
   font-size: $header-fond-size;
-  height: $header-height;
 }
 
 .nav {
@@ -18,22 +17,25 @@ $header-fond-size: 0.8rem;
   a {
     height: $header-height;
     display: inline-block;
-    margin-right: 30px;
+    margin-right: 2vw;
     text-decoration: none;
     color: black;
   }
 
   .left {
-    width: 15rem;
-    font-weight: bold;
-
+    width: 15vw;
     a {
-      margin-left: 1rem;
+      margin-left: 1vw;
+      height: $header-height;
+      line-height: $header-height;
+      img {
+        position: relative !important;
+        vertical-align: middle;
+      }
     }
   }
 
   .right {
     margin-left: auto;
-    // width: 26rem;
   }
 }

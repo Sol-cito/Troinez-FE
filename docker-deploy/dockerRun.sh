@@ -45,7 +45,7 @@ function health_check {
 
     for retry_count in $(seq 1 10); do
         response=$(curl -s "$health_check_url")
-        up_count=$(echo "$response" | grep 'IN GOLD WE TRUST PARIS' | wc -l)
+        up_count=$(echo "$response" | grep 'Troisnez' | wc -l)
 
         if [ "$up_count" -ge 1 ]; then
             break

@@ -1,5 +1,5 @@
 $footer-height: 22vh;
-$footer-font-size: 0.8rem;
+$footer-font-size: 0.9vw;
 
 .footer {
   width: 75%;
@@ -14,20 +14,20 @@ $footer-font-size: 0.8rem;
 
   p {
     margin: 0;
-    line-height: 1.2rem;
+    line-height: 1.2vw;
   }
 
   .left {
     width: 40%;
 
     div {
-      margin-left: 2rem;
+      margin-left: 2vw;
     }
 
     div:first-child {
       p {
         font-weight: bold;
-        margin-bottom: 1rem;
+        margin-bottom: 1vw;
       }
     }
   }
@@ -53,12 +53,12 @@ $footer-font-size: 0.8rem;
       justify-content: flex-end;
 
       a {
-        margin-right: 1rem;
+        margin-right: 1vw;
         // height: $footer-icon-size;
       }
 
       a:last-child {
-        margin-right: 3rem;
+        margin-right: 3vw;
       }
     }
   }

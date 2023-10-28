@@ -4,6 +4,7 @@ import Link from 'next/link';
 import React from 'react';
 import { useLocale } from 'next-intl';
 import { SHOP_DROPDOWN_LIST } from '@/common/shopDropdownList';
+import Image from 'next/image';
 import styles from './header.module.scss';
 import DropdownMenu from '../dropdown/dropdownMenu';
 import DropdownBox from '../dropdown/dropdownBox';
@@ -49,7 +50,13 @@ function Header({
       <nav className={styles.nav}>
         <div className={styles.left}>
           <Link href={`/${locale}`} className={styles.logo}>
-            IN GOLD WE TRUST PARIS®
+            <Image
+              className={styles.logo__image}
+              src="/common/logo/logo_text.png"
+              alt="TROIS NEZ"
+              quality={100}
+              fill
+            />
           </Link>
         </div>
         <div className={styles.right}>
