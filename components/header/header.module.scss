@@ -1,5 +1,5 @@
 $header-height: 8vh;
-$header-fond-size: 0.8rem;
+$header-fond-size: 0.8vw;
 
 .header {
   text-align: center;
@@ -18,22 +18,21 @@ $header-fond-size: 0.8rem;
   a {
     height: $header-height;
     display: inline-block;
-    margin-right: 30px;
+    margin-right: 2vw;
     text-decoration: none;
     color: black;
   }
 
   .left {
-    width: 15rem;
+    width: 15vw;
     font-weight: bold;
 
     a {
-      margin-left: 1rem;
+      margin-left: 1vw;
     }
   }
 
   .right {
     margin-left: auto;
-    // width: 26rem;
   }
 }
