@@ -1,4 +1,4 @@
-$header-height: 8vh;
+$header-height: 5vh;
 $header-fond-size: 0.8vw;
 
 .header {
@@ -6,7 +6,6 @@ $header-fond-size: 0.8vw;
   width: 75%;
   margin: 0 auto;
   font-size: $header-fond-size;
-  height: $header-height;
 }
 
 .nav {
@@ -25,10 +24,14 @@ $header-fond-size: 0.8vw;
 
   .left {
     width: 15vw;
-    font-weight: bold;
-
     a {
       margin-left: 1vw;
+      height: $header-height;
+      line-height: $header-height;
+      img {
+        position: relative !important;
+        vertical-align: middle;
+      }
     }
   }
 
