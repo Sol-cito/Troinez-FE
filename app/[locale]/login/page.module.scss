@@ -8,22 +8,17 @@
 
   .login_left_title {
     position: absolute;
-    left: 10px;
-    top: 20px;
+    left: 3vw;
+    top: 3vw;
     font-weight: bold;
   }
 
   .login_header {
     text-align: center;
-    .login_title {
-      margin-top: 20px;
-      margin-bottom: 0px;
-      font-size: 20px;
-      font-weight: bold;
-    }
-    .login_subtitle {
-      margin-top: 1px;
-      font-size: 13px;
+    height: 10vw;
+    img {
+      position: relative !important;
+      vertical-align: middle;
     }
   }
   .flex_box {
@@ -33,9 +28,9 @@
         text-align: center;
         font-size: 1.3vw;
       }
-      margin: 50px auto;
-      width: 300px;
-      height: 70px;
+      margin: 3.2vw auto;
+      width: 20vw;
+      height: 5vw;
       img {
         position: relative !important;
         width: 100%;
