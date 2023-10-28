@@ -1,8 +1,7 @@
-$header-height: 5vh;
+$header-height: 10vh;
 $header-fond-size: 0.8vw;
 
 .header {
-  text-align: center;
   width: 75%;
   margin: 0 auto;
   font-size: $header-fond-size;
@@ -20,12 +19,23 @@ $header-fond-size: 0.8vw;
     margin-right: 2vw;
     text-decoration: none;
     color: black;
+    text-align: center;
   }
 
   .left {
-    width: 15vw;
+    width: 45%;
     a {
-      margin-left: 1vw;
+      margin-left: 10%;
+      img {
+        text-align: left;
+        position: relative !important;
+        vertical-align: middle;
+      }
+    }
+  }
+  .mid {
+    width: 10%;
+    div {
       height: $header-height;
       line-height: $header-height;
       img {
@@ -36,6 +46,8 @@ $header-fond-size: 0.8vw;
   }
 
   .right {
+    text-align: center;
+    width: 45%;
     margin-left: auto;
   }
 }

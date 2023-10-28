@@ -15,8 +15,12 @@ export default function LoginPage() {
     <div className={styles.login_wrapper}>
       <div className={styles.login_left_title}>MEMBERSHIP</div>
       <div className={styles.login_header}>
-        <p className={styles.login_title}>SW19</p>
-        <p className={styles.login_subtitle}>FRANCE</p>
+        <Image
+          src="/common/logo/logo_entire.png"
+          alt="TNZ"
+          layout="fill"
+          objectFit="contain"
+        />
       </div>
       <div className={styles.flex_box}>
         <div className={styles.image_box}>
