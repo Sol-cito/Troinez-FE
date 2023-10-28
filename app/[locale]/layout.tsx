@@ -37,7 +37,6 @@ export default async function RootLayout({
 
   return (
     <html className={styles.html} lang={locale}>
-      <meta name="title" content="Troisnez 주식회사" />
       <body>
         <NextIntlClientProvider locale={locale} messages={messages}>
           <Header isLogin={isLogin} token={token} username={username} />
