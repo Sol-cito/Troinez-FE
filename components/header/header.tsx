@@ -51,13 +51,22 @@ function Header({
         <div className={styles.left}>
           <Link href={`/${locale}`} className={styles.logo}>
             <Image
-              className={styles.logo__image}
               src="/common/logo/logo_text.png"
               alt="TROIS NEZ"
               quality={100}
               fill
             />
           </Link>
+        </div>
+        <div className={styles.mid}>
+          <div>
+            <Image
+              src="/common/logo/logo_sign.png"
+              alt="TNZ"
+              layout="fill"
+              objectFit="contain"
+            />
+          </div>
         </div>
         <div className={styles.right}>
           {usernameBtn}
