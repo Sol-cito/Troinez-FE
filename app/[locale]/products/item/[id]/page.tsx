@@ -39,6 +39,25 @@ export default function ProductDetailPage({
     <div dangerouslySetInnerHTML={{ __html: target }} />
   );
 
+  // const paymentButtonAction = () => {
+  //   const selectedProductCount = document.getElementById(
+  //     'selected-product-count'
+  //   )?.value;
+  //   const productPrice = document.getElementById('product-price')?.innerText;
+  //   const amount = document.getElementById('product-total-price')?.innerText;
+
+  //   const clientKey = 'test_ck_D5GePWvyJnrK0W0k6q8gLzN97Eoq';
+  //   const tossPayments = TossPayments(clientKey);
+  //   tossPayments.requestPayment('카드', {
+  //     amount: 15000,
+  //     orderId: '9g7YMXTywW6IUi8vuCpr7',
+  //     orderName: '토스 티셔츠 외 2건',
+  //     customerName: '박토스',
+  //     successUrl: 'http://localhost:8080/success',
+  //     failUrl: 'http://localhost:8080/fail',
+  //   });
+  // };
+
   return (
     <div>
       {productDetail && (
@@ -109,6 +128,7 @@ export default function ProductDetailPage({
                         -
                       </button>
                       <input
+                        id="selected-product-count"
                         type="text"
                         value={selectedProductNumber}
                         readOnly
@@ -123,8 +143,10 @@ export default function ProductDetailPage({
                       </button>
                     </div>
                     <div className={styles.payment_select_price}>
-                      {productDetail.discountedPrice.toLocaleString()}
-                      {productDetailTrans('price')}
+                      <span id="product-price">
+                        {productDetail.discountedPrice.toLocaleString()}
+                      </span>
+                      <span>{productDetailTrans('price')}</span>
                     </div>
                   </div>
                 </div>
@@ -134,15 +156,22 @@ export default function ProductDetailPage({
                     {productDetailTrans('pieces')})
                   </span>
                   <span className={styles.payment_total_price}>
-                    {(
-                      selectedProductNumber * productDetail.discountedPrice
-                    ).toLocaleString()}
-                    {productDetailTrans('price')}
+                    <span id="product-total-price">
+                      {(
+                        selectedProductNumber * productDetail.discountedPrice
+                      ).toLocaleString()}
+                    </span>
+                    <span>{productDetailTrans('price')}</span>
                   </span>
                 </div>
                 <div className={styles.payment_decision_box}>
-                  <button type="button" className={styles.payment_decision_buy}>
-                    {productDetailTrans('buy')}
+                  <button
+                    type="button"
+                    id="non-member-payment-button"
+                    className={styles.payment_decision_buy}
+                    // onClick={paymentButtonAction}
+                  >
+                    {productDetailTrans('nonMemberBuy')}
                   </button>
                   <button
                     type="button"
@@ -152,10 +181,10 @@ export default function ProductDetailPage({
                   </button>
                 </div>
                 <hr />
-                <div className={styles.payment_naverpay}>
+                {/* <div className={styles.payment_naverpay}>
                   <button type="button">{productDetailTrans('NPay')}</button>
                   <button type="button">{productDetailTrans('ward')}</button>
-                </div>
+                </div> */}
               </div>
             </div>
           </div>

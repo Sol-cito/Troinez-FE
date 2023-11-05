@@ -25,6 +25,7 @@
       "percentage": "%",
       "totalPrice": "total price",
       "pieces": "pcs",
+      "nonMemberBuy": "(NonMember) Buy",
       "buy": "buy",
       "cart": "cart",
       "NPay": "NPay buy",
