@@ -1,0 +1,50 @@
+.product_checkbox_div {
+  margin-left: 5%;
+  width: 3%;
+  vertical-align: top;
+  display: inline-block;
+  text-align: center;
+  input {
+    margin-top: 1vw;
+  }
+}
+.product_info_div {
+  display: inline-block;
+  width: 90%;
+  .product_image {
+    position: relative !important;
+    width: 15%;
+    height: 10vw;
+    margin: 1vw 1vw;
+    display: inline-block;
+  }
+  .product_info {
+    padding: 0 0;
+    width: 30%;
+    display: inline-block;
+    vertical-align: top;
+    .input_count {
+      text-align: center;
+      width: 2vw;
+      margin: 0 0.3vw;
+    }
+    .apply_count {
+      margin-left: 0.5vw;
+    }
+  }
+  .product_total_price {
+    width: 50%;
+    display: inline-block;
+    vertical-align: top;
+    text-align: right;
+  }
+}
+
+.hr_normal {
+  width: 90%;
+}
+
+.hr_lighter {
+  border: 1px solid whitesmoke;
+  width: 90%;
+}
