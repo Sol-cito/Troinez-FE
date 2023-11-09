@@ -13,7 +13,8 @@ $header-fond-size: 0.8vw;
   vertical-align: middle;
   align-items: center;
 
-  a {
+  a,
+  span {
     height: $header-height;
     display: inline-block;
     margin-right: 2vw;

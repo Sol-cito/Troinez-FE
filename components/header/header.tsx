@@ -75,12 +75,14 @@ function Header({
           </Link>
           <DropdownBox
             dropdownMenus={SHOP_DROPDOWN_LIST.map((ele) => (
-              <DropdownMenu key={ele.href} title={ele.title} href={ele.href} />
+              <DropdownMenu
+                key={ele.href}
+                title={ele.title}
+                href={`/${locale}/${ele.href}`}
+              />
             ))}
           >
-            <Link href={`/${locale}`} className={styles.menu_btn}>
-              SHOP
-            </Link>
+            <span>SHOP</span>
           </DropdownBox>
           <Link href={`/${locale}/about`} className={styles.menu_btn}>
             ABOUT
