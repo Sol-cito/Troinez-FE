@@ -19,7 +19,7 @@ export default function AboutPage() {
   return (
     <div className={styles.about_wrapper}>
       <div className={styles.flex_box}>
-        <div className={styles.image_box}>
+        <div className={(styles.image_box, styles.image_box_first)}>
           <Image
             src={firstAboutImage}
             alt="first about image"
@@ -28,27 +28,31 @@ export default function AboutPage() {
             sizes="25vw"
           />
         </div>
-        <div className={styles.text_box}>
+        <div className={(styles.text_box, styles.text_box_first)}>
           <p className={styles.title}>{firstAboutT('title')}</p>
-          <p className={styles.title}>{firstAboutT('subtitle')}</p>
-          <p>{firstAboutT('content1')}</p>
-          <p>{firstAboutT('content2')}</p>
+          <p className={styles.subtitle}>{firstAboutT('subtitle')}</p>
+          <p className={styles.content}>{firstAboutT('content1')}</p>
+          <p className={styles.content}>{firstAboutT('content2')}</p>
         </div>
       </div>
-      <div className={styles.text_box}>
+      <div className={styles.text_box_middle}>
         <p className={styles.title}>{secondAboutT('title')}</p>
-        <p className={styles.title}>{secondAboutT('subtitle')}</p>
+        <p className={styles.subtitle}>{secondAboutT('subtitle')}</p>
+        <br />
         <p>{secondAboutT('content.sentence1')}</p>
         <p>{secondAboutT('content.sentence2')}</p>
         <p>{secondAboutT('content.sentence3')}</p>
+        <br />
         <p>{secondAboutT('content.sentence4')}</p>
+        <br />
         <p>{secondAboutT('content.sentence5')}</p>
         <p>{secondAboutT('content.sentence6')}</p>
         <p>{secondAboutT('content.sentence7')}</p>
+        <br />
         <p>{secondAboutT('content.sentence8')}</p>
       </div>
       <div className={styles.flex_box}>
-        <div className={styles.image_box}>
+        <div className={(styles.image_box, styles.image_box_third)}>
           <Image
             src={thirdAboutImage}
             alt="second about image"
@@ -56,19 +60,19 @@ export default function AboutPage() {
             sizes="25vw"
           />
         </div>
-        <div className={styles.text_box}>
-          <p>{thirdAboutT('content1')}</p>
-          <p>{thirdAboutT('content2')}</p>
+        <div className={(styles.text_box, styles.text_box_third)}>
+          <p className={styles.content}>{thirdAboutT('content1')}</p>
+          <p className={styles.content}>{thirdAboutT('content2')}</p>
         </div>
       </div>
       <div className={styles.flex_box}>
-        <div className={styles.text_box}>
+        <div className={(styles.text_box, styles.text_box_fourth)}>
           <p className={styles.title}>{fourthAboutT('title')}</p>
-          <p className={styles.title}>{fourthAboutT('subtitle')}</p>
-          <p>{fourthAboutT('content1')}</p>
-          <p>{fourthAboutT('content2')}</p>
+          <p className={styles.subtitle}>{fourthAboutT('subtitle')}</p>
+          <p className={styles.content}>{fourthAboutT('content1')}</p>
+          <p className={styles.content}>{fourthAboutT('content2')}</p>
         </div>
-        <div className={styles.image_box}>
+        <div className={(styles.image_box, styles.image_box_fourth)}>
           <Image
             src={fourthAboutImage}
             alt="third about image"
@@ -78,13 +82,13 @@ export default function AboutPage() {
         </div>
       </div>
       <div className={styles.flex_box}>
-        <div className={styles.text_box}>
+        <div className={(styles.text_box, styles.text_box_fifth)}>
           <p className={styles.title}>{fifthAboutT('title')}</p>
           <p className={styles.title}>{fifthAboutT('subtitle')}</p>
-          <p>{fifthAboutT('content1')}</p>
-          <p>{fifthAboutT('content2')}</p>
+          <p className={styles.content}>{fifthAboutT('content1')}</p>
+          <p className={styles.content}>{fifthAboutT('content2')}</p>
         </div>
-        <div className={styles.image_box}>
+        <div className={(styles.image_box, styles.image_box_fifth)}>
           <Image
             src={fifthAboutImage}
             alt="fourth about image"
