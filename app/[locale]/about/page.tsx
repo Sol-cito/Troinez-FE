@@ -30,15 +30,22 @@ export default function AboutPage() {
         </div>
         <div className={styles.text_box}>
           <p className={styles.title}>{firstAboutT('title')}</p>
-          <p>{firstAboutT('content')}</p>
+          <p className={styles.title}>{firstAboutT('subtitle')}</p>
+          <p>{firstAboutT('content1')}</p>
+          <p>{firstAboutT('content2')}</p>
         </div>
       </div>
       <div className={styles.text_box}>
         <p className={styles.title}>{secondAboutT('title')}</p>
+        <p className={styles.title}>{secondAboutT('subtitle')}</p>
         <p>{secondAboutT('content.sentence1')}</p>
         <p>{secondAboutT('content.sentence2')}</p>
         <p>{secondAboutT('content.sentence3')}</p>
         <p>{secondAboutT('content.sentence4')}</p>
+        <p>{secondAboutT('content.sentence5')}</p>
+        <p>{secondAboutT('content.sentence6')}</p>
+        <p>{secondAboutT('content.sentence7')}</p>
+        <p>{secondAboutT('content.sentence8')}</p>
       </div>
       <div className={styles.flex_box}>
         <div className={styles.image_box}>
@@ -50,13 +57,16 @@ export default function AboutPage() {
           />
         </div>
         <div className={styles.text_box}>
-          <p>{thirdAboutT('content')}</p>
+          <p>{thirdAboutT('content1')}</p>
+          <p>{thirdAboutT('content2')}</p>
         </div>
       </div>
       <div className={styles.flex_box}>
         <div className={styles.text_box}>
           <p className={styles.title}>{fourthAboutT('title')}</p>
-          <p>{fourthAboutT('content')}</p>
+          <p className={styles.title}>{fourthAboutT('subtitle')}</p>
+          <p>{fourthAboutT('content1')}</p>
+          <p>{fourthAboutT('content2')}</p>
         </div>
         <div className={styles.image_box}>
           <Image
@@ -70,7 +80,9 @@ export default function AboutPage() {
       <div className={styles.flex_box}>
         <div className={styles.text_box}>
           <p className={styles.title}>{fifthAboutT('title')}</p>
-          <p>{fifthAboutT('content')}</p>
+          <p className={styles.title}>{fifthAboutT('subtitle')}</p>
+          <p>{fifthAboutT('content1')}</p>
+          <p>{fifthAboutT('content2')}</p>
         </div>
         <div className={styles.image_box}>
           <Image
