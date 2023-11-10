@@ -1,5 +1,4 @@
 'use client';
-
 import { useTranslations } from 'next-intl';
 import Image from 'next/image';
 import styles from './page.module.scss';
@@ -16,6 +15,28 @@ export default function AboutPage() {
   const fourthAboutImage = '/common/about/img/03_LOW.jpg';
   const fifthAboutImage = '/common/about/img/04_LOW.jpg';
 
+  const makeBoldForTarget = (text: string): string => {
+    const target: Array<string> = ['심미안', '독창성', '예민함'];
+    let pointer: number = 0;
+    let res: string = '';
+    while (pointer < text.length) {
+      if (
+        pointer + 3 <= text.length &&
+        target.includes(text.substring(pointer, pointer + 3))
+      ) {
+        res = res
+          .concat('<strong>')
+          .concat(text.substring(pointer, pointer + 3))
+          .concat('</strong>');
+        pointer += 3;
+      } else {
+        res = res.concat(text.charAt(pointer));
+        pointer += 1;
+      }
+    }
+    return res;
+  };
+
   return (
     <div className={styles.about_wrapper}>
       <div className={styles.flex_box}>
@@ -31,7 +52,12 @@ export default function AboutPage() {
         <div className={(styles.text_box, styles.text_box_first)}>
           <p className={styles.title}>{firstAboutT('title')}</p>
           <p className={styles.subtitle}>{firstAboutT('subtitle')}</p>
-          <p className={styles.content}>{firstAboutT('content1')}</p>
+          <p
+            className={styles.content}
+            dangerouslySetInnerHTML={{
+              __html: makeBoldForTarget(firstAboutT('content1')),
+            }}
+          ></p>
           <p className={styles.content}>{firstAboutT('content2')}</p>
         </div>
       </div>
