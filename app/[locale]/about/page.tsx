@@ -1,8 +1,9 @@
 'use client';
+
+import localFont from 'next/font/local';
 import { useTranslations } from 'next-intl';
 import Image from 'next/image';
 import styles from './page.module.scss';
-import localFont from 'next/font/local';
 
 const koreanFont = localFont({
   src: '../../fonts/AppleSDGothicNeoT.ttf',
@@ -53,7 +54,7 @@ export default function AboutPage() {
             <span style={koreanFont.style}>{firstAboutT('content1-2')} </span>
             <strong>독창성</strong>
             <span style={koreanFont.style}>{firstAboutT('content1-3')} </span>
-            <strong>에민함</strong>
+            <strong>예민함</strong>
             <span style={koreanFont.style}>{firstAboutT('content1-4')} </span>
           </p>
           <p className={styles.content} style={englishContentFont.style}>
