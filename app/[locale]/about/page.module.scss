@@ -27,7 +27,6 @@
     .text_box_fourth,
     .text_box_fifth {
       margin: 0 2vw 0 2vw;
-      // max-width: 30vw;
       line-height: 2;
 
       .title {
@@ -35,6 +34,7 @@
       }
 
       .subtitle {
+        font-weight: bold;
         font-size: 2rem;
         margin-bottom: 6vh;
       }
@@ -68,17 +68,17 @@
     }
 
     .image_box_fourth {
-      width: 75vw !important;
+      width: 65vw !important;
     }
     .text_box_fourth {
-      width: 25vw !important;
+      width: 35vw !important;
     }
 
     .image_box_fifth {
-      width: 40vw !important;
+      width: 42vw !important;
     }
     .text_box_fifth {
-      width: 50vw !important;
+      width: 48vw !important;
       padding-right: 5vw;
     }
 
