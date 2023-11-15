@@ -42,6 +42,7 @@ export default function ProductDetailPage({
   );
 
   const [showCartModal, setShowCartModal] = useState(false);
+  const [showOverlay, setShowOverlay] = useState(false);
 
   const addCartButtonAction = () => {
     // eslint-disable-next-line @typescript-eslint/no-shadow
@@ -52,10 +53,12 @@ export default function ProductDetailPage({
       productCount,
     };
     addCartCookie(cartProduct);
+    setShowOverlay(!showOverlay);
     setShowCartModal(!showCartModal);
   };
 
   const closeModal = () => {
+    setShowOverlay(false);
     setShowCartModal(false);
   };
 
@@ -81,6 +84,7 @@ export default function ProductDetailPage({
   return (
     <div>
       <div>
+        {showOverlay && <div className={styles.overlay}> </div>}
         {showCartModal && <PaymentPopUpmodal closeModal={closeModal} />}
       </div>
       {productDetail && (

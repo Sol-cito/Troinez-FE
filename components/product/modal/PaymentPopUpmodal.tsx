@@ -1,8 +1,8 @@
+/* eslint-disable react/button-has-type */
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import Link from 'next/link';
 import styles from './PaymentPopUpmodal.module.scss';
 
-/* eslint-disable react/button-has-type */
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export default function PaymentPopUpmodal({ closeModal }: { closeModal: any }) {
   return (
     <div className={styles.box}>
