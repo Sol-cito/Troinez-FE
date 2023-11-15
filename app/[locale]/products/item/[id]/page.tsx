@@ -8,6 +8,8 @@ import Image from 'next/image';
 import { useEffect, useState } from 'react';
 import CarouselImages from '@/components/carouselImages/carouselImages';
 import { Params } from 'next/dist/shared/lib/router/utils/route-matcher';
+import { addCartCookie } from '@/utils/tokenUtils';
+import PaymentPopUpmodal from '@/components/product/modal/PaymentPopUpmodal';
 import styles from './page.module.scss';
 
 export default function ProductDetailPage({
@@ -39,6 +41,24 @@ export default function ProductDetailPage({
     <div dangerouslySetInnerHTML={{ __html: target }} />
   );
 
+  const [showCartModal, setShowCartModal] = useState(false);
+
+  const addCartButtonAction = () => {
+    // eslint-disable-next-line @typescript-eslint/no-shadow
+    const id = productDetail?.id;
+    const productCount = selectedProductNumber;
+    const cartProduct = {
+      productId: id ?? 0,
+      productCount,
+    };
+    addCartCookie(cartProduct);
+    setShowCartModal(!showCartModal);
+  };
+
+  const closeModal = () => {
+    setShowCartModal(false);
+  };
+
   // const paymentButtonAction = () => {
   //   const selectedProductCount = document.getElementById(
   //     'selected-product-count'
@@ -60,6 +80,9 @@ export default function ProductDetailPage({
 
   return (
     <div>
+      <div>
+        {showCartModal && <PaymentPopUpmodal closeModal={closeModal} />}
+      </div>
       {productDetail && (
         <>
           <div className={styles.detail_box}>
@@ -169,22 +192,19 @@ export default function ProductDetailPage({
                     type="button"
                     id="non-member-payment-button"
                     className={styles.payment_decision_buy}
-                    // onClick={paymentButtonAction}
+                    // onClick={purchase}
                   >
                     {productDetailTrans('nonMemberBuy')}
                   </button>
                   <button
                     type="button"
                     className={styles.payment_decision_basket}
+                    onClick={addCartButtonAction}
                   >
                     {productDetailTrans('cart')}
                   </button>
                 </div>
                 <hr />
-                {/* <div className={styles.payment_naverpay}>
-                  <button type="button">{productDetailTrans('NPay')}</button>
-                  <button type="button">{productDetailTrans('ward')}</button>
-                </div> */}
               </div>
             </div>
           </div>

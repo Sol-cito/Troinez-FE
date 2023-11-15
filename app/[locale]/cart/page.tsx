@@ -3,19 +3,20 @@ import styles from './page.module.scss';
 
 export default function Cart() {
   return (
-    <div className={styles.cart}>
-      <div className={styles.cart_info_box}>
-        <span>장바구니</span>
+    <div className={styles.body_container}>
+      <div className={styles.row_container}>
+        <span className={styles.row_title}>장바구니</span>
+        <hr />
       </div>
-      <hr className={styles.hr_normal} />
-      <div className={styles.product_info_container}>
+
+      <div className={styles.row_container}>
         <div className={styles.product_list_box}>
           <Product />
           <Product />
           <Product />
         </div>
       </div>
-      <div>
+      <div className={styles.row_container}>
         <div className={styles.product_price_info_box}>
           <p>
             <strong>[기본배송]</strong>
@@ -33,14 +34,14 @@ export default function Cart() {
         </div>
       </div>
       <hr className={styles.hr_lighter} />
-      <div>
+      <div className={styles.row_container}>
         <div className={styles.selector_button_box}>
           <button type="button">전체선택</button>
           <button type="button">선택삭제</button>
         </div>
       </div>
       <hr className={styles.hr_normal} />
-      <div>
+      <div className={styles.row_container}>
         <div className={styles.product_order_info}>
           <p>
             <strong>주문상품</strong>

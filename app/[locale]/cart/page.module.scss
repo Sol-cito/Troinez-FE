@@ -1,18 +1,20 @@
 $product_image_size: 10vw;
 $font_size: 0.9vw;
 
-.cart {
+.body_container {
   font-size: $font_size;
+  .row_container {
+    margin: 0 3% 0 3%;
+    .product_list_box {
+      width: 90%;
+    }
+  }
   .cart_info_box {
     margin-left: 5%;
     font-weight: bold;
     font-size: 1.2vw;
   }
-  .product_info_container {
-    .product_list_box {
-      width: 90%;
-    }
-  }
+
   .product_price_info_box {
     margin-left: 5%;
   }

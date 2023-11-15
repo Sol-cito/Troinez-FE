@@ -1,0 +1,25 @@
+$font_size: 0.9vw;
+
+.body_container {
+  font-size: $font_size;
+  .row_container {
+    .row_title {
+      font-weight: bolder;
+    }
+  }
+}
+
+.space_between {
+  display: flex;
+  justify-content: space-between;
+}
+
+.center {
+  text-align: center;
+}
+
+.payment_btn {
+  width: 15vw;
+  height: 3vw;
+  margin: 1vw 0 2vw 0;
+}
