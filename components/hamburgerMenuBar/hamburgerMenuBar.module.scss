@@ -1,0 +1,30 @@
+.menu_bar_wrapper {
+  display: flex;
+  flex-direction: column;
+  font-size: 2.5vh;
+
+  .login_and_cart {
+    display: flex;
+    justify-content: right;
+
+    img {
+      margin: 3vw;
+    }
+  }
+
+  .home,
+  .shop,
+  .about {
+    border-bottom: 0.1px solid grey;
+    .text {
+      height: inherit;
+      margin-left: 3vw;
+    }
+  }
+
+  .shop {
+  }
+
+  .about {
+  }
+}
