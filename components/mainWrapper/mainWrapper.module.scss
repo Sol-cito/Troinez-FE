@@ -6,3 +6,10 @@ $footer-font-size: 0.8rem;
   width: 75%;
   margin: 0 auto;
 }
+
+@media screen and (max-width: 780px) {
+  .main {
+    flex: 0;
+    width: 100%;
+  }
+}
