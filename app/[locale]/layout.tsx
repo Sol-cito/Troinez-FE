@@ -39,7 +39,6 @@ export default async function RootLayout({
   return (
     <html className={styles.html} lang={locale}>
       <head>
-        <script src="https://js.tosspayments.com/v1/payment" />
         <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js" />
       </head>
       <body>

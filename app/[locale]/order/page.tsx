@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-before-interactive-script-outside-document */
 import OrderProduct from '@/components/order/orderProduct';
 import InputBox from '@/components/cart/input/InputBox';
 import styles from './page.module.scss';

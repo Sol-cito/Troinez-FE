@@ -1,11 +1,21 @@
-export default function OrderSuccess() {
+/* eslint-disable @typescript-eslint/no-explicit-any */
+import { useSearchParams } from 'next/navigation';
+
+export default function OrderSuccessPage() {
+  const searchParams = useSearchParams();
+  const orderId = searchParams.get('orderId');
+  const amount = searchParams.get('amount');
   return (
     <div>
       <div>
         <p>주문이 성공적으로 완료되었습니다.</p>
         <p>
           <span>주문번호 : </span>
-          <span> 2023110700001</span>
+          <span>{orderId}</span>
+        </p>
+        <p>
+          <span>결제금액 : </span>
+          <span>{amount} 원</span>
         </p>
         <p>비회원 주문조회 시 주문번호가 필요하니 곡 메모해 두시기 바랍니다.</p>
         <input type="button" value="쇼핑 계속하기" />
