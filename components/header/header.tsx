@@ -8,6 +8,8 @@ import Image from 'next/image';
 import styles from './header.module.scss';
 import DropdownMenu from '../dropdown/dropdownMenu';
 import DropdownBox from '../dropdown/dropdownBox';
+import { isMobile } from 'react-device-detect';
+import HamburgerButton from '../hamburgerButton/hamburgerButton';
 
 function Header({
   isLogin,
@@ -68,30 +70,34 @@ function Header({
             />
           </div>
         </div>
-        <div className={styles.right}>
-          {usernameBtn}
-          <Link href={`/${switchLocale()}`} className={styles.menu_btn}>
-            {locale.toLocaleUpperCase()}
-          </Link>
-          <DropdownBox
-            dropdownMenus={SHOP_DROPDOWN_LIST.map((ele) => (
-              <DropdownMenu
-                key={ele.href}
-                title={ele.title}
-                href={`/${locale}/${ele.href}`}
-              />
-            ))}
-          >
-            <span>SHOP</span>
-          </DropdownBox>
-          <Link href={`/${locale}/about`} className={styles.menu_btn}>
-            ABOUT
-          </Link>
-          {loginoutLink}
-          <Link href={`/${locale}`} className={styles.menu_btn}>
-            CART
-          </Link>
-        </div>
+        {isMobile ? (
+          <HamburgerButton />
+        ) : (
+          <div className={styles.right}>
+            {usernameBtn}
+            <Link href={`/${switchLocale()}`} className={styles.menu_btn}>
+              {locale.toLocaleUpperCase()}
+            </Link>
+            <DropdownBox
+              dropdownMenus={SHOP_DROPDOWN_LIST.map((ele) => (
+                <DropdownMenu
+                  key={ele.href}
+                  title={ele.title}
+                  href={`/${locale}/${ele.href}`}
+                />
+              ))}
+            >
+              <span>SHOP</span>
+            </DropdownBox>
+            <Link href={`/${locale}/about`} className={styles.menu_btn}>
+              ABOUT
+            </Link>
+            {loginoutLink}
+            <Link href={`/${locale}`} className={styles.menu_btn}>
+              CART
+            </Link>
+          </div>
+        )}
       </nav>
     </header>
   );

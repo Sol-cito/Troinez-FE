@@ -7,6 +7,7 @@ import { notFound } from 'next/navigation';
 import MainWrapper from '@/components/mainWrapper/mainWrapper';
 import { cookies } from 'next/headers';
 import styles from './layout.module.scss';
+import dynamic from 'next/dynamic';
 
 export const metadata: Metadata = {
   title: 'Troisnez',
@@ -34,6 +35,11 @@ export default async function RootLayout({
   if (token !== undefined) {
     isLogin = true;
   }
+
+  // false on Server Side Rendering
+  const Header = dynamic(() => import('../../components/header/header'), {
+    ssr: false,
+  });
 
   return (
     <html className={styles.html} lang={locale}>

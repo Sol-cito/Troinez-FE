@@ -63,3 +63,9 @@ $footer-font-size: 0.9vw;
     }
   }
 }
+
+@media screen and (max-width: 780px) {
+  .footer {
+    width: 100%;
+  }
+}

@@ -53,3 +53,23 @@ $header-fond-size: 0.8vw;
     margin-left: auto;
   }
 }
+
+@media screen and (max-width: 780px) {
+  .header {
+    width: 100%;
+  }
+
+  .nav {
+    display: flex;
+    justify-content: space-between;
+    line-height: 6vh;
+
+    .left {
+      width: inherit;
+    }
+
+    .mid {
+      width: inherit;
+    }
+  }
+}
