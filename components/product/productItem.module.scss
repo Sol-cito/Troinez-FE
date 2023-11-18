@@ -62,3 +62,26 @@
     }
   }
 }
+
+@media screen and (max-width: 780px) {
+  .item_box {
+    width: 95%;
+    margin: 0;
+    font-size: 0.8rem;
+
+    .item_desc_box {
+      .item_desc {
+        text-align: left;
+
+        .item_newest_icon {
+          .icon {
+            font-size: 0.7rem;
+            line-height: 1.3rem;
+            width: 7vw;
+            height: 1.3rem;
+          }
+        }
+      }
+    }
+  }
+}
