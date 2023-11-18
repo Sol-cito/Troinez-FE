@@ -56,7 +56,11 @@ $header-fond-size: 0.8vw;
 
 @media screen and (max-width: 780px) {
   .header {
+    background-color: white;
+    position: fixed;
     width: 100%;
+    height: max-content;
+    z-index: 10;
   }
 
   .nav {

@@ -15,6 +15,15 @@ export default function HamburgerButton() {
     setShowMenuBar(false);
   }, [pathname]);
 
+  useEffect(() => {
+    // prevent body scroll
+    if (showMenuBar) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'visible';
+    }
+  }, [showMenuBar]);
+
   return (
     <>
       {showMenuBar && (
