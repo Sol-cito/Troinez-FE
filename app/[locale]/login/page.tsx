@@ -2,9 +2,9 @@
 
 import Image from 'next/image';
 import Link from 'next/link';
-import styles from './page.module.scss';
 import { isMobile } from 'react-device-detect';
 import { useEffect, useState } from 'react';
+import styles from './page.module.scss';
 
 export default function LoginPage() {
   const [pageReady, setPageReady] = useState<boolean>(false);
