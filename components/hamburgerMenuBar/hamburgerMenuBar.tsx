@@ -1,15 +1,25 @@
 'use client';
 
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import styles from './hamburgerMenuBar.module.scss';
 import Image from 'next/image';
 import { useLocale } from 'next-intl';
+import Link from 'next/link';
+import { SHOP_DROPDOWN_LIST } from '@/common/shopDropdownList';
+import { usePathname } from 'next/navigation';
 
 export default function HamburgerMenuBar() {
   const [isHomeClicked, setIsHomeClicked] = useState(false);
   const [isShopClicked, setIsShopClicked] = useState(false);
 
   const locale: string = useLocale();
+
+  const pathname = usePathname();
+
+  useEffect(() => {
+    setIsHomeClicked(false);
+    setIsShopClicked(false);
+  }, [pathname]);
 
   const onClickHome = () => {
     setIsHomeClicked(!isHomeClicked);
@@ -54,7 +64,6 @@ export default function HamburgerMenuBar() {
             height={10}
           />
         </div>
-        {/* {isHomeClicked && ( */}
         <div
           className={styles.lang_selection_dropdown}
           style={{
@@ -62,10 +71,9 @@ export default function HamburgerMenuBar() {
             height: isHomeClicked ? 'max-content' : 0,
           }}
         >
-          <span>Korean</span>
-          <span>English</span>
+          <Link href={'/'}>Korean</Link>
+          <Link href={'/en'}>English</Link>
         </div>
-        {/* )} */}
         <div className={styles.shop} onClick={onClickShop}>
           <span className={styles.text}>SHOP</span>
           <Image
@@ -87,12 +95,16 @@ export default function HamburgerMenuBar() {
             height: isShopClicked ? 'max-content' : 0,
           }}
         >
-          <span>All Products</span>
-          <span>Room Diffuser</span>
-          <span>Car Diffuser</span>
+          {SHOP_DROPDOWN_LIST.map((ele) => (
+            <Link key={ele.href} href={`/${locale}/${ele.href}`}>
+              {ele.title}
+            </Link>
+          ))}
         </div>
         <div className={styles.about}>
-          <span className={styles.text}>ABOUT</span>
+          <Link href={`/${locale}/about`} className={styles.text}>
+            ABOUT
+          </Link>
         </div>
       </div>
     </>

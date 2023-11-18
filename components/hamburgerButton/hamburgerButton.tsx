@@ -2,11 +2,18 @@
 
 import Image from 'next/image';
 import styles from './hamburgerButton.module.scss';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import HamburgerMenuBar from '../hamburgerMenuBar/hamburgerMenuBar';
+import { usePathname } from 'next/navigation';
 
 export default function HamburgerButton() {
   const [showMenuBar, setShowMenuBar] = useState(false);
+
+  const pathname = usePathname();
+
+  useEffect(() => {
+    setShowMenuBar(false);
+  }, [pathname]);
 
   return (
     <>
