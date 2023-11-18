@@ -3,9 +3,9 @@
 import localFont from 'next/font/local';
 import { useTranslations } from 'next-intl';
 import Image from 'next/image';
-import styles from './page.module.scss';
 import { useEffect, useState } from 'react';
 import { isMobile } from 'react-device-detect';
+import styles from './page.module.scss';
 
 const koreanFont = localFont({
   src: '../../fonts/AppleSDGothicNeoT.ttf',
