@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 import React from 'react';
-import { useLocale } from 'next-intl';
+import { useLocale, useTranslations } from 'next-intl';
 import { SHOP_DROPDOWN_LIST } from '@/common/shopDropdownList';
 import Image from 'next/image';
 import { isMobile } from 'react-device-detect';
@@ -25,12 +25,15 @@ function Header({
 
   const logOutUri = process.env.NEXT_PUBLIC_NAVER_LOGOUT_REQUEST_URI;
 
+  const loginTrans = useTranslations('Login');
+
   let loginoutLink;
   let usernameBtn;
   if (isLogin) {
     usernameBtn = (
       <Link href="#none" className={styles.menu_btn}>
-        <strong>{username}</strong>님 환영합니다.
+        <strong>{username}</strong>
+        {loginTrans('welcome')}
       </Link>
     );
     loginoutLink = (
