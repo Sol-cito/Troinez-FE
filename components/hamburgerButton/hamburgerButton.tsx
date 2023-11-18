@@ -6,7 +6,7 @@ import { usePathname } from 'next/navigation';
 import HamburgerMenuBar from '../hamburgerMenuBar/hamburgerMenuBar';
 import styles from './hamburgerButton.module.scss';
 
-export default function HamburgerButton() {
+export default function HamburgerButton({ isLogin }: { isLogin: boolean }) {
   const [showMenuBar, setShowMenuBar] = useState(false);
 
   const pathname = usePathname();
@@ -52,7 +52,7 @@ export default function HamburgerButton() {
             transform: `translateX(${showMenuBar ? 0 : 100}%)`,
           }}
         >
-          <HamburgerMenuBar />
+          <HamburgerMenuBar isLogin={isLogin} />
         </div>
       </div>
     </>

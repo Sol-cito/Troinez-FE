@@ -71,7 +71,7 @@ function Header({
           </div>
         </div>
         {isMobile ? (
-          <HamburgerButton />
+          <HamburgerButton isLogin={isLogin} />
         ) : (
           <div className={styles.right}>
             {usernameBtn}
