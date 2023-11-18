@@ -1,13 +1,12 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import type { Metadata } from 'next';
-import Header from '@/components/header/header';
 import Footer from '@/components/footer/footer';
 import { NextIntlClientProvider } from 'next-intl';
 import { notFound } from 'next/navigation';
 import MainWrapper from '@/components/mainWrapper/mainWrapper';
 import { cookies } from 'next/headers';
-import styles from './layout.module.scss';
 import dynamic from 'next/dynamic';
+import styles from './layout.module.scss';
 
 export const metadata: Metadata = {
   title: 'Troisnez',

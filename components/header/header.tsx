@@ -5,11 +5,11 @@ import React from 'react';
 import { useLocale } from 'next-intl';
 import { SHOP_DROPDOWN_LIST } from '@/common/shopDropdownList';
 import Image from 'next/image';
-import styles from './header.module.scss';
+import { isMobile } from 'react-device-detect';
 import DropdownMenu from '../dropdown/dropdownMenu';
 import DropdownBox from '../dropdown/dropdownBox';
-import { isMobile } from 'react-device-detect';
 import HamburgerButton from '../hamburgerButton/hamburgerButton';
+import styles from './header.module.scss';
 
 function Header({
   isLogin,

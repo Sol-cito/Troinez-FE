@@ -23,7 +23,16 @@
     "comma-dangle": "off",
     "@typescript-eslint/comma-dangle": "off",
     // && 등 특정 expression이 반드시 line의 시작점에 있어야 한다는 설정 off
-    "operator-linebreak": ["error", "after"],
+    "operator-linebreak": [
+      "error",
+      "after",
+      {
+        "overrides": {
+          ":": "before",
+          "?": "before"
+        }
+      }
+    ],
     // 특정 expressions가 반드시 next line에 있어야한다는 rule off
     "react/jsx-one-expression-per-line": "off",
     // Unexpected newline before ')' 설정 off

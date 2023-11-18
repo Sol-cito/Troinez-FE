@@ -1,10 +1,10 @@
 'use client';
 
 import Image from 'next/image';
-import styles from './hamburgerButton.module.scss';
 import { useEffect, useState } from 'react';
-import HamburgerMenuBar from '../hamburgerMenuBar/hamburgerMenuBar';
 import { usePathname } from 'next/navigation';
+import HamburgerMenuBar from '../hamburgerMenuBar/hamburgerMenuBar';
+import styles from './hamburgerButton.module.scss';
 
 export default function HamburgerButton() {
   const [showMenuBar, setShowMenuBar] = useState(false);
@@ -28,6 +28,7 @@ export default function HamburgerButton() {
     <>
       {showMenuBar && (
         <div
+          role="presentation"
           className={styles.transparent_background}
           onClick={() => {
             setShowMenuBar(false);
