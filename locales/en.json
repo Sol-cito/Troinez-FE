@@ -2,6 +2,9 @@
   "Index": {
     "title": "Hello world!"
   },
+  "Login": {
+    "welcome": ", welcome!"
+  },
   "About": {
     "firstAbout": {
       "title": "TROIS NEZ, Three Noses",

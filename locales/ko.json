@@ -2,6 +2,9 @@
   "Index": {
     "title": "헬로 월드!"
   },
+  "Login": {
+    "welcome": "님 환영합니다."
+  },
   "About": {
     "firstAbout": {
       "title": "TROIS NEZ, Three Noses",
