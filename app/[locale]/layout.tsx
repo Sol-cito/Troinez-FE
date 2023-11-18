@@ -1,11 +1,11 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import type { Metadata } from 'next';
-import Header from '@/components/header/header';
 import Footer from '@/components/footer/footer';
 import { NextIntlClientProvider } from 'next-intl';
 import { notFound } from 'next/navigation';
 import MainWrapper from '@/components/mainWrapper/mainWrapper';
 import { cookies } from 'next/headers';
+import dynamic from 'next/dynamic';
 import styles from './layout.module.scss';
 
 export const metadata: Metadata = {
@@ -34,6 +34,11 @@ export default async function RootLayout({
   if (token !== undefined) {
     isLogin = true;
   }
+
+  // false on Server Side Rendering
+  const Header = dynamic(() => import('../../components/header/header'), {
+    ssr: false,
+  });
 
   return (
     <html className={styles.html} lang={locale}>

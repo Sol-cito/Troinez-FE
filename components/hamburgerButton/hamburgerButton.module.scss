@@ -1,0 +1,33 @@
+.transparent_background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  background-color: black;
+  opacity: 0.6;
+  z-index: 2;
+}
+
+.hamburger_button_wrapper {
+  display: flex;
+  justify-content: center;
+  width: 20%;
+
+  .hamburger_button_image {
+    height: 10vh;
+    width: 10vw;
+  }
+
+  .menu_bar {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 45vw;
+    height: 100%;
+    background-color: white;
+    transition: all ease 0.5s;
+    z-index: 3;
+  }
+}
