@@ -12,8 +12,29 @@
     }
   }
 }
+
 .list_box {
   display: flex;
   justify-content: flex-start;
   flex-wrap: wrap;
+}
+
+@media screen and (max-width: 780px) {
+  .title_box {
+    margin: 2vh 0 2vh 0;
+    span {
+      width: 8vw;
+      hr {
+        margin-bottom: 1.5vh;
+        width: 20vw;
+      }
+    }
+  }
+
+  .list_box {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 5vh;
+    align-items: center;
+  }
 }

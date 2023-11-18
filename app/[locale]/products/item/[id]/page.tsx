@@ -152,10 +152,10 @@ export default function ProductDetailPage({
                   </button>
                 </div>
                 <hr />
-                <div className={styles.payment_naverpay}>
+                {/* <div className={styles.payment_naverpay}>
                   <button type="button">{productDetailTrans('NPay')}</button>
                   <button type="button">{productDetailTrans('ward')}</button>
-                </div>
+                </div> */}
               </div>
             </div>
           </div>

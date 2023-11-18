@@ -5,15 +5,16 @@ import Image from 'next/image';
 import { useLocale } from 'next-intl';
 import Link from 'next/link';
 import { SHOP_DROPDOWN_LIST } from '@/common/shopDropdownList';
-import { usePathname } from 'next/navigation';
+import { usePathname, useRouter } from 'next/navigation';
 import styles from './hamburgerMenuBar.module.scss';
 
-export default function HamburgerMenuBar() {
+export default function HamburgerMenuBar({ isLogin }: { isLogin: boolean }) {
   const [isHomeClicked, setIsHomeClicked] = useState(false);
   const [isShopClicked, setIsShopClicked] = useState(false);
 
   const locale: string = useLocale();
 
+  const router = useRouter();
   const pathname = usePathname();
 
   useEffect(() => {
@@ -37,7 +38,7 @@ export default function HamburgerMenuBar() {
           alt="TNZ"
           width={30}
           height={30}
-          onClick={() => {}}
+          onClick={() => !isLogin && router.push(`/${locale}/login`)}
         />
         <Image
           src="/common/icon/mobile-cart.svg"
