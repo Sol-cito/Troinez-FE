@@ -15,8 +15,14 @@ import { nanoid } from 'nanoid';
 
 import styles from './page.module.scss';
 
-const clientKey = process.env.NEXT_PUBLIC_TOS_CLIENT_KEY;
-const customerKey = process.env.NEXT_PUBLIC_TOS_CUSTOMER_KEY;
+const clientKey: string =
+  process.env.NEXT_PUBLIC_TOS_CLIENT_KEY === undefined
+    ? ''
+    : process.env.NEXT_PUBLIC_TOS_CLIENT_KEY;
+const customerKey: string =
+  process.env.NEXT_PUBLIC_TOS_CUSTOMER_KEY === undefined
+    ? ''
+    : process.env.NEXT_PUBLIC_TOS_CUSTOMER_KEY;
 // http://localhost:3000/order/payment/success?paymentType=NORMAL&orderId=FHNHzc9nNHQjfa9_tiG6y&paymentKey=tviva2023111820545503n42&amount=50000
 const successUrl = 'http://localhost:8080/api/v1/ordersuccess';
 

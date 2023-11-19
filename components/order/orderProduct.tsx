@@ -1,3 +1,5 @@
+'use client';
+
 /* eslint-disable no-unsafe-optional-chaining */
 import { useState, useEffect } from 'react';
 import Image from 'next/image';
@@ -35,7 +37,7 @@ export default function OrderProduct({
             <Image
               key={1}
               src={'https://d3en4rwu5hlcjb.cloudfront.net/product/perfume/'.concat(
-                productDetail?.productImageList[0].productImageUrl
+                productDetail?.productImageList[0].productImageUrl || 'error'
               )}
               alt="D01"
               fill
@@ -49,7 +51,9 @@ export default function OrderProduct({
           </div>
           <div className={styles.product_total_price}>
             <div>{orderProductCount}개</div>
-            <div>{orderProductCount * productDetail?.discountedPrice}원</div>
+            <div>
+              {orderProductCount * (productDetail?.discountedPrice || -1)}원
+            </div>
           </div>
         </div>
       </div>

@@ -15,7 +15,7 @@ export default function PurchasePopUpModal({
   selectedProductPrice: number | undefined;
 }) {
   const orderUrl = `/order?type=order&productId=${selectedProductId}&productCount=${selectedProductCount}&amount=${
-    selectedProductPrice * selectedProductCount
+    (selectedProductPrice || -1) * selectedProductCount
   }`;
   return (
     <div className={styles.box}>
