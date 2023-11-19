@@ -58,7 +58,7 @@ export default function Footer() {
           <span>&nbsp;|&nbsp;</span>
           <Link href="/privatepolicy">{privatePolicy}</Link>
         </div>
-        <div>
+        <div className={styles.sns_icons}>
           {iconInfoList.map((iconInfo) => (
             <a key={iconInfo.src} href={iconInfo.url}>
               <Image

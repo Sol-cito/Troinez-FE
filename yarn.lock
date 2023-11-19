@@ -448,10 +448,55 @@
   resolved "https://registry.npmjs.org/@tootallnate/once/-/once-1.1.2.tgz"
   integrity sha512-RbzJvlNzmRq5c3O09UipeuXno4tA1FE6ikOjxZK0tuxVv3412l64l5t1W5pj4+rJq9vpkm/kwiR07aZXnsKPxw==
 
+"@tosspayments/brandpay-types@^0.2.6":
+  version "0.2.6"
+  resolved "https://registry.yarnpkg.com/@tosspayments/brandpay-types/-/brandpay-types-0.2.6.tgz#0a64d6cd4a6be97af374ad6cf0f2d155312d3819"
+  integrity sha512-FY8aOm/2rqtXjYux9ZdNTL6GC5+VNIw8eOQ7TP01dS2uGWSzAtR6uuw9HVsgkmJtSyJgmo97tjmbio5oyeyFlg==
+
+"@tosspayments/payment-widget-sdk@^0.10.0":
+  version "0.10.0"
+  resolved "https://registry.yarnpkg.com/@tosspayments/payment-widget-sdk/-/payment-widget-sdk-0.10.0.tgz#151181bd17a419e60a87bce7f9c12f327b38a11c"
+  integrity sha512-xTZFUm76/dTxabaZ2w1ec5skIUNhA+myTpcMuFkxf/AnuksYgzOB3mAt4siZM77Re8SEtQpbllPDM1fnX04XSw==
+  dependencies:
+    "@tosspayments/payment-widget__types" "^0.3.0"
+
+"@tosspayments/payment-widget-types@^0.0.5":
+  version "0.0.5"
+  resolved "https://registry.yarnpkg.com/@tosspayments/payment-widget-types/-/payment-widget-types-0.0.5.tgz#649f1baf063eaeb59bcd24d6a2064f0841aed9fe"
+  integrity sha512-Daaui9u7aRPzJhw4omJIUAbYBSmNAFNjWWkuUnX9uHxzE3gtjcJHIpGrjlzmCFm+j3ZH4rgyrgv4pkazVYH3OQ==
+
+"@tosspayments/payment-widget__types@^0.3.0":
+  version "0.3.0"
+  resolved "https://registry.yarnpkg.com/@tosspayments/payment-widget__types/-/payment-widget__types-0.3.0.tgz#1392ede38bd0e44607e5e3bc492535614b35c2a2"
+  integrity sha512-+G918GyIsGu0tkzIv+dpmypbDY6r0issKCGEvzckILq/qggS7QAymh5dUiyicfDOx+IMPHjReMvj9V08q1VYIg==
+  dependencies:
+    "@tosspayments/brandpay-types" "^0.2.6"
+    "@tosspayments/payment-widget-types" "^0.0.5"
+    "@tosspayments/payment__types" "^1.66.2"
+
+"@tosspayments/payment__types@^1.66.2":
+  version "1.66.2"
+  resolved "https://registry.yarnpkg.com/@tosspayments/payment__types/-/payment__types-1.66.2.tgz#0b4b35c997d0ffbb597d4315426e5f66e4f1c356"
+  integrity sha512-DE3nzEptEj8f3UHrUllNZANRetho6lRnhIPMhDkpm4/u7EW/WS3IeS+gwvNj5vUThTX8i7giAsdd80ZuWcQ6jg==
+  dependencies:
+    "@tosspayments/sdk-constants" "^0.2.2"
+
+"@tosspayments/sdk-constants@^0.2.2":
+  version "0.2.2"
+  resolved "https://registry.yarnpkg.com/@tosspayments/sdk-constants/-/sdk-constants-0.2.2.tgz#91bd84fc1543eb2382b2a9b40792eed9f9146b1e"
+  integrity sha512-qTIcD9JnVtN65/yiW5sPAlvK5fpQtDluv4IEyslubncbQLQKE+ePSnGZU1fLNPxcchv6QTnwmgj9Ndm6EN/Ymg==
+  dependencies:
+    type-fest "^2.11.2"
+
 "@types/aria-query@^5.0.1":
   version "5.0.1"
   resolved "https://registry.npmjs.org/@types/aria-query/-/aria-query-5.0.1.tgz"
   integrity sha512-XTIieEY+gvJ39ChLcB4If5zHtPxt3Syj5rgZR+e1ctpmK8NjPf0zFqsz4JpLJT0xla9GFDKjy8Cpu331nrmE1Q==
+
+"@types/cookie@^0.4.1":
+  version "0.4.1"
+  resolved "https://registry.yarnpkg.com/@types/cookie/-/cookie-0.4.1.tgz#bfd02c1f2224567676c1545199f87c3a861d878d"
+  integrity sha512-XW/Aa8APYr6jSVVA1y/DEIZX0/GMKLEVekNG727R8cs56ahETkRAy/3DR7+fJyh7oUgGwNQaRfXCun0+KbWY7Q==
 
 "@types/json-schema@^7.0.12":
   version "7.0.12"
@@ -472,6 +517,11 @@
   version "14.18.54"
   resolved "https://registry.npmjs.org/@types/node/-/node-14.18.54.tgz"
   integrity sha512-uq7O52wvo2Lggsx1x21tKZgqkJpvwCseBBPtX/nKQfpVlEsLOb11zZ1CRsWUKvJF0+lzuA9jwvA7Pr2Wt7i3xw==
+
+"@types/node@^16.10.2":
+  version "16.18.62"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-16.18.62.tgz#5b80d7a800f86842c5fadc066a63d6312208805c"
+  integrity sha512-/zbPnIBkef8sT+6vw6BxdvU3dCxRI0v6rBu/6IvXnRNtOPILucigqhUBPYxtQ/8JdAna0JLTAcNTCDmQ77QYkQ==
 
 "@types/prop-types@*":
   version "15.7.5"
@@ -1271,6 +1321,20 @@ continuation-local-storage@^3.2.1:
   dependencies:
     async-listener "^0.6.0"
     emitter-listener "^1.1.1"
+
+cookie@^0.4.0:
+  version "0.4.2"
+  resolved "https://registry.yarnpkg.com/cookie/-/cookie-0.4.2.tgz#0e41f24de5ecf317947c82fc789e06a884824432"
+  integrity sha512-aSWTXFzaKWkvHO1Ny/s+ePFpvKsPnjc551iI41v3ny/ow6tBG5Vd+FuqGNhh1LxOmVzOlGUriIlOaokOvhaStA==
+
+cookies-next@^4.0.0:
+  version "4.1.0"
+  resolved "https://registry.yarnpkg.com/cookies-next/-/cookies-next-4.1.0.tgz#1ecf2e4a65abe2ad3ffb3f4ad3d303ae008303c3"
+  integrity sha512-BREVc4TJT4NwXfyKjdjnYFXM6iRns+MYpCd34ClXuYqeisXnkPkbq7Ok9xaqi9mHmV6H2rwPE+p3EpMz4pF/kQ==
+  dependencies:
+    "@types/cookie" "^0.4.1"
+    "@types/node" "^16.10.2"
+    cookie "^0.4.0"
 
 core-util-is@1.0.2:
   version "1.0.2"
@@ -3129,6 +3193,11 @@ nanoid@^3.3.4, nanoid@^3.3.6:
   resolved "https://registry.npmjs.org/nanoid/-/nanoid-3.3.6.tgz"
   integrity sha512-BGcqMMJuToF7i1rt+2PWSNVnWIkGCU78jBG3RxO/bZlnZPK2Cmi2QaffxGO/2RvWi9sL+FAiRiXMgsyxQ1DIDA==
 
+nanoid@^5.0.3:
+  version "5.0.3"
+  resolved "https://registry.yarnpkg.com/nanoid/-/nanoid-5.0.3.tgz#6c97f53d793a7a1de6a38ebb46f50f95bf9793c7"
+  integrity sha512-I7X2b22cxA4LIHXPSqbBCEQSL+1wv8TuoefejsX4HFWyC6jc5JG7CEaxOltiKjc1M+YCS2YkrZZcj4+dytw9GA==
+
 natural-compare-lite@^1.4.0:
   version "1.4.0"
   resolved "https://registry.npmjs.org/natural-compare-lite/-/natural-compare-lite-1.4.0.tgz"
@@ -3742,6 +3811,13 @@ raw-body@^2.2.0:
     http-errors "2.0.0"
     iconv-lite "0.4.24"
     unpipe "1.0.0"
+
+react-device-detect@^2.2.3:
+  version "2.2.3"
+  resolved "https://registry.yarnpkg.com/react-device-detect/-/react-device-detect-2.2.3.tgz#97a7ae767cdd004e7c3578260f48cf70c036e7ca"
+  integrity sha512-buYY3qrCnQVlIFHrC5UcUoAj7iANs/+srdkwsnNjI7anr3Tt7UY6MqNxtMLlr0tMBied0O49UZVK8XKs3ZIiPw==
+  dependencies:
+    ua-parser-js "^1.0.33"
 
 react-dom@18.2.0:
   version "18.2.0"
@@ -4463,6 +4539,11 @@ type-fest@^0.21.3:
   resolved "https://registry.npmjs.org/type-fest/-/type-fest-0.21.3.tgz"
   integrity sha512-t0rzBq87m3fVcduHDUFhKmyyX+9eo6WQjZvf51Ea/M0Q7+T374Jp1aUiyUl0GKxp8M/OETVHSDvmkyPgvX+X2w==
 
+type-fest@^2.11.2:
+  version "2.19.0"
+  resolved "https://registry.yarnpkg.com/type-fest/-/type-fest-2.19.0.tgz#88068015bb33036a598b952e55e9311a60fd3a9b"
+  integrity sha512-RAH822pAdBgcNMAfWnCBU3CFZcfZ/i1eZjwFU/dsLKumyuuP3niueg2UAukXYF0E2AAoc82ZSSf9J0WQBinzHA==
+
 typed-array-length@^1.0.4:
   version "1.0.4"
   resolved "https://registry.npmjs.org/typed-array-length/-/typed-array-length-1.0.4.tgz"
@@ -4476,6 +4557,11 @@ typescript@5.1.6:
   version "5.1.6"
   resolved "https://registry.npmjs.org/typescript/-/typescript-5.1.6.tgz"
   integrity sha512-zaWCozRZ6DLEWAWFrVDz1H6FVXzUSfTy5FUMWsQlU8Ym5JP9eO4xkTIROFCQvhQf61z6O/G6ugw3SgAnvvm+HA==
+
+ua-parser-js@^1.0.33:
+  version "1.0.37"
+  resolved "https://registry.yarnpkg.com/ua-parser-js/-/ua-parser-js-1.0.37.tgz#b5dc7b163a5c1f0c510b08446aed4da92c46373f"
+  integrity sha512-bhTyI94tZofjo+Dn8SN6Zv8nBDvyXTymAdM3LDI/0IboIUwTu1rEhW7v2TfiVsoYWgkQ4kOVqnI8APUFbIQIFQ==
 
 unbox-primitive@^1.0.2:
   version "1.0.2"
@@ -4680,6 +4766,11 @@ yamljs@0.3.0:
   dependencies:
     argparse "^1.0.7"
     glob "^7.0.5"
+
+yarn@^1.22.19:
+  version "1.22.19"
+  resolved "https://registry.npmjs.org/yarn/-/yarn-1.22.19.tgz"
+  integrity sha512-/0V5q0WbslqnwP91tirOvldvYISzaqhClxzyUKXYxs07yUILIs5jx/k6CFe8bvKSkds5w+eiOqta39Wk3WxdcQ==
 
 yauzl@^2.10.0:
   version "2.10.0"

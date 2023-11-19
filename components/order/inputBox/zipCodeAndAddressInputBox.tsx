@@ -1,3 +1,4 @@
+/* eslint-disable prefer-const */
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import Script from 'next/script';
@@ -7,7 +8,7 @@ import {
 } from '@/interfaces/order/OrderRequestInterface';
 
 import { useEffect } from 'react';
-import isIslandArea from '@/utils/zipCodeUtil';
+import getDeliveryPriceByZipCode from '@/utils/zipCodeUtil';
 import styles from './inputBox.module.scss';
 
 declare global {
@@ -31,11 +32,10 @@ export default function ZipCodeAndAddressInputBox({
   setOrderRequestState: SetOrderRequestType;
 }) {
   useEffect(() => {
-    let deliveryPrice = 3000;
-    let deliveryType = '일반배송';
-    if (isIslandArea(orderRequestState.receiverZipcode)) {
-      deliveryPrice = 5000;
-      deliveryType = '산간지역';
+    let [deliveryPrice, deliveryType]: [number, string] =
+      getDeliveryPriceByZipCode(orderRequestState.receiverZipcode);
+    if (orderRequestState.productTotalPrice >= 30000) {
+      deliveryPrice -= 3000;
     }
     setOrderRequestState({
       ...orderRequestState,

@@ -2,12 +2,14 @@
 
 import Link from 'next/link';
 import React from 'react';
-import { useLocale } from 'next-intl';
+import { useLocale, useTranslations } from 'next-intl';
 import { SHOP_DROPDOWN_LIST } from '@/common/shopDropdownList';
 import Image from 'next/image';
-import styles from './header.module.scss';
+import { isMobile } from 'react-device-detect';
 import DropdownMenu from '../dropdown/dropdownMenu';
 import DropdownBox from '../dropdown/dropdownBox';
+import HamburgerButton from '../hamburgerButton/hamburgerButton';
+import styles from './header.module.scss';
 
 function Header({
   isLogin,
@@ -23,12 +25,15 @@ function Header({
 
   const logOutUri = process.env.NEXT_PUBLIC_NAVER_LOGOUT_REQUEST_URI;
 
+  const loginTrans = useTranslations('Login');
+
   let loginoutLink;
   let usernameBtn;
   if (isLogin) {
     usernameBtn = (
       <Link href="#none" className={styles.menu_btn}>
-        <strong>{username}</strong>님 환영합니다.
+        <strong>{username}</strong>
+        {loginTrans('welcome')}
       </Link>
     );
     loginoutLink = (
@@ -68,28 +73,34 @@ function Header({
             />
           </div>
         </div>
-        <div className={styles.right}>
-          {usernameBtn}
-          <Link href={`/${switchLocale()}`} className={styles.menu_btn}>
-            {locale.toLocaleUpperCase()}
-          </Link>
-          <DropdownBox
-            dropdownMenus={SHOP_DROPDOWN_LIST.map((ele) => (
-              <DropdownMenu key={ele.href} title={ele.title} href={ele.href} />
-            ))}
-          >
-            <Link href={`/${locale}`} className={styles.menu_btn}>
-              SHOP
+        {isMobile ? (
+          <HamburgerButton isLogin={isLogin} />
+        ) : (
+          <div className={styles.right}>
+            {usernameBtn}
+            <Link href={`/${switchLocale()}`} className={styles.menu_btn}>
+              {locale.toLocaleUpperCase()}
             </Link>
-          </DropdownBox>
-          <Link href={`/${locale}/about`} className={styles.menu_btn}>
-            ABOUT
-          </Link>
-          {loginoutLink}
-          <Link href={`/${locale}/cart`} className={styles.menu_btn}>
-            CART
-          </Link>
-        </div>
+            <DropdownBox
+              dropdownMenus={SHOP_DROPDOWN_LIST.map((ele) => (
+                <DropdownMenu
+                  key={ele.href}
+                  title={ele.title}
+                  href={`/${locale}/${ele.href}`}
+                />
+              ))}
+            >
+              <span>SHOP</span>
+            </DropdownBox>
+            <Link href={`/${locale}/about`} className={styles.menu_btn}>
+              ABOUT
+            </Link>
+            {loginoutLink}
+            <Link href={`/${locale}`} className={styles.menu_btn}>
+              CART
+            </Link>
+          </div>
+        )}
       </nav>
     </header>
   );

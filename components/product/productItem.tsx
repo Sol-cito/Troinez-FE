@@ -3,6 +3,7 @@ import Image from 'next/image';
 import { useLocale, useTranslations } from 'next-intl';
 import Link from 'next/link';
 import { Product } from '@/interfaces/product/product';
+import { isMobile } from 'react-device-detect';
 import styles from './productItem.module.scss';
 
 export default function ProductItem({ product }: { product: Product }) {
@@ -25,7 +26,7 @@ export default function ProductItem({ product }: { product: Product }) {
               product.productImage?.productImageUrl
             )}
             alt="D01"
-            sizes="20vw"
+            sizes={isMobile ? '70vw' : '20vw'}
             priority
             fill
           />

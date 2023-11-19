@@ -2,20 +2,48 @@
   "Index": {
     "title": "헬로 월드!"
   },
+  "Login": {
+    "welcome": "님 환영합니다."
+  },
   "About": {
     "firstAbout": {
-      "title": "Your New Ritual",
-      "subTitle1": "리추얼 : 내면을 마주보는 일상의 의식",
-      "subTitle2": "Reset, Refresh for the Self",
-      "retualText": "우리는 넘쳐나는 이미지와 타인의 목소리, 소셜미디어가 쏟아내는 어지러운 잣대와 평가에 잠식된 시대를 살아가고 있습니다. 진실과 거짓, 현실과 허구의 경계가 모호해질수록 꾸밈없는 얼굴과 담담한 목소리는 내면의 틈새 속으로 깊이 숨어듭니다. 우리에게 정말 필요한 것은 어쩌면, 심오한 깨달음이 아닌지도 모릅니다. 바쁘게 흘러가는 시간 속에 나만을 위한 소박한 리추얼을 만드는 것. 어떤 목소리에도 휩쓸리지 않고 나 자신의 내면과 대화하는 경험. 논픽션의 이야기는 바로 그러한 순간으로부터 시작됩니다.",
-      "retualTestEng": "The world around us is brimmed over with images, voices, and muddling messages from media. Yet with the line between reality and fiction being blurred, genuineness of inner self and calmness in voice should seep deeper within. Stories of NONFICTION shall begin from starting simple rituals in the midst of all the hustles and listening closer to inner voice, not being swayed by messages from outside. Discover yourself again."
+      "title": "TROIS NEZ, Three Noses",
+      "subtitle": "트와네즈, 세개의 코",
+      "content1-1": "향기는 강렬한 감각이지만, 붙잡아두기는 어렵습니다. 코 끝을 스치는 것만으로도 오감을 깨워놓지만, 붙잡고자 하면 손가락 사이로 흘러지나갈 뿐이지요. 이런 향기를 포착해내고 다루는 조향사에게는 남다른 눈이, 아니 코가 필요합니다. 아름다움을 알아보는",
+      "content1-2": "을 가진 코, 새로운 풍경을 상상할 수 있는 ",
+      "content1-3": "을 가진 코, 세밀하고도 미묘한 차이를 놓치지 않는 ",
+      "content1-4": "을 가진 코. 트와네즈(Trois Nez)는 프랑스어로 ‘세개의 코’를 뜻하며, 세가지의 덕목을 모두 갖춘 조향사를 위한 작업실의 이름입니다.",
+      "content2": "Scent is an intense sensation, but it’s hard to hold on to. A glimpse of it shakes the senses and awakens them, but when you try to hold on to it, it just slips through your fingers. A perfumer who captures and manipulates these scents needs a special eye - or nose. A nose with the aesthetic to recognize beauty, a nose with the ingenuity to imagine new scents, a nose with the sensitivity to notice details. Trois Nez means \"three noses\" in French, and it’s the name of our workshop for perfumers who possess all three virtues."
     },
     "secondAbout": {
-      "title": "Uncover Your Story",
-      "subTitle1": "발견 : 나만의 이야기에 귀 기울이는 시간",
-      "subTitle2": "Listening to Your Inner Self",
-      "retualText": "논픽션은 자신의 가장 솔직한 모습과 마주하는 시간을 위해 탄생한 라이프스타일 뷰티브랜드입니다. 최상의 원료와 섬세한 조항을 바탕으로 신비롭고 독특한 무드를 빚어내는 향수, 하루의 시작과 끝을 더욱 정성스럽게 만드는 바디케어 제품군을 선보입니다. 향을 매개로 내면의 힘을 표현하는 논픽션의 제품들은 오롯이 나에게 집중하고 내면의 이야기에 귀 기울이는 일상의 의식을 보다 깊고 내밀한 시간으로 만들어줍니다.",
-      "retualTestEng": "Nonfiction is a lifestyle beauty brand created for and inspired by you most honest self. Based on the finest raw materials and delicate perfumery, we present a fragrance line that creates a mysterious and unique mood, and a body card product line that completes the beginning to end of the day cycles."
+      "title": "Scents that bring landscapes to life",
+      "subtitle": "풍경을 불러오는 향기",
+      "content": {
+        "sentence1": "우리 과거도 마찬가지다. 지나가 버린 과거를 되살리려는 노력은 헛된 일이며, 모든 지성의 노력도 불필요하다.",
+        "sentence2": "과거는 우리 지성의 영역 밖에, 그 힘이 미치지 않는 곳에, 우리가 전혀 생각도 해 보지 못한 어떤 물질적 대상 안에 (또는 그 대상이 우리에게 주는 감각 안에) 숨어 있다.",
+        "sentence3": "이러한 대상을 우리가 죽기 전에 만나거나 만나지 못하는 것은 순전히 우연에 달렸다.",
+        "sentence4": "- 『잃어버린 시간을 찾아서』, 마르셀 푸르스트 가운데에서",
+        "sentence5": "Il en est ainsi de notre passé. C’est peine perdue que nous cherchions à l’évoquer, tous les efforts de notre intelligence sont inutiles. Il est caché hors de son domaine",
+        "sentence6": "et de sa portée, en quelque objet matériel (en la sensation que nous donnerait cet objet matériel), que nous ne soupçonnons pas.",
+        "sentence7": "Cet objet, il dépend du hasard que nous le rencontrions avant de mourir, ou que nous ne le rencontrions pas.",
+        "sentence8": "- from «À la recherche du temps perdu» by, Marcel Proust"
+      }
+    },
+    "thirdAbout": {
+      "content1": "프랑스 작가 마르셀 프루스트(Marcel Proust)는 어느 겨울날 홍차에 마들렌 과자를 적셔 한입 베어 문 순간 어릴적 고향에서 숙모가 내어주곤 했던 마들렌의 향기를 떠올렸다고 합니다. 그리고 그 기억은 그의 대표작 ‘잃어버린 시간을 찾아서’의 집필로 이어졌습니다. 트와네즈의 조향사들은 마치 번역가들이 그러하듯, 어떤 향이 어떤 풍경을 불러오는지 잘 알고 있습니다. 그리고 그 향들을 담아내는 법도. 트와네즈가 담아낸 향기가 불러 오는 다양한 정경을 곁에 펼쳐두십시오.",
+      "content2": "French author Marcel Proust is said to have dipped a madeleine in black tea one winter's day and taken a bite, only to be reminded of the scent of the madeleines his aunt used to serve in his childhood home. The memory led to the writing of his classic novel, In Search of Lost Time. Like translators, the perfumers at TROIS NEZ know which scents evoke which landscapes, and how to capture them. We invite you to discover the different landscapes that our fragrances evoke."
+    },
+    "fourthAbout": {
+      "title": "Scents to Senses",
+      "subtitle": "향기에서 다른 감각으로",
+      "content1": "향기가 불러오는 풍경 역시 강렬하지만, 공기속에 흩뿌려진 듯 잡아내기는 어렵습니다. 트와네즈의 디자인은 그런 풍경을 색으로, 또 때로는 무늬로 옮겨옵니다. 향기를 통해 시작된 감각적 자극이 또 다른 감각들로 이어지며 여러분을 새로운 차원의 정취로 이끌 수 있도록.",
+      "content2": "The landscapes evoked by scents are intense, but hard to capture, as if they were invisibly scattered in the air. Twanez's designs translate these landscapes, sometimes into colors, sometimes into patterns. So that the sensory experience that begins with a scent leads to another, and another, and another, and another."
+    },
+    "fifthAbout": {
+      "title": "Where scents stay",
+      "subtitle": "향기가 머무는 곳",
+      "content1": "신선한 바람이 스치는 열대의 노래, 따스한 햇빛이 쬐는 여름날 파티의 왁자함 부터 홀로 맞이한 초저녁의 고요와 달빛 아래 걷던 걸음의 자박거림. 그 기억의 풍경들을 언제 어디로든 불러올 수 있도록 담아낼 수 있다면….트와네즈는 여러분이 일상속에서 언제든 새로운 향기의 정경을 펼칠 수 있도록 끝없이 궁리하고 있습니다. 디퓨저를 비롯한 룸 프래그런스 부터, 핸드크림과 같은 코스메틱, 그리고 향기를 담을 수 있는 것이라면 무엇이든 연구중이지요. 트와네즈가 그려나갈 풍경을 기대하셔도 좋습니다.",
+      "content2": "The song of the tropics on a fresh breeze, the buzz of a summer party in the warmth of the sun, the silence of an early evening alone and the crackle of a moonlit walk. If only we could capture those memories so that they could be recalled at any time, anywhere. .... At TROIS NEZ, we are constantly developing new products to create new scented landscapes in your daily life. From room fragrances, including diffusers, to cosmetics, such as hand creams, and much more, we're working on more, so stay tuned for more scents and landscapes from our perfumers."
     }
   },
   "Product": {

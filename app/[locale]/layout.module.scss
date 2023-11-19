@@ -8,3 +8,11 @@
     flex-direction: column;
   }
 }
+
+@media screen and (max-width: 780px) {
+  .html {
+    body {
+      justify-content: space-between;
+    }
+  }
+}
