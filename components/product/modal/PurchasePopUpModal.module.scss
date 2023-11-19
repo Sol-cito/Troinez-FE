@@ -1,0 +1,40 @@
+.box {
+  font-weight: bolder;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #fff;
+  z-index: 1000;
+}
+.box_container {
+  width: 20vw;
+  height: 8vw;
+  border: solid 1px;
+  .title_container {
+    width: 100%;
+    height: 5vw;
+    line-height: 5vw;
+    text-align: center;
+    border-bottom: solid 1px;
+  }
+  .button_container {
+    width: 100%;
+    height: 3vw;
+    button {
+      width: 50%;
+      height: 3vw;
+      border: 0;
+      border-right: solid 1px;
+      border-bottom: solid 1px;
+    }
+    .link {
+      .yes {
+        border-right: solid 1px;
+      }
+      button {
+        border-right: 0;
+      }
+    }
+  }
+}

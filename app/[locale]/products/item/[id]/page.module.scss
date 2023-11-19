@@ -158,6 +158,33 @@
   }
 }
 
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); // 회색 오버레이
+  z-index: 900; // 다른 요소들보다 상위에 위치하도록 z-index 설정
+}
+
+.shipping_title {
+  font-weight: bold;
+}
+.shipping_sub_title {
+  line-height: 1vw;
+}
+.return_title {
+  font-weight: bold;
+}
+.return_sub_title {
+  line-height: 1vw;
+}
+
+.return_sub2_title {
+  line-height: 1vw;
+  margin-left: 1vw;
+}
 @media screen and (max-width: 780px) {
   .detail_box {
     display: flex;
