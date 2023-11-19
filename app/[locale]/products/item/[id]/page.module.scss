@@ -167,3 +167,21 @@
   background-color: rgba(0, 0, 0, 0.5); // 회색 오버레이
   z-index: 900; // 다른 요소들보다 상위에 위치하도록 z-index 설정
 }
+
+.shipping_title {
+  font-weight: bold;
+}
+.shipping_sub_title {
+  line-height: 1vw;
+}
+.return_title {
+  font-weight: bold;
+}
+.return_sub_title {
+  line-height: 1vw;
+}
+
+.return_sub2_title {
+  line-height: 1vw;
+  margin-left: 1vw;
+}

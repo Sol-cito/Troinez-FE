@@ -1,9 +1,9 @@
 /* eslint-disable react/button-has-type */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import Link from 'next/link';
-import styles from './PaymentPopUpmodal.module.scss';
+import styles from './AddCartPopUpModal.module.scss';
 
-export default function PaymentPopUpmodal({ closeModal }: { closeModal: any }) {
+export default function AddCartPopUpModal({ closeModal }: { closeModal: any }) {
   return (
     <div className={styles.box}>
       <div className={styles.box_container}>

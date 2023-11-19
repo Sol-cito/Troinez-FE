@@ -37,6 +37,11 @@
     display: inline-block;
     vertical-align: top;
     text-align: right;
+    div {
+      width: 50%;
+      display: inline-block;
+      line-height: 10vw;
+    }
   }
 }
 

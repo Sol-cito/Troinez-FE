@@ -38,9 +38,6 @@ export default async function RootLayout({
 
   return (
     <html className={styles.html} lang={locale}>
-      <head>
-        <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js" />
-      </head>
       <body>
         <NextIntlClientProvider locale={locale} messages={messages}>
           <Header isLogin={isLogin} token={token} username={username} />

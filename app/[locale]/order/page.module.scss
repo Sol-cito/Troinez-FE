@@ -3,7 +3,10 @@ $font_size: 0.9vw;
 .body_container {
   font-size: $font_size;
   .row_container {
+    margin-bottom: 1vw;
     .row_title {
+      font-size: 1.2vw;
+      line-height: 3vw;
       font-weight: bolder;
     }
   }
@@ -22,4 +25,34 @@ $font_size: 0.9vw;
   width: 15vw;
   height: 3vw;
   margin: 1vw 0 2vw 0;
+}
+
+.total_amount {
+  font-weight: bolder;
+}
+
+.agree_div {
+  line-height: 3vw;
+  .agree_div_checkbox {
+    width: 3%;
+    margin: 0 0 0 0;
+  }
+  .agree_div_button {
+    width: 97%;
+    margin: 0 0 0 0;
+    text-align: left;
+    background-color: #fff;
+    border: 0;
+  }
+  .lightgray_div {
+    background-color: #fafafa;
+    margin: 1vw 0 1vw 0;
+    span {
+      font-weight: bolder;
+    }
+  }
+}
+
+.mgn_left {
+  margin-left: 3%;
 }

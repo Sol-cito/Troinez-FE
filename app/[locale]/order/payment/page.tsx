@@ -13,8 +13,12 @@ import {
 } from '@tosspayments/payment-widget-sdk';
 import { nanoid } from 'nanoid';
 
-const clientKey = 'test_gck_docs_Ovk5rk1EwkEbP0W43n07xlzm';
-const customerKey = 'YbX2HuSlsC9uVJW6NMRMj';
+import styles from './page.module.scss';
+
+const clientKey = process.env.NEXT_PUBLIC_TOS_CLIENT_KEY;
+const customerKey = process.env.NEXT_PUBLIC_TOS_CUSTOMER_KEY;
+// http://localhost:3000/order/payment/success?paymentType=NORMAL&orderId=FHNHzc9nNHQjfa9_tiG6y&paymentKey=tviva2023111820545503n42&amount=50000
+const successUrl = 'http://localhost:8080/api/v1/ordersuccess';
 
 export default function TossPayments() {
   const paymentWidgetRef = useRef<PaymentWidgetInstance | null>(null);
@@ -27,7 +31,7 @@ export default function TossPayments() {
         orderName: '토스 티셔츠 외 2건',
         customerName: '김토스',
         customerEmail: 'customer123@gmail.com',
-        successUrl: `${window.location.origin}/order/payment/success`,
+        successUrl: `${successUrl}`,
         failUrl: `${window.location.origin}/order/payment/fail`,
       });
     } catch (err) {
@@ -43,10 +47,12 @@ export default function TossPayments() {
   }, []);
 
   return (
-    <div className="TossPayments">
+    <div className={styles.tossPayments}>
       <h1>주문서</h1>
       <div id="paymet-widget" />
-      <button onClick={paymentButtonAction}>결제하기</button>
+      <button className="" onClick={paymentButtonAction}>
+        결제하기
+      </button>
     </div>
   );
 }

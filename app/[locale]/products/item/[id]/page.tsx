@@ -1,3 +1,5 @@
+/* eslint-disable react/no-danger */
+
 'use client';
 
 import { ProductDetail } from '@/interfaces/product/productDetail';
@@ -9,7 +11,8 @@ import { useEffect, useState } from 'react';
 import CarouselImages from '@/components/carouselImages/carouselImages';
 import { Params } from 'next/dist/shared/lib/router/utils/route-matcher';
 import { addCartCookie } from '@/utils/tokenUtils';
-import PaymentPopUpmodal from '@/components/product/modal/PaymentPopUpmodal';
+import AddCartPopUpModal from '@/components/product/modal/AddCartPopUpModal';
+import PurchasePopUpModal from '@/components/product/modal/PurchasePopUpModal';
 import styles from './page.module.scss';
 
 export default function ProductDetailPage({
@@ -19,11 +22,12 @@ export default function ProductDetailPage({
 }) {
   const productDetailTrans = useTranslations('Product.detail');
   const [productDetail, setProductDetail] = useState<ProductDetail>();
-
   const [selectedProductNumber, setSelectedProductNumber] = useState<number>(1);
+  const [showCartModal, setShowCartModal] = useState(false);
+  const [showPurchaseModal, setShowPurchaseModal] = useState(false);
+  const [showOverlay, setShowOverlay] = useState(false);
 
   const productId: number = id;
-
   const getProductDetail = async () => {
     const getParameter: GetParameter = {
       url: '/products',
@@ -32,17 +36,14 @@ export default function ProductDetailPage({
     const res: ProductDetail = await getApiCall(getParameter);
     setProductDetail(res);
   };
-
-  useEffect(() => {
-    getProductDetail();
-  }, []);
-
   const convertToHtml = (target: string) => (
     <div dangerouslySetInnerHTML={{ __html: target }} />
   );
 
-  const [showCartModal, setShowCartModal] = useState(false);
-  const [showOverlay, setShowOverlay] = useState(false);
+  const onClickPurchaseHandle = () => {
+    setShowOverlay(!showOverlay);
+    setShowPurchaseModal(!showPurchaseModal);
+  };
 
   const addCartButtonAction = () => {
     // eslint-disable-next-line @typescript-eslint/no-shadow
@@ -57,35 +58,35 @@ export default function ProductDetailPage({
     setShowCartModal(!showCartModal);
   };
 
-  const closeModal = () => {
+  const closeAddCartPopUpModal = () => {
     setShowOverlay(false);
     setShowCartModal(false);
   };
 
-  // const paymentButtonAction = () => {
-  //   const selectedProductCount = document.getElementById(
-  //     'selected-product-count'
-  //   )?.value;
-  //   const productPrice = document.getElementById('product-price')?.innerText;
-  //   const amount = document.getElementById('product-total-price')?.innerText;
+  const closePurchasePopUpModal = () => {
+    setShowOverlay(false);
+    setShowPurchaseModal(false);
+  };
 
-  //   const clientKey = 'test_ck_D5GePWvyJnrK0W0k6q8gLzN97Eoq';
-  //   const tossPayments = TossPayments(clientKey);
-  //   tossPayments.requestPayment('카드', {
-  //     amount: 15000,
-  //     orderId: '9g7YMXTywW6IUi8vuCpr7',
-  //     orderName: '토스 티셔츠 외 2건',
-  //     customerName: '박토스',
-  //     successUrl: 'http://localhost:8080/success',
-  //     failUrl: 'http://localhost:8080/fail',
-  //   });
-  // };
+  useEffect(() => {
+    getProductDetail();
+  }, []);
 
   return (
     <div>
       <div>
         {showOverlay && <div className={styles.overlay}> </div>}
-        {showCartModal && <PaymentPopUpmodal closeModal={closeModal} />}
+        {showPurchaseModal && (
+          <PurchasePopUpModal
+            closeModal={closePurchasePopUpModal}
+            selectedProductId={productId}
+            selectedProductCount={selectedProductNumber}
+            selectedProductPrice={productDetail?.discountedPrice}
+          />
+        )}
+        {showCartModal && (
+          <AddCartPopUpModal closeModal={closeAddCartPopUpModal} />
+        )}
       </div>
       {productDetail && (
         <>
@@ -135,6 +136,48 @@ export default function ProductDetailPage({
                 {convertToHtml(productDetail.information)}
                 <p className={styles.desc_sub_title}>CAUTION</p>
                 {convertToHtml(productDetail.caution)}
+                <hr />
+                <p className={styles.shipping_title}>SHIPPING</p>
+                <p className={styles.shipping_sub_title}>
+                  {' '}
+                  - 주문일 오후 2시까지 결제 완료된 주문은 당일 출고됩니다.(주말
+                  및 공휴일 제외)
+                </p>
+                <p className={styles.shipping_sub_title}>
+                  - 3만원 이상 구매 시 배송비는 무료입니다.
+                </p>
+                <p className={styles.shipping_sub_title}>
+                  - 제주 지역 배송비 추가 3,000원 / 제주 외 도서지역 배송비 추가
+                  5,000원
+                </p>
+                <p className={styles.return_title}>RETURN</p>
+                <p className={styles.return_sub_title}>
+                  - 단순 변심으로 인한 교환/반품은 상품 수령 후 7일 이내
+                  가능합니다.
+                </p>
+                <p className={styles.return_sub_title}>
+                  - 단순 변심으로 인한 교환/반품시 왕복 배송비가 발생합니다.
+                  (편도 3,000원)
+                </p>
+                <p className={styles.return_sub_title}>
+                  - 상품 하자 및 오배송의 경우 불량 확인 시 배송비는 발생하지
+                  않습니다.
+                </p>
+                <p className={styles.return_sub_title}>
+                  - 다음과 같은 경우 교환/환불이 불가능합니다.
+                </p>
+                <p className={styles.return_sub2_title}>
+                  {' '}
+                  1. 제품을 수령한 날로부터 7일이 지난 경우
+                </p>
+                <p className={styles.return_sub2_title}>
+                  {' '}
+                  2. 제품 박스가 훼손되어 상품가치가 상실된 경우
+                </p>
+                <p className={styles.return_sub2_title}>
+                  {' '}
+                  3. 제품을 사용하였거나 일부를 소비하여 상품가치가 상실된 경우
+                </p>
                 <hr />
               </div>
               <div className={styles.payment_box}>
@@ -196,7 +239,7 @@ export default function ProductDetailPage({
                     type="button"
                     id="non-member-payment-button"
                     className={styles.payment_decision_buy}
-                    // onClick={purchase}
+                    onClick={onClickPurchaseHandle}
                   >
                     {productDetailTrans('nonMemberBuy')}
                   </button>
