@@ -12,7 +12,10 @@ import DetailAddressInputBox from '@/components/order/inputBox/detailAddressInpu
 import ZipCodeAndAddressInputBox from '@/components/order/inputBox/zipCodeAndAddressInputBox';
 import RequestInputBox from '@/components/order/inputBox/requestInputBox';
 import orderVaildCheck from '@/utils/orderUtil';
-import { OrderRequestInterface } from '@/interfaces/order/OrderRequestInterface';
+import {
+  OrderProductDtoInterface,
+  OrderRequestInterface,
+} from '@/interfaces/order/OrderRequestInterface';
 import { useState, useEffect } from 'react';
 import { useSearchParams } from 'next/navigation';
 import styles from './page.module.scss';
@@ -117,6 +120,11 @@ export default function Order() {
         productCountParam !== null &&
         amountParam != null
       ) {
+        const newOrderProductDto: OrderProductDtoInterface = {
+          productId: parseInt(productIdParam, 10),
+          productCount: parseInt(productCountParam, 10),
+        };
+
         setOrderType(ORDER);
         setOrderProductId(parseInt(productIdParam, 10));
         setOrderProductCount(parseInt(productCountParam, 10));
@@ -125,7 +133,10 @@ export default function Order() {
           ...orderRequest,
           productTotalPrice: parseInt(amountParam, 10),
           totalPrice: parseInt(amountParam, 10) + orderRequest.deliveryPrice,
+          orderProductDtoList: [newOrderProductDto],
         });
+      } else {
+        // error
       }
     }
   }, []);
