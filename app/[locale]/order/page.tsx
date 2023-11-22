@@ -18,6 +18,7 @@ import {
 } from '@/interfaces/order/OrderRequestInterface';
 import { useState, useEffect } from 'react';
 import { useSearchParams } from 'next/navigation';
+import { nanoid } from 'nanoid';
 import styles from './page.module.scss';
 
 export default function Order() {
@@ -35,6 +36,7 @@ export default function Order() {
     receiverDetailAddress: '',
     receiverRequest: '',
     productTotalPrice: 0,
+    orderId: '',
     salePrice: 0,
     deliveryType: '일반배송',
     deliveryPrice: 3000,
@@ -86,7 +88,7 @@ export default function Order() {
       // successUrl: `${window.location.origin}/order/payment/success`,
       // failUrl: `${window.location.origin}/order/payment/fail`,
       // 결재창 띄우기 with params
-      const params = `?type=order&productid=${orderProductId}&customername=${orderRequest.userName}&customeremail=${orderRequest.email[0]}@${orderRequest.email[1]}`;
+      const params = `?type=order&productId=${orderProductId}&customerName=${orderRequest.userName}&customerEmail=${orderRequest.email[0]}@${orderRequest.email[1]}`;
       window.location.href = '/order/payment'.concat(params);
 
       // success url 오면 success 창으로 넘겨줘야함.
@@ -103,9 +105,14 @@ export default function Order() {
   const CART = 'cart';
 
   useEffect(() => {
+    const orderId = nanoid();
+    setOrderRequest({
+      ...orderRequest,
+      orderId,
+    });
+
     // 만약 queryParams에 productId 와 productcount 값이 정상적으로 존재할 경우
     // -> 단일 주문
-
     const orderTypeParam = searchParams.get('type');
     if (orderTypeParam === CART) {
       setOrderType(CART);
