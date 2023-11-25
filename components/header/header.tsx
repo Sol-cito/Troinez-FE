@@ -96,7 +96,7 @@ function Header({
               ABOUT
             </Link>
             {loginoutLink}
-            <Link href={`/${locale}`} className={styles.menu_btn}>
+            <Link href={`/${locale}/cart`} className={styles.menu_btn}>
               CART
             </Link>
           </div>
