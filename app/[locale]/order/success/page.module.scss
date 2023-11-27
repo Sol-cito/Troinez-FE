@@ -1,0 +1,119 @@
+$font_size: 0.9vw;
+
+.body_container {
+  font-size: $font_size;
+  .row_container {
+    margin-top: 1.5vw;
+    margin-bottom: 1vw;
+    .row_title {
+      font-size: 1.8vw;
+      line-height: 3vw;
+      text-align: center;
+      font-weight: bolder;
+    }
+    .row_sub_title {
+      font-size: 1.2vw;
+      line-height: 5vw;
+      font-weight: bolder;
+      text-align: center;
+    }
+  }
+}
+
+.space_between {
+  display: flex;
+  justify-content: space-between;
+}
+
+.center {
+  text-align: center;
+}
+
+.payment_btn {
+  width: 15vw;
+  height: 3vw;
+  margin: 1vw 0 2vw 0;
+}
+
+.total_amount {
+  font-weight: bolder;
+}
+
+.agree_div {
+  line-height: 3vw;
+  .agree_div_checkbox {
+    width: 3%;
+    margin: 0 0 0 0;
+  }
+  .agree_div_button {
+    width: 97%;
+    margin: 0 0 0 0;
+    text-align: left;
+    background-color: #fff;
+    border: 0;
+  }
+  .lightgray_div {
+    background-color: #fafafa;
+    margin: 1vw 0 1vw 0;
+    span {
+      font-weight: bolder;
+    }
+  }
+}
+
+.mgn_left {
+  margin-left: 3%;
+}
+
+.blue {
+  color: skyblue;
+}
+
+.keep_shopping_btn {
+  width: 13vw;
+  height: 3.5vw;
+  font-size: 1vw;
+  font-weight: bold;
+}
+.product_list {
+  text-align: center;
+  width: 100%;
+}
+
+.width_40 {
+  width: 40%;
+  margin: 0 auto;
+}
+.hr_mgn_top_1vw {
+  margin-top: 2vw;
+  width: 90%;
+}
+
+.delivery_info_box {
+  margin: 0 auto;
+  width: 60%;
+}
+.delivery_title {
+  font-weight: bolder;
+  font-size: 1.2vw;
+  line-height: 3vw;
+}
+.delivery_row {
+  display: flex;
+  line-height: 2vw;
+  align-items: center;
+}
+.delivery_row_last {
+  margin-bottom: 5vw;
+}
+.delivery_row_key {
+  font-size: 1vw;
+  font-weight: bold;
+  color: gray;
+  width: 15%;
+}
+
+.delivery_row_value {
+  display: flex;
+  width: 85%;
+}

@@ -11,32 +11,34 @@ import {
   loadPaymentWidget,
   PaymentWidgetInstance,
 } from '@tosspayments/payment-widget-sdk';
-import { nanoid } from 'nanoid';
-
+import { useSearchParams } from 'next/navigation';
 import styles from './page.module.scss';
 
 const clientKey: string =
   process.env.NEXT_PUBLIC_TOS_CLIENT_KEY === undefined
     ? ''
     : process.env.NEXT_PUBLIC_TOS_CLIENT_KEY;
-const customerKey: string =
-  process.env.NEXT_PUBLIC_TOS_CUSTOMER_KEY === undefined
-    ? ''
-    : process.env.NEXT_PUBLIC_TOS_CUSTOMER_KEY;
 // http://localhost:3000/order/payment/success?paymentType=NORMAL&orderId=FHNHzc9nNHQjfa9_tiG6y&paymentKey=tviva2023111820545503n42&amount=50000
-const successUrl = 'http://localhost:8080/api/v1/ordersuccess';
+const successUrl = 'http://localhost:8080/api/v1/orderSuccess';
 
 export default function TossPayments() {
+  const searchParams = useSearchParams();
+  const customerEmail = searchParams.get('customerEmail');
+  const customerName = searchParams.get('customerName');
+  const orderId = searchParams.get('orderId');
+  const orderName = searchParams.get('orderName');
+  const totalPrice = parseInt(searchParams.get('totalPrice') || '-1', 10);
+  const customerKey = orderId || '123456';
+
   const paymentWidgetRef = useRef<PaymentWidgetInstance | null>(null);
-  const price = 50_000;
   const paymentButtonAction = async () => {
     const paymentWidget = paymentWidgetRef.current;
     try {
       await paymentWidget?.requestPayment({
-        orderId: nanoid(),
-        orderName: '토스 티셔츠 외 2건',
-        customerName: '김토스',
-        customerEmail: 'customer123@gmail.com',
+        orderId,
+        orderName,
+        customerName,
+        customerEmail,
         successUrl: `${successUrl}`,
         failUrl: `${window.location.origin}/order/payment/fail`,
       });
@@ -47,7 +49,7 @@ export default function TossPayments() {
   useEffect(() => {
     (async () => {
       const paymentWidget = await loadPaymentWidget(clientKey, customerKey);
-      paymentWidget.renderPaymentMethods('#paymet-widget', price);
+      paymentWidget.renderPaymentMethods('#paymet-widget', totalPrice);
       paymentWidgetRef.current = paymentWidget;
     })();
   }, []);

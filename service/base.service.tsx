@@ -42,7 +42,7 @@ async function baseApiCall(
     axiosResponse.statusCode = response.status;
     axiosResponse.data = response.data;
   } catch (e: any) {
-    let errorTitle: string = '[System Error]';
+    const errorTitle: string = '[System Error]';
     let errorDescription: string =
       'Unexpected error occured. Please contact admin.';
 

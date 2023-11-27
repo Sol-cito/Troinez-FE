@@ -3,6 +3,9 @@
 /* eslint-disable no-alert */
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable @next/next/no-before-interactive-script-outside-document */
+import { useState, useEffect } from 'react';
+import { useSearchParams } from 'next/navigation';
+import { nanoid } from 'nanoid';
 import OrderProduct from '@/components/order/orderProduct';
 import NameInputBox from '@/components/order/inputBox/nameInputBox';
 import CertificationNumberInputBox from '@/components/order/inputBox/certificationNumberInputBox';
@@ -16,9 +19,8 @@ import {
   OrderProductDtoInterface,
   OrderRequestInterface,
 } from '@/interfaces/order/OrderRequestInterface';
-import { useState, useEffect } from 'react';
-import { useSearchParams } from 'next/navigation';
-import { nanoid } from 'nanoid';
+import { OrderResponseInterface } from '@/interfaces/order/OrderResponseInterface';
+import { PostParameter, postApiCall } from '@/service/restAPI.service';
 import styles from './page.module.scss';
 
 export default function Order() {
@@ -36,7 +38,7 @@ export default function Order() {
     receiverDetailAddress: '',
     receiverRequest: '',
     productTotalPrice: 0,
-    orderId: '',
+    orderId: nanoid(),
     salePrice: 0,
     deliveryType: '일반배송',
     deliveryPrice: 3000,
@@ -76,7 +78,7 @@ export default function Order() {
     window.open('/privatepolicy', '_blank', windowFeatures);
   };
 
-  const onClickPayment = () => {
+  const onClickPayment = async () => {
     if (!isValidOrder) {
       alert('입력하지 않은 란이 있습니다.');
     } else if (orderType === 'order') {
@@ -88,9 +90,20 @@ export default function Order() {
       // successUrl: `${window.location.origin}/order/payment/success`,
       // failUrl: `${window.location.origin}/order/payment/fail`,
       // 결재창 띄우기 with params
-      const params = `?type=order&productId=${orderProductId}&customerName=${orderRequest.userName}&customerEmail=${orderRequest.email[0]}@${orderRequest.email[1]}`;
+      // 구매하기 버튼 누르면 우선 backend에 요청 먼저 보내기
+      const postParameter: PostParameter = {
+        url: '/order',
+        data: orderRequest,
+      };
+      const response: OrderResponseInterface = await postApiCall(postParameter);
+      console.log('response : ', response);
+      const { customerEmail } = response;
+      const { customerName } = response;
+      const { orderId } = response;
+      const { orderName } = response;
+      const { totalPrice } = orderRequest;
+      const params = `?customerName=${customerName}&customerEmail=${customerEmail}&orderId=${orderId}&orderName=${orderName}&totalPrice=${totalPrice}`;
       window.location.href = '/order/payment'.concat(params);
-
       // success url 오면 success 창으로 넘겨줘야함.
     } else {
       console.log(orderType);
@@ -169,6 +182,7 @@ export default function Order() {
           <OrderProduct
             orderProductId={orderProductId}
             orderProductCount={orderProductCount}
+            visibleDelivery
           />
         )}
       </div>

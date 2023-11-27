@@ -10,9 +10,11 @@ import styles from './orderProduct.module.scss';
 export default function OrderProduct({
   orderProductId,
   orderProductCount,
+  visibleDelivery,
 }: {
   orderProductId: number;
   orderProductCount: number;
+  visibleDelivery: boolean;
 }) {
   const [productDetail, setProductDetail] = useState<ProductDetail>();
   const getProductDetail = async () => {
@@ -44,10 +46,11 @@ export default function OrderProduct({
             />
           </div>
           <div className={styles.product_info}>
+            <br />
             <p>{productDetail?.productName}</p>
             <p>{productDetail?.discountedPrice}원</p>
-            <p>배송 : 기본배송</p>
-            <p>-</p>
+            {visibleDelivery && <p>배송 : 기본배송</p>}
+            {visibleDelivery && <p>-</p>}
           </div>
           <div className={styles.product_total_price}>
             <div>{orderProductCount}개</div>
