@@ -5,13 +5,21 @@ import Link from 'next/link';
 import { Product } from '@/interfaces/product/product';
 import { isMobile } from 'react-device-detect';
 import styles from './productItem.module.scss';
+import { useAppDispatch } from '@/redux/config';
+import { addToCart } from '@/redux/store/cart.store';
 
 export default function ProductItem({ product }: { product: Product }) {
+  const dispatch = useAppDispatch();
+
   const locale: string = useLocale();
 
   const productDetail = useTranslations('Product.detail');
 
   const cartImg = '/common/product/img/cart-shopping-solid.svg';
+
+  const handleOnClickCart = () => {
+    dispatch(addToCart(product));
+  };
 
   return (
     <div className={styles.item_box}>
@@ -60,6 +68,7 @@ export default function ProductItem({ product }: { product: Product }) {
               alt="cart"
               width={15}
               height={15}
+              onClick={handleOnClickCart}
             />
             <span> Cart </span>
           </p>
@@ -67,4 +76,7 @@ export default function ProductItem({ product }: { product: Product }) {
       </div>
     </div>
   );
+}
+function cartItemList(): any {
+  throw new Error('Function not implemented.');
 }

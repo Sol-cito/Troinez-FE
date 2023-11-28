@@ -8,6 +8,7 @@ import MainWrapper from '@/components/mainWrapper/mainWrapper';
 import { cookies } from 'next/headers';
 import dynamic from 'next/dynamic';
 import styles from './layout.module.scss';
+import { Providers } from '@/redux/provider';
 
 export const metadata: Metadata = {
   title: 'Troisnez',
@@ -44,11 +45,13 @@ export default async function RootLayout({
   return (
     <html className={styles.html} lang={locale}>
       <body>
-        <NextIntlClientProvider locale={locale} messages={messages}>
-          <Header isLogin={isLogin} token={token} username={username} />
-          <MainWrapper content={children} />
-          <Footer />
-        </NextIntlClientProvider>
+        <Providers>
+          <NextIntlClientProvider locale={locale} messages={messages}>
+            <Header isLogin={isLogin} token={token} username={username} />
+            <MainWrapper content={children} />
+            <Footer />
+          </NextIntlClientProvider>
+        </Providers>
       </body>
     </html>
   );
