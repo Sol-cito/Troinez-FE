@@ -23,6 +23,10 @@ $header-fond-size: 0.8vw;
     text-align: center;
   }
 
+  .cart_btn {
+    margin-right: 0.5vw !important;
+  }
+
   .left {
     width: 45%;
     a {
@@ -51,6 +55,17 @@ $header-fond-size: 0.8vw;
     text-align: center;
     width: 45%;
     margin-left: auto;
+
+    .num_of_cart_item_wrapper {
+      display: inline-block;
+      width: 15px;
+      height: 15px;
+      border-radius: 50%;
+      background-color: black;
+      color: white;
+      text-align: center;
+      line-height: 15px;
+    }
   }
 }
 

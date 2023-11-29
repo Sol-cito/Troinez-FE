@@ -55,9 +55,10 @@
           border-width: 0.3vw;
           margin-left: -0.3vw;
         }
-        .cart_icon {
-          margin-left: 0.7vw;
-        }
+      }
+      .cart_area {
+        display: inline-block;
+        cursor: pointer;
       }
     }
   }

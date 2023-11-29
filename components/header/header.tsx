@@ -10,6 +10,7 @@ import DropdownMenu from '../dropdown/dropdownMenu';
 import DropdownBox from '../dropdown/dropdownBox';
 import HamburgerButton from '../hamburgerButton/hamburgerButton';
 import styles from './header.module.scss';
+import { useAppSelector } from '../../redux/config';
 
 function Header({
   isLogin,
@@ -26,6 +27,8 @@ function Header({
   const logOutUri = process.env.NEXT_PUBLIC_NAVER_LOGOUT_REQUEST_URI;
 
   const loginTrans = useTranslations('Login');
+
+  const { productList } = useAppSelector((state) => state.cartItemSlice);
 
   let loginoutLink;
   let usernameBtn;
@@ -96,9 +99,19 @@ function Header({
               ABOUT
             </Link>
             {loginoutLink}
-            <Link href={`/${locale}/cart`} className={styles.menu_btn}>
+            <Link
+              href={`/${locale}/cart`}
+              className={`${styles.menu_btn}, ${styles.cart_btn}`}
+            >
               CART
             </Link>
+            {productList.length !== 0 && (
+              <div className={styles.num_of_cart_item_wrapper}>
+                <div className={styles.num_of_cart_item}>
+                  {productList.length}
+                </div>
+              </div>
+            )}
           </div>
         )}
       </nav>

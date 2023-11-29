@@ -62,15 +62,16 @@ export default function ProductItem({ product }: { product: Product }) {
             <span className={styles.icon}>new</span>
           </p>
           <p>
-            <Image
-              src={cartImg}
-              className={styles.cart_icon}
-              alt="cart"
-              width={15}
-              height={15}
-              onClick={handleOnClickCart}
-            />
-            <span> Cart </span>
+            <div className={styles.cart_area} onClick={handleOnClickCart}>
+              <Image
+                src={cartImg}
+                className={styles.cart_icon}
+                alt="cart"
+                width={15}
+                height={15}
+              />
+              <span> Cart </span>
+            </div>
           </p>
         </div>
       </div>
