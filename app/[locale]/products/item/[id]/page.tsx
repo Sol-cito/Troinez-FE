@@ -59,7 +59,10 @@ export default function ProductDetailPage({
 
   const addCartButtonAction = async () => {
     const product: Product = await getProduct();
-    dispatch(addToCart(product));
+
+    for (let i = 0; i < selectedProductNumber; i++) {
+      dispatch(addToCart(product));
+    }
 
     setShowOverlay(!showOverlay);
     setShowCartModal(!showCartModal);
