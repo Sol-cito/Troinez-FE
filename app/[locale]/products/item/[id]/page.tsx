@@ -10,16 +10,20 @@ import Image from 'next/image';
 import { useEffect, useState } from 'react';
 import CarouselImages from '@/components/carouselImages/carouselImages';
 import { Params } from 'next/dist/shared/lib/router/utils/route-matcher';
-import { addCartCookie } from '@/utils/tokenUtils';
 import AddCartPopUpModal from '@/components/product/modal/AddCartPopUpModal';
 import PurchasePopUpModal from '@/components/product/modal/PurchasePopUpModal';
 import styles from './page.module.scss';
+import { useAppDispatch } from '@/redux/config';
+import { addToCart } from '@/redux/store/cart.store';
+import { Product } from '@/interfaces/product/product';
 
 export default function ProductDetailPage({
   params: { id },
 }: {
   params: Params;
 }) {
+  const dispatch = useAppDispatch();
+
   const productDetailTrans = useTranslations('Product.detail');
   const [productDetail, setProductDetail] = useState<ProductDetail>();
   const [selectedProductNumber, setSelectedProductNumber] = useState<number>(1);
@@ -30,7 +34,7 @@ export default function ProductDetailPage({
   const productId: number = id;
   const getProductDetail = async () => {
     const getParameter: GetParameter = {
-      url: '/products',
+      url: '/product/detail',
       params: { id: productId },
     };
     const res: ProductDetail = await getApiCall(getParameter);
@@ -45,15 +49,18 @@ export default function ProductDetailPage({
     setShowPurchaseModal(!showPurchaseModal);
   };
 
-  const addCartButtonAction = () => {
-    // eslint-disable-next-line @typescript-eslint/no-shadow
-    const id = productDetail?.id;
-    const productCount = selectedProductNumber;
-    const cartProduct = {
-      productId: id ?? 0,
-      productCount,
+  const getProduct = async () => {
+    const getParameter: GetParameter = {
+      url: '/product',
+      params: { id: productId },
     };
-    addCartCookie(cartProduct);
+    return await getApiCall(getParameter);
+  };
+
+  const addCartButtonAction = async () => {
+    const product: Product = await getProduct();
+    dispatch(addToCart(product));
+
     setShowOverlay(!showOverlay);
     setShowCartModal(!showCartModal);
   };

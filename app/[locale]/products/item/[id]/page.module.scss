@@ -126,6 +126,7 @@
           line-height: 3vw;
         }
         .payment_decision_buy {
+          cursor: pointer;
           background-color: darkgray;
           border: 3px solid darkgray;
           color: white;
@@ -133,6 +134,7 @@
           margin-left: 1%;
         }
         .payment_decision_basket {
+          cursor: pointer;
           background-color: white;
           border: 3px solid whitesmoke;
           font-weight: bold;

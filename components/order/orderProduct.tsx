@@ -19,7 +19,7 @@ export default function OrderProduct({
   const [productDetail, setProductDetail] = useState<ProductDetail>();
   const getProductDetail = async () => {
     const getParameter: GetParameter = {
-      url: '/products',
+      url: '/product/detail',
       params: { id: orderProductId },
     };
     const res: ProductDetail = await getApiCall(getParameter);
