@@ -19,6 +19,7 @@
     display: inline-block;
   }
   .product_info {
+    margin-top: 2%;
     padding: 0 0;
     width: 30%;
     display: inline-block;
@@ -30,6 +31,12 @@
     }
     .apply_count {
       margin-left: 0.5vw;
+    }
+
+    a {
+      color: black;
+      font-weight: bolder;
+      text-decoration: none;
     }
   }
   .product_total_price {
