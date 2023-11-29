@@ -4,6 +4,7 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 export interface CartItem {
   product: Product;
   quantity: number;
+  checked: boolean;
 }
 
 interface CartItemStatus {
@@ -32,8 +33,31 @@ export const cartItemSlice = createSlice({
         const newCartItem: CartItem = {
           product: action.payload,
           quantity: 1,
+          checked: true,
         };
         state.cartItemList = [...curList, newCartItem];
+      }
+    },
+    checkAllCartItems: (
+      state = initialState,
+      action: PayloadAction<Product>
+    ) => {
+      let curList: CartItem[] = state.cartItemList;
+      curList.forEach((item) => {
+        item.checked = true;
+      });
+    },
+    changeCartItemCheck: (
+      state = initialState,
+      action: PayloadAction<Product>
+    ) => {
+      let curList: CartItem[] = state.cartItemList;
+
+      const matchingCartItem: CartItem | undefined = curList.find(
+        (cartItem) => cartItem.product.id === action.payload.id
+      );
+      if (matchingCartItem) {
+        matchingCartItem.checked = !matchingCartItem.checked;
       }
     },
     decreaseItemNumber: (state, action: PayloadAction<Product>) => {
@@ -74,7 +98,12 @@ export const cartItemSlice = createSlice({
   },
 });
 
-export const { addToCart, decreaseItemNumber, removeFromCart } =
-  cartItemSlice.actions;
+export const {
+  addToCart,
+  checkAllCartItems,
+  changeCartItemCheck,
+  decreaseItemNumber,
+  removeFromCart,
+} = cartItemSlice.actions;
 
 export default cartItemSlice;

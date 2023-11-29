@@ -2,20 +2,16 @@
 
 import Image from 'next/image';
 import styles from './cartProduct.module.scss';
-import { useState } from 'react';
 import {
   CartItem,
   addToCart,
+  changeCartItemCheck,
   decreaseItemNumber,
 } from '@/redux/store/cart.store';
 import { useAppDispatch } from '@/redux/config';
-import { useAppSelector } from '../../redux/config';
 
 export default function CartProduct({ cartItem }: { cartItem: CartItem }) {
-  const [checked, setChecked] = useState(true);
-
   const dispatch = useAppDispatch();
-  const { cartItemList } = useAppSelector((state) => state.cartItemSlice);
 
   const handleIncreaseNumber = () => {
     dispatch(addToCart(cartItem.product));
@@ -36,9 +32,9 @@ export default function CartProduct({ cartItem }: { cartItem: CartItem }) {
       <div className={styles.product_checkbox_div}>
         <input
           type="checkbox"
-          checked={checked}
+          checked={cartItem.checked}
           onChange={() => {
-            setChecked(!checked);
+            dispatch(changeCartItemCheck(cartItem.product));
           }}
         />
       </div>

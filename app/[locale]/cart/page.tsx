@@ -1,26 +1,51 @@
 'use client';
 
 import styles from './page.module.scss';
-import { useAppSelector } from '../../../redux/config';
+import { useAppDispatch, useAppSelector } from '../../../redux/config';
 import CartProduct from '@/components/cartproduct/cartProduct';
 import { useEffect, useState } from 'react';
+import {
+  CartItem,
+  checkAllCartItems,
+  removeFromCart,
+} from '@/redux/store/cart.store';
 
 export default function Cart() {
   const [pageReady, setPageReady] = useState<boolean>(false);
 
+  const dispatch = useAppDispatch();
   const { cartItemList } = useAppSelector((state) => state.cartItemSlice);
 
   const getTotalPrice = () => {
-    return cartItemList.reduce((res, item) => {
-      console.log(item.product);
-      return res + item.product.discountedPrice * item.quantity;
-    }, 0);
+    return cartItemList
+      .filter((item) => {
+        if (item.checked) return item;
+      })
+      .reduce((res, item) => {
+        return res + item.product.discountedPrice * item.quantity;
+      }, 0);
   };
 
-  const handleOnClickRemoveFromCart = () => {};
+  const handleOnClickRemoveFromCart = () => {
+    if (window.confirm('선택하신 상품이 삭제됩니다. 삭제하시겠습니까?')) {
+      const checkedItems: CartItem[] = cartItemList.filter((item) => {
+        if (item.checked) return item;
+      });
+      checkedItems.forEach((item) => {
+        dispatch(removeFromCart(item.product));
+      });
+    }
+  };
+
+  const selectAllCartItems = () => {
+    cartItemList.forEach((item) => {
+      dispatch(checkAllCartItems(item.product));
+    });
+  };
 
   useEffect(() => {
     setPageReady(true);
+    selectAllCartItems();
   }, []);
 
   return (
@@ -58,7 +83,9 @@ export default function Cart() {
         <hr className={styles.hr_lighter} />
         <div className={styles.row_container}>
           <div className={styles.selector_button_box}>
-            <button type="button">전체선택</button>
+            <button type="button" onClick={selectAllCartItems}>
+              전체선택
+            </button>
             <button type="button" onClick={handleOnClickRemoveFromCart}>
               선택삭제
             </button>
