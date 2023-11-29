@@ -7,8 +7,12 @@ import { isMobile } from 'react-device-detect';
 import styles from './productItem.module.scss';
 import { useAppDispatch } from '@/redux/config';
 import { addToCart } from '@/redux/store/cart.store';
+import { useState } from 'react';
+import AddCartPopUpModal from './modal/AddCartPopUpModal';
 
 export default function ProductItem({ product }: { product: Product }) {
+  const [showCartModal, setShowCartModal] = useState(false);
+
   const dispatch = useAppDispatch();
 
   const locale: string = useLocale();
@@ -18,6 +22,7 @@ export default function ProductItem({ product }: { product: Product }) {
   const cartImg = '/common/product/img/cart-shopping-solid.svg';
 
   const handleOnClickCart = () => {
+    setShowCartModal(true);
     dispatch(addToCart(product));
   };
 
@@ -61,23 +66,28 @@ export default function ProductItem({ product }: { product: Product }) {
           <p className={styles.item_newest_icon}>
             <span className={styles.icon}>new</span>
           </p>
-          <p>
-            <div className={styles.cart_area} onClick={handleOnClickCart}>
-              <Image
-                src={cartImg}
-                className={styles.cart_icon}
-                alt="cart"
-                width={15}
-                height={15}
-              />
-              <span> Cart </span>
-            </div>
-          </p>
+          <div className={styles.cart_area} onClick={handleOnClickCart}>
+            <Image
+              src={cartImg}
+              className={styles.cart_icon}
+              alt="cart"
+              width={15}
+              height={15}
+            />
+            <span> Cart </span>
+          </div>
         </div>
+        {showCartModal && (
+          <>
+            <div className={styles.overlay} />
+            <AddCartPopUpModal
+              closeModal={() => {
+                setShowCartModal(false);
+              }}
+            />
+          </>
+        )}
       </div>
     </div>
   );
-}
-function cartItemList(): any {
-  throw new Error('Function not implemented.');
 }
