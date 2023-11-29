@@ -58,6 +58,8 @@ $header-fond-size: 0.8vw;
 
     .num_of_cart_item_wrapper {
       display: inline-block;
+      min-width: max-content;
+      min-height: max-content;
       width: 15px;
       height: 15px;
       border-radius: 50%;

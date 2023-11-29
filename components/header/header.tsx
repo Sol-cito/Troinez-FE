@@ -28,7 +28,7 @@ function Header({
 
   const loginTrans = useTranslations('Login');
 
-  const { productList } = useAppSelector((state) => state.cartItemSlice);
+  const { cartItemList } = useAppSelector((state) => state.cartItemSlice);
 
   let loginoutLink;
   let usernameBtn;
@@ -105,10 +105,12 @@ function Header({
             >
               CART
             </Link>
-            {productList.length !== 0 && (
+            {cartItemList && cartItemList.length !== 0 && (
               <div className={styles.num_of_cart_item_wrapper}>
                 <div className={styles.num_of_cart_item}>
-                  {productList.length}
+                  {cartItemList.reduce((res, ele) => {
+                    return res + ele.quantity;
+                  }, 0)}
                 </div>
               </div>
             )}
