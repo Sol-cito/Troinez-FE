@@ -9,8 +9,10 @@ import {
   checkAllCartItems,
   removeFromCart,
 } from '@/redux/store/cart.store';
+import PurchasePopUpModal from '@/components/product/modal/PurchasePopUpModal';
 
 export default function Cart() {
+  const [showOrderPopup, setShowOrderPopup] = useState<boolean>(false);
   const [pageReady, setPageReady] = useState<boolean>(false);
 
   const dispatch = useAppDispatch();
@@ -113,8 +115,21 @@ export default function Cart() {
             <hr className={styles.hr_normal} />
           </div>
           <div className={styles.product_buy_button_box}>
-            <button type="button">구매하기</button>
+            <button type="button" onClick={() => setShowOrderPopup(true)}>
+              구매하기
+            </button>
           </div>
+          {showOrderPopup && (
+            <>
+              <div className={styles.overlay} />
+              <PurchasePopUpModal
+                closeModal={() => setShowOrderPopup(false)}
+                productList={cartItemList.map((item) => {
+                  return item.product;
+                })}
+              />
+            </>
+          )}
         </div>
       </div>
     )
