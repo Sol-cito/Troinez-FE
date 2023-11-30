@@ -2,16 +2,21 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import Link from 'next/link';
 import styles from './PurchasePopUpModal.module.scss';
-import { Product } from '@/interfaces/product/product';
 
 export default function PurchasePopUpModal({
   closeModal,
-  productList,
+  selectedProductId,
+  selectedProductCount,
+  selectedProductPrice,
 }: {
-  closeModal: Function;
-  productList: Product[];
+  closeModal: any;
+  selectedProductId: number;
+  selectedProductCount: number;
+  selectedProductPrice: number | undefined;
 }) {
-  const orderUrl = '/order?type=order';
+  const orderUrl = `/order?type=order&productId=${selectedProductId}&productCount=${selectedProductCount}&amount=${
+    (selectedProductPrice || -1) * selectedProductCount
+  }`;
   return (
     <div className={styles.box}>
       <div className={styles.box_container}>
@@ -19,13 +24,10 @@ export default function PurchasePopUpModal({
           <span>구매하기 창으로 이동하시겠습니까 ?</span>
         </div>
         <div className={`${styles.button_container} ${styles.left_button}`}>
-          <Link
-            href={{ pathname: orderUrl, query: JSON.stringify(productList) }}
-            className={styles.link}
-          >
+          <Link href={orderUrl} className={styles.link}>
             <button className={styles.yes}>예</button>
           </Link>
-          <button onClick={() => closeModal()}>아니오</button>
+          <button onClick={closeModal}>아니오</button>
         </div>
       </div>
     </div>

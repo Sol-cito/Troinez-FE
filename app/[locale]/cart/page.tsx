@@ -122,12 +122,8 @@ export default function Cart() {
           {showOrderPopup && (
             <>
               <div className={styles.overlay} />
-              <PurchasePopUpModal
-                closeModal={() => setShowOrderPopup(false)}
-                productList={cartItemList.map((item) => {
-                  return item.product;
-                })}
-              />
+              {/* TO-DO: pop up modal... */}
+              {/* <PurchasePopUpModal closeModal={() => setShowOrderPopup(false)} /> */}
             </>
           )}
         </div>
