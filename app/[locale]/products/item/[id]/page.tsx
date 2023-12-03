@@ -105,7 +105,10 @@ export default function ProductDetailPage({
           </>
         )}
         {showCartModal && (
-          <AddCartPopUpModal closeModal={closeAddCartPopUpModal} />
+          <>
+            <div className={styles.overlay}> </div>
+            <AddCartPopUpModal closeModal={closeAddCartPopUpModal} />
+          </>
         )}
       </div>
       {productDetail && (
