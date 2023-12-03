@@ -9,7 +9,7 @@ export type SetOrderRequestType = React.Dispatch<
 >;
 
 export interface OrderRequestInterface {
-  orderProductDtoList: [OrderProductDtoInterface];
+  orderProductDtoList: OrderProductDtoInterface[];
   userName: string;
   phoneNumber: string[];
   email: string[];
