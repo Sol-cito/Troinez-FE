@@ -81,7 +81,7 @@ export default function Order() {
   const onClickPayment = async () => {
     if (!isValidOrder) {
       alert('입력하지 않은 란이 있습니다.');
-    } else if (orderType === 'order') {
+    } else if (orderType === 'single') {
       // backEndApi 호출
       // orderId: nanoid(),
       // orderName: '토스 티셔츠 외 2건',
@@ -96,7 +96,6 @@ export default function Order() {
         data: orderRequest,
       };
       const response: OrderResponseInterface = await postApiCall(postParameter);
-      console.log('response : ', response);
       const { customerEmail } = response;
       const { customerName } = response;
       const { orderId } = response;
@@ -106,16 +105,12 @@ export default function Order() {
       window.location.href = '/order/payment'.concat(params);
       // success url 오면 success 창으로 넘겨줘야함.
     } else {
-      console.log(orderType);
     }
   };
 
   useEffect(() => {
     setAllAgree(termsofserviceAgree && privatePolicyAgree);
   }, [termsofserviceAgree, privatePolicyAgree]);
-
-  const ORDER = 'order';
-  const CART = 'cart';
 
   useEffect(() => {
     const orderId = nanoid();
@@ -127,11 +122,9 @@ export default function Order() {
     // 만약 queryParams에 productId 와 productcount 값이 정상적으로 존재할 경우
     // -> 단일 주문
     const orderTypeParam = searchParams.get('type');
-    if (orderTypeParam === CART) {
-      setOrderType(CART);
-    }
-
-    if (orderTypeParam === ORDER) {
+    if (orderTypeParam === 'cart') {
+      setOrderType('cart');
+    } else {
       const productIdParam = searchParams.get('productId');
       const productCountParam = searchParams.get('productCount');
       const amountParam = searchParams.get('amount');
@@ -145,7 +138,7 @@ export default function Order() {
           productCount: parseInt(productCountParam, 10),
         };
 
-        setOrderType(ORDER);
+        setOrderType('single');
         setOrderProductId(parseInt(productIdParam, 10));
         setOrderProductCount(parseInt(productCountParam, 10));
         setOrderProductAmount(parseInt(amountParam, 10));
@@ -178,7 +171,7 @@ export default function Order() {
     <div className={styles.body_container}>
       <div className={styles.row_container}>
         <hr />
-        {orderType === ORDER && (
+        {orderType === 'single' && (
           <OrderProduct
             orderProductId={orderProductId}
             orderProductCount={orderProductCount}
@@ -189,7 +182,7 @@ export default function Order() {
       <div className={styles.row_container}>
         <hr />
         <div className={styles.total_amount}>Total</div>
-        {orderType === 'order' && <div>{orderProductAmount} 원</div>}
+        {orderType === 'single' && <div>{orderProductAmount} 원</div>}
         <hr />
       </div>
       <div className={styles.row_container}>
