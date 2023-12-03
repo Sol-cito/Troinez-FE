@@ -4,7 +4,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable @next/next/no-before-interactive-script-outside-document */
 import { useState, useEffect } from 'react';
-import { useSearchParams } from 'next/navigation';
+import { useRouter, useSearchParams } from 'next/navigation';
 import { nanoid } from 'nanoid';
 import OrderProduct from '@/components/order/orderProduct';
 import NameInputBox from '@/components/order/inputBox/nameInputBox';
@@ -22,10 +22,14 @@ import {
 import { OrderResponseInterface } from '@/interfaces/order/OrderResponseInterface';
 import { PostParameter, postApiCall } from '@/service/restAPI.service';
 import styles from './page.module.scss';
+import { useAppDispatch, useAppSelector } from '../../../redux/config';
 
 export default function Order() {
+  const dispatch = useAppDispatch();
+  const { cartItemList } = useAppSelector((state) => state.cartItemSlice);
+
   const initialOrderRequest: OrderRequestInterface = {
-    orderProductDtoList: [{ productId: 0, productCount: 0 }],
+    orderProductDtoList: [],
     userName: '',
     phoneNumber: ['010', '', ''],
     email: ['', ''],
@@ -61,69 +65,40 @@ export default function Order() {
   const [termsofserviceAgree, setTermsofserviceAgree] = useState(false);
   const [privatePolicyAgree, setPrivatePolicyAgree] = useState(false);
 
-  const windowFeatures = 'width=400,height=400';
-  const onClickAllAgreeCheckBox = () => {
-    setTermsofserviceAgree(true);
-    setPrivatePolicyAgree(true);
-    setAllAgree(true);
-  };
-
-  const onClickTermsOfServiceAgree = () => {
-    setTermsofserviceAgree(true);
-    window.open('/termsofservice', '_blank', windowFeatures);
-  };
-
-  const onClickPrivatePolicyAgree = () => {
-    setPrivatePolicyAgree(true);
-    window.open('/privatepolicy', '_blank', windowFeatures);
-  };
-
-  const onClickPayment = async () => {
-    if (!isValidOrder) {
-      alert('입력하지 않은 란이 있습니다.');
-    } else if (orderType === 'single') {
-      // backEndApi 호출
-      // orderId: nanoid(),
-      // orderName: '토스 티셔츠 외 2건',
-      // customerName: '김토스',
-      // customerEmail: 'customer123@gmail.com',
-      // successUrl: `${window.location.origin}/order/payment/success`,
-      // failUrl: `${window.location.origin}/order/payment/fail`,
-      // 결재창 띄우기 with params
-      // 구매하기 버튼 누르면 우선 backend에 요청 먼저 보내기
-      const postParameter: PostParameter = {
-        url: '/order',
-        data: orderRequest,
-      };
-      const response: OrderResponseInterface = await postApiCall(postParameter);
-      const { customerEmail } = response;
-      const { customerName } = response;
-      const { orderId } = response;
-      const { orderName } = response;
-      const { totalPrice } = orderRequest;
-      const params = `?customerName=${customerName}&customerEmail=${customerEmail}&orderId=${orderId}&orderName=${orderName}&totalPrice=${totalPrice}`;
-      window.location.href = '/order/payment'.concat(params);
-      // success url 오면 success 창으로 넘겨줘야함.
-    } else {
-    }
-  };
+  const router = useRouter();
 
   useEffect(() => {
-    setAllAgree(termsofserviceAgree && privatePolicyAgree);
-  }, [termsofserviceAgree, privatePolicyAgree]);
-
-  useEffect(() => {
-    const orderId = nanoid();
-    setOrderRequest({
-      ...orderRequest,
-      orderId,
-    });
-
-    // 만약 queryParams에 productId 와 productcount 값이 정상적으로 존재할 경우
-    // -> 단일 주문
     const orderTypeParam = searchParams.get('type');
     if (orderTypeParam === 'cart') {
       setOrderType('cart');
+
+      const orderProductDtoList: OrderProductDtoInterface[] = cartItemList
+        .filter((item) => {
+          if (item.checked === true) {
+            return item;
+          }
+        })
+        .map((item) => {
+          const orderProductDto: OrderProductDtoInterface = {
+            productId: item.product.id,
+            productCount: item.quantity,
+          };
+          return orderProductDto;
+        });
+
+      const productTotalPrice: number = cartItemList.reduce((res, item) => {
+        return (
+          res +
+          (item.checked ? item.product.discountedPrice * item.quantity : 0)
+        );
+      }, 0);
+
+      setOrderRequest({
+        ...orderRequest,
+        orderProductDtoList: orderProductDtoList,
+        productTotalPrice: productTotalPrice,
+        totalPrice: productTotalPrice + orderRequest.deliveryPrice,
+      });
     } else {
       const productIdParam = searchParams.get('productId');
       const productCountParam = searchParams.get('productCount');
@@ -149,10 +124,59 @@ export default function Order() {
           orderProductDtoList: [newOrderProductDto],
         });
       } else {
-        // error
+        alert('[Error] 잘못된 경로입니다.');
+        router.push(`/`);
       }
     }
   }, []);
+
+  const windowFeatures = 'width=400,height=400';
+  const onClickAllAgreeCheckBox = () => {
+    setTermsofserviceAgree(true);
+    setPrivatePolicyAgree(true);
+    setAllAgree(true);
+  };
+
+  const onClickTermsOfServiceAgree = () => {
+    window.open('/termsofservice', '_blank', windowFeatures);
+  };
+
+  const onClickPrivatePolicyAgree = () => {
+    window.open('/privatepolicy', '_blank', windowFeatures);
+  };
+
+  const onClickPayment = async () => {
+    if (!isValidOrder) {
+      alert('입력하지 않은 란이 있습니다.');
+      return;
+    }
+    // backEndApi 호출
+    // orderId: nanoid(),
+    // orderName: '토스 티셔츠 외 2건',
+    // customerName: '김토스',
+    // customerEmail: 'customer123@gmail.com',
+    // successUrl: `${window.location.origin}/order/payment/success`,
+    // failUrl: `${window.location.origin}/order/payment/fail`,
+    // 결재창 띄우기 with params
+    // 구매하기 버튼 누르면 우선 backend에 요청 먼저 보내기
+    const postParameter: PostParameter = {
+      url: '/order',
+      data: orderRequest,
+    };
+    const response: OrderResponseInterface = await postApiCall(postParameter);
+    const { customerEmail } = response;
+    const { customerName } = response;
+    const { orderId } = response;
+    const { orderName } = response;
+    const { totalPrice } = orderRequest;
+    const params = `?customerName=${customerName}&customerEmail=${customerEmail}&orderId=${orderId}&orderName=${orderName}&totalPrice=${totalPrice}`;
+    window.location.href = '/order/payment'.concat(params);
+    // success url 오면 success 창으로 넘겨줘야함.
+  };
+
+  useEffect(() => {
+    setAllAgree(termsofserviceAgree && privatePolicyAgree);
+  }, [termsofserviceAgree, privatePolicyAgree]);
 
   useEffect(() => {
     orderVaildCheck(
@@ -163,22 +187,31 @@ export default function Order() {
     );
   }, [orderRequest, allAgree]);
 
-  // 그 외
-  // -> 카트 주문
-
-  // 단일 주문의 경우 OrderProduct가 1개만 존재한다.
   return (
     <div className={styles.body_container}>
-      <div className={styles.row_container}>
-        <hr />
-        {orderType === 'single' && (
-          <OrderProduct
-            orderProductId={orderProductId}
-            orderProductCount={orderProductCount}
-            visibleDelivery
-          />
-        )}
-      </div>
+      {orderRequest.orderProductDtoList.length > 0 && (
+        <div className={styles.row_container}>
+          <hr />
+          {orderType === 'single' ? (
+            <OrderProduct
+              orderProductId={orderProductId}
+              orderProductCount={orderProductCount}
+              visibleDelivery
+            />
+          ) : (
+            orderRequest.orderProductDtoList.map((item) => {
+              console.log(item.productId);
+              return (
+                <OrderProduct
+                  orderProductId={item.productId}
+                  orderProductCount={item.productCount}
+                  visibleDelivery
+                />
+              );
+            })
+          )}
+        </div>
+      )}
       <div className={styles.row_container}>
         <hr />
         <div className={styles.total_amount}>Total</div>
@@ -202,7 +235,6 @@ export default function Order() {
           orderRequestState={orderRequest}
           setOrderRequestState={setOrderRequest}
         />
-        {/* <InputBox boxType="email" /> */}
         <span className={styles.row_title}>비회원 주문조회 인증번호</span>
         <CertificationNumberInputBox
           title="인증번호 입력"
@@ -213,12 +245,6 @@ export default function Order() {
         />
         <hr />
         <span className={styles.row_title}>배송 정보</span>
-        {/* <div>
-          <input type="checkbox" />
-          <span>직접입력</span>
-          <input type="checkbox" />
-          <span>주문자 정보와 동일</span>
-        </div> */}
         <NameInputBox
           title="수취인"
           orderRequestState={orderRequest}
@@ -279,13 +305,9 @@ export default function Order() {
             type="checkbox"
             className={styles.agree_div_checkbox}
             checked={allAgree}
-          />
-          <input
-            type="button"
-            className={styles.agree_div_button}
-            value="모든 약관 동의"
             onClick={onClickAllAgreeCheckBox}
           />
+          <span className={styles.agree_all}>모든 약관 동의</span>
         </div>
         <hr />
         <div className={styles.agree_div}>
@@ -293,11 +315,12 @@ export default function Order() {
             type="checkbox"
             className={styles.agree_div_checkbox}
             checked={termsofserviceAgree}
+            onChange={() => setTermsofserviceAgree(!termsofserviceAgree)}
           />
           <input
             type="button"
             className={styles.agree_div_button}
-            value="[필수] 쇼핑몰 이용약관 동의"
+            value="[필수] 쇼핑몰 이용약관 동의(약관을 보려면 클릭하세요)"
             onClick={onClickTermsOfServiceAgree}
           />
         </div>
@@ -307,11 +330,12 @@ export default function Order() {
             type="checkbox"
             className={styles.agree_div_checkbox}
             checked={privatePolicyAgree}
+            onChange={() => setPrivatePolicyAgree(!privatePolicyAgree)}
           />
           <input
             type="button"
             className={styles.agree_div_button}
-            value="[필수] 개인정보 수집 및 이용 동의"
+            value="[필수] 개인정보 수집 및 이용 동의(약관을 보려면 클릭하세요)"
             onClick={onClickPrivatePolicyAgree}
           />
         </div>

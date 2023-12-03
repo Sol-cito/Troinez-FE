@@ -33,9 +33,16 @@ $font_size: 0.9vw;
 
 .agree_div {
   line-height: 3vw;
+
+  .agree_all {
+    margin-left: 0.5vw;
+    font-size: 0.8rem;
+  }
+
   .agree_div_checkbox {
     width: 3%;
     margin: 0 0 0 0;
+    cursor: pointer;
   }
   .agree_div_button {
     width: 97%;
@@ -43,6 +50,7 @@ $font_size: 0.9vw;
     text-align: left;
     background-color: #fff;
     border: 0;
+    cursor: pointer;
   }
   .lightgray_div {
     background-color: #fafafa;
