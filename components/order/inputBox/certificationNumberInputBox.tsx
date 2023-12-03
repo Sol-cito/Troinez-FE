@@ -40,6 +40,7 @@ export default function CertificationNumberInputBox({
       <input
         className={styles.input_six_digit}
         type="text"
+        maxLength={6}
         value={orderRequestState.certificationNumber}
         placeholder="숫자6자리를 입력해주세요."
         onChange={certificationNumberHandleChange}
