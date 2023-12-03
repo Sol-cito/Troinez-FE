@@ -7,8 +7,11 @@ import Link from 'next/link';
 import { SHOP_DROPDOWN_LIST } from '@/common/shopDropdownList';
 import { usePathname, useRouter } from 'next/navigation';
 import styles from './hamburgerMenuBar.module.scss';
+import { useAppSelector } from '@/redux/config';
 
 export default function HamburgerMenuBar({ isLogin }: { isLogin: boolean }) {
+  const { cartItemList } = useAppSelector((state) => state.cartItemSlice);
+
   const [isHomeClicked, setIsHomeClicked] = useState(false);
   const [isShopClicked, setIsShopClicked] = useState(false);
 
@@ -41,15 +44,27 @@ export default function HamburgerMenuBar({ isLogin }: { isLogin: boolean }) {
           onClick={() => !isLogin && router.push(`/${locale}/login`)}
         />
         {locale === 'ko' && (
-          <Image
-            src="/common/icon/mobile-cart.svg"
-            alt="TNZ"
-            width={30}
-            height={30}
+          <div
             onClick={() => {
               router.push(`/cart`);
             }}
-          />
+          >
+            <Image
+              src="/common/icon/mobile-cart.svg"
+              alt="TNZ"
+              width={30}
+              height={30}
+            />
+            {cartItemList && cartItemList.length !== 0 && (
+              <div className={styles.num_of_cart_item_wrapper}>
+                <div className={styles.num_of_cart_item}>
+                  {cartItemList.reduce((res, ele) => {
+                    return res + ele.quantity;
+                  }, 0)}
+                </div>
+              </div>
+            )}
+          </div>
         )}
       </div>
       <div className={styles.home} onClick={onClickHome} role="presentation">

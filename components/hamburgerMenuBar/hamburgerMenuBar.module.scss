@@ -4,11 +4,32 @@
   font-size: 2.5vh;
 
   .login_and_cart {
+    position: relative;
     display: flex;
     justify-content: right;
 
     img {
       margin: 3vw;
+    }
+
+    .num_of_cart_item_wrapper {
+      position: absolute !important;
+      top: 50%;
+      right: 0;
+      display: inline-block;
+      min-width: max-content;
+      min-height: max-content;
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      background-color: black;
+      color: white;
+      text-align: center;
+      line-height: 18px;
+
+      .num_of_cart_item {
+        font-size: 0.9rem;
+      }
     }
   }
 
