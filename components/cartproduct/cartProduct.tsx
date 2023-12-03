@@ -82,9 +82,6 @@ export default function CartProduct({ cartItem }: { cartItem: CartItem }) {
               >
                 +
               </button>
-              <button type="button" className={styles.apply_count}>
-                변경
-              </button>
             </div>
           </div>
           <div className={styles.product_total_price}>
