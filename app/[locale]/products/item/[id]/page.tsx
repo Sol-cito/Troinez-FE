@@ -5,7 +5,7 @@
 import { ProductDetail } from '@/interfaces/product/productDetail';
 import { ProductImageType } from '@/interfaces/product/productImage';
 import { GetParameter, getApiCall } from '@/service/restAPI.service';
-import { useTranslations } from 'next-intl';
+import { useLocale, useTranslations } from 'next-intl';
 import Image from 'next/image';
 import { useEffect, useState } from 'react';
 import CarouselImages from '@/components/carouselImages/carouselImages';
@@ -26,6 +26,7 @@ export default function ProductDetailPage({
   params: Params;
 }) {
   const dispatch = useAppDispatch();
+  const locale: string = useLocale();
 
   const productDetailTrans = useTranslations('Product.detail');
   const [productDetail, setProductDetail] = useState<ProductDetail>();
@@ -71,6 +72,10 @@ export default function ProductDetailPage({
   };
 
   const addCartButtonAction = async () => {
+    if (locale === 'en') {
+      alert('Only available in Korea.');
+      return;
+    }
     const product: Product = await getProduct();
 
     for (let i = 0; i < selectedProductNumber; i++) {

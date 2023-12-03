@@ -66,16 +66,18 @@ export default function ProductItem({ product }: { product: Product }) {
           <p className={styles.item_newest_icon}>
             <span className={styles.icon}>new</span>
           </p>
-          <div className={styles.cart_area} onClick={handleOnClickCart}>
-            <Image
-              src={cartImg}
-              className={styles.cart_icon}
-              alt="cart"
-              width={15}
-              height={15}
-            />
-            <span> Cart </span>
-          </div>
+          {locale !== 'en' && (
+            <div className={styles.cart_area} onClick={handleOnClickCart}>
+              <Image
+                src={cartImg}
+                className={styles.cart_icon}
+                alt="cart"
+                width={15}
+                height={15}
+              />
+              <span> Cart </span>
+            </div>
+          )}
         </div>
         {showCartModal && (
           <>

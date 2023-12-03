@@ -10,8 +10,13 @@ import {
   removeFromCart,
 } from '@/redux/store/cart.store';
 import PurchasePopUpModal from '@/components/product/modal/PurchasePopUpModal';
+import { useLocale } from 'next-intl';
+import { useRouter } from 'next/navigation';
 
 export default function Cart() {
+  const locale: string = useLocale();
+  const router = useRouter();
+
   const [showOrderPopup, setShowOrderPopup] = useState<boolean>(false);
   const [pageReady, setPageReady] = useState<boolean>(false);
 
@@ -54,6 +59,10 @@ export default function Cart() {
   };
 
   useEffect(() => {
+    if (locale === 'en') {
+      alert('Only available in Korea.');
+      router.push(`/en`);
+    }
     setPageReady(true);
     selectAllCartItems();
   }, []);

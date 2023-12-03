@@ -99,20 +99,24 @@ function Header({
               ABOUT
             </Link>
             {loginoutLink}
-            <Link
-              href={`/${locale}/cart`}
-              className={`${styles.menu_btn}, ${styles.cart_btn}`}
-            >
-              CART
-            </Link>
-            {cartItemList && cartItemList.length !== 0 && (
-              <div className={styles.num_of_cart_item_wrapper}>
-                <div className={styles.num_of_cart_item}>
-                  {cartItemList.reduce((res, ele) => {
-                    return res + ele.quantity;
-                  }, 0)}
-                </div>
-              </div>
+            {locale !== 'en' && (
+              <>
+                <Link
+                  href={`/${locale}/cart`}
+                  className={`${styles.menu_btn}, ${styles.cart_btn}`}
+                >
+                  CART
+                </Link>
+                {cartItemList && cartItemList.length !== 0 && (
+                  <div className={styles.num_of_cart_item_wrapper}>
+                    <div className={styles.num_of_cart_item}>
+                      {cartItemList.reduce((res, ele) => {
+                        return res + ele.quantity;
+                      }, 0)}
+                    </div>
+                  </div>
+                )}
+              </>
             )}
           </div>
         )}
