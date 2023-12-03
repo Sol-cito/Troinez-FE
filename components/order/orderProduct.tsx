@@ -35,29 +35,30 @@ export default function OrderProduct({
       {productDetail && (
         <>
           <div className={styles.product_info_div}>
-            <div>
-              <div className={styles.product_image}>
-                <Image
-                  key={1}
-                  src={'https://d3en4rwu5hlcjb.cloudfront.net/product/perfume/'.concat(
-                    productDetail.productImageList[0].productImageUrl || 'error'
-                  )}
-                  alt="D01"
-                  fill
-                />
-              </div>
-              <div className={styles.product_info}>
-                <br />
-                <p>{productDetail.productName}</p>
-                <p>{productDetail.discountedPrice}원</p>
-                {visibleDelivery && <p>배송 : 기본배송</p>}
-                {visibleDelivery && <p>-</p>}
-              </div>
-              <div className={styles.product_total_price}>
-                <div>{orderProductCount}개</div>
-                <div>
-                  {orderProductCount * (productDetail.discountedPrice || -1)}원
-                </div>
+            <div className={styles.product_image}>
+              <Image
+                key={1}
+                src={'https://d3en4rwu5hlcjb.cloudfront.net/product/perfume/'.concat(
+                  productDetail.productImageList[0].productImageUrl || 'error'
+                )}
+                alt="D01"
+                fill
+              />
+            </div>
+            <div className={styles.product_info}>
+              <br />
+              <p>{productDetail.productName}</p>
+              <p>{productDetail.discountedPrice.toLocaleString()}원</p>
+              {visibleDelivery && <p>배송 : 기본배송</p>}
+              {visibleDelivery && <p>-</p>}
+            </div>
+            <div className={styles.product_total_price}>
+              <div>{orderProductCount}개</div>
+              <div>
+                {(
+                  orderProductCount * (productDetail.discountedPrice || -1)
+                ).toLocaleString()}
+                원
               </div>
             </div>
           </div>

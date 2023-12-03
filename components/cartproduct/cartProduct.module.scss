@@ -26,7 +26,7 @@
     vertical-align: top;
     .input_count {
       text-align: center;
-      width: 2vw;
+      width: 3vw;
       margin: 0 0.3vw;
     }
     .apply_count {
@@ -54,4 +54,39 @@
 .hr_lighter {
   border: 1px solid whitesmoke;
   width: 90%;
+}
+
+@media screen and (max-width: 780px) {
+  .product_info_div {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    .product_image {
+      width: 80%;
+      height: 80%;
+      img {
+        position: relative !important;
+      }
+    }
+
+    .product_info {
+      width: 90%;
+
+      .input_count {
+        width: 8vw;
+      }
+
+      .product_checkbox_div {
+        width: fit-content;
+        margin: 0 2% 0 0;
+      }
+    }
+
+    .product_total_price {
+      width: 100%;
+      margin-right: 5%;
+    }
+  }
 }

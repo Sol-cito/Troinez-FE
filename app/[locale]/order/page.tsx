@@ -68,6 +68,8 @@ export default function Order() {
   const router = useRouter();
 
   useEffect(() => {
+    window.scrollTo(0, 0);
+
     const orderTypeParam = searchParams.get('type');
     if (orderTypeParam === 'cart') {
       setOrderType('cart');
@@ -200,9 +202,9 @@ export default function Order() {
             />
           ) : (
             orderRequest.orderProductDtoList.map((item) => {
-              console.log(item.productId);
               return (
                 <OrderProduct
+                  key={item.productId}
                   orderProductId={item.productId}
                   orderProductCount={item.productCount}
                   visibleDelivery
@@ -280,22 +282,22 @@ export default function Order() {
       <div className={styles.row_container}>
         <div className={styles.space_between}>
           <span>상품 합계 금액</span>
-          <span>{orderRequest.productTotalPrice}</span>
+          <span>{orderRequest.productTotalPrice.toLocaleString()}원</span>
         </div>
         <hr />
         <div className={styles.space_between}>
           <span>할인 금액</span>
-          <span>{orderRequest.salePrice}</span>
+          <span>{orderRequest.salePrice.toLocaleString()}원</span>
         </div>
         <hr />
         <div className={styles.space_between}>
           <span>배송비</span>
-          <span>{orderRequest.deliveryPrice}</span>
+          <span>{orderRequest.deliveryPrice.toLocaleString()}원</span>
         </div>
         <hr />
         <div className={styles.space_between}>
           <span>최종 결재 금액</span>
-          <span>{orderRequest.totalPrice}</span>
+          <span>{orderRequest.totalPrice.toLocaleString()}원</span>
         </div>
         <hr />
       </div>
@@ -305,7 +307,7 @@ export default function Order() {
             type="checkbox"
             className={styles.agree_div_checkbox}
             checked={allAgree}
-            onClick={onClickAllAgreeCheckBox}
+            onChange={onClickAllAgreeCheckBox}
           />
           <span className={styles.agree_all}>모든 약관 동의</span>
         </div>
@@ -357,7 +359,7 @@ export default function Order() {
         <input
           className={styles.payment_btn}
           type="button"
-          value={`${orderRequest.totalPrice} 원 결제하기`}
+          value={`${orderRequest.totalPrice.toLocaleString()} 원 결제하기`}
           onClick={onClickPayment}
         />
       </div>

@@ -102,7 +102,7 @@ function Header({
             {locale !== 'en' && (
               <>
                 <Link
-                  href={`/${locale}/cart`}
+                  href={`/cart`}
                   className={`${styles.menu_btn}, ${styles.cart_btn}`}
                 >
                   CART

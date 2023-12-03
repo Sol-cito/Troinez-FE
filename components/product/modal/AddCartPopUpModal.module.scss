@@ -38,3 +38,29 @@
     }
   }
 }
+
+@media screen and (max-width: 780px) {
+  .box_container {
+    width: 65vw;
+    height: fit-content;
+
+    .title_container {
+      padding: 10% 0 10% 0;
+      height: fit-content;
+    }
+
+    .button_container {
+      button {
+        width: 50%;
+        height: 5vh;
+      }
+
+      .link {
+        button {
+          width: 50%;
+          height: 5vh;
+        }
+      }
+    }
+  }
+}

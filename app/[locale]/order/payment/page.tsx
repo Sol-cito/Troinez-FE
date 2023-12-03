@@ -43,7 +43,7 @@ export default function TossPayments() {
         failUrl: `${window.location.origin}/order/payment/fail`,
       });
     } catch (err) {
-      console.log(err);
+      alert('[Error] 결제 과정에서 에러가 발생했습니다. 다시 시도해주세요.');
     }
   };
   useEffect(() => {

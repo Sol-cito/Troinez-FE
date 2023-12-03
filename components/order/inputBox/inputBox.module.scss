@@ -57,3 +57,52 @@
 .mgn_left_1vw {
   margin-left: 1vw;
 }
+
+@media screen and (max-width: 780px) {
+  .phone_number {
+    width: 15%;
+  }
+  .warning {
+    font-size: 0.7rem;
+  }
+
+  .address_input {
+    width: 99%;
+    font-size: 0.8rem;
+  }
+
+  .inputbox_div {
+    margin: 5% 0 5% 0;
+    .inputbox_tit {
+      font-size: 0.8rem;
+    }
+    .email_input_box {
+      display: flex;
+      align-items: center;
+
+      .email_input {
+        width: 25%;
+      }
+
+      select {
+        margin-left: 2%;
+        padding: 1%;
+      }
+    }
+
+    .input_six_digit {
+      display: block;
+    }
+
+    .request_inputbox {
+      width: 99%;
+      min-height: 10vh;
+    }
+
+    input {
+      margin: 1% 0 1% 0;
+      min-height: 2.5vh;
+      font-size: 1rem;
+    }
+  }
+}

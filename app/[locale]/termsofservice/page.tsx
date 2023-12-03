@@ -1,3 +1,5 @@
+import styles from './page.module.scss';
+
 export default function TermsOfService() {
   const termsOfServiceContext: string[] = [
     '제1조(목적)',
@@ -139,7 +141,7 @@ export default function TermsOfService() {
     '② “몰”과 이용자 간에 제기된 전자상거래 소송에는 한국법을 적용합니다.',
   ];
   return (
-    <div>
+    <div className={styles.terms_of_service_context_box}>
       {termsOfServiceContext.map((line) => (
         // eslint-disable-next-line react/jsx-key
         <p>{line}</p>

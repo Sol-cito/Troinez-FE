@@ -40,13 +40,17 @@ export default function HamburgerMenuBar({ isLogin }: { isLogin: boolean }) {
           height={30}
           onClick={() => !isLogin && router.push(`/${locale}/login`)}
         />
-        <Image
-          src="/common/icon/mobile-cart.svg"
-          alt="TNZ"
-          width={30}
-          height={30}
-          onClick={() => {}}
-        />
+        {locale === 'ko' && (
+          <Image
+            src="/common/icon/mobile-cart.svg"
+            alt="TNZ"
+            width={30}
+            height={30}
+            onClick={() => {
+              router.push(`/cart`);
+            }}
+          />
+        )}
       </div>
       <div className={styles.home} onClick={onClickHome} role="presentation">
         <span className={styles.text}>HOME({locale.toLocaleUpperCase()})</span>

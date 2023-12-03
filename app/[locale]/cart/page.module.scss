@@ -4,7 +4,13 @@ $font_size: 0.9vw;
 .body_container {
   font-size: $font_size;
   .row_container {
-    margin: 0 3% 0 3%;
+    .row_title {
+      display: block;
+      text-align: left;
+      margin: 2% 5% 2% 5%;
+      font-size: 1.3rem;
+    }
+
     .product_list_box {
       width: 90%;
     }
@@ -31,6 +37,11 @@ $font_size: 0.9vw;
     text-align: right;
     margin-right: 5%;
     button {
+      cursor: pointer;
+      padding: 1%;
+      background-color: white;
+      border: 1px solid;
+      border-radius: 10%;
       margin: 1.2vw 1vw 1.2vw 0;
       margin-right: 1vw;
     }
@@ -54,6 +65,43 @@ $font_size: 0.9vw;
       width: 10vw;
       height: 3vw;
       font-size: 1.3vw;
+    }
+  }
+}
+
+@media screen and (max-width: 780px) {
+  .body_container {
+    font-size: $font_size;
+    .row_container {
+      font-size: 1rem;
+
+      .product_order_box {
+        margin-top: 3%;
+        line-height: normal;
+      }
+    }
+    .selector_button_box {
+      margin: 0;
+      text-align: center;
+
+      button {
+        width: 20%;
+        line-height: 1.5rem;
+        margin: 5%;
+      }
+    }
+
+    .product_list_box {
+      width: 100% !important;
+    }
+
+    .product_buy_button_box {
+      button {
+        width: 30%;
+        height: 20%;
+        margin: 3% 0 3% 0;
+        font-size: 1rem;
+      }
     }
   }
 }
