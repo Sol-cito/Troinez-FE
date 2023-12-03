@@ -45,6 +45,14 @@ export default function Cart() {
     });
   };
 
+  const onClickPurchase = () => {
+    if (cartItemList.filter((item) => item.checked).length === 0) {
+      alert('구매할 상품을 선택해주세요.');
+      return;
+    }
+    setShowOrderPopup(true);
+  };
+
   useEffect(() => {
     setPageReady(true);
     selectAllCartItems();
@@ -115,15 +123,20 @@ export default function Cart() {
             <hr className={styles.hr_normal} />
           </div>
           <div className={styles.product_buy_button_box}>
-            <button type="button" onClick={() => setShowOrderPopup(true)}>
+            <button type="button" onClick={onClickPurchase}>
               구매하기
             </button>
           </div>
           {showOrderPopup && (
             <>
               <div className={styles.overlay} />
-              {/* TO-DO: pop up modal... */}
-              {/* <PurchasePopUpModal closeModal={() => setShowOrderPopup(false)} /> */}
+              <PurchasePopUpModal
+                closeModal={() => setShowOrderPopup(false)}
+                purchaseContent={{
+                  isCartOrder: true,
+                  purchaseInfoList: [],
+                }}
+              />
             </>
           )}
         </div>
