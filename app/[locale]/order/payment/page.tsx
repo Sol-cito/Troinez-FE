@@ -58,7 +58,7 @@ export default function TossPayments() {
     <div className={styles.tossPayments}>
       <h1>주문서</h1>
       <div id="paymet-widget" />
-      <button className="" onClick={paymentButtonAction}>
+      <button className={styles.purchase_button} onClick={paymentButtonAction}>
         결제하기
       </button>
     </div>
