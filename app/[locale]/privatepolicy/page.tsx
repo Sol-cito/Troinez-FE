@@ -147,20 +147,24 @@ export default function PrivatePolicy() {
         <p>{line}</p>
       ))}
       <table border={1}>
-        <th>수탁업체</th>
-        <th>위탁업무</th>
-        <tr>
-          <td>NAVER PAY</td>
-          <td>결제</td>
-        </tr>
-        <tr>
-          <td>CJ대한통운</td>
-          <td>배송</td>
-        </tr>
-        <tr>
-          <td>우체국</td>
-          <td>배송</td>
-        </tr>
+        <tbody>
+          <tr>
+            <th>수탁업체</th>
+            <th>위탁업무</th>
+          </tr>
+          <tr>
+            <td>NAVER PAY</td>
+            <td>결제</td>
+          </tr>
+          <tr>
+            <td>CJ대한통운</td>
+            <td>배송</td>
+          </tr>
+          <tr>
+            <td>우체국</td>
+            <td>배송</td>
+          </tr>
+        </tbody>
       </table>
 
       {privatePolicyContext02.map((line) => (
