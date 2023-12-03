@@ -11,7 +11,10 @@ import { useEffect, useState } from 'react';
 import CarouselImages from '@/components/carouselImages/carouselImages';
 import { Params } from 'next/dist/shared/lib/router/utils/route-matcher';
 import AddCartPopUpModal from '@/components/product/modal/AddCartPopUpModal';
-import PurchasePopUpModal from '@/components/product/modal/PurchasePopUpModal';
+import PurchasePopUpModal, {
+  PurchaseContent,
+  PurchaseInfo,
+} from '@/components/product/modal/PurchasePopUpModal';
 import styles from './page.module.scss';
 import { useAppDispatch } from '@/redux/config';
 import { addToCart } from '@/redux/store/cart.store';
@@ -29,7 +32,7 @@ export default function ProductDetailPage({
   const [selectedProductNumber, setSelectedProductNumber] = useState<number>(1);
   const [showCartModal, setShowCartModal] = useState(false);
   const [showPurchaseModal, setShowPurchaseModal] = useState(false);
-  const [showOverlay, setShowOverlay] = useState(false);
+  const [purchaseContent, setPurchaseContent] = useState<PurchaseContent>();
 
   const productId: number = id;
   const getProductDetail = async () => {
@@ -39,13 +42,23 @@ export default function ProductDetailPage({
     };
     const res: ProductDetail = await getApiCall(getParameter);
     setProductDetail(res);
+
+    const purchaseInfo: PurchaseInfo = {
+      selectedProductId: productId,
+      selectedProductCount: selectedProductNumber,
+      selectedProductPrice: res.discountedPrice,
+    };
+
+    setPurchaseContent({
+      isCartOrder: false,
+      purchaseInfoList: [purchaseInfo],
+    });
   };
   const convertToHtml = (target: string) => (
     <div dangerouslySetInnerHTML={{ __html: target }} />
   );
 
   const onClickPurchaseHandle = () => {
-    setShowOverlay(!showOverlay);
     setShowPurchaseModal(!showPurchaseModal);
   };
 
@@ -64,17 +77,14 @@ export default function ProductDetailPage({
       dispatch(addToCart(product));
     }
 
-    setShowOverlay(!showOverlay);
     setShowCartModal(!showCartModal);
   };
 
   const closeAddCartPopUpModal = () => {
-    setShowOverlay(false);
     setShowCartModal(false);
   };
 
   const closePurchasePopUpModal = () => {
-    setShowOverlay(false);
     setShowPurchaseModal(false);
   };
 
@@ -85,14 +95,14 @@ export default function ProductDetailPage({
   return (
     <div>
       <div>
-        {showOverlay && <div className={styles.overlay}> </div>}
-        {showPurchaseModal && (
-          <PurchasePopUpModal
-            closeModal={closePurchasePopUpModal}
-            selectedProductId={productId}
-            selectedProductCount={selectedProductNumber}
-            selectedProductPrice={productDetail?.discountedPrice}
-          />
+        {showPurchaseModal && purchaseContent && (
+          <>
+            <div className={styles.overlay}> </div>
+            <PurchasePopUpModal
+              closeModal={closePurchasePopUpModal}
+              purchaseContent={purchaseContent}
+            />
+          </>
         )}
         {showCartModal && (
           <AddCartPopUpModal closeModal={closeAddCartPopUpModal} />
