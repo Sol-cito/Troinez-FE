@@ -17,7 +17,6 @@ export default function DetailAddressInputBox({
   setOrderRequestState: SetOrderRequestType;
 }) {
   const detailAddressHandleChange = (event: any) => {
-    console.log(event.target.value);
     setOrderRequestState({
       ...orderRequestState,
       receiverDetailAddress: event.target.value,

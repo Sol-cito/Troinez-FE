@@ -7,6 +7,7 @@ import { notFound } from 'next/navigation';
 import MainWrapper from '@/components/mainWrapper/mainWrapper';
 import { cookies } from 'next/headers';
 import dynamic from 'next/dynamic';
+import { Providers } from '@/redux/provider';
 import styles from './layout.module.scss';
 
 export const metadata: Metadata = {
@@ -44,11 +45,13 @@ export default async function RootLayout({
   return (
     <html className={styles.html} lang={locale}>
       <body>
-        <NextIntlClientProvider locale={locale} messages={messages}>
-          <Header isLogin={isLogin} token={token} username={username} />
-          <MainWrapper content={children} />
-          <Footer />
-        </NextIntlClientProvider>
+        <Providers>
+          <NextIntlClientProvider locale={locale} messages={messages}>
+            <Header isLogin={isLogin} token={token} username={username} />
+            <MainWrapper content={children} />
+            <Footer />
+          </NextIntlClientProvider>
+        </Providers>
       </body>
     </html>
   );

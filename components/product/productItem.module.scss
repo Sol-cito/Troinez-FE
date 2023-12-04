@@ -55,10 +55,21 @@
           border-width: 0.3vw;
           margin-left: -0.3vw;
         }
-        .cart_icon {
-          margin-left: 0.7vw;
-        }
       }
+      .cart_area {
+        display: inline-block;
+        margin-bottom: 1vh;
+        cursor: pointer;
+      }
+    }
+    .overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.5); // 회색 오버레이
+      z-index: 900; // 다른 요소들보다 상위에 위치하도록 z-index 설정
     }
   }
 }

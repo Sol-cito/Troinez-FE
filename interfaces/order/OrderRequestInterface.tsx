@@ -9,7 +9,7 @@ export type SetOrderRequestType = React.Dispatch<
 >;
 
 export interface OrderRequestInterface {
-  orderProductDtoList: [OrderProductDtoInterface];
+  orderProductDtoList: OrderProductDtoInterface[];
   userName: string;
   phoneNumber: string[];
   email: string[];
@@ -21,9 +21,10 @@ export interface OrderRequestInterface {
   receiverAddress: string;
   receiverDetailAddress: string;
   receiverRequest: string;
-  productTotalPrice: number;
+  orderId: string;
+  productTotalPrice: number; // 물품 총 가격
   salePrice: number;
   deliveryType: string;
   deliveryPrice: number;
-  totalPrice: number;
+  totalPrice: number; // 배송비 포함 결제 금액
 }

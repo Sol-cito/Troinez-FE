@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { HttpMethod } from '@/model/common.enum';
 import baseApiCall, {
   AxiosResponseModel,

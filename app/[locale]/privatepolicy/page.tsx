@@ -1,3 +1,5 @@
+import styles from './page.module.scss';
+
 export default function PrivatePolicy() {
   const privatePolicyContext01: string[] = [
     '개인정보처리방침',
@@ -141,26 +143,30 @@ export default function PrivatePolicy() {
     '이 개인정보처리방침은 2023년 10월 24일부터 적용됩니다.',
   ];
   return (
-    <div>
+    <div className={styles.private_policy_context_box}>
       {privatePolicyContext01.map((line) => (
         // eslint-disable-next-line react/jsx-key
         <p>{line}</p>
       ))}
       <table border={1}>
-        <th>수탁업체</th>
-        <th>위탁업무</th>
-        <tr>
-          <td>NAVER PAY</td>
-          <td>결제</td>
-        </tr>
-        <tr>
-          <td>CJ대한통운</td>
-          <td>배송</td>
-        </tr>
-        <tr>
-          <td>우체국</td>
-          <td>배송</td>
-        </tr>
+        <tbody>
+          <tr>
+            <th>수탁업체</th>
+            <th>위탁업무</th>
+          </tr>
+          <tr>
+            <td>NAVER PAY</td>
+            <td>결제</td>
+          </tr>
+          <tr>
+            <td>CJ대한통운</td>
+            <td>배송</td>
+          </tr>
+          <tr>
+            <td>우체국</td>
+            <td>배송</td>
+          </tr>
+        </tbody>
       </table>
 
       {privatePolicyContext02.map((line) => (

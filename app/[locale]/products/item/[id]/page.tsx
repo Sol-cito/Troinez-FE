@@ -1,3 +1,6 @@
+/* eslint-disable react-hooks/exhaustive-deps */
+/* eslint-disable no-alert */
+/* eslint-disable no-plusplus */
 /* eslint-disable react/no-danger */
 
 'use client';
@@ -5,14 +8,19 @@
 import { ProductDetail } from '@/interfaces/product/productDetail';
 import { ProductImageType } from '@/interfaces/product/productImage';
 import { GetParameter, getApiCall } from '@/service/restAPI.service';
-import { useTranslations } from 'next-intl';
+import { useLocale, useTranslations } from 'next-intl';
 import Image from 'next/image';
 import { useEffect, useState } from 'react';
 import CarouselImages from '@/components/carouselImages/carouselImages';
 import { Params } from 'next/dist/shared/lib/router/utils/route-matcher';
-import { addCartCookie } from '@/utils/tokenUtils';
 import AddCartPopUpModal from '@/components/product/modal/AddCartPopUpModal';
-import PurchasePopUpModal from '@/components/product/modal/PurchasePopUpModal';
+import PurchasePopUpModal, {
+  PurchaseContent,
+  PurchaseInfo,
+} from '@/components/product/modal/PurchasePopUpModal';
+import { useAppDispatch } from '@/redux/config';
+import { addToCart } from '@/redux/store/cart.store';
+import { Product } from '@/interfaces/product/product';
 import styles from './page.module.scss';
 
 export default function ProductDetailPage({
@@ -20,51 +28,71 @@ export default function ProductDetailPage({
 }: {
   params: Params;
 }) {
+  const dispatch = useAppDispatch();
+  const locale: string = useLocale();
+
   const productDetailTrans = useTranslations('Product.detail');
   const [productDetail, setProductDetail] = useState<ProductDetail>();
   const [selectedProductNumber, setSelectedProductNumber] = useState<number>(1);
   const [showCartModal, setShowCartModal] = useState(false);
   const [showPurchaseModal, setShowPurchaseModal] = useState(false);
-  const [showOverlay, setShowOverlay] = useState(false);
+  const [purchaseContent, setPurchaseContent] = useState<PurchaseContent>();
 
   const productId: number = id;
   const getProductDetail = async () => {
     const getParameter: GetParameter = {
-      url: '/products',
+      url: '/product/detail',
       params: { id: productId },
     };
     const res: ProductDetail = await getApiCall(getParameter);
     setProductDetail(res);
+
+    const purchaseInfo: PurchaseInfo = {
+      selectedProductId: productId,
+      selectedProductCount: selectedProductNumber,
+      selectedProductPrice: res.discountedPrice,
+    };
+
+    setPurchaseContent({
+      isCartOrder: false,
+      purchaseInfoList: [purchaseInfo],
+    });
   };
   const convertToHtml = (target: string) => (
     <div dangerouslySetInnerHTML={{ __html: target }} />
   );
 
   const onClickPurchaseHandle = () => {
-    setShowOverlay(!showOverlay);
     setShowPurchaseModal(!showPurchaseModal);
   };
 
-  const addCartButtonAction = () => {
-    // eslint-disable-next-line @typescript-eslint/no-shadow
-    const id = productDetail?.id;
-    const productCount = selectedProductNumber;
-    const cartProduct = {
-      productId: id ?? 0,
-      productCount,
+  const getProduct = async () => {
+    const getParameter: GetParameter = {
+      url: '/product',
+      params: { id: productId },
     };
-    addCartCookie(cartProduct);
-    setShowOverlay(!showOverlay);
+    return getApiCall(getParameter);
+  };
+
+  const addCartButtonAction = async () => {
+    if (locale === 'en') {
+      alert('Only available in Korea.');
+      return;
+    }
+    const product: Product = await getProduct();
+
+    for (let i = 0; i < selectedProductNumber; i++) {
+      dispatch(addToCart(product));
+    }
+
     setShowCartModal(!showCartModal);
   };
 
   const closeAddCartPopUpModal = () => {
-    setShowOverlay(false);
     setShowCartModal(false);
   };
 
   const closePurchasePopUpModal = () => {
-    setShowOverlay(false);
     setShowPurchaseModal(false);
   };
 
@@ -75,17 +103,20 @@ export default function ProductDetailPage({
   return (
     <div>
       <div>
-        {showOverlay && <div className={styles.overlay}> </div>}
-        {showPurchaseModal && (
-          <PurchasePopUpModal
-            closeModal={closePurchasePopUpModal}
-            selectedProductId={productId}
-            selectedProductCount={selectedProductNumber}
-            selectedProductPrice={productDetail?.discountedPrice}
-          />
+        {showPurchaseModal && purchaseContent && (
+          <>
+            <div className={styles.overlay}> </div>
+            <PurchasePopUpModal
+              closeModal={closePurchasePopUpModal}
+              purchaseContent={purchaseContent}
+            />
+          </>
         )}
         {showCartModal && (
-          <AddCartPopUpModal closeModal={closeAddCartPopUpModal} />
+          <>
+            <div className={styles.overlay}> </div>
+            <AddCartPopUpModal closeModal={closeAddCartPopUpModal} />
+          </>
         )}
       </div>
       {productDetail && (

@@ -1,3 +1,6 @@
+/* eslint-disable jsx-a11y/no-static-element-interactions */
+/* eslint-disable jsx-a11y/click-events-have-key-events */
+
 'use client';
 
 import { useEffect, useState } from 'react';
@@ -6,9 +9,12 @@ import { useLocale } from 'next-intl';
 import Link from 'next/link';
 import { SHOP_DROPDOWN_LIST } from '@/common/shopDropdownList';
 import { usePathname, useRouter } from 'next/navigation';
+import { useAppSelector } from '@/redux/config';
 import styles from './hamburgerMenuBar.module.scss';
 
 export default function HamburgerMenuBar({ isLogin }: { isLogin: boolean }) {
+  const { cartItemList } = useAppSelector((state) => state.cartItemSlice);
+
   const [isHomeClicked, setIsHomeClicked] = useState(false);
   const [isShopClicked, setIsShopClicked] = useState(false);
 
@@ -40,13 +46,27 @@ export default function HamburgerMenuBar({ isLogin }: { isLogin: boolean }) {
           height={30}
           onClick={() => !isLogin && router.push(`/${locale}/login`)}
         />
-        <Image
-          src="/common/icon/mobile-cart.svg"
-          alt="TNZ"
-          width={30}
-          height={30}
-          onClick={() => {}}
-        />
+        {locale === 'ko' && (
+          <div
+            onClick={() => {
+              router.push('/cart');
+            }}
+          >
+            <Image
+              src="/common/icon/mobile-cart.svg"
+              alt="TNZ"
+              width={30}
+              height={30}
+            />
+            {cartItemList && cartItemList.length !== 0 && (
+              <div className={styles.num_of_cart_item_wrapper}>
+                <div className={styles.num_of_cart_item}>
+                  {cartItemList.reduce((res, ele) => res + ele.quantity, 0)}
+                </div>
+              </div>
+            )}
+          </div>
+        )}
       </div>
       <div className={styles.home} onClick={onClickHome} role="presentation">
         <span className={styles.text}>HOME({locale.toLocaleUpperCase()})</span>

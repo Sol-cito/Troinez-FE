@@ -50,6 +50,32 @@
 }
 
 .hr_lighter {
-  border: 1px solid whitesmoke;
   width: 90%;
+  border: 1px solid whitesmoke;
+}
+
+@media screen and (max-width: 780px) {
+  .product_info_div {
+    display: flex;
+    align-items: center;
+    width: 100%;
+
+    .product_image {
+      width: 35%;
+      height: 35%;
+      margin-right: 5%;
+      img {
+        position: relative !important;
+      }
+    }
+    .product_total_price {
+      display: flex;
+      flex-direction: column;
+      width: 30%;
+
+      div {
+        width: 100%;
+      }
+    }
+  }
 }

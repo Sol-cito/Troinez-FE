@@ -1,17 +1,32 @@
+/* eslint-disable jsx-a11y/click-events-have-key-events */
+/* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable object-curly-newline */
 import Image from 'next/image';
 import { useLocale, useTranslations } from 'next-intl';
 import Link from 'next/link';
 import { Product } from '@/interfaces/product/product';
 import { isMobile } from 'react-device-detect';
+import { useAppDispatch } from '@/redux/config';
+import { addToCart } from '@/redux/store/cart.store';
+import { useState } from 'react';
 import styles from './productItem.module.scss';
+import AddCartPopUpModal from './modal/AddCartPopUpModal';
 
 export default function ProductItem({ product }: { product: Product }) {
+  const [showCartModal, setShowCartModal] = useState(false);
+
+  const dispatch = useAppDispatch();
+
   const locale: string = useLocale();
 
   const productDetail = useTranslations('Product.detail');
 
   const cartImg = '/common/product/img/cart-shopping-solid.svg';
+
+  const handleOnClickCart = () => {
+    setShowCartModal(true);
+    dispatch(addToCart(product));
+  };
 
   return (
     <div className={styles.item_box}>
@@ -53,17 +68,29 @@ export default function ProductItem({ product }: { product: Product }) {
           <p className={styles.item_newest_icon}>
             <span className={styles.icon}>new</span>
           </p>
-          <p>
-            <Image
-              src={cartImg}
-              className={styles.cart_icon}
-              alt="cart"
-              width={15}
-              height={15}
-            />
-            <span> Cart </span>
-          </p>
+          {locale !== 'en' && (
+            <div className={styles.cart_area} onClick={handleOnClickCart}>
+              <Image
+                src={cartImg}
+                className={styles.cart_icon}
+                alt="cart"
+                width={15}
+                height={15}
+              />
+              <span> Cart </span>
+            </div>
+          )}
         </div>
+        {showCartModal && (
+          <>
+            <div className={styles.overlay} />
+            <AddCartPopUpModal
+              closeModal={() => {
+                setShowCartModal(false);
+              }}
+            />
+          </>
+        )}
       </div>
     </div>
   );

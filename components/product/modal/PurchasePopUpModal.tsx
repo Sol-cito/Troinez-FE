@@ -3,20 +3,38 @@
 import Link from 'next/link';
 import styles from './PurchasePopUpModal.module.scss';
 
-export default function PurchasePopUpModal({
-  closeModal,
-  selectedProductId,
-  selectedProductCount,
-  selectedProductPrice,
-}: {
-  closeModal: any;
+export interface PurchaseInfo {
   selectedProductId: number;
   selectedProductCount: number;
-  selectedProductPrice: number | undefined;
+  selectedProductPrice: number;
+}
+
+export interface PurchaseContent {
+  isCartOrder: boolean;
+  purchaseInfoList: PurchaseInfo[];
+}
+
+export default function PurchasePopUpModal({
+  closeModal,
+  purchaseContent,
+}: {
+  closeModal: any;
+  purchaseContent: PurchaseContent;
 }) {
-  const orderUrl = `/order?type=order&productId=${selectedProductId}&productCount=${selectedProductCount}&amount=${
-    (selectedProductPrice || -1) * selectedProductCount
-  }`;
+  let orderUrl: string;
+
+  if (purchaseContent.isCartOrder) {
+    orderUrl = '/order?type=cart';
+  } else {
+    const purchaseInfo: PurchaseInfo = purchaseContent.purchaseInfoList[0];
+
+    orderUrl = `/order?type=single&productId=${
+      purchaseInfo.selectedProductId
+    }&productCount=${purchaseInfo.selectedProductCount}&amount=${
+      purchaseInfo.selectedProductPrice * purchaseInfo.selectedProductCount
+    }`;
+  }
+
   return (
     <div className={styles.box}>
       <div className={styles.box_container}>
