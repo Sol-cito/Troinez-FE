@@ -97,7 +97,7 @@ export default function Cart() {
               <span>상품 구매금액 : </span>
               <span>{getTotalPrice().toLocaleString()}</span>
               <span> + </span>
-              <span>배송비 3,000</span>
+              <span>(기본) 배송비 3,000</span>
             </p>
             <p>
               <span>합계 : </span>
@@ -128,7 +128,7 @@ export default function Cart() {
               <div>{getTotalPrice().toLocaleString()}원</div>
             </div>
             <div className={styles.product_order_box}>
-              <div>총 배송비</div>
+              <div>(기본) 배송비</div>
               <div>3,000원</div>
             </div>
             <div className={styles.product_order_box}>

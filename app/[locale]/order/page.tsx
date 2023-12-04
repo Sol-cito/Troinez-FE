@@ -98,7 +98,7 @@ export default function Order() {
           (item.checked ? item.product.discountedPrice * item.quantity : 0),
         0
       );
-
+      setOrderProductAmount(productTotalPrice);
       setOrderRequest({
         ...orderRequest,
         orderProductDtoList,
@@ -218,8 +218,9 @@ export default function Order() {
       )}
       <div className={styles.row_container}>
         <hr />
-        <div className={styles.total_amount}>Total</div>
-        {orderType === 'single' && <div>{orderProductAmount} 원</div>}
+        <div className={styles.total_amount}>
+          Total : <span>{orderProductAmount} 원</span>
+        </div>
         <hr />
       </div>
       <div className={styles.row_container}>
