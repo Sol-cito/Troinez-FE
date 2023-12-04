@@ -1,3 +1,5 @@
+/* eslint-disable react-hooks/exhaustive-deps */
+/* eslint-disable no-alert */
 /* eslint-disable react/button-has-type */
 
 'use client';
