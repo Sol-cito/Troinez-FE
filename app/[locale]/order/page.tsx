@@ -1,8 +1,12 @@
 'use client';
 
+/* eslint-disable consistent-return */
+/* eslint-disable array-callback-return */
+/* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable no-alert */
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable @next/next/no-before-interactive-script-outside-document */
+
 import { useState, useEffect } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
 import { nanoid } from 'nanoid';
@@ -88,17 +92,17 @@ export default function Order() {
           return orderProductDto;
         });
 
-      const productTotalPrice: number = cartItemList.reduce((res, item) => {
-        return (
+      const productTotalPrice: number = cartItemList.reduce(
+        (res, item) =>
           res +
-          (item.checked ? item.product.discountedPrice * item.quantity : 0)
-        );
-      }, 0);
+          (item.checked ? item.product.discountedPrice * item.quantity : 0),
+        0
+      );
 
       setOrderRequest({
         ...orderRequest,
-        orderProductDtoList: orderProductDtoList,
-        productTotalPrice: productTotalPrice,
+        orderProductDtoList,
+        productTotalPrice,
         totalPrice: productTotalPrice + orderRequest.deliveryPrice,
       });
     } else {
@@ -127,7 +131,7 @@ export default function Order() {
         });
       } else {
         alert('[Error] 잘못된 경로입니다.');
-        router.push(`/`);
+        router.push('/');
       }
     }
   }, []);
@@ -201,16 +205,14 @@ export default function Order() {
               visibleDelivery
             />
           ) : (
-            orderRequest.orderProductDtoList.map((item) => {
-              return (
-                <OrderProduct
-                  key={item.productId}
-                  orderProductId={item.productId}
-                  orderProductCount={item.productCount}
-                  visibleDelivery
-                />
-              );
-            })
+            orderRequest.orderProductDtoList.map((item) => (
+              <OrderProduct
+                key={item.productId}
+                orderProductId={item.productId}
+                orderProductCount={item.productCount}
+                visibleDelivery
+              />
+            ))
           )}
         </div>
       )}

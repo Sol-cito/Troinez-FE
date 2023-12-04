@@ -1,6 +1,7 @@
+/* eslint-disable react-hooks/exhaustive-deps */
+
 'use client';
 
-/* eslint-disable no-unsafe-optional-chaining */
 import { useState, useEffect } from 'react';
 import Image from 'next/image';
 import { GetParameter, getApiCall } from '@/service/restAPI.service';

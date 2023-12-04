@@ -1,3 +1,6 @@
+/* eslint-disable react-hooks/exhaustive-deps */
+/* eslint-disable no-alert */
+/* eslint-disable no-plusplus */
 /* eslint-disable react/no-danger */
 
 'use client';
@@ -15,10 +18,10 @@ import PurchasePopUpModal, {
   PurchaseContent,
   PurchaseInfo,
 } from '@/components/product/modal/PurchasePopUpModal';
-import styles from './page.module.scss';
 import { useAppDispatch } from '@/redux/config';
 import { addToCart } from '@/redux/store/cart.store';
 import { Product } from '@/interfaces/product/product';
+import styles from './page.module.scss';
 
 export default function ProductDetailPage({
   params: { id },
@@ -68,7 +71,7 @@ export default function ProductDetailPage({
       url: '/product',
       params: { id: productId },
     };
-    return await getApiCall(getParameter);
+    return getApiCall(getParameter);
   };
 
   const addCartButtonAction = async () => {

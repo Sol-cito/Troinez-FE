@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/ban-types */
 /* eslint-disable react/button-has-type */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import Link from 'next/link';

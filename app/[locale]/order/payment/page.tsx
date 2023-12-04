@@ -1,8 +1,4 @@
-/* eslint-disable jsx-a11y/control-has-associated-label */
-/* eslint-disable no-bitwise */
-/* eslint-disable jsx-a11y/label-has-associated-control */
 /* eslint-disable react/button-has-type */
-/* eslint-disable import/no-extraneous-dependencies */
 
 'use client';
 
@@ -19,7 +15,7 @@ const clientKey: string =
     ? ''
     : process.env.NEXT_PUBLIC_TOS_CLIENT_KEY;
 // http://localhost:3000/order/payment/success?paymentType=NORMAL&orderId=FHNHzc9nNHQjfa9_tiG6y&paymentKey=tviva2023111820545503n42&amount=50000
-const successUrl = 'http://localhost:8080/api/v1/orderSuccess';
+const successUrl = 'https://troisnez.com:8080/api/v1/orderSuccess';
 
 export default function TossPayments() {
   const searchParams = useSearchParams();

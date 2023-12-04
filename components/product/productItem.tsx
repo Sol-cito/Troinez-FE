@@ -1,13 +1,15 @@
+/* eslint-disable jsx-a11y/click-events-have-key-events */
+/* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable object-curly-newline */
 import Image from 'next/image';
 import { useLocale, useTranslations } from 'next-intl';
 import Link from 'next/link';
 import { Product } from '@/interfaces/product/product';
 import { isMobile } from 'react-device-detect';
-import styles from './productItem.module.scss';
 import { useAppDispatch } from '@/redux/config';
 import { addToCart } from '@/redux/store/cart.store';
 import { useState } from 'react';
+import styles from './productItem.module.scss';
 import AddCartPopUpModal from './modal/AddCartPopUpModal';
 
 export default function ProductItem({ product }: { product: Product }) {

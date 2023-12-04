@@ -102,7 +102,7 @@ function Header({
             {locale !== 'en' && (
               <>
                 <Link
-                  href={`/cart`}
+                  href="/cart"
                   className={`${styles.menu_btn}, ${styles.cart_btn}`}
                 >
                   CART
@@ -110,9 +110,7 @@ function Header({
                 {cartItemList && cartItemList.length !== 0 && (
                   <div className={styles.num_of_cart_item_wrapper}>
                     <div className={styles.num_of_cart_item}>
-                      {cartItemList.reduce((res, ele) => {
-                        return res + ele.quantity;
-                      }, 0)}
+                      {cartItemList.reduce((res, ele) => res + ele.quantity, 0)}
                     </div>
                   </div>
                 )}

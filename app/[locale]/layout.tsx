@@ -7,8 +7,8 @@ import { notFound } from 'next/navigation';
 import MainWrapper from '@/components/mainWrapper/mainWrapper';
 import { cookies } from 'next/headers';
 import dynamic from 'next/dynamic';
-import styles from './layout.module.scss';
 import { Providers } from '@/redux/provider';
+import styles from './layout.module.scss';
 
 export const metadata: Metadata = {
   title: 'Troisnez',

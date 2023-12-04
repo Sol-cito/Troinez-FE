@@ -1,7 +1,8 @@
+/* eslint-disable no-alert */
+
 'use client';
 
 import Image from 'next/image';
-import styles from './cartProduct.module.scss';
 import {
   CartItem,
   addToCart,
@@ -12,6 +13,7 @@ import { useAppDispatch } from '@/redux/config';
 import Link from 'next/link';
 import { useLocale } from 'next-intl';
 import { isMobile } from 'react-device-detect';
+import styles from './cartProduct.module.scss';
 
 export default function CartProduct({ cartItem }: { cartItem: CartItem }) {
   const dispatch = useAppDispatch();

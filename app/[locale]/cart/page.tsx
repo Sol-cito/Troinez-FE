@@ -1,7 +1,11 @@
+/* eslint-disable no-alert */
+/* eslint-disable react-hooks/exhaustive-deps */
+/* eslint-disable react/no-array-index-key */
+/* eslint-disable array-callback-return */
+/* eslint-disable consistent-return */
+
 'use client';
 
-import styles from './page.module.scss';
-import { useAppDispatch, useAppSelector } from '../../../redux/config';
 import CartProduct from '@/components/cartproduct/cartProduct';
 import { useEffect, useState } from 'react';
 import {
@@ -12,6 +16,8 @@ import {
 import PurchasePopUpModal from '@/components/product/modal/PurchasePopUpModal';
 import { useLocale } from 'next-intl';
 import { useRouter } from 'next/navigation';
+import { useAppDispatch, useAppSelector } from '../../../redux/config';
+import styles from './page.module.scss';
 
 export default function Cart() {
   const locale: string = useLocale();
@@ -23,15 +29,15 @@ export default function Cart() {
   const dispatch = useAppDispatch();
   const { cartItemList } = useAppSelector((state) => state.cartItemSlice);
 
-  const getTotalPrice = () => {
-    return cartItemList
+  const getTotalPrice = () =>
+    cartItemList
       .filter((item) => {
         if (item.checked) return item;
       })
-      .reduce((res, item) => {
-        return res + item.product.discountedPrice * item.quantity;
-      }, 0);
-  };
+      .reduce(
+        (res, item) => res + item.product.discountedPrice * item.quantity,
+        0
+      );
 
   const handleOnClickRemoveFromCart = () => {
     if (window.confirm('선택하신 상품이 삭제됩니다. 삭제하시겠습니까?')) {
@@ -61,7 +67,7 @@ export default function Cart() {
   useEffect(() => {
     if (locale === 'en') {
       alert('Only available in Korea.');
-      router.push(`/en`);
+      router.push('/en');
     }
     setPageReady(true);
     selectAllCartItems();
@@ -77,9 +83,9 @@ export default function Cart() {
 
         <div className={styles.row_container}>
           <div className={styles.product_list_box}>
-            {cartItemList.map((ele, key) => {
-              return <CartProduct key={key} cartItem={ele} />;
-            })}
+            {cartItemList.map((ele, key) => (
+              <CartProduct key={key} cartItem={ele} />
+            ))}
           </div>
         </div>
         <div className={styles.row_container}>

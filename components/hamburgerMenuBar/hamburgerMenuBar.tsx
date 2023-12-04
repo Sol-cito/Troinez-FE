@@ -1,3 +1,6 @@
+/* eslint-disable jsx-a11y/no-static-element-interactions */
+/* eslint-disable jsx-a11y/click-events-have-key-events */
+
 'use client';
 
 import { useEffect, useState } from 'react';
@@ -6,8 +9,8 @@ import { useLocale } from 'next-intl';
 import Link from 'next/link';
 import { SHOP_DROPDOWN_LIST } from '@/common/shopDropdownList';
 import { usePathname, useRouter } from 'next/navigation';
-import styles from './hamburgerMenuBar.module.scss';
 import { useAppSelector } from '@/redux/config';
+import styles from './hamburgerMenuBar.module.scss';
 
 export default function HamburgerMenuBar({ isLogin }: { isLogin: boolean }) {
   const { cartItemList } = useAppSelector((state) => state.cartItemSlice);
@@ -46,7 +49,7 @@ export default function HamburgerMenuBar({ isLogin }: { isLogin: boolean }) {
         {locale === 'ko' && (
           <div
             onClick={() => {
-              router.push(`/cart`);
+              router.push('/cart');
             }}
           >
             <Image
@@ -58,9 +61,7 @@ export default function HamburgerMenuBar({ isLogin }: { isLogin: boolean }) {
             {cartItemList && cartItemList.length !== 0 && (
               <div className={styles.num_of_cart_item_wrapper}>
                 <div className={styles.num_of_cart_item}>
-                  {cartItemList.reduce((res, ele) => {
-                    return res + ele.quantity;
-                  }, 0)}
+                  {cartItemList.reduce((res, ele) => res + ele.quantity, 0)}
                 </div>
               </div>
             )}
