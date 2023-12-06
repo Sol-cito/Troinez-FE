@@ -1,6 +1,6 @@
 'use client';
 
-import CarouselImages from '@/components/carouselImages/carouselImages';
+import CarouselImagesReactSlick from '@/components/carouselImages-react-slick/carouselImages';
 import styles from './page.module.scss';
 
 export default function HomePage() {
@@ -13,10 +13,14 @@ export default function HomePage() {
 
   return (
     <div className={styles.home}>
-      <CarouselImages
-        autoPlay
-        showIndicators={false}
+      <CarouselImagesReactSlick
         imageUrlList={mainImageUrlList}
+        dots={false}
+        infinite
+        speed={5000}
+        slideToShow={1}
+        slideToScroll={1}
+        autoplay
       />
     </div>
   );
