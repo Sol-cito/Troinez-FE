@@ -304,7 +304,9 @@ export default function ProductDetailPage({
           </div>
           <div className={styles.detail_image_box}>
             {productDetail.productImageList
-              .filter((image) => image.productImageType === 'DETAIL')
+              .filter(
+                (image) => image.productImageType === ProductImageType.DETAIL
+              )
               .map((image) => (
                 <Image
                   key={image.productImageUrl}
