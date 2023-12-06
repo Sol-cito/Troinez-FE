@@ -7,7 +7,7 @@
   .flex_box {
     display: flex;
     flex-direction: row;
-    margin-bottom: 5vh;
+    margin-bottom: 8vh;
 
     .image_box,
     .image_box_first,
@@ -41,7 +41,7 @@
 
       .title,
       .subtitle {
-        line-height: 0.5;
+        line-height: 1;
         text-align: center;
       }
 
@@ -58,6 +58,7 @@
     }
     .text_box_first {
       width: 45vw !important;
+      margin-left: 4vw;
     }
 
     .image_box_third {
