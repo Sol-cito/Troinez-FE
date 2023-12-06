@@ -54,13 +54,22 @@ export default function Footer() {
       </div>
       <div className={styles.right}>
         <div className={styles.tos_policy}>
-          <Link href="/termsofservice">{termsOfService}</Link>
+          <Link href="/termsofservice" target="_blank">
+            {termsOfService}
+          </Link>
           <span>&nbsp;|&nbsp;</span>
-          <Link href="/privatepolicy">{privatePolicy}</Link>
+          <Link href="/privatepolicy" target="_blank">
+            {privatePolicy}
+          </Link>
         </div>
         <div className={styles.sns_icons}>
           {iconInfoList.map((iconInfo) => (
-            <a key={iconInfo.src} href={iconInfo.url}>
+            <a
+              key={iconInfo.src}
+              href={iconInfo.url}
+              target="_blank"
+              rel="noreferrer"
+            >
               <Image
                 key={iconInfo.src}
                 className={styles.footer__icon}
