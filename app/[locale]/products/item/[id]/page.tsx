@@ -100,6 +100,22 @@ export default function ProductDetailPage({
     getProductDetail();
   }, []);
 
+  useEffect(() => {
+    if (showCartModal) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'visible';
+    }
+  }, [showCartModal]);
+
+  useEffect(() => {
+    if (showPurchaseModal) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'visible';
+    }
+  }, [showPurchaseModal]);
+
   return (
     <div>
       <div>
