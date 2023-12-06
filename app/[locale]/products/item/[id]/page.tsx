@@ -282,21 +282,32 @@ export default function ProductDetailPage({
                   </span>
                 </div>
                 <div className={styles.payment_decision_box}>
-                  <button
-                    type="button"
-                    id="non-member-payment-button"
-                    className={styles.payment_decision_buy}
-                    onClick={onClickPurchaseHandle}
-                  >
-                    {productDetailTrans('nonMemberBuy')}
-                  </button>
-                  <button
-                    type="button"
-                    className={styles.payment_decision_basket}
-                    onClick={addCartButtonAction}
-                  >
-                    {productDetailTrans('cart')}
-                  </button>
+                  {locale === 'ko' ? (
+                    <>
+                      <button
+                        type="button"
+                        id="non-member-payment-button"
+                        className={styles.payment_decision_buy}
+                        onClick={onClickPurchaseHandle}
+                      >
+                        {productDetailTrans('nonMemberBuy')}
+                      </button>
+                      <button
+                        type="button"
+                        className={styles.payment_decision_basket}
+                        onClick={addCartButtonAction}
+                      >
+                        {productDetailTrans('cart')}
+                      </button>
+                    </>
+                  ) : (
+                    <button
+                      type="button"
+                      className={styles.payment_not_available_btn}
+                    >
+                      Available in South Korea
+                    </button>
+                  )}
                 </div>
                 <hr />
               </div>
