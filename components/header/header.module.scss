@@ -26,6 +26,12 @@ $header-fond-size: 0.8vw;
   .cart_btn {
     margin-right: 0.5vw !important;
   }
+  .cart_btn:hover {
+    font-weight: bold;
+  }
+  .menu_btn:hover {
+    font-weight: bold;
+  }
 
   .left {
     width: 45%;

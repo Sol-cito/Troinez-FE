@@ -93,7 +93,7 @@ function Header({
                 />
               ))}
             >
-              <span>SHOP</span>
+              <span className={styles.menu_btn}>SHOP</span>
             </DropdownBox>
             <Link href={`/${locale}/about`} className={styles.menu_btn}>
               ABOUT
