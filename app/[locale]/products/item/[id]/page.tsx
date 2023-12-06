@@ -303,18 +303,20 @@ export default function ProductDetailPage({
             </div>
           </div>
           <div className={styles.detail_image_box}>
-            {productDetail.productImageList.map((image) => (
-              <Image
-                key={image.productImageUrl}
-                src={'https://d3en4rwu5hlcjb.cloudfront.net/product/perfume/'.concat(
-                  image.productImageUrl
-                )}
-                alt="D01"
-                quality={100}
-                width={500}
-                height={500}
-              />
-            ))}
+            {productDetail.productImageList
+              .filter((image) => image.productImageType === 'DETAIL')
+              .map((image) => (
+                <Image
+                  key={image.productImageUrl}
+                  src={'https://d3en4rwu5hlcjb.cloudfront.net/product/perfume/'.concat(
+                    image.productImageUrl
+                  )}
+                  alt="D01"
+                  quality={100}
+                  width={500}
+                  height={500}
+                />
+              ))}
           </div>
         </>
       )}
