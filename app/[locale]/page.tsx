@@ -1,6 +1,5 @@
 'use client';
 
-import 'react-responsive-carousel/lib/styles/carousel.min.css';
 import CarouselImages from '@/components/carouselImages/carouselImages';
 import styles from './page.module.scss';
 
