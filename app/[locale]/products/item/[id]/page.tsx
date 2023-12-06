@@ -282,39 +282,54 @@ export default function ProductDetailPage({
                   </span>
                 </div>
                 <div className={styles.payment_decision_box}>
-                  <button
-                    type="button"
-                    id="non-member-payment-button"
-                    className={styles.payment_decision_buy}
-                    onClick={onClickPurchaseHandle}
-                  >
-                    {productDetailTrans('nonMemberBuy')}
-                  </button>
-                  <button
-                    type="button"
-                    className={styles.payment_decision_basket}
-                    onClick={addCartButtonAction}
-                  >
-                    {productDetailTrans('cart')}
-                  </button>
+                  {locale === 'ko' ? (
+                    <>
+                      <button
+                        type="button"
+                        id="non-member-payment-button"
+                        className={styles.payment_decision_buy}
+                        onClick={onClickPurchaseHandle}
+                      >
+                        {productDetailTrans('nonMemberBuy')}
+                      </button>
+                      <button
+                        type="button"
+                        className={styles.payment_decision_basket}
+                        onClick={addCartButtonAction}
+                      >
+                        {productDetailTrans('cart')}
+                      </button>
+                    </>
+                  ) : (
+                    <button
+                      type="button"
+                      className={styles.payment_not_available_btn}
+                    >
+                      Available in South Korea
+                    </button>
+                  )}
                 </div>
                 <hr />
               </div>
             </div>
           </div>
           <div className={styles.detail_image_box}>
-            {productDetail.productImageList.map((image) => (
-              <Image
-                key={image.productImageUrl}
-                src={'https://d3en4rwu5hlcjb.cloudfront.net/product/perfume/'.concat(
-                  image.productImageUrl
-                )}
-                alt="D01"
-                quality={100}
-                width={500}
-                height={500}
-              />
-            ))}
+            {productDetail.productImageList
+              .filter(
+                (image) => image.productImageType === ProductImageType.DETAIL
+              )
+              .map((image) => (
+                <Image
+                  key={image.productImageUrl}
+                  src={'https://d3en4rwu5hlcjb.cloudfront.net/product/perfume/'.concat(
+                    image.productImageUrl
+                  )}
+                  alt="D01"
+                  quality={100}
+                  width={500}
+                  height={500}
+                />
+              ))}
           </div>
         </>
       )}
