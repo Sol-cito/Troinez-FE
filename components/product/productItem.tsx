@@ -8,7 +8,7 @@ import { Product } from '@/interfaces/product/product';
 import { isMobile } from 'react-device-detect';
 import { useAppDispatch } from '@/redux/config';
 import { addToCart } from '@/redux/store/cart.store';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import styles from './productItem.module.scss';
 import AddCartPopUpModal from './modal/AddCartPopUpModal';
 
@@ -27,6 +27,14 @@ export default function ProductItem({ product }: { product: Product }) {
     setShowCartModal(true);
     dispatch(addToCart(product));
   };
+
+  useEffect(() => {
+    if (showCartModal) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'visible';
+    }
+  }, [showCartModal]);
 
   return (
     <div className={styles.item_box}>

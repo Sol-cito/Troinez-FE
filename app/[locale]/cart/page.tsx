@@ -73,6 +73,14 @@ export default function Cart() {
     selectAllCartItems();
   }, []);
 
+  useEffect(() => {
+    if (showOrderPopup) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'visible';
+    }
+  }, [showOrderPopup]);
+
   return (
     pageReady && (
       <div className={styles.body_container}>
