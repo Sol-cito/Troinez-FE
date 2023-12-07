@@ -114,7 +114,7 @@ export default function Cart() {
               <span>상품 구매금액 : </span>
               <span>{getTotalPrice().toLocaleString()}</span>
               <span> + </span>
-              <span>배송비 {deliveryPrice}</span>
+              <span>배송비 {deliveryPrice.toLocaleString()}</span>
             </p>
             <p>
               <span>합계 : </span>
