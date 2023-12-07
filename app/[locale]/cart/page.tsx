@@ -159,7 +159,7 @@ export default function Cart() {
               <div>{deliveryPrice.toLocaleString()}원</div>
             </div>
             <div className={styles.product_order_box}>
-              <div>결재예정금액</div>
+              <div>결제예정금액</div>
               <div>{(totalPrice + deliveryPrice).toLocaleString()}원</div>
             </div>
             <hr className={styles.hr_normal} />
