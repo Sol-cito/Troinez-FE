@@ -28,6 +28,8 @@ export default function Cart() {
 
   const dispatch = useAppDispatch();
   const { cartItemList } = useAppSelector((state) => state.cartItemSlice);
+  const [totalPrice, setTotalPrice] = useState(0);
+  const [deliveryPrice, setDeliveryPrice] = useState(3000);
 
   const getTotalPrice = () =>
     cartItemList
@@ -81,6 +83,18 @@ export default function Cart() {
     }
   }, [showOrderPopup]);
 
+  useEffect(() => {
+    setTotalPrice(getTotalPrice());
+  }, [cartItemList]);
+
+  useEffect(() => {
+    if (totalPrice >= 30000) {
+      setDeliveryPrice(0);
+    } else {
+      setDeliveryPrice(3000);
+    }
+  }, [totalPrice]);
+
   return (
     pageReady && (
       <div className={styles.body_container}>
@@ -103,13 +117,15 @@ export default function Cart() {
             </p>
             <p>
               <span>상품 구매금액 : </span>
-              <span>{getTotalPrice().toLocaleString()}</span>
+              {/* <span>{getTotalPrice().toLocaleString()}</span> */}
+              <span>{totalPrice.toLocaleString()}</span>
               <span> + </span>
-              <span>(기본) 배송비 3,000</span>
+              <span>배송비 {deliveryPrice}</span>
             </p>
             <p>
               <span>합계 : </span>
-              <span>{(getTotalPrice() + 3000).toLocaleString()}원</span>
+              <span>{(totalPrice + deliveryPrice).toLocaleString()}원</span>
+              {/* <span>{(getTotalPrice() + 3000).toLocaleString()}원</span> */}
             </p>
           </div>
         </div>
@@ -133,15 +149,18 @@ export default function Cart() {
             <hr className={styles.hr_lighter} />
             <div className={styles.product_order_box}>
               <div>총 상품금액</div>
-              <div>{getTotalPrice().toLocaleString()}원</div>
+              <div>{totalPrice.toLocaleString()}원</div>
             </div>
             <div className={styles.product_order_box}>
-              <div>(기본) 배송비</div>
-              <div>3,000원</div>
+              <div>
+                기본 배송비 (제주 혹은 도서산간 지역의 경우 추가비용이 발생할 수
+                있습니다.)
+              </div>
+              <div>{deliveryPrice.toLocaleString()}원</div>
             </div>
             <div className={styles.product_order_box}>
               <div>결재예정금액</div>
-              <div>{(getTotalPrice() + 3000).toLocaleString()}원</div>
+              <div>{(totalPrice + deliveryPrice).toLocaleString()}원</div>
             </div>
             <hr className={styles.hr_normal} />
           </div>
