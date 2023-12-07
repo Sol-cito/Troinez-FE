@@ -90,14 +90,6 @@ export default function Cart() {
     }
   }, [showOrderPopup]);
 
-  useEffect(() => {
-    if (getTotalPrice() >= 30000) {
-      setDeliveryPrice(0);
-    } else {
-      setDeliveryPrice(3000);
-    }
-  }, [cartItemList]);
-
   return (
     pageReady && (
       <div className={styles.body_container}>
