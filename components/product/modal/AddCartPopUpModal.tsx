@@ -18,7 +18,7 @@ export default function AddCartPopUpModal({
         <div className={`${styles.button_container} ${styles.left_button}`}>
           <button onClick={() => closeModal()}>계속쇼핑</button>
           <Link href="/cart" className={styles.link}>
-            <button>장바구니</button>
+            <button onClick={() => closeModal()}>장바구니</button>
           </Link>
         </div>
       </div>
