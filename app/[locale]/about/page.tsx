@@ -26,10 +26,14 @@ export default function AboutPage() {
   const fourthAboutT = useTranslations('About.fourthAbout');
   const fifthAboutT = useTranslations('About.fifthAbout');
 
-  const firstAboutImage = '/common/about/img/01_LOW.jpg';
-  const thirdAboutImage = '/common/about/img/02_LOW.jpg';
-  const fourthAboutImage = '/common/about/img/03_LOW.jpg';
-  const fifthAboutImage = '/common/about/img/04_LOW.jpg';
+  const firstAboutImage =
+    'https://d3en4rwu5hlcjb.cloudfront.net/about/01_LOW.jpg';
+  const thirdAboutImage =
+    'https://d3en4rwu5hlcjb.cloudfront.net/about/02_LOW.jpg';
+  const fourthAboutImage =
+    'https://d3en4rwu5hlcjb.cloudfront.net/about/03_LOW.jpg';
+  const fifthAboutImage =
+    'https://d3en4rwu5hlcjb.cloudfront.net/about/04_LOW.jpg';
 
   const [pageReady, setPageReady] = useState<boolean>(false);
 

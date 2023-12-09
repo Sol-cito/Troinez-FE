@@ -23,6 +23,10 @@ function Header({
 }) {
   const locale: string = useLocale();
   const switchLocale = (): string => (locale === 'ko' ? 'en' : 'ko');
+  const logoTextUrl =
+    'https://d3en4rwu5hlcjb.cloudfront.net/logo/logo_text.png';
+  const logoSignUrl =
+    'https://d3en4rwu5hlcjb.cloudfront.net/logo/logo_sign.png';
 
   const logOutUri = process.env.NEXT_PUBLIC_NAVER_LOGOUT_REQUEST_URI;
 
@@ -58,18 +62,13 @@ function Header({
       <nav className={styles.nav}>
         <div className={styles.left}>
           <Link href={`/${locale}`} className={styles.logo}>
-            <Image
-              src="/common/logo/logo_text.png"
-              alt="TROIS NEZ"
-              quality={100}
-              fill
-            />
+            <Image src={logoTextUrl} alt="TROIS NEZ" quality={100} fill />
           </Link>
         </div>
         <div className={styles.mid}>
           <div>
             <Image
-              src="/common/logo/logo_sign.png"
+              src={logoSignUrl}
               alt="TNZ"
               layout="fill"
               objectFit="contain"
