@@ -41,6 +41,11 @@ export default function Cart() {
       );
 
   const handleOnClickRemoveFromCart = () => {
+    if (cartItemList.length === 0) {
+      alert('카트에 담긴 상품이 없습니다.');
+      return;
+    }
+
     if (window.confirm('선택하신 상품이 삭제됩니다. 삭제하시겠습니까?')) {
       const checkedItems: CartItem[] = cartItemList.filter((item) => {
         if (item.checked) return item;
@@ -52,12 +57,20 @@ export default function Cart() {
   };
 
   const selectAllCartItems = () => {
+    if (cartItemList.length === 0) {
+      alert('카트에 담긴 상품이 없습니다.');
+      return;
+    }
     cartItemList.forEach((item) => {
       dispatch(checkAllCartItems(item.product));
     });
   };
 
   const onClickPurchase = () => {
+    if (cartItemList.length === 0) {
+      alert('카트에 담긴 상품이 없습니다.');
+      return;
+    }
     if (cartItemList.filter((item) => item.checked).length === 0) {
       alert('구매할 상품을 선택해주세요.');
       return;

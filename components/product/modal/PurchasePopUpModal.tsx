@@ -43,7 +43,9 @@ export default function PurchasePopUpModal({
         </div>
         <div className={`${styles.button_container} ${styles.left_button}`}>
           <Link href={orderUrl} className={styles.link}>
-            <button className={styles.yes}>예</button>
+            <button onClick={closeModal} className={styles.yes}>
+              예
+            </button>
           </Link>
           <button onClick={closeModal}>아니오</button>
         </div>

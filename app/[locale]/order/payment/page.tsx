@@ -16,8 +16,8 @@ const clientKey: string =
   process.env.NEXT_PUBLIC_TOS_CLIENT_KEY === undefined
     ? ''
     : process.env.NEXT_PUBLIC_TOS_CLIENT_KEY;
-// http://localhost:3000/order/payment/success?paymentType=NORMAL&orderId=FHNHzc9nNHQjfa9_tiG6y&paymentKey=tviva2023111820545503n42&amount=50000
-const successUrl = 'https://troisnez.com:8080/api/v1/orderSuccess';
+
+const successUrl = process.env.NEXT_PUBLIC_TOS_SUCCESS_URL;
 
 export default function TossPayments() {
   const searchParams = useSearchParams();

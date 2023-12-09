@@ -1,87 +1,46 @@
-/* eslint-disable react-hooks/exhaustive-deps */
-
 'use client';
 
-/* eslint-disable @typescript-eslint/no-explicit-any */
-import { useSearchParams } from 'next/navigation';
+import { useRouter, useSearchParams } from 'next/navigation';
 import { useEffect, useState } from 'react';
-import OrderProduct from '@/components/order/orderProduct';
 import { OrderSuccessResponseInterface } from '@/interfaces/order/OrderSuccessResponseInterface';
 import { GetParameter, getApiCall } from '@/service/restAPI.service';
 import styles from './page.module.scss';
-import { useAppDispatch, useAppSelector } from '@/redux/config';
-import { removeFromCart } from '@/redux/store/cart.store';
-import { Product } from '@/interfaces/product/product';
+import OrderProduct from '@/components/order/orderProduct';
 
-export default function OrderSuccessPage() {
-  const dispatch = useAppDispatch();
-  const { cartItemList } = useAppSelector((state) => state.cartItemSlice);
+export default function MyOrderItems() {
+  const router = useRouter();
+  const searchParams = useSearchParams();
+  const orderId = searchParams.get('orderId');
+  const certificationNumber = searchParams.get('certificationNumber');
 
   const [orderSuccessResponse, setOrderSuccessResponse] =
     useState<OrderSuccessResponseInterface>();
 
-  const searchParams = useSearchParams();
-  const orderId = searchParams.get('orderId') || '';
-
-  const onClickKeepShopping = () => {
-    window.location.href = '/products/all';
-  };
-
   const getOrderSuccessInfo = async () => {
     const getParameter: GetParameter = {
-      url: '/orderSuccessInfo',
-      params: { orderId },
+      url: '/orderFind',
+      params: { orderId: orderId, certificationNumber: certificationNumber },
     };
     const res: OrderSuccessResponseInterface = await getApiCall(getParameter);
+    if (!res) {
+      alert('주문 내역이 존재하지 않습니다.');
+      router.push('/myorder');
+      return;
+    }
     setOrderSuccessResponse(res);
-  };
-
-  const removeItemsFromCart = async () => {
-    orderSuccessResponse?.orderProductDtoList.forEach(async (item) => {
-      const getParameter: GetParameter = {
-        url: '/product',
-        params: { id: item.productId },
-      };
-      const product: Product = await getApiCall(getParameter);
-      dispatch(removeFromCart(product));
-    });
   };
 
   useEffect(() => {
     getOrderSuccessInfo();
   }, []);
 
-  useEffect(() => {
-    removeItemsFromCart();
-  }, [orderSuccessResponse]);
-
   return (
     <div className={styles.body_container}>
       {orderSuccessResponse && (
         <>
           <div className={styles.row_container}>
-            <div className={styles.row_title}>
-              주문이 성공적으로 <span className={styles.blue}>완료</span>
-              되었습니다.
-            </div>
-            <div className={styles.row_guide}>
-              <p>※ 주문번호가 작성하신 이메일로 전송되었습니다.</p>
-              <p>
-                ※ 주문조회 시 주문번호 및 6자리 인증번호가 반드시 필요하니
-                참고해 주시기 바랍니다.
-              </p>
-            </div>
-            <div className={styles.row_sub_title}>
-              주문번호 : {orderSuccessResponse.orderId}
-            </div>
-            <div className={styles.center}>
-              <input
-                type="button"
-                value="쇼핑 계속하기"
-                className={styles.keep_shopping_btn}
-                onClick={onClickKeepShopping}
-              />
-            </div>
+            <div className={styles.row_title}>주문내역조회</div>
+            <div className={styles.row_sub_title}>주문번호 : {orderId}</div>
             <hr className={styles.hr_mgn_top_1vw} />
             <div className={styles.product_list}>
               {orderSuccessResponse.orderProductDtoList.map((orderProduct) => (
@@ -92,6 +51,10 @@ export default function OrderSuccessPage() {
                   visibleDelivery={false}
                 />
               ))}
+            </div>
+            <div className={styles.row_price}>
+              총 주문가격 : {orderSuccessResponse.amount.toLocaleString()} 원
+              (배송비포함)
             </div>
           </div>
           <hr className={styles.hr_mgn_top_1vw} />
@@ -120,7 +83,6 @@ export default function OrderSuccessPage() {
                 >
                   배송지
                 </div>
-
                 <div className={styles.delivery_row_value}>
                   {orderSuccessResponse.zipCode}
                   <br />
@@ -134,7 +96,7 @@ export default function OrderSuccessPage() {
                 <div className={styles.delivery_row_key}>배송메모</div>
                 <div className={styles.delivery_row_value}>
                   {orderSuccessResponse.request || '-'}
-                </div>{' '}
+                </div>
               </div>
             </div>
           </div>

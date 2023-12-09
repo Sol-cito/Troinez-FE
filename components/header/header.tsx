@@ -101,6 +101,9 @@ function Header({
             {loginoutLink}
             {locale !== 'en' && (
               <>
+                <Link href="/myorder" className={`${styles.menu_btn}`}>
+                  MY ORDER
+                </Link>
                 <Link
                   href="/cart"
                   className={`${styles.menu_btn}, ${styles.cart_btn}`}
