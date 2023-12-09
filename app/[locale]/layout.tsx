@@ -1,4 +1,3 @@
-/* eslint-disable @next/next/no-sync-scripts */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import type { Metadata } from 'next';
 import Footer from '@/components/footer/footer';
