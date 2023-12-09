@@ -119,11 +119,18 @@ export default function HamburgerMenuBar({ isLogin }: { isLogin: boolean }) {
           </Link>
         ))}
       </div>
-      <div className={styles.about}>
+      <div className={styles.other_menu}>
         <Link href={`/${locale}/about`} className={styles.text}>
           ABOUT
         </Link>
       </div>
+      {locale === 'ko' && (
+        <div className={styles.other_menu}>
+          <Link href={`/${locale}/myorder`} className={styles.text}>
+            MY ORDER
+          </Link>
+        </div>
+      )}
     </div>
   );
 }

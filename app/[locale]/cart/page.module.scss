@@ -78,6 +78,10 @@ $font_size: 0.9vw;
       .product_order_box {
         margin-top: 3%;
         line-height: normal;
+
+        .delivery_price_guide {
+          max-width: 70%;
+        }
       }
     }
     .selector_button_box {
