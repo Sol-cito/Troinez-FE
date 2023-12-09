@@ -38,7 +38,7 @@ export default function CarouselImagesReactSlick(props: CarouselImageProps) {
         speed={speed}
         slidesToShow={slideToShow}
         slidesToScroll={slideToScroll}
-        autoplay={false}
+        autoplay={autoplay}
       >
         {imageUrlList &&
           imageUrlList.map((url: string) => (

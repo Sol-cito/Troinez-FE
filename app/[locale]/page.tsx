@@ -3,8 +3,8 @@
 import CarouselImagesReactSlick from '@/components/carouselImages-react-slick/carouselImages';
 import { isMobile } from 'react-device-detect';
 import Image from 'next/image';
-import styles from './page.module.scss';
 import { useEffect, useState } from 'react';
+import styles from './page.module.scss';
 
 export default function HomePage() {
   const [isPageReady, setIsPageReady] = useState(false);
@@ -25,25 +25,23 @@ export default function HomePage() {
   }, []);
 
   return (
-    <>
+    <div>
       {isPageReady && (
         <div className={styles.home}>
           {isMobile ? (
             <div className={styles.mobile_main_images}>
-              {mainImageUrlList.map((imageUrl) => {
-                return (
-                  <Image
-                    key={imageUrl}
-                    priority
-                    className={styles.main_image}
-                    quality={imageQuality}
-                    src={imageUrl}
-                    alt="img"
-                    width={imageWidthPixel}
-                    height={imageHeightPixel}
-                  />
-                );
-              })}
+              {mainImageUrlList.map((imageUrl) => (
+                <Image
+                  key={imageUrl}
+                  priority
+                  className={styles.main_image}
+                  quality={imageQuality}
+                  src={imageUrl}
+                  alt="img"
+                  width={imageWidthPixel}
+                  height={imageHeightPixel}
+                />
+              ))}
             </div>
           ) : (
             <CarouselImagesReactSlick
@@ -58,6 +56,6 @@ export default function HomePage() {
           )}
         </div>
       )}
-    </>
+    </div>
   );
 }
