@@ -1,16 +1,21 @@
 .dropdownMenu {
-  min-height: 5vh;
-  padding: 0 1vw 0 1vw;
+  padding: 20% 1vw 20% 1vw;
 }
 
 .mouseOn {
   background-color: black;
 
   .dropdownMenu {
+    display: flex;
+    align-items: center;
     color: white;
   }
 }
 
 .mouseOut {
   background-color: white;
+  .dropdownMenu {
+    display: flex;
+    align-items: center;
+  }
 }
