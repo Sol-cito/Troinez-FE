@@ -8,14 +8,13 @@ import { useEffect, useState } from 'react';
 import OrderProduct from '@/components/order/orderProduct';
 import { OrderSuccessResponseInterface } from '@/interfaces/order/OrderSuccessResponseInterface';
 import { GetParameter, getApiCall } from '@/service/restAPI.service';
-import styles from './page.module.scss';
-import { useAppDispatch, useAppSelector } from '@/redux/config';
+import { useAppDispatch } from '@/redux/config';
 import { removeFromCart } from '@/redux/store/cart.store';
 import { Product } from '@/interfaces/product/product';
+import styles from './page.module.scss';
 
 export default function OrderSuccessPage() {
   const dispatch = useAppDispatch();
-  const { cartItemList } = useAppSelector((state) => state.cartItemSlice);
 
   const [orderSuccessResponse, setOrderSuccessResponse] =
     useState<OrderSuccessResponseInterface>();

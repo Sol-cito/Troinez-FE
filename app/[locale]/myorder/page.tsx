@@ -1,8 +1,9 @@
 'use client';
 
-import styles from './page.module.scss';
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
+import styles from './page.module.scss';
 
 export default function MyOrder() {
   const router = useRouter();

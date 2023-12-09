@@ -4,8 +4,8 @@ import { useRouter, useSearchParams } from 'next/navigation';
 import { useEffect, useState } from 'react';
 import { OrderSuccessResponseInterface } from '@/interfaces/order/OrderSuccessResponseInterface';
 import { GetParameter, getApiCall } from '@/service/restAPI.service';
-import styles from './page.module.scss';
 import OrderProduct from '@/components/order/orderProduct';
+import styles from './page.module.scss';
 
 export default function MyOrderItems() {
   const router = useRouter();
@@ -19,7 +19,7 @@ export default function MyOrderItems() {
   const getOrderSuccessInfo = async () => {
     const getParameter: GetParameter = {
       url: '/orderFind',
-      params: { orderId: orderId, certificationNumber: certificationNumber },
+      params: { orderId, certificationNumber },
     };
     const res: OrderSuccessResponseInterface = await getApiCall(getParameter);
     if (!res) {
