@@ -233,32 +233,34 @@ export default function ProductDetailPage({
                     <div className={styles.payment_select_title}>
                       {productDetail.productName}
                     </div>
-                    <div>
-                      <button
-                        type="button"
-                        onClick={() => {
-                          setSelectedProductNumber(
-                            Math.max(1, selectedProductNumber - 1)
-                          );
-                        }}
-                      >
-                        -
-                      </button>
-                      <input
-                        id="selected-product-count"
-                        type="text"
-                        value={selectedProductNumber}
-                        readOnly
-                      />
-                      <button
-                        type="button"
-                        onClick={() => {
-                          setSelectedProductNumber(selectedProductNumber + 1);
-                        }}
-                      >
-                        +
-                      </button>
-                    </div>
+                    {locale === 'ko' && (
+                      <div>
+                        <button
+                          type="button"
+                          onClick={() => {
+                            setSelectedProductNumber(
+                              Math.max(1, selectedProductNumber - 1)
+                            );
+                          }}
+                        >
+                          -
+                        </button>
+                        <input
+                          id="selected-product-count"
+                          type="text"
+                          value={selectedProductNumber}
+                          readOnly
+                        />
+                        <button
+                          type="button"
+                          onClick={() => {
+                            setSelectedProductNumber(selectedProductNumber + 1);
+                          }}
+                        >
+                          +
+                        </button>
+                      </div>
+                    )}
                     <div className={styles.payment_select_price}>
                       <span id="product-price">
                         {productDetail.discountedPrice.toLocaleString()}

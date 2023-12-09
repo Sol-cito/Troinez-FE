@@ -1,101 +1,25 @@
-$font_size: 0.9vw;
-
 .body_container {
-  font-size: $font_size;
-  .row_container {
-    margin-bottom: 1vw;
-    .row_title {
-      font-size: 1.2vw;
-      line-height: 3vw;
-      font-weight: bolder;
-    }
-  }
-}
-
-.space_between {
   display: flex;
-  justify-content: space-between;
-}
-
-.center {
+  flex-direction: column;
   text-align: center;
-}
 
-.payment_btn {
-  width: 15vw;
-  height: 3vw;
-  margin: 1vw 0 2vw 0;
-}
+  .inputs {
+    margin-top: 5vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 
-.total_amount {
-  font-weight: bolder;
-  text-align: right;
-  padding-right: 10%;
-}
-
-.agree_div {
-  line-height: 3vw;
-
-  .agree_all {
-    margin-left: 0.5vw;
-    font-size: 0.8rem;
-  }
-
-  .agree_div_checkbox {
-    width: 3%;
-    margin: 0 0 0 0;
-    cursor: pointer;
-  }
-  .agree_div_button {
-    width: 97%;
-    margin: 0 0 0 0;
-    text-align: left;
-    background-color: #fff;
-    border: 0;
-    cursor: pointer;
-  }
-  .lightgray_div {
-    background-color: #fafafa;
-    margin: 1vw 0 1vw 0;
-    span {
-      font-weight: bolder;
-    }
-  }
-}
-
-.mgn_left {
-  margin-left: 3%;
-}
-
-@media screen and (max-width: 780px) {
-  .body_container {
-    font-size: 1rem;
-
-    .row_container {
-      .row_title {
-        font-size: 0.8rem;
-      }
+    .order_number_input,
+    .certification_number_input {
+      margin: 3vh 0 3vh 0;
+      height: 4vh;
+      width: 30vw;
     }
 
-    .row_container {
-      margin: 0 3% 0 3%;
-
-      .payment_btn {
-        width: 50%;
-        height: 5vh;
-      }
-    }
-  }
-
-  .agree_div {
-    .agree_all {
-      padding: 1%;
-    }
-
-    .lightgray_div {
-      text-align: center;
-      display: block;
-      margin: 5% 0 5% 0;
+    .find_button {
+      margin-top: 5vh;
+      height: 5vh;
+      width: 8vw;
     }
   }
 }

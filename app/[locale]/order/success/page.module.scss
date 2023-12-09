@@ -14,6 +14,7 @@ $font_size: 0.9vw;
     .row_sub_title {
       font-size: 1.2vw;
       line-height: 5vw;
+      margin-bottom: 5vh;
       font-weight: bolder;
       text-align: center;
     }
@@ -80,9 +81,9 @@ $font_size: 0.9vw;
   width: 100%;
 }
 
-.width_40 {
-  width: 40%;
-  margin: 0 auto;
+.row_guide {
+  margin: 5vh 0 5vh 0;
+  text-align: center;
 }
 .hr_mgn_top_1vw {
   margin-top: 2vw;
@@ -102,6 +103,7 @@ $font_size: 0.9vw;
   display: flex;
   line-height: 2vw;
   align-items: center;
+  border-bottom: 0.5px solid rgb(209, 209, 209);
 }
 .delivery_row_last {
   margin-bottom: 5vw;
@@ -116,4 +118,5 @@ $font_size: 0.9vw;
 .delivery_row_value {
   display: flex;
   width: 85%;
+  margin: 2vh 0 2vh 0;
 }
