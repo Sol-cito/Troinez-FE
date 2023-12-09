@@ -1,7 +1,6 @@
 'use client';
 
 import React, { Suspense, useEffect, useState } from 'react';
-// import CarouselImagesReactSlick from '@/components/carouselImages-react-slick/carouselImages';
 import { isMobile } from 'react-device-detect';
 import Image from 'next/image';
 import styles from './page.module.scss';
