@@ -2,7 +2,6 @@
 import Slider from 'react-slick';
 import Image from 'next/image';
 import 'slick-carousel/slick/slick.css';
-import 'slick-carousel/slick/slick-theme.css';
 import styles from './carouselImages.module.scss';
 
 interface CarouselImageProps {
@@ -39,12 +38,13 @@ export default function CarouselImagesReactSlick(props: CarouselImageProps) {
         slidesToShow={slideToShow}
         slidesToScroll={slideToScroll}
         autoplay={autoplay}
+        arrows={false}
       >
         {imageUrlList &&
-          imageUrlList.map((url: string) => (
+          imageUrlList.map((url: string, index: number) => (
             <Image
               key={url}
-              priority
+              priority={index === 0}
               quality={imageQuality}
               className={styles.carousel_image}
               src={url}

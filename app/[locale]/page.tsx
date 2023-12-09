@@ -1,12 +1,15 @@
 'use client';
 
-import CarouselImagesReactSlick from '@/components/carouselImages-react-slick/carouselImages';
+import React, { Suspense, useEffect, useState } from 'react';
 import { isMobile } from 'react-device-detect';
 import Image from 'next/image';
-import { useEffect, useState } from 'react';
 import styles from './page.module.scss';
 
 export default function HomePage() {
+  const CarouselImagesReackSlickComponent = React.lazy(
+    () => import('@/components/carouselImages-react-slick/carouselImages')
+  );
+
   const [isPageReady, setIsPageReady] = useState(false);
 
   const mainImageUrlList: string[] = [
@@ -44,15 +47,17 @@ export default function HomePage() {
               ))}
             </div>
           ) : (
-            <CarouselImagesReactSlick
-              imageUrlList={mainImageUrlList}
-              dots={false}
-              infinite
-              speed={5000}
-              slideToShow={1}
-              slideToScroll={1}
-              autoplay
-            />
+            <Suspense fallback={<div>Loading...</div>}>
+              <CarouselImagesReackSlickComponent
+                imageUrlList={mainImageUrlList}
+                dots={false}
+                infinite
+                speed={5000}
+                slideToShow={1}
+                slideToScroll={1}
+                autoplay
+              />
+            </Suspense>
           )}
         </div>
       )}
