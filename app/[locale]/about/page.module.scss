@@ -7,7 +7,7 @@
   .flex_box {
     display: flex;
     flex-direction: row;
-    margin-bottom: 8vh;
+    margin-bottom: 25vh;
 
     .image_box,
     .image_box_first,
@@ -26,7 +26,7 @@
     .text_box_third,
     .text_box_fourth,
     .text_box_fifth {
-      margin: 0 2vw 0 2vw;
+      margin: 10vh 2vw 10vh 2vw;
       line-height: 2;
 
       .title {
@@ -95,7 +95,7 @@
 
   .text_box_middle {
     text-align: center;
-    margin: 10vh 0 10vh 0;
+    margin: 0 0 25vh 0;
 
     .title {
       font-size: 3rem;
