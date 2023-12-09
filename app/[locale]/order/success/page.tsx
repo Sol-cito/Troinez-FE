@@ -21,6 +21,7 @@ export default function OrderSuccessPage() {
 
   const searchParams = useSearchParams();
   const orderId = searchParams.get('orderId') || '';
+  const orderType = searchParams.get('orderType');
 
   const onClickKeepShopping = () => {
     window.location.href = '/products/all';
@@ -36,6 +37,7 @@ export default function OrderSuccessPage() {
   };
 
   const removeItemsFromCart = async () => {
+    if (orderType !== 'cart') return;
     orderSuccessResponse?.orderProductDtoList.forEach(async (item) => {
       const getParameter: GetParameter = {
         url: '/product',

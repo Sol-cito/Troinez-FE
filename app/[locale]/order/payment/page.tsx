@@ -26,6 +26,7 @@ export default function TossPayments() {
   const orderId = searchParams.get('orderId');
   const orderName = searchParams.get('orderName');
   const totalPrice = parseInt(searchParams.get('totalPrice') || '-1', 10);
+  const orderType = searchParams.get('orderType');
   const customerKey = orderId || '123456';
 
   const paymentWidgetRef = useRef<PaymentWidgetInstance | null>(null);
@@ -37,7 +38,7 @@ export default function TossPayments() {
         orderName,
         customerName,
         customerEmail,
-        successUrl: `${successUrl}`,
+        successUrl: `${successUrl}?orderType=${orderType}`,
         failUrl: `${window.location.origin}/order/payment/fail`,
       });
     } catch (err) {

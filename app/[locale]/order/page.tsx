@@ -170,12 +170,14 @@ export default function Order() {
       data: orderRequest,
     };
     const response: OrderResponseInterface = await postApiCall(postParameter);
+
+    const orderTypeParam = searchParams.get('type');
     const { customerEmail } = response;
     const { customerName } = response;
     const { orderId } = response;
     const { orderName } = response;
     const { totalPrice } = orderRequest;
-    const params = `?customerName=${customerName}&customerEmail=${customerEmail}&orderId=${orderId}&orderName=${orderName}&totalPrice=${totalPrice}`;
+    const params = `?customerName=${customerName}&customerEmail=${customerEmail}&orderId=${orderId}&orderName=${orderName}&totalPrice=${totalPrice}&orderType=${orderTypeParam}`;
     window.location.href = '/order/payment'.concat(params);
     // success url 오면 success 창으로 넘겨줘야함.
   };
