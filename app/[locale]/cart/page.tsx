@@ -53,6 +53,7 @@ export default function Cart() {
       checkedItems.forEach((item) => {
         dispatch(removeFromCart(item.product));
       });
+      selectAllCartItems();
     }
   };
 
