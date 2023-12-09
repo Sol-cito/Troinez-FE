@@ -1,6 +1,7 @@
 $font_size: 0.9vw;
 
 .body_container {
+  margin-top: 5vh;
   font-size: $font_size;
   .row_container {
     margin: 4vh 0 4vh 0;
@@ -63,12 +64,44 @@ $font_size: 0.9vw;
 
     .row_container {
       .row_title {
-        font-size: 0.8rem;
+        font-size: 2rem;
+      }
+
+      .row_sub_title {
+        font-size: 1rem;
+      }
+
+      .row_price {
+        text-align: center;
+        font-size: 1rem;
+        margin: 2vh 0 2vh 0;
       }
     }
 
     .row_container {
       margin: 0 3% 0 3%;
     }
+  }
+
+  .delivery_info_box {
+    margin: 5vh 0 5vh 0;
+    width: 100%;
+    text-align: center;
+  }
+
+  .delivery_row {
+    height: 100%;
+  }
+
+  .delivery_title,
+  .delivery_row_key {
+    font-size: 0.9rem;
+  }
+
+  .delivery_row_value {
+    font-size: 0.9rem;
+    line-height: normal;
+    text-align: left;
+    margin-left: 5vw;
   }
 }

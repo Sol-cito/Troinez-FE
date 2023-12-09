@@ -120,3 +120,59 @@ $font_size: 0.9vw;
   width: 85%;
   margin: 2vh 0 2vh 0;
 }
+
+@media screen and (max-width: 780px) {
+  .body_container {
+    margin-top: 5vh;
+    font-size: 1rem;
+
+    .row_container {
+      .row_title {
+        line-height: normal;
+        font-size: 1.5rem;
+      }
+
+      .row_sub_title {
+        font-size: 1rem;
+      }
+
+      .row_price {
+        text-align: center;
+        font-size: 1rem;
+        margin: 2vh 0 2vh 0;
+      }
+    }
+
+    .row_container {
+      margin: 0 3% 0 3%;
+    }
+  }
+
+  .keep_shopping_btn {
+    width: 30%;
+    font-size: 1rem;
+    height: max-content;
+  }
+
+  .delivery_info_box {
+    margin: 5vh 0 5vh 0;
+    width: 100%;
+    text-align: center;
+  }
+
+  .delivery_row {
+    height: 100%;
+  }
+
+  .delivery_title,
+  .delivery_row_key {
+    font-size: 0.9rem;
+  }
+
+  .delivery_row_value {
+    font-size: 0.9rem;
+    line-height: normal;
+    text-align: left;
+    margin-left: 5vw;
+  }
+}

@@ -40,6 +40,16 @@ export default function Cart() {
         0
       );
 
+  const selectAllCartItems = () => {
+    if (cartItemList.length === 0) {
+      alert('카트에 담긴 상품이 없습니다.');
+      return;
+    }
+    cartItemList.forEach((item) => {
+      dispatch(checkAllCartItems(item.product));
+    });
+  };
+
   const handleOnClickRemoveFromCart = () => {
     if (cartItemList.length === 0) {
       alert('카트에 담긴 상품이 없습니다.');
@@ -53,17 +63,8 @@ export default function Cart() {
       checkedItems.forEach((item) => {
         dispatch(removeFromCart(item.product));
       });
+      selectAllCartItems();
     }
-  };
-
-  const selectAllCartItems = () => {
-    if (cartItemList.length === 0) {
-      alert('카트에 담긴 상품이 없습니다.');
-      return;
-    }
-    cartItemList.forEach((item) => {
-      dispatch(checkAllCartItems(item.product));
-    });
   };
 
   const onClickPurchase = () => {
@@ -160,7 +161,7 @@ export default function Cart() {
               <div>{getTotalPrice().toLocaleString()}원</div>
             </div>
             <div className={styles.product_order_box}>
-              <div>
+              <div className={styles.delivery_price_guide}>
                 배송비 (제주 혹은 도서산간 지역의 경우 추가비용이 발생할 수
                 있습니다.)
               </div>

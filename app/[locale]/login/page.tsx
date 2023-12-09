@@ -13,7 +13,10 @@ export default function LoginPage() {
     setPageReady(true);
   }, []);
 
-  const naverLoginImage = '/common/login/img/btnG_official.png';
+  const logoEntireUrl =
+    'https://d3en4rwu5hlcjb.cloudfront.net/logo/logo_entire.png';
+  const naverLoginImage =
+    'https://d3en4rwu5hlcjb.cloudfront.net/login/btnG_official.png';
   const clientId = process.env.NEXT_PUBLIC_NAVER_LOGIN_CLIENT_ID;
   const redirectUri = process.env.NEXT_PUBLIC_NAVER_LOGIN_REDIRECT_URI;
 
@@ -27,7 +30,7 @@ export default function LoginPage() {
             <div className={styles.login_left_title}>MEMBERSHIP</div>
             <div className={styles.login_header}>
               <Image
-                src="/common/logo/logo_entire.png"
+                src={logoEntireUrl}
                 alt="TNZ"
                 layout="fill"
                 objectFit="contain"
