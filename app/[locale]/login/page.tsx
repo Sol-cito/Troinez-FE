@@ -13,8 +13,6 @@ export default function LoginPage() {
     setPageReady(true);
   }, []);
 
-  const logoEntireUrl =
-    'https://d3en4rwu5hlcjb.cloudfront.net/logo/logo_entire.png';
   const naverLoginImage =
     'https://d3en4rwu5hlcjb.cloudfront.net/login/btnG_official.png';
   const clientId = process.env.NEXT_PUBLIC_NAVER_LOGIN_CLIENT_ID;
@@ -25,19 +23,6 @@ export default function LoginPage() {
   return (
     pageReady && (
       <div className={styles.login_wrapper}>
-        {!isMobile && (
-          <>
-            <div className={styles.login_left_title}>MEMBERSHIP</div>
-            <div className={styles.login_header}>
-              <Image
-                src={logoEntireUrl}
-                alt="TNZ"
-                layout="fill"
-                objectFit="contain"
-              />
-            </div>
-          </>
-        )}
         <div className={styles.flex_box}>
           <div className={styles.image_box}>
             <p className={styles.login_box_title}>로그인</p>

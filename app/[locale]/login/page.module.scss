@@ -1,32 +1,10 @@
 .login_wrapper {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  top: 0;
-  left: 0;
-  background-color: #fff;
-
-  .login_left_title {
-    position: absolute;
-    left: 3vw;
-    top: 3vw;
-    font-weight: bold;
-  }
-
-  .login_header {
-    text-align: center;
-    height: 10vw;
-    img {
-      position: relative !important;
-      vertical-align: middle;
-    }
-  }
   .flex_box {
     display: flex;
     .image_box {
       .login_box_title {
         text-align: center;
-        font-size: 1.3vw;
+        font-size: 2vw;
       }
       margin: 3.2vw auto;
       width: 20vw;
