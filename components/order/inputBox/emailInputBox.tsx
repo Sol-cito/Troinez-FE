@@ -67,14 +67,14 @@ export default function EmailInputBox({
           >
             <option value="">이메일을 선택하세요</option>
             <option value="naver.com">naver.com</option>
-            <option value="">hanmail.net</option>
-            <option value="">nate.com</option>
-            <option value="">hotmail.com</option>
-            <option value="">hanmir.com</option>
-            <option value="">dreamwiz.com</option>
-            <option value="">lycos.co.kr</option>
-            <option value="">paran.com</option>
-            <option>직접 입력</option>
+            <option value="hanmail.net">hanmail.net</option>
+            <option value="nate.com">nate.com</option>
+            <option value="hotmail.com">hotmail.com</option>
+            <option value="hanmir.com">hanmir.com</option>
+            <option value="dreamwiz.com">dreamwiz.com</option>
+            <option value="lycos.co.kr">lycos.co.kr</option>
+            <option value="paran.com">paran.com</option>
+            <option value="">직접 입력</option>
           </select>
         </div>
       ) : (
@@ -98,8 +98,7 @@ export default function EmailInputBox({
             name="email"
             onChange={receiverEmailDomainHandleChange}
           >
-            <option>이메일을 선택하세요</option>
-            <option>직접 입력</option>
+            <option value="">이메일을 선택하세요</option>
             <option value="naver.com">naver.com</option>
             <option value="hanmail.net">hanmail.net</option>
             <option value="nate.com">nate.com</option>
@@ -108,6 +107,7 @@ export default function EmailInputBox({
             <option value="dreamwiz.com">dreamwiz.com</option>
             <option value="lycos.co.kr">lycos.co.kr</option>
             <option value="paran.com">paran.com</option>
+            <option value="">직접 입력</option>
           </select>
         </div>
       )}
