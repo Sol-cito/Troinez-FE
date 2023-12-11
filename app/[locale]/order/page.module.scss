@@ -9,6 +9,29 @@ $font_size: 0.9vw;
       line-height: 3vw;
       font-weight: bolder;
     }
+
+    .row_orderer_info {
+      display: flex;
+      margin-bottom: 2vh;
+
+      .orderer_label {
+        display: flex;
+        align-items: center;
+        margin: 0 2% 0 0;
+
+        .orderer_checkbox {
+          margin: 0 0 0 0;
+          zoom: 1.5;
+        }
+
+        span {
+          display: inline-block;
+          margin-left: 5%;
+          margin-right: 20%;
+          white-space: nowrap;
+        }
+      }
+    }
   }
 }
 

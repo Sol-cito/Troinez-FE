@@ -69,6 +69,26 @@ export default function Order() {
   const [termsofserviceAgree, setTermsofserviceAgree] = useState(false);
   const [privatePolicyAgree, setPrivatePolicyAgree] = useState(false);
 
+  const [isReceiverSameAsOrderer, setIsReceiverSameAsOrderer] = useState(false);
+
+  useEffect(() => {
+    if (isReceiverSameAsOrderer) {
+      setOrderRequest({
+        ...orderRequest,
+        receiver: orderRequest.userName,
+        receiverPhoneNumber: orderRequest.phoneNumber,
+        receiverEmail: orderRequest.email,
+      });
+    } else {
+      setOrderRequest({
+        ...orderRequest,
+        receiver: '',
+        receiverPhoneNumber: ['010', '', ''],
+        receiverEmail: ['', ''],
+      });
+    }
+  }, [isReceiverSameAsOrderer]);
+
   const router = useRouter();
 
   useEffect(() => {
@@ -252,6 +272,30 @@ export default function Order() {
         />
         <hr />
         <span className={styles.row_title}>배송 정보</span>
+        <div className={styles.row_orderer_info}>
+          <label className={styles.orderer_label}>
+            <input
+              className={styles.orderer_checkbox}
+              type="checkbox"
+              onChange={() => {
+                setIsReceiverSameAsOrderer(!isReceiverSameAsOrderer);
+              }}
+              checked={!isReceiverSameAsOrderer}
+            />
+            <span>직접입력</span>
+          </label>
+          <label className={styles.orderer_label}>
+            <input
+              className={styles.orderer_checkbox}
+              type="checkbox"
+              onChange={() => {
+                setIsReceiverSameAsOrderer(!isReceiverSameAsOrderer);
+              }}
+              checked={isReceiverSameAsOrderer}
+            />
+            <span>주문자정보와 동일</span>
+          </label>
+        </div>
         <NameInputBox
           title="수취인"
           orderRequestState={orderRequest}
