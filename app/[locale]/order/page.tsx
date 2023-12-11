@@ -298,7 +298,7 @@ export default function Order() {
         <hr />
         <span className={styles.row_title}>배송 정보</span>
         <div className={styles.row_orderer_info}>
-          <label className={styles.orderer_label} htmlFor="first-name">
+          <label className={styles.orderer_label} htmlFor="orderer_checkbox">
             <input
               className={styles.orderer_checkbox}
               type="checkbox"
@@ -309,7 +309,10 @@ export default function Order() {
             />
             <span>직접입력</span>
           </label>
-          <label className={styles.orderer_label} htmlFor="first-name">
+          <label
+            className={styles.orderer_label}
+            htmlFor="first-orderer_checkbox"
+          >
             <input
               className={styles.orderer_checkbox}
               type="checkbox"
