@@ -28,3 +28,21 @@ export interface OrderRequestInterface {
   deliveryPrice: number;
   totalPrice: number; // 배송비 포함 결제 금액
 }
+
+export type SetValidationResultType = React.Dispatch<
+  React.SetStateAction<ValidationResultInterface>
+>;
+
+export interface ValidationResultInterface {
+  userName: boolean;
+  phoneNumber: boolean;
+  email: boolean;
+  certificationNumber: boolean;
+  receiver: boolean;
+  receiverPhoneNumber: boolean;
+  receiverEmail: boolean;
+  receiverZipcode: boolean;
+  receiverAddress: boolean;
+  receiverDetailAddress: boolean;
+  allTermsAgreed: boolean;
+}

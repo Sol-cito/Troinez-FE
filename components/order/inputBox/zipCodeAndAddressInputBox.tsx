@@ -5,6 +5,7 @@ import Script from 'next/script';
 import {
   OrderRequestInterface,
   SetOrderRequestType,
+  ValidationResultInterface,
 } from '@/interfaces/order/OrderRequestInterface';
 
 import { useEffect } from 'react';
@@ -26,10 +27,12 @@ export default function ZipCodeAndAddressInputBox({
   title,
   orderRequestState,
   setOrderRequestState,
+  validationResult,
 }: {
   title: string;
   orderRequestState: OrderRequestInterface;
   setOrderRequestState: SetOrderRequestType;
+  validationResult: ValidationResultInterface;
 }) {
   useEffect(() => {
     let [deliveryPrice, deliveryType]: [number, string] =
@@ -66,6 +69,9 @@ export default function ZipCodeAndAddressInputBox({
       <Script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js" />
       <div className={styles.inputbox_tit}>{title}</div>
       <input
+        className={` ${
+          !validationResult.receiverZipcode && styles.invalid_input
+        }`}
         type="text"
         readOnly
         value={orderRequestState.receiverZipcode}
@@ -73,7 +79,9 @@ export default function ZipCodeAndAddressInputBox({
       />
       <input type="button" value="주소 검색" onClick={onClickAddr} />
       <input
-        className={styles.address_input}
+        className={`${styles.address_input} ${
+          !validationResult.receiverAddress && styles.invalid_input
+        }`}
         type="text"
         readOnly
         id="addr"

@@ -2,6 +2,7 @@
 import {
   OrderRequestInterface,
   SetOrderRequestType,
+  ValidationResultInterface,
 } from '@/interfaces/order/OrderRequestInterface';
 
 import styles from './inputBox.module.scss';
@@ -10,10 +11,12 @@ export default function NameInputBox({
   title,
   orderRequestState,
   setOrderRequestState,
+  validationResult,
 }: {
   title: string;
   orderRequestState: OrderRequestInterface;
   setOrderRequestState: SetOrderRequestType;
+  validationResult: ValidationResultInterface;
 }) {
   const nameHandleChange = (event: any) => {
     setOrderRequestState({
@@ -35,12 +38,18 @@ export default function NameInputBox({
       {title === '이름' ? (
         <input
           type="text"
+          className={
+            !validationResult.userName ? styles.invalid_input : undefined
+          }
           value={orderRequestState.userName}
           onChange={nameHandleChange}
         />
       ) : (
         <input
           type="text"
+          className={
+            !validationResult.receiver ? styles.invalid_input : undefined
+          }
           value={orderRequestState.receiver}
           onChange={receiverNameHandleChange}
         />

@@ -3,6 +3,7 @@
 import {
   OrderRequestInterface,
   SetOrderRequestType,
+  ValidationResultInterface,
 } from '@/interfaces/order/OrderRequestInterface';
 
 import styles from './inputBox.module.scss';
@@ -11,10 +12,12 @@ export default function DetailAddressInputBox({
   title,
   orderRequestState,
   setOrderRequestState,
+  validationResult,
 }: {
   title: string;
   orderRequestState: OrderRequestInterface;
   setOrderRequestState: SetOrderRequestType;
+  validationResult: ValidationResultInterface;
 }) {
   const detailAddressHandleChange = (event: any) => {
     setOrderRequestState({
@@ -29,7 +32,9 @@ export default function DetailAddressInputBox({
       <div>
         <input
           type="text"
-          className={styles.address_input}
+          className={`${styles.address_input} ${
+            !validationResult.receiverDetailAddress && styles.invalid_input
+          }`}
           onChange={detailAddressHandleChange}
         />
       </div>

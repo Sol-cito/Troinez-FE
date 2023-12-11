@@ -18,15 +18,16 @@ import EmailInputBox from '@/components/order/inputBox/emailInputBox';
 import DetailAddressInputBox from '@/components/order/inputBox/detailAddressInputBox';
 import ZipCodeAndAddressInputBox from '@/components/order/inputBox/zipCodeAndAddressInputBox';
 import RequestInputBox from '@/components/order/inputBox/requestInputBox';
-import orderVaildCheck from '@/utils/orderUtil';
 import {
   OrderProductDtoInterface,
   OrderRequestInterface,
+  ValidationResultInterface,
 } from '@/interfaces/order/OrderRequestInterface';
 import { OrderResponseInterface } from '@/interfaces/order/OrderResponseInterface';
 import { PostParameter, postApiCall } from '@/service/restAPI.service';
-import styles from './page.module.scss';
+import orderValidCheck from '@/utils/orderUtil';
 import { useAppDispatch, useAppSelector } from '../../../redux/config';
+import styles from './page.module.scss';
 
 export default function Order() {
   const dispatch = useAppDispatch();
@@ -53,8 +54,22 @@ export default function Order() {
     totalPrice: 0,
   };
 
-  const [isValidCertificationNumber, setIsValidCertificationNumber] =
-    useState(false);
+  const initialValidationResult: ValidationResultInterface = {
+    userName: false,
+    phoneNumber: false,
+    email: false,
+    certificationNumber: false,
+    receiver: false,
+    receiverPhoneNumber: false,
+    receiverEmail: false,
+    receiverZipcode: false,
+    receiverAddress: false,
+    receiverDetailAddress: false,
+    allTermsAgreed: false,
+  };
+
+  const [validationResult, setValidationResult] =
+    useState<ValidationResultInterface>(initialValidationResult);
 
   const [orderType, setOrderType] = useState('');
   const [orderRequest, setOrderRequest] =
@@ -64,10 +79,29 @@ export default function Order() {
   const [orderProductAmount, setOrderProductAmount] = useState(0);
   const searchParams = useSearchParams();
 
-  const [isValidOrder, setIsValidOrder] = useState(false);
   const [allAgree, setAllAgree] = useState(false);
   const [termsofserviceAgree, setTermsofserviceAgree] = useState(false);
   const [privatePolicyAgree, setPrivatePolicyAgree] = useState(false);
+
+  const [isReceiverSameAsOrderer, setIsReceiverSameAsOrderer] = useState(false);
+
+  useEffect(() => {
+    if (isReceiverSameAsOrderer) {
+      setOrderRequest({
+        ...orderRequest,
+        receiver: orderRequest.userName,
+        receiverPhoneNumber: orderRequest.phoneNumber,
+        receiverEmail: orderRequest.email,
+      });
+    } else {
+      setOrderRequest({
+        ...orderRequest,
+        receiver: '',
+        receiverPhoneNumber: ['010', '', ''],
+        receiverEmail: ['', ''],
+      });
+    }
+  }, [isReceiverSameAsOrderer]);
 
   const router = useRouter();
 
@@ -152,19 +186,19 @@ export default function Order() {
   };
 
   const onClickPayment = async () => {
-    if (!isValidOrder) {
+    const invalidResultArray: string[] = [];
+    Object.entries(validationResult).forEach((entry) => {
+      if (!entry[1]) {
+        invalidResultArray.push(entry[0]);
+      }
+    });
+    if (invalidResultArray.length > 0) {
       alert('입력하지 않은 란이 있습니다.');
+      window.scrollTo(0, 0);
+      console.log(invalidResultArray);
       return;
     }
-    // backEndApi 호출
-    // orderId: nanoid(),
-    // orderName: '토스 티셔츠 외 2건',
-    // customerName: '김토스',
-    // customerEmail: 'customer123@gmail.com',
-    // successUrl: `${window.location.origin}/order/payment/success`,
-    // failUrl: `${window.location.origin}/order/payment/fail`,
-    // 결재창 띄우기 with params
-    // 구매하기 버튼 누르면 우선 backend에 요청 먼저 보내기
+
     const postParameter: PostParameter = {
       url: '/order',
       data: orderRequest,
@@ -187,12 +221,7 @@ export default function Order() {
   }, [termsofserviceAgree, privatePolicyAgree]);
 
   useEffect(() => {
-    orderVaildCheck(
-      orderRequest,
-      isValidCertificationNumber,
-      allAgree,
-      setIsValidOrder
-    );
+    orderValidCheck(orderRequest, allAgree, setValidationResult);
   }, [orderRequest, allAgree]);
 
   return (
@@ -221,7 +250,7 @@ export default function Order() {
       <div className={styles.row_container}>
         <hr />
         <div className={styles.total_amount}>
-          Total : <span>{orderProductAmount} 원</span>
+          Total : <span>{orderProductAmount.toLocaleString()} 원</span>
         </div>
         <hr />
       </div>
@@ -231,52 +260,124 @@ export default function Order() {
           title="이름"
           orderRequestState={orderRequest}
           setOrderRequestState={setOrderRequest}
+          validationResult={validationResult}
         />
+        {!validationResult.userName && (
+          <span className={styles.error_message}>이름을 입력해 주세요.</span>
+        )}
         <PhoneNumberInputBox
           title="연락처"
           orderRequestState={orderRequest}
           setOrderRequestState={setOrderRequest}
         />
+        {!validationResult.phoneNumber && (
+          <span className={styles.error_message}>
+            연락처 11자리를 입력해 주세요.
+          </span>
+        )}
         <EmailInputBox
           title="이메일"
           orderRequestState={orderRequest}
           setOrderRequestState={setOrderRequest}
         />
+        {validationResult.email === false && (
+          <span className={styles.error_message}>이메일을 입력해주세요</span>
+        )}
+        <br />
         <span className={styles.row_title}>비회원 주문조회 인증번호</span>
         <CertificationNumberInputBox
           title="인증번호 입력"
           orderRequestState={orderRequest}
           setOrderRequestState={setOrderRequest}
-          isValidCertificationNumber={isValidCertificationNumber}
-          setIsValidCertificationNumber={setIsValidCertificationNumber}
         />
+        {validationResult.certificationNumber === false && (
+          <span className={styles.error_message}>
+            인증번호 6자리를 입력해주세요.
+          </span>
+        )}
         <hr />
         <span className={styles.row_title}>배송 정보</span>
+        <div className={styles.row_orderer_info}>
+          <label className={styles.orderer_label} htmlFor="orderer_checkbox">
+            <input
+              className={styles.orderer_checkbox}
+              type="checkbox"
+              onChange={() => {
+                setIsReceiverSameAsOrderer(!isReceiverSameAsOrderer);
+              }}
+              checked={!isReceiverSameAsOrderer}
+            />
+            <span>직접입력</span>
+          </label>
+          <label
+            className={styles.orderer_label}
+            htmlFor="first-orderer_checkbox"
+          >
+            <input
+              className={styles.orderer_checkbox}
+              type="checkbox"
+              onChange={() => {
+                setIsReceiverSameAsOrderer(!isReceiverSameAsOrderer);
+              }}
+              checked={isReceiverSameAsOrderer}
+            />
+            <span>주문자정보와 동일</span>
+          </label>
+        </div>
         <NameInputBox
           title="수취인"
           orderRequestState={orderRequest}
           setOrderRequestState={setOrderRequest}
+          validationResult={validationResult}
         />
+        {!validationResult.receiver && (
+          <span className={styles.error_message}>
+            수취인 이름을 입력해 주세요.
+          </span>
+        )}
         <PhoneNumberInputBox
           title="연락처(수취인)"
           orderRequestState={orderRequest}
           setOrderRequestState={setOrderRequest}
         />
+
+        {!validationResult.receiverPhoneNumber && (
+          <span className={styles.error_message}>
+            연락처 11자리를 입력해 주세요.
+          </span>
+        )}
         <EmailInputBox
           title="이메일(수취인)"
           orderRequestState={orderRequest}
           setOrderRequestState={setOrderRequest}
         />
+        {validationResult.receiverEmail === false && (
+          <span className={styles.error_message}>
+            수취인 이메일을 입력해주세요
+          </span>
+        )}
         <ZipCodeAndAddressInputBox
           title="우편번호"
           orderRequestState={orderRequest}
           setOrderRequestState={setOrderRequest}
+          validationResult={validationResult}
         />
+        {!validationResult.receiverZipcode && (
+          <span className={styles.error_message_bottom}>
+            우편번호 및 주소를 입력해주세요.
+          </span>
+        )}
         <DetailAddressInputBox
           title="상세 주소"
           orderRequestState={orderRequest}
           setOrderRequestState={setOrderRequest}
+          validationResult={validationResult}
         />
+        {!validationResult.receiverDetailAddress && (
+          <span className={styles.error_message_bottom}>
+            상세주소를 입력해주세요.
+          </span>
+        )}
         <RequestInputBox
           title="배송 요청사항"
           orderRequestState={orderRequest}
@@ -345,6 +446,11 @@ export default function Order() {
             value="[필수] 개인정보 수집 및 이용 동의(약관을 보려면 클릭하세요)"
             onClick={onClickPrivatePolicyAgree}
           />
+          {!validationResult.allTermsAgreed && (
+            <span className={styles.error_message}>
+              모든 약관에 동의해주세요.
+            </span>
+          )}
         </div>
         <hr />
         <div className={styles.agree_div}>
