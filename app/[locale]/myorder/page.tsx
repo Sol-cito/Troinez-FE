@@ -34,7 +34,7 @@ export default function MyOrder() {
 
   return (
     <div className={styles.body_container}>
-      <h1>주문조회</h1>
+      <h1 className={styles.title}>주문조회</h1>
       <div className={styles.inputs}>
         <input
           className={styles.order_number_input}

@@ -1,8 +1,13 @@
+@import '/app/common.scss';
+
 .body_container {
   display: flex;
   flex-direction: column;
   text-align: center;
   margin-top: 5vh;
+  .title {
+    font-size: $myorder-title-fz;
+  }
   .inputs {
     margin-top: 5vh;
     display: flex;
@@ -14,12 +19,14 @@
       margin: 3vh 0 3vh 0;
       height: 4vh;
       width: 30vw;
+      font-size: $myorder-input-fz;
     }
 
     .find_button {
       margin-top: 5vh;
       height: 5vh;
       width: 8vw;
+      font-size: $myorder-find-btn-fz;
     }
   }
 }
