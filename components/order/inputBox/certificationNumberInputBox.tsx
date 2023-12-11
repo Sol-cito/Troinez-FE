@@ -18,7 +18,7 @@ export default function CertificationNumberInputBox({
 }) {
   const certificationNumberHandleChange = (event: any) => {
     const value = Number(event.target.value);
-    if (isNaN(value)) {
+    if (Number.isNaN(value)) {
       alert('숫자만 입력 가능합니다.');
       return;
     }

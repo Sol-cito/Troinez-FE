@@ -25,9 +25,9 @@ import {
 } from '@/interfaces/order/OrderRequestInterface';
 import { OrderResponseInterface } from '@/interfaces/order/OrderResponseInterface';
 import { PostParameter, postApiCall } from '@/service/restAPI.service';
-import styles from './page.module.scss';
-import { useAppDispatch, useAppSelector } from '../../../redux/config';
 import orderValidCheck from '@/utils/orderUtil';
+import { useAppDispatch, useAppSelector } from '../../../redux/config';
+import styles from './page.module.scss';
 
 export default function Order() {
   const dispatch = useAppDispatch();
@@ -298,7 +298,7 @@ export default function Order() {
         <hr />
         <span className={styles.row_title}>배송 정보</span>
         <div className={styles.row_orderer_info}>
-          <label className={styles.orderer_label}>
+          <label className={styles.orderer_label} htmlFor="first-name">
             <input
               className={styles.orderer_checkbox}
               type="checkbox"
@@ -309,7 +309,7 @@ export default function Order() {
             />
             <span>직접입력</span>
           </label>
-          <label className={styles.orderer_label}>
+          <label className={styles.orderer_label} htmlFor="first-name">
             <input
               className={styles.orderer_checkbox}
               type="checkbox"

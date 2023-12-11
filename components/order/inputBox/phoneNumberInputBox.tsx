@@ -17,7 +17,7 @@ export default function PhoneNumberInputBox({
 }) {
   const phoneNumberFirstHandleChange = (event: any) => {
     const value = Number(event.target.value);
-    if (isNaN(value)) {
+    if (Number.isNaN(value)) {
       alert('숫자만 입력 가능합니다.');
       return;
     }
@@ -32,7 +32,7 @@ export default function PhoneNumberInputBox({
   };
   const phoneNumberMidHandleChange = (event: any) => {
     const value = Number(event.target.value);
-    if (isNaN(value)) {
+    if (Number.isNaN(value)) {
       alert('숫자만 입력 가능합니다.');
       return;
     }
@@ -47,7 +47,7 @@ export default function PhoneNumberInputBox({
   };
   const phoneNumberLastHandleChange = (event: any) => {
     const value = Number(event.target.value);
-    if (isNaN(value)) {
+    if (Number.isNaN(value)) {
       alert('숫자만 입력 가능합니다.');
       return;
     }
@@ -63,7 +63,7 @@ export default function PhoneNumberInputBox({
 
   const receiverPhoneNumberFirstHandleChange = (event: any) => {
     const value = Number(event.target.value);
-    if (isNaN(value)) {
+    if (Number.isNaN(value)) {
       alert('숫자만 입력 가능합니다.');
       return;
     }
@@ -78,7 +78,7 @@ export default function PhoneNumberInputBox({
   };
   const receiverPhoneNumberMidHandleChange = (event: any) => {
     const value = Number(event.target.value);
-    if (isNaN(value)) {
+    if (Number.isNaN(value)) {
       alert('숫자만 입력 가능합니다.');
       return;
     }
@@ -93,7 +93,7 @@ export default function PhoneNumberInputBox({
   };
   const receiverPhoneNumberLastHandleChange = (event: any) => {
     const value = Number(event.target.value);
-    if (isNaN(value)) {
+    if (Number.isNaN(value)) {
       alert('숫자만 입력 가능합니다.');
       return;
     }
