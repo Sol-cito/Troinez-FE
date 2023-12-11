@@ -1,8 +1,10 @@
+@import '/app/common.scss';
+
 .item_box {
   display: inline-block;
   width: 30%;
   margin-left: 2.5%;
-  font-size: 1vw;
+  font-size: $product-list-fz;
   margin-bottom: 10vh;
   .item_img_box {
     img {
@@ -32,7 +34,7 @@
           width: 2vw;
           font-family: Tahoma, dotum;
           color: #fff;
-          font-size: 0.8vw;
+          font-size: $product-list-newest-icon-fz;
           font-weight: bold;
           padding: 0.2vw 0.7vw 0.2vw 0.7vw;
           text-align: center;

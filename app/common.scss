@@ -1,0 +1,46 @@
+// ht : height
+// fz : font-size
+
+// common
+// PC header
+$header-ht: 13vw;
+$header-fz: 0.8vw;
+
+// PC footer
+$footer-ht: 22vh;
+$footer-fz: 0.9vw;
+
+// PC SHOP ( /products )
+$product-list-title-fz: 1.5vw;
+$product-list-fz: 1vw;
+$product-list-newest-icon-fz: 0.8vw;
+
+// PC SHOP Detail ( /products/item/* )
+$product-detail-title-fz: 1.5vw;
+$product-detail-description-fz: 0.9vw;
+$product-detail-payment-select-fz: 1vw;
+$product-detail-payment-total-fz: 1.1vw;
+$product-detail-payment-not-available-btn-fz: 1.5vw;
+$product-detail-payment-nonmember-payment-btn: 1.2vw;
+$product-detail-payment-cart-btn: 1.2vw;
+
+// PC ABOUT ( /about )
+$about-title-fz: 3rem;
+$about-subtitle-fz: 2rem;
+$about-content-fz: 1.25rem;
+
+// PC LOGIN ( /login )
+$login-title-fz: 2vw;
+
+// PC MY ORDER ( /myorder )
+$myorder-title-fz: 2.2vw;
+$myorder-input-fz: 1vw;
+$myorder-find-btn-fz: 1vw;
+
+// PC CART ( /cart )
+$cart-title-fz: 1.2vw;
+$cart-entire-fz: 0.9vw;
+$cart-select-delete-btn-fz: 1vw;
+$cart-product-buy-btn-fz: 1.3vw;
+
+// PC ORDER ( /order )

@@ -1,3 +1,4 @@
+@import '/app/common.scss';
 .about_wrapper {
   display: flex;
   margin-top: 10vh;
@@ -30,12 +31,12 @@
       line-height: 2;
 
       .title {
-        font-size: 3rem;
+        font-size: $about-title-fz;
       }
 
       .subtitle {
         font-weight: bold;
-        font-size: 2rem;
+        font-size: $about-subtitle-fz;
         margin-bottom: 6vh;
       }
 
@@ -46,7 +47,7 @@
       }
 
       .content {
-        font-size: 1.25rem;
+        font-size: $about-content-fz;
         word-break: break-all;
         text-align: justify;
         margin-bottom: 7vh;
@@ -98,19 +99,19 @@
     margin: 0 0 25vh 0;
 
     .title {
-      font-size: 3rem;
+      font-size: $about-title-fz;
       font-style: normal;
       margin-bottom: 0vh;
     }
     .subtitle {
-      font-size: 2rem;
+      font-size: $about-subtitle-fz;
       font-style: normal;
       margin-bottom: 5vh;
     }
 
     p {
       font-style: italic;
-      font-size: 1.2rem;
+      font-size: $about-content-fz;
     }
   }
 }

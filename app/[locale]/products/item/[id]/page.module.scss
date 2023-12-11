@@ -1,3 +1,5 @@
+@import '/app/common.scss';
+
 .detail_box {
   display: flex;
   justify-content: space-between;
@@ -22,14 +24,14 @@
 
   .right_cont {
     width: 50%;
-    font-size: 0.9vw;
+    font-size: $product-detail-description-fz;
     margin: 2.5% 2.5% 0 0;
     // background-color: yellow;
     .desc_box {
       line-height: 2;
 
       .desc_title {
-        font-size: 1.5vw;
+        font-size: $product-detail-title-fz;
         font-weight: bold;
         color: darkgray;
       }
@@ -42,11 +44,11 @@
         margin-right: 0.5vw;
       }
       .desc_product_eng {
-        font-size: 0.9vw;
+        font-size: $product-detail-description-fz;
         font-weight: bold;
       }
       .desc_product_kor {
-        font-size: 0.9vw;
+        font-size: $product-detail-description-fz;
       }
       .desc_sub_title {
         margin: 1.5vw 0 0.5vw 0;
@@ -94,13 +96,13 @@
           }
           .payment_select_title {
             padding-left: 1vw;
-            font-size: 1vw;
+            font-size: $product-detail-payment-select-fz;
             font-weight: bold;
             width: 16vw;
           }
           .payment_select_price {
             padding-right: 1vw;
-            font-size: 1vw;
+            font-size: $product-detail-payment-select-fz;
             font-weight: bold;
           }
         }
@@ -108,7 +110,7 @@
       .payment_total_price_box {
         display: flex;
         justify-content: space-between;
-        font-size: 1.1vw;
+        font-size: $product-detail-payment-total-fz;
         line-height: 2.5vw;
         padding: 1vw;
         .payment_total_count {
@@ -132,6 +134,7 @@
           color: white;
           font-weight: bold;
           margin-left: 1%;
+          font-size: $product-detail-payment-nonmember-payment-btn;
         }
         .payment_decision_basket {
           cursor: pointer;
@@ -139,11 +142,12 @@
           border: 3px solid whitesmoke;
           font-weight: bold;
           margin-right: 1%;
+          font-size: $product-detail-payment-cart-btn;
         }
         .payment_not_available_btn {
           width: 100%;
           line-height: 3vw;
-          font-size: 1.5vw;
+          font-size: $product-detail-payment-not-available-btn-fz;
           color: white;
           background-color: black;
         }
