@@ -15,7 +15,14 @@ export default function PhoneNumberInputBox({
   orderRequestState: OrderRequestInterface;
   setOrderRequestState: SetOrderRequestType;
 }) {
+  const validateIfNumber = (event: any) => {};
+
   const phoneNumberFirstHandleChange = (event: any) => {
+    const value = Number(event.target.value);
+    if (isNaN(value)) {
+      alert('숫자만 입력 가능합니다.');
+      return;
+    }
     setOrderRequestState({
       ...orderRequestState,
       phoneNumber: [
@@ -26,6 +33,11 @@ export default function PhoneNumberInputBox({
     });
   };
   const phoneNumberMidHandleChange = (event: any) => {
+    const value = Number(event.target.value);
+    if (isNaN(value)) {
+      alert('숫자만 입력 가능합니다.');
+      return;
+    }
     setOrderRequestState({
       ...orderRequestState,
       phoneNumber: [
@@ -36,6 +48,11 @@ export default function PhoneNumberInputBox({
     });
   };
   const phoneNumberLastHandleChange = (event: any) => {
+    const value = Number(event.target.value);
+    if (isNaN(value)) {
+      alert('숫자만 입력 가능합니다.');
+      return;
+    }
     setOrderRequestState({
       ...orderRequestState,
       phoneNumber: [
@@ -47,6 +64,11 @@ export default function PhoneNumberInputBox({
   };
 
   const receiverPhoneNumberFirstHandleChange = (event: any) => {
+    const value = Number(event.target.value);
+    if (isNaN(value)) {
+      alert('숫자만 입력 가능합니다.');
+      return;
+    }
     setOrderRequestState({
       ...orderRequestState,
       receiverPhoneNumber: [
@@ -57,6 +79,11 @@ export default function PhoneNumberInputBox({
     });
   };
   const receiverPhoneNumberMidHandleChange = (event: any) => {
+    const value = Number(event.target.value);
+    if (isNaN(value)) {
+      alert('숫자만 입력 가능합니다.');
+      return;
+    }
     setOrderRequestState({
       ...orderRequestState,
       receiverPhoneNumber: [
@@ -67,6 +94,11 @@ export default function PhoneNumberInputBox({
     });
   };
   const receiverPhoneNumberLastHandleChange = (event: any) => {
+    const value = Number(event.target.value);
+    if (isNaN(value)) {
+      alert('숫자만 입력 가능합니다.');
+      return;
+    }
     setOrderRequestState({
       ...orderRequestState,
       receiverPhoneNumber: [
