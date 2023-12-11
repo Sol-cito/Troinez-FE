@@ -1,10 +1,11 @@
+@import '/app/common.scss';
 .login_wrapper {
   .flex_box {
     display: flex;
     .image_box {
       .login_box_title {
         text-align: center;
-        font-size: 2vw;
+        font-size: $login-title-fz;
       }
       margin: 3.2vw auto;
       width: 20vw;

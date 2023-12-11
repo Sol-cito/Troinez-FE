@@ -1,5 +1,6 @@
-$header-height: 13vh;
-$header-fond-size: 0.8vw;
+@import '/app/common.scss';
+$header-height: $header-ht;
+$header-fond-size: $header-fz;
 
 .header {
   width: 75%;

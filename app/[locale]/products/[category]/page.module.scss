@@ -1,4 +1,7 @@
+@import '/app/common.scss';
+
 .title_box {
+  font-size: $product-list-title-fz;
   text-align: center;
   .title {
     line-height: 4vw;

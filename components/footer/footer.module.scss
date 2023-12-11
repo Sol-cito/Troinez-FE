@@ -1,5 +1,7 @@
-$footer-height: 22vh;
-$footer-font-size: 0.9vw;
+@import '/app/common.scss';
+
+$footer-height: $footer-ht;
+$footer-font-size: $footer-fz;
 
 .footer {
   width: 75%;
