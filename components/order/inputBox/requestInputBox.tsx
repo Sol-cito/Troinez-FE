@@ -26,7 +26,7 @@ export default function RequestInputBox({
       <div className={styles.inputbox_tit}>{title}</div>
       <textarea
         className={styles.request_inputbox}
-        placeholder="배송 시 요청사항을 기입해주세요. ( 문앞에 놔주세요. )"
+        placeholder=" 배송 시 요청사항을 기입해주세요 (ex.문앞에 놔주세요)."
         onChange={requestHandleChange}
       />
     </div>

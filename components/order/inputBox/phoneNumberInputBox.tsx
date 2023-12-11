@@ -15,8 +15,6 @@ export default function PhoneNumberInputBox({
   orderRequestState: OrderRequestInterface;
   setOrderRequestState: SetOrderRequestType;
 }) {
-  const validateIfNumber = (event: any) => {};
-
   const phoneNumberFirstHandleChange = (event: any) => {
     const value = Number(event.target.value);
     if (isNaN(value)) {
@@ -113,9 +111,12 @@ export default function PhoneNumberInputBox({
     <div className={styles.inputbox_div}>
       <div className={styles.inputbox_tit}>{title}</div>
       {title === '연락처' ? (
-        <div>
+        <>
           <input
-            className={styles.phone_number}
+            className={`${styles.phone_number} ${
+              orderRequestState.phoneNumber[0].length !== 3 &&
+              styles.invalid_input
+            }`}
             type="text"
             value={orderRequestState.phoneNumber[0]}
             maxLength={3}
@@ -123,7 +124,10 @@ export default function PhoneNumberInputBox({
           />
           <span> - </span>
           <input
-            className={styles.phone_number}
+            className={`${styles.phone_number} ${
+              orderRequestState.phoneNumber[1].length !== 4 &&
+              styles.invalid_input
+            }`}
             type="text"
             maxLength={4}
             value={orderRequestState.phoneNumber[1]}
@@ -131,17 +135,23 @@ export default function PhoneNumberInputBox({
           />
           <span> - </span>
           <input
-            className={styles.phone_number}
+            className={`${styles.phone_number} ${
+              orderRequestState.phoneNumber[2].length !== 4 &&
+              styles.invalid_input
+            }`}
             type="text"
             maxLength={4}
             value={orderRequestState.phoneNumber[2]}
             onChange={phoneNumberLastHandleChange}
           />
-        </div>
+        </>
       ) : (
-        <div>
+        <>
           <input
-            className={styles.phone_number}
+            className={`${styles.phone_number} ${
+              orderRequestState.receiverPhoneNumber[0].length !== 3 &&
+              styles.invalid_input
+            }`}
             type="text"
             value={orderRequestState.receiverPhoneNumber[0]}
             maxLength={3}
@@ -149,7 +159,10 @@ export default function PhoneNumberInputBox({
           />
           <span> - </span>
           <input
-            className={styles.phone_number}
+            className={`${styles.phone_number} ${
+              orderRequestState.receiverPhoneNumber[1].length !== 4 &&
+              styles.invalid_input
+            }`}
             type="text"
             maxLength={4}
             value={orderRequestState.receiverPhoneNumber[1]}
@@ -157,13 +170,16 @@ export default function PhoneNumberInputBox({
           />
           <span> - </span>
           <input
-            className={styles.phone_number}
+            className={`${styles.phone_number} ${
+              orderRequestState.receiverPhoneNumber[2].length !== 4 &&
+              styles.invalid_input
+            }`}
             type="text"
             maxLength={4}
             value={orderRequestState.receiverPhoneNumber[2]}
             onChange={receiverPhoneNumberLastHandleChange}
           />
-        </div>
+        </>
       )}
     </div>
   );

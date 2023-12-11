@@ -47,14 +47,18 @@ export default function EmailInputBox({
       {title === '이메일' ? (
         <div className={styles.email_input_box}>
           <input
-            className={styles.email_input}
+            className={`${styles.email_input} ${
+              !orderRequestState.email[0] && styles.invalid_input
+            }`}
             type="text"
             value={orderRequestState.email[0]}
             onChange={emailIdHandleChange}
           />
           <span> @ </span>
           <input
-            className={styles.email_input}
+            className={`${styles.email_input} ${
+              !orderRequestState.email[1] && styles.invalid_input
+            }`}
             type="text"
             value={orderRequestState.email[1]}
             onChange={emailDomainHandleChange}
@@ -80,14 +84,18 @@ export default function EmailInputBox({
       ) : (
         <div className={styles.email_input_box}>
           <input
-            className={styles.email_input}
+            className={`${styles.email_input} ${
+              !orderRequestState.receiverEmail[0] && styles.invalid_input
+            }`}
             type="text"
             value={orderRequestState.receiverEmail[0]}
             onChange={receiverEmailIdHandleChange}
           />
           <span> @ </span>
           <input
-            className={styles.email_input}
+            className={`${styles.email_input} ${
+              !orderRequestState.receiverEmail[1] && styles.invalid_input
+            }`}
             type="text"
             value={orderRequestState.receiverEmail[1]}
             onChange={receiverEmailDomainHandleChange}
