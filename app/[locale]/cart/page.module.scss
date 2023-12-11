@@ -1,5 +1,6 @@
+@import '/app/common.scss';
 $product_image_size: 10vw;
-$font_size: 0.9vw;
+$font_size: $cart-entire-fz;
 
 .body_container {
   font-size: $font_size;
@@ -8,7 +9,7 @@ $font_size: 0.9vw;
       display: block;
       text-align: left;
       margin: 2% 5% 2% 5%;
-      font-size: 1.3rem;
+      font-size: $cart-title-fz;
     }
 
     .product_list_box {
@@ -27,7 +28,6 @@ $font_size: 0.9vw;
   .cart_info_box {
     margin-left: 5%;
     font-weight: bold;
-    font-size: 1.2vw;
   }
 
   .product_price_info_box {
@@ -44,6 +44,7 @@ $font_size: 0.9vw;
       border-radius: 10%;
       margin: 1.2vw 1vw 1.2vw 0;
       margin-right: 1vw;
+      font-size: $cart-select-delete-btn-fz;
     }
   }
   .product_order_info {
@@ -64,7 +65,7 @@ $font_size: 0.9vw;
     button {
       width: 10vw;
       height: 3vw;
-      font-size: 1.3vw;
+      font-size: $cart-product-buy-btn-fz;
     }
   }
 }
