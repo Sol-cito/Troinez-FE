@@ -8,7 +8,7 @@
   .flex_box {
     display: flex;
     flex-direction: row;
-    margin-bottom: 25vh;
+    margin-bottom: 15vh;
 
     .image_box,
     .image_box_first,
@@ -37,7 +37,7 @@
       .subtitle {
         font-weight: bold;
         font-size: $about-subtitle-fz;
-        margin-bottom: 6vh;
+        margin-bottom: 3vh;
       }
 
       .title,
@@ -50,7 +50,7 @@
         font-size: $about-content-fz;
         word-break: break-all;
         text-align: justify;
-        margin-bottom: 7vh;
+        margin-bottom: 1.5vh;
       }
     }
 

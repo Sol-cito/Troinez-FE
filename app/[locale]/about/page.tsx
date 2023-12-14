@@ -53,6 +53,7 @@ export default function AboutPage() {
                 fill
                 priority
                 sizes="25vw"
+                objectFit="contain"
               />
             </div>
           )}
@@ -84,6 +85,7 @@ export default function AboutPage() {
                 fill
                 priority
                 sizes="50vw"
+                objectFit="contain"
               />
             </div>
           )}
@@ -123,6 +125,7 @@ export default function AboutPage() {
               alt="second about image"
               fill
               sizes={isMobile ? '50vw' : '25vw'}
+              objectFit="contain"
             />
           </div>
           <div className={(styles.text_box, styles.text_box_third)}>
@@ -142,6 +145,7 @@ export default function AboutPage() {
                 alt="third about image"
                 fill
                 sizes="50vw"
+                objectFit="contain"
               />
             </div>
           )}
@@ -166,6 +170,7 @@ export default function AboutPage() {
                 alt="third about image"
                 fill
                 sizes="25vw"
+                objectFit="contain"
               />
             </div>
           )}
@@ -178,6 +183,7 @@ export default function AboutPage() {
                 alt="fourth about image"
                 fill
                 sizes="25vw"
+                objectFit="contain"
               />
             </div>
           )}
@@ -202,6 +208,7 @@ export default function AboutPage() {
                 alt="fourth about image"
                 fill
                 sizes="25vw"
+                objectFit="contain"
               />
             </div>
           )}
