@@ -416,6 +416,11 @@ export default function Order() {
             onChange={onClickAllAgreeCheckBox}
           />
           <span className={styles.agree_all}>모든 약관 동의</span>
+          {!validationResult.allTermsAgreed && (
+            <span className={styles.error_message}>
+              모든 약관에 동의해주세요.
+            </span>
+          )}
         </div>
         <hr />
         <div className={styles.agree_div}>
@@ -446,11 +451,6 @@ export default function Order() {
             value="[필수] 개인정보 수집 및 이용 동의(약관을 보려면 클릭하세요)"
             onClick={onClickPrivatePolicyAgree}
           />
-          {!validationResult.allTermsAgreed && (
-            <span className={styles.error_message}>
-              모든 약관에 동의해주세요.
-            </span>
-          )}
         </div>
         <hr />
         <div className={styles.agree_div}>

@@ -228,6 +228,12 @@
             height: fit-content;
             align-items: center;
 
+            div {
+              input {
+                min-width: 10vw;
+              }
+            }
+
             .payment_select_title,
             .payment_select_price {
               font-size: 0.7rem;

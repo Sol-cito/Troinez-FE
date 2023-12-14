@@ -214,15 +214,12 @@ export default function ProductDetailPage({
                   - 다음과 같은 경우 교환/환불이 불가능합니다.
                 </p>
                 <p className={styles.return_sub2_title}>
-                  {' '}
                   1. 제품을 수령한 날로부터 7일이 지난 경우
                 </p>
                 <p className={styles.return_sub2_title}>
-                  {' '}
                   2. 제품 박스가 훼손되어 상품가치가 상실된 경우
                 </p>
                 <p className={styles.return_sub2_title}>
-                  {' '}
                   3. 제품을 사용하였거나 일부를 소비하여 상품가치가 상실된 경우
                 </p>
                 <hr />
@@ -234,55 +231,61 @@ export default function ProductDetailPage({
                       {productDetail.productName}
                     </div>
                     {locale === 'ko' && (
-                      <div>
-                        <button
-                          type="button"
-                          onClick={() => {
-                            setSelectedProductNumber(
-                              Math.max(1, selectedProductNumber - 1)
-                            );
-                          }}
-                        >
-                          -
-                        </button>
-                        <input
-                          id="selected-product-count"
-                          type="text"
-                          value={selectedProductNumber}
-                          readOnly
-                        />
-                        <button
-                          type="button"
-                          onClick={() => {
-                            setSelectedProductNumber(selectedProductNumber + 1);
-                          }}
-                        >
-                          +
-                        </button>
-                      </div>
+                      <>
+                        <div>
+                          <button
+                            type="button"
+                            onClick={() => {
+                              setSelectedProductNumber(
+                                Math.max(1, selectedProductNumber - 1)
+                              );
+                            }}
+                          >
+                            -
+                          </button>
+                          <input
+                            id="selected-product-count"
+                            type="text"
+                            value={selectedProductNumber}
+                            readOnly
+                          />
+                          <button
+                            type="button"
+                            onClick={() => {
+                              setSelectedProductNumber(
+                                selectedProductNumber + 1
+                              );
+                            }}
+                          >
+                            +
+                          </button>
+                        </div>
+                        <div className={styles.payment_select_price}>
+                          <span id="product-price">
+                            {productDetail.discountedPrice.toLocaleString()}
+                          </span>
+                          <span>{productDetailTrans('price')}</span>
+                        </div>
+                      </>
                     )}
-                    <div className={styles.payment_select_price}>
-                      <span id="product-price">
-                        {productDetail.discountedPrice.toLocaleString()}
-                      </span>
-                      <span>{productDetailTrans('price')}</span>
-                    </div>
                   </div>
                 </div>
-                <div className={styles.payment_total_price_box}>
-                  <span className={styles.payment_total_count}>
-                    {productDetailTrans('totalPrice')}({selectedProductNumber}
-                    {productDetailTrans('pieces')})
-                  </span>
-                  <span className={styles.payment_total_price}>
-                    <span id="product-total-price">
-                      {(
-                        selectedProductNumber * productDetail.discountedPrice
-                      ).toLocaleString()}
+                {locale === 'ko' && (
+                  <div className={styles.payment_total_price_box}>
+                    <span className={styles.payment_total_count}>
+                      {productDetailTrans('totalPrice')}({selectedProductNumber}
+                      {productDetailTrans('pieces')})
                     </span>
-                    <span>{productDetailTrans('price')}</span>
-                  </span>
-                </div>
+                    <span className={styles.payment_total_price}>
+                      <span id="product-total-price">
+                        {(
+                          selectedProductNumber * productDetail.discountedPrice
+                        ).toLocaleString()}
+                      </span>
+                      <span>{productDetailTrans('price')}</span>
+                    </span>
+                  </div>
+                )}
                 <div className={styles.payment_decision_box}>
                   {locale === 'ko' ? (
                     <>

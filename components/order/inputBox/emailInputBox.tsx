@@ -71,6 +71,7 @@ export default function EmailInputBox({
           >
             <option value="">이메일을 선택하세요</option>
             <option value="naver.com">naver.com</option>
+            <option value="gmail.com">gmail.com</option>
             <option value="hanmail.net">hanmail.net</option>
             <option value="nate.com">nate.com</option>
             <option value="hotmail.com">hotmail.com</option>
@@ -108,6 +109,7 @@ export default function EmailInputBox({
           >
             <option value="">이메일을 선택하세요</option>
             <option value="naver.com">naver.com</option>
+            <option value="gmail.com">gmail.com</option>
             <option value="hanmail.net">hanmail.net</option>
             <option value="nate.com">nate.com</option>
             <option value="hotmail.com">hotmail.com</option>

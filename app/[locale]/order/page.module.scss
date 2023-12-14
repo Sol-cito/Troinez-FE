@@ -108,17 +108,24 @@ $font_size: 0.9vw;
     font-size: 1rem;
 
     .row_container {
-      .row_title {
-        font-size: 0.8rem;
-      }
-    }
-
-    .row_container {
       margin: 0 3% 0 3%;
+
+      .row_title {
+        display: block;
+        font-size: 1rem;
+        margin: 5% 0 5% 0;
+      }
 
       .payment_btn {
         width: 50%;
         height: 5vh;
+      }
+
+      .error_message,
+      .error_message_bottom {
+        display: block;
+        font-size: 0.8rem;
+        margin: 1% 0 3% 0;
       }
     }
   }
