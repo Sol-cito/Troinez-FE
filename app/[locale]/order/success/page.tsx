@@ -34,11 +34,15 @@ export default function OrderSuccessPage() {
     };
     const res: OrderSuccessResponseInterface = await getApiCall(getParameter);
     setOrderSuccessResponse(res);
+    if (orderType !== 'cart') {
+      removeItemsFromCart(res);
+    }
   };
 
-  const removeItemsFromCart = async () => {
-    if (orderType !== 'cart') return;
-    orderSuccessResponse?.orderProductDtoList.forEach(async (item) => {
+  const removeItemsFromCart = async (
+    orderSuccessResponse: OrderSuccessResponseInterface
+  ) => {
+    orderSuccessResponse.orderProductDtoList.forEach(async (item) => {
       const getParameter: GetParameter = {
         url: '/product',
         params: { id: item.productId },
@@ -51,10 +55,6 @@ export default function OrderSuccessPage() {
   useEffect(() => {
     getOrderSuccessInfo();
   }, []);
-
-  useEffect(() => {
-    removeItemsFromCart();
-  }, [orderSuccessResponse]);
 
   return (
     <div className={styles.body_container}>
