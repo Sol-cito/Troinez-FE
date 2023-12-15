@@ -27,6 +27,19 @@ export default function OrderSuccessPage() {
     window.location.href = '/products/all';
   };
 
+  const removeItemsFromCart = async (
+    orderResponse: OrderSuccessResponseInterface
+  ) => {
+    orderResponse.orderProductDtoList.forEach(async (item) => {
+      const getParameter: GetParameter = {
+        url: '/product',
+        params: { id: item.productId },
+      };
+      const product: Product = await getApiCall(getParameter);
+      dispatch(removeFromCart(product));
+    });
+  };
+
   const getOrderSuccessInfo = async () => {
     const getParameter: GetParameter = {
       url: '/orderSuccessInfo',
@@ -37,19 +50,6 @@ export default function OrderSuccessPage() {
     if (orderType !== 'cart') {
       removeItemsFromCart(res);
     }
-  };
-
-  const removeItemsFromCart = async (
-    orderSuccessResponse: OrderSuccessResponseInterface
-  ) => {
-    orderSuccessResponse.orderProductDtoList.forEach(async (item) => {
-      const getParameter: GetParameter = {
-        url: '/product',
-        params: { id: item.productId },
-      };
-      const product: Product = await getApiCall(getParameter);
-      dispatch(removeFromCart(product));
-    });
   };
 
   useEffect(() => {
