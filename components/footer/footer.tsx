@@ -1,11 +1,13 @@
 'use client';
 
-import { useTranslations } from 'next-intl';
+import { useLocale, useTranslations } from 'next-intl';
 import Image from 'next/image';
 import Link from 'next/link';
 import styles from './footer.module.scss';
 
 export default function Footer() {
+  const locale: string = useLocale();
+  const fontClass = locale === 'ko' ? styles.font_ko : styles.font_en;
   const t = useTranslations('Footer');
   const companyName: string = t('companyName');
   const companyAddressInfoList: string[] = [
@@ -36,7 +38,7 @@ export default function Footer() {
   const privatePolicy: string = t('privatePolicy');
 
   return (
-    <footer className={styles.footer}>
+    <footer className={`${styles.footer} ${fontClass}`}>
       <div className={styles.left}>
         <div>
           <p>{companyName}</p>
