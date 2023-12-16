@@ -41,8 +41,10 @@ export default async function RootLayout({
     ssr: false,
   });
 
+  const fontClass = locale === 'ko' ? styles.font_ko : styles.font_en;
+
   return (
-    <html className={styles.html} lang={locale}>
+    <html className={`${styles.html} ${fontClass}`} lang={locale}>
       <body>
         <Providers>
           <NextIntlClientProvider locale={locale} messages={messages}>
