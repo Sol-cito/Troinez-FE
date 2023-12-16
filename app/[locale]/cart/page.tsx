@@ -132,9 +132,7 @@ export default function Cart() {
             </p>
             <p>
               <span>합계 : </span>
-              <span>
-                {(getTotalPrice() + deliveryPrice).toLocaleString()}원
-              </span>
+              <span>{(getTotalPrice() + deliveryPrice).toLocaleString()}₩</span>
             </p>
           </div>
         </div>
@@ -158,18 +156,18 @@ export default function Cart() {
             <hr className={styles.hr_lighter} />
             <div className={styles.product_order_box}>
               <div>총 상품금액</div>
-              <div>{getTotalPrice().toLocaleString()}원</div>
+              <div>{getTotalPrice().toLocaleString()}₩</div>
             </div>
             <div className={styles.product_order_box}>
               <div className={styles.delivery_price_guide}>
                 배송비 (제주 혹은 도서산간 지역의 경우 추가비용이 발생할 수
                 있습니다.)
               </div>
-              <div>{deliveryPrice.toLocaleString()}원</div>
+              <div>{deliveryPrice.toLocaleString()}₩</div>
             </div>
             <div className={styles.product_order_box}>
               <div>결제예정금액</div>
-              <div>{(getTotalPrice() + deliveryPrice).toLocaleString()}원</div>
+              <div>{(getTotalPrice() + deliveryPrice).toLocaleString()}₩</div>
             </div>
             <hr className={styles.hr_normal} />
           </div>
