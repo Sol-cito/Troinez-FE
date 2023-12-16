@@ -49,7 +49,7 @@ export default function OrderProduct({
             <div className={styles.product_info}>
               <br />
               <p>{productDetail.productName}</p>
-              <p>{productDetail.discountedPrice.toLocaleString()}원</p>
+              <p>{productDetail.discountedPrice.toLocaleString()}₩</p>
               {visibleDelivery && <p>배송 : 기본배송</p>}
               {visibleDelivery && <p>-</p>}
             </div>
@@ -59,7 +59,7 @@ export default function OrderProduct({
                 {(
                   orderProductCount * (productDetail.discountedPrice || -1)
                 ).toLocaleString()}
-                원
+                ₩
               </div>
             </div>
           </div>

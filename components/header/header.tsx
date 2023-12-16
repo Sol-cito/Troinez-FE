@@ -6,6 +6,7 @@ import { useLocale, useTranslations } from 'next-intl';
 import { SHOP_DROPDOWN_LIST } from '@/common/shopDropdownList';
 import Image from 'next/image';
 import { isMobile } from 'react-device-detect';
+// import localFont from 'next/font/local';
 import DropdownMenu from '../dropdown/dropdownMenu';
 import DropdownBox from '../dropdown/dropdownBox';
 import HamburgerButton from '../hamburgerButton/hamburgerButton';
@@ -27,6 +28,10 @@ function Header({
     'https://d3en4rwu5hlcjb.cloudfront.net/logo/logo_text.png';
   const logoSignUrl =
     'https://d3en4rwu5hlcjb.cloudfront.net/logo/logo_sign.png';
+
+  // const englishTitleFont = localFont({
+  //   src: '/app/fonts/fonts/AppleSDGothicNeoT.ttf',
+  // });
 
   const logOutUri = process.env.NEXT_PUBLIC_NAVER_LOGOUT_REQUEST_URI;
 

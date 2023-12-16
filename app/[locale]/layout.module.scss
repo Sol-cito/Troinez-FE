@@ -9,6 +9,42 @@
   }
 }
 
+@font-face {
+  font-family: 'AppleSDGothicNeoT';
+  src: url('/fonts/AppleSDGothicNeoT.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'AppleSDGothicNeoUL';
+  src: url('/fonts/AppleSDGothicNeoUL.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'BoniModa';
+  src: url('/fonts/BodoniModa-VariableFont_opsz,wght.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'BoniModaItalic';
+  src: url('/fonts/BodoniModa-Italic-VariableFont_opsz,wght.ttf')
+    format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+.font_ko {
+  font-family: 'AppleSDGothicNeoUL';
+}
+.font_en {
+  font-family: 'BoniModa';
+}
+
 @media screen and (max-width: 780px) {
   .html {
     body {

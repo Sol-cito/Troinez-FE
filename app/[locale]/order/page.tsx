@@ -250,7 +250,7 @@ export default function Order() {
       <div className={styles.row_container}>
         <hr />
         <div className={styles.total_amount}>
-          Total : <span>{orderProductAmount.toLocaleString()} 원</span>
+          Total : <span>{orderProductAmount.toLocaleString()} ₩</span>
         </div>
         <hr />
       </div>
@@ -388,26 +388,33 @@ export default function Order() {
       <div className={styles.row_container}>
         <div className={styles.space_between}>
           <span>상품 합계 금액</span>
-          <span>{orderRequest.productTotalPrice.toLocaleString()}원</span>
+          <span>{orderRequest.productTotalPrice.toLocaleString()}₩</span>
         </div>
         <hr />
         <div className={styles.space_between}>
           <span>할인 금액</span>
-          <span>{orderRequest.salePrice.toLocaleString()}원</span>
+          <span>{orderRequest.salePrice.toLocaleString()}₩</span>
         </div>
         <hr />
         <div className={styles.space_between}>
           <span>배송비</span>
-          <span>{orderRequest.deliveryPrice.toLocaleString()}원</span>
+          <span>{orderRequest.deliveryPrice.toLocaleString()}₩</span>
         </div>
         <hr />
         <div className={styles.space_between}>
           <span>최종 결재 금액</span>
-          <span>{orderRequest.totalPrice.toLocaleString()}원</span>
+          <span>{orderRequest.totalPrice.toLocaleString()}₩</span>
         </div>
         <hr />
       </div>
-      <div className={styles.row_container}>
+      <div className={`${styles.row_container} ${styles.mgn_top_1vw}`}>
+        <div className={styles.agree_div}>
+          <div className={styles.lightgray_div}>
+            <span className={styles.mgn_left}>
+              구매조건 확인 및 결제진행 동의
+            </span>
+          </div>
+        </div>
         <div className={styles.agree_div}>
           <input
             type="checkbox"
@@ -454,13 +461,6 @@ export default function Order() {
         </div>
         <hr />
         <div className={styles.agree_div}>
-          <div className={styles.lightgray_div}>
-            <span className={styles.mgn_left}>
-              구매조건 확인 및 결제진행 동의
-            </span>
-          </div>
-        </div>
-        <div className={styles.agree_div}>
           <div className={`${styles.lightgray_div}  ${styles.center}`}>
             <span>주문 내용을 확인하였으며 약관에 동의합니다.</span>
           </div>
@@ -470,7 +470,7 @@ export default function Order() {
         <input
           className={styles.payment_btn}
           type="button"
-          value={`${orderRequest.totalPrice.toLocaleString()} 원 결제하기`}
+          value={`${orderRequest.totalPrice.toLocaleString()} ₩ 결제하기`}
           onClick={onClickPayment}
         />
       </div>

@@ -73,7 +73,7 @@ export default function CartProduct({ cartItem }: { cartItem: CartItem }) {
           <Link href={`/${locale}/products/item/${cartItem.product.id}`}>
             {cartItem.product.productName})
           </Link>
-          <p>{cartItem.product.discountedPrice.toLocaleString()}원</p>
+          <p>{cartItem.product.discountedPrice.toLocaleString()}₩</p>
           <p>배송 : 기본배송</p>
           <p>-</p>
           <div>
@@ -103,8 +103,8 @@ export default function CartProduct({ cartItem }: { cartItem: CartItem }) {
           <p>
             {(
               cartItem.product.discountedPrice * cartItem.quantity
-            ).toLocaleString()}{' '}
-            원
+            ).toLocaleString()}
+            ₩
           </p>
         </div>
       </div>

@@ -118,17 +118,18 @@
 
 @media screen and (max-width: 780px) {
   .about_wrapper {
+    margin-top: 0rem;
     align-items: center;
 
     .flex_box {
       flex-direction: column;
       align-items: center;
-
       .text_box,
       .text_box_first,
       .text_box_third,
       .text_box_fourth,
       .text_box_fifth {
+        margin-top: 0rem;
         width: 90% !important;
         padding: 0;
 
