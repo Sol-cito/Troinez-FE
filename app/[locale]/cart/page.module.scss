@@ -76,6 +76,10 @@ $font_size: $cart-entire-fz;
     .row_container {
       font-size: 1rem;
 
+      .row_title {
+        font-size: $cart-title-fz-mobile;
+      }
+
       .product_order_box {
         margin-top: 3%;
         line-height: normal;
