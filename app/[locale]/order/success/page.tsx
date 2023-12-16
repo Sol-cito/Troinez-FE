@@ -1,3 +1,4 @@
+/* eslint-disable no-alert */
 /* eslint-disable react-hooks/exhaustive-deps */
 
 'use client';
@@ -52,6 +53,17 @@ export default function OrderSuccessPage() {
     }
   };
 
+  const copyToClipboard = (text: string) => {
+    navigator.clipboard
+      .writeText(text)
+      .then(() => {
+        alert('주문번호가 복사되었습니다!'); // 복사가 완료되면 사용자에게 알림
+      })
+      .catch(() => {
+        alert('복사에 실패했습니다:');
+      });
+  };
+
   useEffect(() => {
     getOrderSuccessInfo();
   }, []);
@@ -72,7 +84,17 @@ export default function OrderSuccessPage() {
                 참고해 주시기 바랍니다.
               </p>
             </div>
-            <div className={styles.row_sub_title}>
+            <div
+              className={styles.row_sub_title}
+              onClick={() => copyToClipboard(orderSuccessResponse.orderId)}
+              onKeyPress={(event) => {
+                if (event.key === 'Enter' || event.key === ' ') {
+                  copyToClipboard(orderSuccessResponse.orderId);
+                }
+              }}
+              role="button"
+              tabIndex={0}
+            >
               주문번호 : {orderSuccessResponse.orderId}
             </div>
             <div className={styles.center}>
