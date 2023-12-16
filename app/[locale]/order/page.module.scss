@@ -102,7 +102,9 @@ $font_size: 0.9vw;
 .mgn_left {
   margin-left: 3%;
 }
-
+.mgn_top_1vw {
+  margin-top: 1.5vw;
+}
 @media screen and (max-width: 780px) {
   .body_container {
     font-size: 1rem;

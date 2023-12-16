@@ -407,7 +407,14 @@ export default function Order() {
         </div>
         <hr />
       </div>
-      <div className={styles.row_container}>
+      <div className={`${styles.row_container} ${styles.mgn_top_1vw}`}>
+        <div className={styles.agree_div}>
+          <div className={styles.lightgray_div}>
+            <span className={styles.mgn_left}>
+              구매조건 확인 및 결제진행 동의
+            </span>
+          </div>
+        </div>
         <div className={styles.agree_div}>
           <input
             type="checkbox"
@@ -453,13 +460,6 @@ export default function Order() {
           />
         </div>
         <hr />
-        <div className={styles.agree_div}>
-          <div className={styles.lightgray_div}>
-            <span className={styles.mgn_left}>
-              구매조건 확인 및 결제진행 동의
-            </span>
-          </div>
-        </div>
         <div className={styles.agree_div}>
           <div className={`${styles.lightgray_div}  ${styles.center}`}>
             <span>주문 내용을 확인하였으며 약관에 동의합니다.</span>
