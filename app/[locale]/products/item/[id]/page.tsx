@@ -42,7 +42,7 @@ export default function ProductDetailPage({
   const getProductDetail = async () => {
     const getParameter: GetParameter = {
       url: '/product/detail',
-      params: { id: productId },
+      params: { id: productId, locale },
     };
     const res: ProductDetail = await getApiCall(getParameter);
     setProductDetail(res);
@@ -169,59 +169,68 @@ export default function ProductDetailPage({
                   {productDetailTrans('price')}
                 </p>
                 <hr />
+                <p className={styles.desc_sub_title}>Drink Edition</p>
                 {convertToHtml(productDetail.concept)}
                 <hr />
                 <p className={styles.desc_sub_title}>NOTES</p>
                 {convertToHtml(productDetail.notes)}
+                <br />
+                {convertToHtml(productDetail.scentDescription)}
                 <p className={styles.desc_sub_title}>PERFUMER</p>
                 <p className={styles.desc_sub_elt}>{productDetail.perfumer}</p>
                 <p className={styles.desc_sub_title}>INGREDIENTS</p>
                 <p className={styles.desc_sub_elt}>
                   {productDetail.ingredient}
                 </p>
-                <p className={styles.desc_sub_title}>INFORMATION</p>
-                {convertToHtml(productDetail.information)}
-                <p className={styles.desc_sub_title}>CAUTION</p>
-                {convertToHtml(productDetail.caution)}
-                <hr />
-                <p className={styles.shipping_title}>SHIPPING</p>
-                <p className={styles.shipping_sub_title}>
-                  {' '}
-                  - 주문일 오후 2시까지 결제 완료된 주문은 당일 출고됩니다.(주말
-                  및 공휴일 제외)
-                </p>
-                <p className={styles.shipping_sub_title}>
-                  - 3만원 이상 구매 시 배송비는 무료입니다.
-                </p>
-                <p className={styles.shipping_sub_title}>
-                  - 제주 지역 배송비 추가 3,000원 / 제주 외 도서지역 배송비 추가
-                  5,000원
-                </p>
-                <p className={styles.return_title}>RETURN</p>
-                <p className={styles.return_sub_title}>
-                  - 단순 변심으로 인한 교환/반품은 상품 수령 후 7일 이내
-                  가능합니다.
-                </p>
-                <p className={styles.return_sub_title}>
-                  - 단순 변심으로 인한 교환/반품시 왕복 배송비가 발생합니다.
-                  (편도 3,000원)
-                </p>
-                <p className={styles.return_sub_title}>
-                  - 상품 하자 및 오배송의 경우 불량 확인 시 배송비는 발생하지
-                  않습니다.
-                </p>
-                <p className={styles.return_sub_title}>
-                  - 다음과 같은 경우 교환/환불이 불가능합니다.
-                </p>
-                <p className={styles.return_sub2_title}>
-                  1. 제품을 수령한 날로부터 7일이 지난 경우
-                </p>
-                <p className={styles.return_sub2_title}>
-                  2. 제품 박스가 훼손되어 상품가치가 상실된 경우
-                </p>
-                <p className={styles.return_sub2_title}>
-                  3. 제품을 사용하였거나 일부를 소비하여 상품가치가 상실된 경우
-                </p>
+                {locale === 'ko' && (
+                  <>
+                    <p className={styles.desc_sub_title}>INFORMATION</p>
+                    {convertToHtml(productDetail.information)}
+                    <p className={styles.desc_sub_title}>CAUTION</p>
+                    {convertToHtml(productDetail.caution)}
+                    <hr />
+                    <p className={styles.shipping_title}>SHIPPING</p>
+                    <p className={styles.shipping_sub_title}>
+                      {' '}
+                      - 주문일 오후 2시까지 결제 완료된 주문은 당일
+                      출고됩니다.(주말 및 공휴일 제외)
+                    </p>
+                    <p className={styles.shipping_sub_title}>
+                      - 3만원 이상 구매 시 배송비는 무료입니다.
+                    </p>
+                    <p className={styles.shipping_sub_title}>
+                      - 제주 지역 배송비 추가 3,000원 / 제주 외 도서지역 배송비
+                      추가 5,000원
+                    </p>
+                    <p className={styles.return_title}>RETURN</p>
+                    <p className={styles.return_sub_title}>
+                      - 단순 변심으로 인한 교환/반품은 상품 수령 후 7일 이내
+                      가능합니다.
+                    </p>
+                    <p className={styles.return_sub_title}>
+                      - 단순 변심으로 인한 교환/반품시 왕복 배송비가 발생합니다.
+                      (편도 3,000원)
+                    </p>
+                    <p className={styles.return_sub_title}>
+                      - 상품 하자 및 오배송의 경우 불량 확인 시 배송비는
+                      발생하지 않습니다.
+                    </p>
+                    <p className={styles.return_sub_title}>
+                      - 다음과 같은 경우 교환/환불이 불가능합니다.
+                    </p>
+                    <p className={styles.return_sub2_title}>
+                      1. 제품을 수령한 날로부터 7일이 지난 경우
+                    </p>
+                    <p className={styles.return_sub2_title}>
+                      2. 제품 박스가 훼손되어 상품가치가 상실된 경우
+                    </p>
+                    <p className={styles.return_sub2_title}>
+                      3. 제품을 사용하였거나 일부를 소비하여 상품가치가 상실된
+                      경우
+                    </p>
+                  </>
+                )}
+                <br />
                 <hr />
               </div>
               <div className={styles.payment_box}>
