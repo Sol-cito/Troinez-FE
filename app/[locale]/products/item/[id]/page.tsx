@@ -169,10 +169,13 @@ export default function ProductDetailPage({
                   {productDetailTrans('price')}
                 </p>
                 <hr />
+                <p className={styles.desc_sub_title}>Drink Edition</p>
                 {convertToHtml(productDetail.concept)}
                 <hr />
                 <p className={styles.desc_sub_title}>NOTES</p>
                 {convertToHtml(productDetail.notes)}
+                <br />
+                {convertToHtml(productDetail.scentDescription)}
                 <p className={styles.desc_sub_title}>PERFUMER</p>
                 <p className={styles.desc_sub_elt}>{productDetail.perfumer}</p>
                 <p className={styles.desc_sub_title}>INGREDIENTS</p>
