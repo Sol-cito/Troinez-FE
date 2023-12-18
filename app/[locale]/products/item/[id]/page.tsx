@@ -125,6 +125,7 @@ export default function ProductDetailPage({
             <PurchasePopUpModal
               closeModal={closePurchasePopUpModal}
               purchaseContent={purchaseContent}
+              selectedProductNumber={selectedProductNumber}
             />
           </>
         )}

@@ -17,9 +17,11 @@ export interface PurchaseContent {
 export default function PurchasePopUpModal({
   closeModal,
   purchaseContent,
+  selectedProductNumber,
 }: {
   closeModal: any;
   purchaseContent: PurchaseContent;
+  selectedProductNumber: number;
 }) {
   let orderUrl: string;
 
@@ -30,7 +32,7 @@ export default function PurchasePopUpModal({
 
     orderUrl = `/order?type=single&productId=${
       purchaseInfo.selectedProductId
-    }&productCount=${purchaseInfo.selectedProductCount}&amount=${
+    }&productCount=${selectedProductNumber}&amount=${
       purchaseInfo.selectedProductPrice * purchaseInfo.selectedProductCount
     }`;
   }
