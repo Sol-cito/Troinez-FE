@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/no-noninteractive-element-to-interactive-role */
 /* eslint-disable no-alert */
 /* eslint-disable react-hooks/exhaustive-deps */
 
@@ -84,18 +85,21 @@ export default function OrderSuccessPage() {
                 참고해 주시기 바랍니다.
               </p>
             </div>
-            <div
-              className={styles.row_sub_title}
-              onClick={() => copyToClipboard(orderSuccessResponse.orderId)}
-              onKeyPress={(event) => {
-                if (event.key === 'Enter' || event.key === ' ') {
-                  copyToClipboard(orderSuccessResponse.orderId);
-                }
-              }}
-              role="button"
-              tabIndex={0}
-            >
-              주문번호 : {orderSuccessResponse.orderId}
+            <div className={styles.row_sub_title}>
+              <p>주문번호 : {orderSuccessResponse.orderId}</p>
+              <p
+                className={styles.small_text}
+                onClick={() => copyToClipboard(orderSuccessResponse.orderId)}
+                onKeyPress={(event) => {
+                  if (event.key === 'Enter' || event.key === ' ') {
+                    copyToClipboard(orderSuccessResponse.orderId);
+                  }
+                }}
+                role="button"
+                tabIndex={0}
+              >
+                ※ 여기를 마우스로 클릭하면 클립보드로 주문번호가 복사됩니다.
+              </p>
             </div>
             <div className={styles.center}>
               <input
