@@ -36,10 +36,11 @@ function Header({
 
   let loginoutLink;
   let usernameBtn;
+
   if (isLogin) {
     usernameBtn = (
-      <Link href="#none" className={styles.menu_btn}>
-        <strong>{username}</strong>
+      <Link href="#none" className={`${styles.menu_btn} ${styles.welcome}`}>
+        <strong>박진만</strong>
         {loginTrans('welcome')}
       </Link>
     );
@@ -64,6 +65,7 @@ function Header({
           <Link href={`/${locale}`} className={styles.logo}>
             <Image src={logoTextUrl} alt="TROIS NEZ" quality={100} fill />
           </Link>
+          {usernameBtn}
         </div>
         <div className={styles.mid}>
           <div>
@@ -79,7 +81,7 @@ function Header({
           <HamburgerButton isLogin={isLogin} />
         ) : (
           <div className={styles.right}>
-            {usernameBtn}
+            {/* {usernameBtn} */}
             <Link href={`/${switchLocale()}`} className={styles.menu_btn}>
               {locale.toLocaleUpperCase()}
             </Link>

@@ -12,7 +12,6 @@ $header-fond-size: $header-fz;
   display: flex;
   vertical-align: middle;
   align-items: center;
-
   a,
   span {
     display: inline-block;
@@ -34,13 +33,17 @@ $header-fond-size: $header-fz;
 
   .left {
     width: 45%;
-    a {
+    .welcome {
+      margin-left: 2vw;
+    }
+    .logo {
       margin-left: 5%;
       height: 3.5vw;
+      padding: auto 0 auto 0;
+      vertical-align: middle;
       img {
         text-align: left;
         position: relative !important;
-        vertical-align: middle;
       }
     }
   }
