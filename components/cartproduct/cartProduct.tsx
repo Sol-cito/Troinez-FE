@@ -11,14 +11,15 @@ import {
 } from '@/redux/store/cart.store';
 import { useAppDispatch } from '@/redux/config';
 import Link from 'next/link';
-import { useLocale } from 'next-intl';
+import { useLocale, useTranslations } from 'next-intl';
 import { isMobile } from 'react-device-detect';
 import styles from './cartProduct.module.scss';
 
 export default function CartProduct({ cartItem }: { cartItem: CartItem }) {
   const dispatch = useAppDispatch();
-
   const locale: string = useLocale();
+  const productDetailText = useTranslations('Product.detail');
+  const priceUnit = productDetailText('price');
 
   const handleIncreaseNumber = () => {
     dispatch(addToCart(cartItem.product));
@@ -73,7 +74,7 @@ export default function CartProduct({ cartItem }: { cartItem: CartItem }) {
           <Link href={`/${locale}/products/item/${cartItem.product.id}`}>
             {cartItem.product.productName})
           </Link>
-          <p>{cartItem.product.discountedPrice.toLocaleString()}₩</p>
+          <p>{cartItem.product.discountedPrice.toLocaleString() + priceUnit}</p>
           <p>배송 : 기본배송</p>
           <p>-</p>
           <div>
@@ -103,8 +104,7 @@ export default function CartProduct({ cartItem }: { cartItem: CartItem }) {
           <p>
             {(
               cartItem.product.discountedPrice * cartItem.quantity
-            ).toLocaleString()}
-            ₩
+            ).toLocaleString() + priceUnit}
           </p>
         </div>
       </div>

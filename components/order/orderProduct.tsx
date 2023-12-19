@@ -6,6 +6,7 @@ import { useState, useEffect } from 'react';
 import Image from 'next/image';
 import { GetParameter, getApiCall } from '@/service/restAPI.service';
 import { ProductDetail } from '@/interfaces/product/productDetail';
+import { useTranslations } from 'next-intl';
 import styles from './orderProduct.module.scss';
 
 export default function OrderProduct({
@@ -18,6 +19,8 @@ export default function OrderProduct({
   visibleDelivery: boolean;
 }) {
   const [productDetail, setProductDetail] = useState<ProductDetail>();
+  const productDetailText = useTranslations('Product.detail');
+  const priceUnit = productDetailText('price');
   const getProductDetail = async () => {
     const getParameter: GetParameter = {
       url: '/product/detail',
@@ -49,7 +52,9 @@ export default function OrderProduct({
             <div className={styles.product_info}>
               <br />
               <p>{productDetail.productName}</p>
-              <p>{productDetail.discountedPrice.toLocaleString()}₩</p>
+              <p>
+                {productDetail.discountedPrice.toLocaleString() + priceUnit}
+              </p>
               {visibleDelivery && <p>배송 : 기본배송</p>}
               {visibleDelivery && <p>-</p>}
             </div>
@@ -58,8 +63,7 @@ export default function OrderProduct({
               <div>
                 {(
                   orderProductCount * (productDetail.discountedPrice || -1)
-                ).toLocaleString()}
-                ₩
+                ).toLocaleString() + priceUnit}
               </div>
             </div>
           </div>

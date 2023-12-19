@@ -26,6 +26,7 @@ import {
 import { OrderResponseInterface } from '@/interfaces/order/OrderResponseInterface';
 import { PostParameter, postApiCall } from '@/service/restAPI.service';
 import orderValidCheck from '@/utils/orderUtil';
+import { useTranslations } from 'next-intl';
 import { useAppDispatch, useAppSelector } from '../../../redux/config';
 import styles from './page.module.scss';
 
@@ -84,6 +85,8 @@ export default function Order() {
   const [privatePolicyAgree, setPrivatePolicyAgree] = useState(false);
 
   const [isReceiverSameAsOrderer, setIsReceiverSameAsOrderer] = useState(false);
+  const productDetailText = useTranslations('Product.detail');
+  const priceUnit = productDetailText('price');
 
   useEffect(() => {
     if (isReceiverSameAsOrderer) {
@@ -250,7 +253,7 @@ export default function Order() {
       <div className={styles.row_container}>
         <hr />
         <div className={styles.total_amount}>
-          Total : <span>{orderProductAmount.toLocaleString()} ₩</span>
+          Total : <span>{orderProductAmount.toLocaleString() + priceUnit}</span>
         </div>
         <hr />
       </div>
@@ -388,22 +391,24 @@ export default function Order() {
       <div className={styles.row_container}>
         <div className={styles.space_between}>
           <span>상품 합계 금액</span>
-          <span>{orderRequest.productTotalPrice.toLocaleString()}₩</span>
+          <span>
+            {orderRequest.productTotalPrice.toLocaleString() + priceUnit}
+          </span>
         </div>
         <hr />
         <div className={styles.space_between}>
           <span>할인 금액</span>
-          <span>{orderRequest.salePrice.toLocaleString()}₩</span>
+          <span>{orderRequest.salePrice.toLocaleString() + priceUnit}</span>
         </div>
         <hr />
         <div className={styles.space_between}>
           <span>배송비</span>
-          <span>{orderRequest.deliveryPrice.toLocaleString()}₩</span>
+          <span>{orderRequest.deliveryPrice.toLocaleString() + priceUnit}</span>
         </div>
         <hr />
         <div className={styles.space_between}>
           <span>최종 결재 금액</span>
-          <span>{orderRequest.totalPrice.toLocaleString()}₩</span>
+          <span>{orderRequest.totalPrice.toLocaleString() + priceUnit}</span>
         </div>
         <hr />
       </div>
@@ -470,7 +475,9 @@ export default function Order() {
         <input
           className={styles.payment_btn}
           type="button"
-          value={`${orderRequest.totalPrice.toLocaleString()} ₩ 결제하기`}
+          value={`${
+            orderRequest.totalPrice.toLocaleString() + priceUnit
+          }  결제하기`}
           onClick={onClickPayment}
         />
       </div>
