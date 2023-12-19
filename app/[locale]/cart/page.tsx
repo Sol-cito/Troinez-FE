@@ -191,6 +191,7 @@ export default function Cart() {
                   isCartOrder: true,
                   purchaseInfoList: [],
                 }}
+                selectedProductNumber={0}
               />
             </>
           )}
