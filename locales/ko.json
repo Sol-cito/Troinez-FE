@@ -48,7 +48,7 @@
   },
   "Product": {
     "detail": {
-      "price": "₩",
+      "price": "원",
       "discount": "할인",
       "percentage": "%",
       "totalPrice": "총 상품금액",

@@ -14,13 +14,9 @@ import AddCartPopUpModal from './modal/AddCartPopUpModal';
 
 export default function ProductItem({ product }: { product: Product }) {
   const [showCartModal, setShowCartModal] = useState(false);
-
   const dispatch = useAppDispatch();
-
   const locale: string = useLocale();
-
   const productDetail = useTranslations('Product.detail');
-
   const cartImg = '/common/product/img/cart-shopping-solid.svg';
 
   const handleOnClickCart = () => {

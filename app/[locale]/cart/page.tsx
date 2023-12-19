@@ -14,7 +14,7 @@ import {
   removeFromCart,
 } from '@/redux/store/cart.store';
 import PurchasePopUpModal from '@/components/product/modal/PurchasePopUpModal';
-import { useLocale } from 'next-intl';
+import { useLocale, useTranslations } from 'next-intl';
 import { useRouter } from 'next/navigation';
 import { useAppDispatch, useAppSelector } from '../../../redux/config';
 import styles from './page.module.scss';
@@ -29,6 +29,8 @@ export default function Cart() {
   const dispatch = useAppDispatch();
   const { cartItemList } = useAppSelector((state) => state.cartItemSlice);
   const [deliveryPrice, setDeliveryPrice] = useState(3000);
+  const productDetailText = useTranslations('Product.detail');
+  const priceUnit = productDetailText('price');
 
   const getTotalPrice = () =>
     cartItemList
@@ -132,7 +134,9 @@ export default function Cart() {
             </p>
             <p>
               <span>합계 : </span>
-              <span>{(getTotalPrice() + deliveryPrice).toLocaleString()}₩</span>
+              <span>
+                {(getTotalPrice() + deliveryPrice).toLocaleString() + priceUnit}
+              </span>
             </p>
           </div>
         </div>
@@ -156,18 +160,20 @@ export default function Cart() {
             <hr className={styles.hr_lighter} />
             <div className={styles.product_order_box}>
               <div>총 상품금액</div>
-              <div>{getTotalPrice().toLocaleString()}₩</div>
+              <div>{getTotalPrice().toLocaleString() + priceUnit}</div>
             </div>
             <div className={styles.product_order_box}>
               <div className={styles.delivery_price_guide}>
                 배송비 (제주 혹은 도서산간 지역의 경우 추가비용이 발생할 수
                 있습니다.)
               </div>
-              <div>{deliveryPrice.toLocaleString()}₩</div>
+              <div>{deliveryPrice.toLocaleString() + priceUnit}</div>
             </div>
             <div className={styles.product_order_box}>
               <div>결제예정금액</div>
-              <div>{(getTotalPrice() + deliveryPrice).toLocaleString()}₩</div>
+              <div>
+                {(getTotalPrice() + deliveryPrice).toLocaleString() + priceUnit}
+              </div>
             </div>
             <hr className={styles.hr_normal} />
           </div>
