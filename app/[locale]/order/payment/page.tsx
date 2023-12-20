@@ -48,7 +48,11 @@ export default function TossPayments() {
   useEffect(() => {
     (async () => {
       const paymentWidget = await loadPaymentWidget(clientKey, customerKey);
-      paymentWidget.renderPaymentMethods('#paymet-widget', totalPrice);
+      paymentWidget.renderPaymentMethods(
+        '#paymet-widget',
+        { value: totalPrice },
+        { variantKey: 'widget_01' }
+      );
       paymentWidgetRef.current = paymentWidget;
     })();
   }, []);
