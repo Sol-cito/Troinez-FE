@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-expressions */
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable no-alert */
 /* eslint-disable react/button-has-type */
@@ -10,6 +11,8 @@ import {
   PaymentWidgetInstance,
 } from '@tosspayments/payment-widget-sdk';
 import { useSearchParams } from 'next/navigation';
+import { GetParameter, getApiCall } from '@/service/restAPI.service';
+import { OrderPriceInterface } from '@/interfaces/order/OrderPriceRequestInterface';
 import styles from './page.module.scss';
 
 const clientKey: string =
@@ -45,6 +48,23 @@ export default function TossPayments() {
       alert('[Error] 결제 과정에서 에러가 발생했습니다. 다시 시도해주세요.');
     }
   };
+
+  const getTotalPriceAndCheckClientValue = async (clientTotalPrice: number) => {
+    const getParameter: GetParameter = {
+      url: '/orderPrice',
+      params: { orderId },
+    };
+    const response: OrderPriceInterface = await getApiCall(getParameter);
+    if (response.totalPrice !== clientTotalPrice) {
+      alert('잘못된 요청입니다.');
+      window.location.href = '/';
+    }
+  };
+
+  useEffect(() => {
+    getTotalPriceAndCheckClientValue(totalPrice);
+  }, []);
+
   useEffect(() => {
     (async () => {
       const paymentWidget = await loadPaymentWidget(clientKey, customerKey);

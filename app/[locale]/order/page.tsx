@@ -198,7 +198,6 @@ export default function Order() {
     if (invalidResultArray.length > 0) {
       alert('입력하지 않은 란이 있습니다.');
       window.scrollTo(0, 0);
-      console.log(invalidResultArray);
       return;
     }
 
