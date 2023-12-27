@@ -129,18 +129,26 @@ export default function Order() {
           return orderProductDto;
         });
 
-      const productTotalPrice: number = cartItemList.reduce(
+      const productTotalPriceWithoutDiscount: number = cartItemList.reduce(
+        (res, item) =>
+          res + (item.checked ? item.product.productPrice * item.quantity : 0),
+        0
+      );
+
+      const productTotalWithDiscount: number = cartItemList.reduce(
         (res, item) =>
           res +
           (item.checked ? item.product.discountedPrice * item.quantity : 0),
         0
       );
-      setOrderProductAmount(productTotalPrice);
+
+      setOrderProductAmount(productTotalWithDiscount);
       setOrderRequest({
         ...orderRequest,
         orderProductDtoList,
-        productTotalPrice,
-        totalPrice: productTotalPrice + orderRequest.deliveryPrice,
+        productTotalPrice: productTotalPriceWithoutDiscount,
+        totalPrice: productTotalWithDiscount + orderRequest.deliveryPrice,
+        salePrice: productTotalPriceWithoutDiscount - productTotalWithDiscount,
       });
     } else {
       const productIdParam = searchParams.get('productId');
