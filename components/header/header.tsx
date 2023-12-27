@@ -41,6 +41,7 @@ function Header({
 
   let loginoutLink;
   let usernameBtn;
+
   if (isLogin) {
     usernameBtn = (
       <Link href="#none" className={styles.menu_btn}>
@@ -71,6 +72,7 @@ function Header({
           </Link>
         </div>
         <div className={styles.mid}>
+          <div className={styles.username}>{usernameBtn}</div>
           <div>
             <Image
               src={logoSignUrl}
@@ -84,7 +86,6 @@ function Header({
           <HamburgerButton isLogin={isLogin} />
         ) : (
           <div className={styles.right}>
-            {usernameBtn}
             <Link href={`/${switchLocale()}`} className={styles.menu_btn}>
               {locale.toLocaleUpperCase()}
             </Link>

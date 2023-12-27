@@ -44,8 +44,16 @@ $header-fond-size: $header-fz;
       }
     }
   }
+
   .mid {
+    position: relative;
     width: 10%;
+
+    .username {
+      left: -150%;
+      position: absolute;
+    }
+
     div {
       height: $header-height;
       line-height: $header-height;
@@ -96,6 +104,12 @@ $header-fond-size: $header-fz;
 
     .mid {
       width: inherit;
+
+      .username {
+        font-size: 0.5rem;
+        left: -170%;
+        position: absolute;
+      }
     }
   }
 }
