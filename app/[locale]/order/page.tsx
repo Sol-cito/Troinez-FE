@@ -142,12 +142,16 @@ export default function Order() {
         0
       );
 
+      const deliveryPriceAdjustment: number =
+        productTotalWithDiscount >= 30000 ? 0 : 3000;
+
       setOrderProductAmount(productTotalWithDiscount);
       setOrderRequest({
         ...orderRequest,
         orderProductDtoList,
         productTotalPrice: productTotalPriceWithoutDiscount,
-        totalPrice: productTotalWithDiscount + orderRequest.deliveryPrice,
+        deliveryPrice: deliveryPriceAdjustment,
+        totalPrice: productTotalWithDiscount + deliveryPriceAdjustment,
         salePrice: productTotalPriceWithoutDiscount - productTotalWithDiscount,
       });
     } else {
@@ -164,6 +168,9 @@ export default function Order() {
           productCount: parseInt(productCountParam, 10),
         };
 
+        const deliveryPriceAdjustment: number =
+          parseInt(amountParam, 10) >= 30000 ? 0 : 3000;
+
         setOrderType('single');
         setOrderProductId(parseInt(productIdParam, 10));
         setOrderProductCount(parseInt(productCountParam, 10));
@@ -171,7 +178,8 @@ export default function Order() {
         setOrderRequest({
           ...orderRequest,
           productTotalPrice: parseInt(amountParam, 10),
-          totalPrice: parseInt(amountParam, 10) + orderRequest.deliveryPrice,
+          deliveryPrice: deliveryPriceAdjustment,
+          totalPrice: parseInt(amountParam, 10) + deliveryPriceAdjustment,
           orderProductDtoList: [newOrderProductDto],
         });
       } else {
