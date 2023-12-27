@@ -1,13 +1,11 @@
 import {
   OrderRequestInterface,
-  SetValidationResultType,
   ValidationResultInterface,
 } from '@/interfaces/order/OrderRequestInterface';
 
 export default function orderValidCheck(
   orderRequest: OrderRequestInterface,
-  allAgree: boolean,
-  setValidationResult: SetValidationResultType
+  allAgree: boolean
 ) {
   const validationResult: ValidationResultInterface = {
     userName: false,
@@ -22,6 +20,8 @@ export default function orderValidCheck(
     receiverDetailAddress: false,
     allTermsAgreed: false,
   };
+
+  const focusValidationResult = {};
 
   if (orderRequest.userName.trim().length !== 0) {
     validationResult.userName = true;
@@ -87,5 +87,6 @@ export default function orderValidCheck(
   if (allAgree) {
     validationResult.allTermsAgreed = true;
   }
-  setValidationResult(validationResult);
+
+  return validationResult;
 }

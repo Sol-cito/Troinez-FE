@@ -10,10 +10,12 @@ import styles from './inputBox.module.scss';
 export default function CertificationNumberInputBox({
   title,
   orderRequestState,
+  isFirstTry,
   setOrderRequestState,
 }: {
   title: string;
   orderRequestState: OrderRequestInterface;
+  isFirstTry: boolean;
   setOrderRequestState: SetOrderRequestType;
 }) {
   const certificationNumberHandleChange = (event: any) => {
@@ -33,6 +35,7 @@ export default function CertificationNumberInputBox({
       <div className={styles.inputbox_tit}>{title}</div>
       <input
         className={`${styles.input_six_digit} ${
+          !isFirstTry &&
           orderRequestState.certificationNumber.length < 6 &&
           styles.invalid_input
         }`}

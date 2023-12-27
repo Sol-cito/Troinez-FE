@@ -6,17 +6,20 @@ import {
 } from '@/interfaces/order/OrderRequestInterface';
 
 import styles from './inputBox.module.scss';
+import { RefObject } from 'react';
 
 export default function NameInputBox({
   title,
   orderRequestState,
   setOrderRequestState,
   validationResult,
+  focusRef,
 }: {
   title: string;
   orderRequestState: OrderRequestInterface;
   setOrderRequestState: SetOrderRequestType;
   validationResult: ValidationResultInterface;
+  focusRef: RefObject<HTMLInputElement>;
 }) {
   const nameHandleChange = (event: any) => {
     setOrderRequestState({
@@ -41,6 +44,7 @@ export default function NameInputBox({
           className={
             !validationResult.userName ? styles.invalid_input : undefined
           }
+          ref={focusRef}
           value={orderRequestState.userName}
           onChange={nameHandleChange}
         />
@@ -50,6 +54,7 @@ export default function NameInputBox({
           className={
             !validationResult.receiver ? styles.invalid_input : undefined
           }
+          ref={focusRef}
           value={orderRequestState.receiver}
           onChange={receiverNameHandleChange}
         />

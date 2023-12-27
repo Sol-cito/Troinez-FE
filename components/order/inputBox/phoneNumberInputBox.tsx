@@ -5,15 +5,24 @@ import {
 } from '@/interfaces/order/OrderRequestInterface';
 
 import styles from './inputBox.module.scss';
+import { RefObject } from 'react';
 
 export default function PhoneNumberInputBox({
   title,
   orderRequestState,
+  isFirstTry,
   setOrderRequestState,
+  firstPhoneNumberFocus,
+  secondPhoneNumberFocus,
+  thirdPhoneNumberFocus,
 }: {
   title: string;
   orderRequestState: OrderRequestInterface;
+  isFirstTry: boolean;
   setOrderRequestState: SetOrderRequestType;
+  firstPhoneNumberFocus: RefObject<HTMLInputElement>;
+  secondPhoneNumberFocus: RefObject<HTMLInputElement>;
+  thirdPhoneNumberFocus: RefObject<HTMLInputElement>;
 }) {
   const phoneNumberFirstHandleChange = (event: any) => {
     const value = Number(event.target.value);
@@ -45,6 +54,7 @@ export default function PhoneNumberInputBox({
       ],
     });
   };
+
   const phoneNumberLastHandleChange = (event: any) => {
     const value = Number(event.target.value);
     if (Number.isNaN(value)) {
@@ -118,6 +128,7 @@ export default function PhoneNumberInputBox({
               styles.invalid_input
             }`}
             type="text"
+            ref={firstPhoneNumberFocus}
             value={orderRequestState.phoneNumber[0]}
             maxLength={3}
             onChange={phoneNumberFirstHandleChange}
@@ -125,10 +136,12 @@ export default function PhoneNumberInputBox({
           <span> - </span>
           <input
             className={`${styles.phone_number} ${
+              !isFirstTry &&
               orderRequestState.phoneNumber[1].length !== 4 &&
               styles.invalid_input
             }`}
             type="text"
+            ref={secondPhoneNumberFocus}
             maxLength={4}
             value={orderRequestState.phoneNumber[1]}
             onChange={phoneNumberMidHandleChange}
@@ -136,10 +149,12 @@ export default function PhoneNumberInputBox({
           <span> - </span>
           <input
             className={`${styles.phone_number} ${
+              !isFirstTry &&
               orderRequestState.phoneNumber[2].length !== 4 &&
               styles.invalid_input
             }`}
             type="text"
+            ref={thirdPhoneNumberFocus}
             maxLength={4}
             value={orderRequestState.phoneNumber[2]}
             onChange={phoneNumberLastHandleChange}
@@ -153,6 +168,7 @@ export default function PhoneNumberInputBox({
               styles.invalid_input
             }`}
             type="text"
+            ref={firstPhoneNumberFocus}
             value={orderRequestState.receiverPhoneNumber[0]}
             maxLength={3}
             onChange={receiverPhoneNumberFirstHandleChange}
@@ -160,10 +176,12 @@ export default function PhoneNumberInputBox({
           <span> - </span>
           <input
             className={`${styles.phone_number} ${
+              !isFirstTry &&
               orderRequestState.receiverPhoneNumber[1].length !== 4 &&
               styles.invalid_input
             }`}
             type="text"
+            ref={secondPhoneNumberFocus}
             maxLength={4}
             value={orderRequestState.receiverPhoneNumber[1]}
             onChange={receiverPhoneNumberMidHandleChange}
@@ -171,10 +189,12 @@ export default function PhoneNumberInputBox({
           <span> - </span>
           <input
             className={`${styles.phone_number} ${
+              !isFirstTry &&
               orderRequestState.receiverPhoneNumber[2].length !== 4 &&
               styles.invalid_input
             }`}
             type="text"
+            ref={thirdPhoneNumberFocus}
             maxLength={4}
             value={orderRequestState.receiverPhoneNumber[2]}
             onChange={receiverPhoneNumberLastHandleChange}

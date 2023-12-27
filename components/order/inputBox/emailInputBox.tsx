@@ -10,10 +10,12 @@ import styles from './inputBox.module.scss';
 export default function EmailInputBox({
   title,
   orderRequestState,
+  isFirstTry,
   setOrderRequestState,
 }: {
   title: string;
   orderRequestState: OrderRequestInterface;
+  isFirstTry: boolean;
   setOrderRequestState: SetOrderRequestType;
 }) {
   const emailIdHandleChange = (event: any) => {
@@ -48,7 +50,7 @@ export default function EmailInputBox({
         <div className={styles.email_input_box}>
           <input
             className={`${styles.email_input} ${
-              !orderRequestState.email[0] && styles.invalid_input
+              !isFirstTry && !orderRequestState.email[0] && styles.invalid_input
             }`}
             type="text"
             value={orderRequestState.email[0]}
@@ -57,7 +59,7 @@ export default function EmailInputBox({
           <span> @ </span>
           <input
             className={`${styles.email_input} ${
-              !orderRequestState.email[1] && styles.invalid_input
+              !isFirstTry && !orderRequestState.email[1] && styles.invalid_input
             }`}
             type="text"
             value={orderRequestState.email[1]}
@@ -86,7 +88,9 @@ export default function EmailInputBox({
         <div className={styles.email_input_box}>
           <input
             className={`${styles.email_input} ${
-              !orderRequestState.receiverEmail[0] && styles.invalid_input
+              !isFirstTry &&
+              !orderRequestState.receiverEmail[0] &&
+              styles.invalid_input
             }`}
             type="text"
             value={orderRequestState.receiverEmail[0]}
@@ -95,7 +99,9 @@ export default function EmailInputBox({
           <span> @ </span>
           <input
             className={`${styles.email_input} ${
-              !orderRequestState.receiverEmail[1] && styles.invalid_input
+              !isFirstTry &&
+              !orderRequestState.receiverEmail[1] &&
+              styles.invalid_input
             }`}
             type="text"
             value={orderRequestState.receiverEmail[1]}

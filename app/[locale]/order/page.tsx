@@ -7,7 +7,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable @next/next/no-before-interactive-script-outside-document */
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
 import { nanoid } from 'nanoid';
 import OrderProduct from '@/components/order/orderProduct';
@@ -56,18 +56,35 @@ export default function Order() {
   };
 
   const initialValidationResult: ValidationResultInterface = {
-    userName: false,
-    phoneNumber: false,
-    email: false,
-    certificationNumber: false,
-    receiver: false,
-    receiverPhoneNumber: false,
-    receiverEmail: false,
-    receiverZipcode: false,
-    receiverAddress: false,
-    receiverDetailAddress: false,
-    allTermsAgreed: false,
+    userName: true,
+    phoneNumber: true,
+    email: true,
+    certificationNumber: true,
+    receiver: true,
+    receiverPhoneNumber: true,
+    receiverEmail: true,
+    receiverZipcode: true,
+    receiverAddress: true,
+    receiverDetailAddress: true,
+    allTermsAgreed: true,
   };
+
+  const userNameFocus = useRef<HTMLInputElement>(null);
+  const userFirstPhoneNumberFocus = useRef<HTMLInputElement>(null);
+  const userSecondPhoneNumberFocus = useRef<HTMLInputElement>(null);
+  const userThirdPhoneNumberFocus = useRef<HTMLInputElement>(null);
+  const userFirstEmailFocus = useRef<HTMLInputElement>(null);
+  const userSecondEmailFocus = useRef<HTMLInputElement>(null);
+  const verificationCodeFocus = useRef<HTMLInputElement>(null);
+  const receiverFocus = useRef<HTMLInputElement>(null);
+  const receiverFirstPhoneNumberFocus = useRef<HTMLInputElement>(null);
+  const receiverSecondPhoneNumberFocus = useRef<HTMLInputElement>(null);
+  const receiverThirdPhoneNumberFocus = useRef<HTMLInputElement>(null);
+  const receiverFirstEmailFocus = useRef<HTMLInputElement>(null);
+  const receiverZipcodeFocus = useRef<HTMLInputElement>(null);
+  const receiverAddressFocus = useRef<HTMLInputElement>(null);
+  const receiverDetailAddressFocus = useRef<HTMLInputElement>(null);
+  const allTermsAgreedFocus = useRef<HTMLInputElement>(null);
 
   const [validationResult, setValidationResult] =
     useState<ValidationResultInterface>(initialValidationResult);
@@ -87,6 +104,8 @@ export default function Order() {
   const [isReceiverSameAsOrderer, setIsReceiverSameAsOrderer] = useState(false);
   const productDetailText = useTranslations('Product.detail');
   const priceUnit = productDetailText('price');
+
+  const [isFirstTry, setIsFirstTry] = useState(true);
 
   useEffect(() => {
     if (isReceiverSameAsOrderer) {
@@ -204,18 +223,39 @@ export default function Order() {
     window.open('/privatepolicy', '_blank', windowFeatures);
   };
 
+  useEffect(() => {
+    setAllAgree(termsofserviceAgree && privatePolicyAgree);
+  }, [termsofserviceAgree, privatePolicyAgree]);
+
+  useEffect(() => {
+    if (!isFirstTry) {
+      const validationCheckResult: ValidationResultInterface = orderValidCheck(
+        orderRequest,
+        allAgree
+      );
+      setValidationResult(validationCheckResult);
+    }
+  }, [orderRequest, allAgree, isFirstTry]);
+
   const onClickPayment = async () => {
+    setIsFirstTry(false);
+
+    const validationCheckResult: ValidationResultInterface = orderValidCheck(
+      orderRequest,
+      allAgree
+    );
+
     const invalidResultArray: string[] = [];
-    Object.entries(validationResult).forEach((entry) => {
+    Object.entries(validationCheckResult).forEach((entry) => {
       if (!entry[1]) {
         invalidResultArray.push(entry[0]);
       }
     });
     if (invalidResultArray.length > 0) {
       alert('입력하지 않은 란이 있습니다.');
-      window.scrollTo(0, 0);
       return;
     }
+    setValidationResult(validationCheckResult);
 
     const postParameter: PostParameter = {
       url: '/order',
@@ -233,14 +273,6 @@ export default function Order() {
     window.location.href = '/order/payment'.concat(params);
     // success url 오면 success 창으로 넘겨줘야함.
   };
-
-  useEffect(() => {
-    setAllAgree(termsofserviceAgree && privatePolicyAgree);
-  }, [termsofserviceAgree, privatePolicyAgree]);
-
-  useEffect(() => {
-    orderValidCheck(orderRequest, allAgree, setValidationResult);
-  }, [orderRequest, allAgree]);
 
   return (
     <div className={styles.body_container}>
@@ -279,6 +311,7 @@ export default function Order() {
           orderRequestState={orderRequest}
           setOrderRequestState={setOrderRequest}
           validationResult={validationResult}
+          focusRef={userNameFocus}
         />
         {!validationResult.userName && (
           <span className={styles.error_message}>이름을 입력해 주세요.</span>
@@ -286,7 +319,11 @@ export default function Order() {
         <PhoneNumberInputBox
           title="연락처"
           orderRequestState={orderRequest}
+          isFirstTry={isFirstTry}
           setOrderRequestState={setOrderRequest}
+          firstPhoneNumberFocus={userFirstPhoneNumberFocus}
+          secondPhoneNumberFocus={userSecondEmailFocus}
+          thirdPhoneNumberFocus={userThirdPhoneNumberFocus}
         />
         {!validationResult.phoneNumber && (
           <span className={styles.error_message}>
@@ -296,6 +333,7 @@ export default function Order() {
         <EmailInputBox
           title="이메일"
           orderRequestState={orderRequest}
+          isFirstTry={isFirstTry}
           setOrderRequestState={setOrderRequest}
         />
         {validationResult.email === false && (
@@ -306,6 +344,7 @@ export default function Order() {
         <CertificationNumberInputBox
           title="인증번호 입력"
           orderRequestState={orderRequest}
+          isFirstTry={isFirstTry}
           setOrderRequestState={setOrderRequest}
         />
         {validationResult.certificationNumber === false && (
@@ -347,6 +386,7 @@ export default function Order() {
           orderRequestState={orderRequest}
           setOrderRequestState={setOrderRequest}
           validationResult={validationResult}
+          focusRef={receiverFocus}
         />
         {!validationResult.receiver && (
           <span className={styles.error_message}>
@@ -356,7 +396,11 @@ export default function Order() {
         <PhoneNumberInputBox
           title="연락처(수취인)"
           orderRequestState={orderRequest}
+          isFirstTry={isFirstTry}
           setOrderRequestState={setOrderRequest}
+          firstPhoneNumberFocus={receiverFirstPhoneNumberFocus}
+          secondPhoneNumberFocus={receiverSecondPhoneNumberFocus}
+          thirdPhoneNumberFocus={receiverThirdPhoneNumberFocus}
         />
 
         {!validationResult.receiverPhoneNumber && (
@@ -367,6 +411,7 @@ export default function Order() {
         <EmailInputBox
           title="이메일(수취인)"
           orderRequestState={orderRequest}
+          isFirstTry={isFirstTry}
           setOrderRequestState={setOrderRequest}
         />
         {validationResult.receiverEmail === false && (
