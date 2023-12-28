@@ -21,14 +21,15 @@ import RequestInputBox from '@/components/order/inputBox/requestInputBox';
 import {
   OrderProductDtoInterface,
   OrderRequestInterface,
+  ValidationResultForFocusInterface,
   ValidationResultInterface,
 } from '@/interfaces/order/OrderRequestInterface';
 import { OrderResponseInterface } from '@/interfaces/order/OrderResponseInterface';
 import { PostParameter, postApiCall } from '@/service/restAPI.service';
-import orderValidCheck from '@/utils/orderUtil';
 import { useTranslations } from 'next-intl';
 import { useAppDispatch, useAppSelector } from '../../../redux/config';
 import styles from './page.module.scss';
+import { orderValidCheck, orderValidCheckForFocus } from '@/utils/orderUtil';
 
 export default function Order() {
   const dispatch = useAppDispatch();
@@ -81,8 +82,8 @@ export default function Order() {
   const receiverSecondPhoneNumberFocus = useRef<HTMLInputElement>(null);
   const receiverThirdPhoneNumberFocus = useRef<HTMLInputElement>(null);
   const receiverFirstEmailFocus = useRef<HTMLInputElement>(null);
+  const receiverSecondEmailFocus = useRef<HTMLInputElement>(null);
   const receiverZipcodeFocus = useRef<HTMLInputElement>(null);
-  const receiverAddressFocus = useRef<HTMLInputElement>(null);
   const receiverDetailAddressFocus = useRef<HTMLInputElement>(null);
   const allTermsAgreedFocus = useRef<HTMLInputElement>(null);
 
@@ -252,7 +253,43 @@ export default function Order() {
       }
     });
     if (invalidResultArray.length > 0) {
-      alert('입력하지 않은 란이 있습니다.');
+      const focusValidationResult: ValidationResultForFocusInterface =
+        orderValidCheckForFocus(orderRequest, allAgree);
+
+      if (focusValidationResult.userNameFocus) {
+        userNameFocus.current?.focus();
+      } else if (focusValidationResult.userFirstPhoneNumberFocus) {
+        userFirstPhoneNumberFocus.current?.focus();
+      } else if (focusValidationResult.userSecondPhoneNumberFocus) {
+        userSecondPhoneNumberFocus.current?.focus();
+      } else if (focusValidationResult.userThirdPhoneNumberFocus) {
+        userThirdPhoneNumberFocus.current?.focus();
+      } else if (focusValidationResult.userFirstEmailFocus) {
+        userFirstEmailFocus.current?.focus();
+      } else if (focusValidationResult.userSecondEmailFocus) {
+        userSecondEmailFocus.current?.focus();
+      } else if (focusValidationResult.verificationCodeFocus) {
+        verificationCodeFocus.current?.focus();
+      } else if (focusValidationResult.receiverFocus) {
+        receiverFocus.current?.focus();
+      } else if (focusValidationResult.receiverFirstPhoneNumberFocus) {
+        receiverFirstPhoneNumberFocus.current?.focus();
+      } else if (focusValidationResult.receiverSecondPhoneNumberFocus) {
+        receiverSecondPhoneNumberFocus.current?.focus();
+      } else if (focusValidationResult.receiverThirdPhoneNumberFocus) {
+        receiverThirdPhoneNumberFocus.current?.focus();
+      } else if (focusValidationResult.receiverFirstEmailFocus) {
+        receiverFirstEmailFocus.current?.focus();
+      } else if (focusValidationResult.receiverSecondEmailFocus) {
+        receiverSecondEmailFocus.current?.focus();
+      } else if (focusValidationResult.receiverZipcodeFocus) {
+        receiverZipcodeFocus.current?.focus();
+      } else if (focusValidationResult.receiverDetailAddressFocus) {
+        receiverDetailAddressFocus.current?.focus();
+      } else if (focusValidationResult.allTermsAgreedFocus) {
+        alert('모든 약관에 동의해주세요.');
+        return;
+      }
       return;
     }
     setValidationResult(validationCheckResult);
@@ -322,7 +359,7 @@ export default function Order() {
           isFirstTry={isFirstTry}
           setOrderRequestState={setOrderRequest}
           firstPhoneNumberFocus={userFirstPhoneNumberFocus}
-          secondPhoneNumberFocus={userSecondEmailFocus}
+          secondPhoneNumberFocus={userSecondPhoneNumberFocus}
           thirdPhoneNumberFocus={userThirdPhoneNumberFocus}
         />
         {!validationResult.phoneNumber && (
@@ -335,6 +372,8 @@ export default function Order() {
           orderRequestState={orderRequest}
           isFirstTry={isFirstTry}
           setOrderRequestState={setOrderRequest}
+          firstEmailFocus={userFirstEmailFocus}
+          secondEmailFocus={userSecondEmailFocus}
         />
         {validationResult.email === false && (
           <span className={styles.error_message}>이메일을 입력해주세요</span>
@@ -346,6 +385,7 @@ export default function Order() {
           orderRequestState={orderRequest}
           isFirstTry={isFirstTry}
           setOrderRequestState={setOrderRequest}
+          verificationCodeFocus={verificationCodeFocus}
         />
         {validationResult.certificationNumber === false && (
           <span className={styles.error_message}>
@@ -413,6 +453,8 @@ export default function Order() {
           orderRequestState={orderRequest}
           isFirstTry={isFirstTry}
           setOrderRequestState={setOrderRequest}
+          firstEmailFocus={receiverFirstEmailFocus}
+          secondEmailFocus={receiverSecondEmailFocus}
         />
         {validationResult.receiverEmail === false && (
           <span className={styles.error_message}>
@@ -424,6 +466,7 @@ export default function Order() {
           orderRequestState={orderRequest}
           setOrderRequestState={setOrderRequest}
           validationResult={validationResult}
+          receiverZipcodeFocus={receiverZipcodeFocus}
         />
         {!validationResult.receiverZipcode && (
           <span className={styles.error_message_bottom}>
@@ -435,6 +478,7 @@ export default function Order() {
           orderRequestState={orderRequest}
           setOrderRequestState={setOrderRequest}
           validationResult={validationResult}
+          receiverDetailAddressFocus={receiverDetailAddressFocus}
         />
         {!validationResult.receiverDetailAddress && (
           <span className={styles.error_message_bottom}>
@@ -483,6 +527,7 @@ export default function Order() {
         <div className={styles.agree_div}>
           <input
             type="checkbox"
+            ref={allTermsAgreedFocus}
             className={styles.agree_div_checkbox}
             checked={allAgree}
             onChange={onClickAllAgreeCheckBox}

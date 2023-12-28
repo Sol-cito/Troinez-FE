@@ -6,17 +6,22 @@ import {
 } from '@/interfaces/order/OrderRequestInterface';
 
 import styles from './inputBox.module.scss';
+import { RefObject } from 'react';
 
 export default function EmailInputBox({
   title,
   orderRequestState,
   isFirstTry,
   setOrderRequestState,
+  firstEmailFocus,
+  secondEmailFocus,
 }: {
   title: string;
   orderRequestState: OrderRequestInterface;
   isFirstTry: boolean;
   setOrderRequestState: SetOrderRequestType;
+  firstEmailFocus: RefObject<HTMLInputElement>;
+  secondEmailFocus: RefObject<HTMLInputElement>;
 }) {
   const emailIdHandleChange = (event: any) => {
     setOrderRequestState({
@@ -53,6 +58,7 @@ export default function EmailInputBox({
               !isFirstTry && !orderRequestState.email[0] && styles.invalid_input
             }`}
             type="text"
+            ref={firstEmailFocus}
             value={orderRequestState.email[0]}
             onChange={emailIdHandleChange}
           />
@@ -62,6 +68,7 @@ export default function EmailInputBox({
               !isFirstTry && !orderRequestState.email[1] && styles.invalid_input
             }`}
             type="text"
+            ref={secondEmailFocus}
             value={orderRequestState.email[1]}
             onChange={emailDomainHandleChange}
           />
@@ -93,6 +100,7 @@ export default function EmailInputBox({
               styles.invalid_input
             }`}
             type="text"
+            ref={firstEmailFocus}
             value={orderRequestState.receiverEmail[0]}
             onChange={receiverEmailIdHandleChange}
           />
@@ -104,6 +112,7 @@ export default function EmailInputBox({
               styles.invalid_input
             }`}
             type="text"
+            ref={secondEmailFocus}
             value={orderRequestState.receiverEmail[1]}
             onChange={receiverEmailDomainHandleChange}
           />

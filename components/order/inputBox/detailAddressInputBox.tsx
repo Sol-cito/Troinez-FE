@@ -7,17 +7,20 @@ import {
 } from '@/interfaces/order/OrderRequestInterface';
 
 import styles from './inputBox.module.scss';
+import { RefObject } from 'react';
 
 export default function DetailAddressInputBox({
   title,
   orderRequestState,
   setOrderRequestState,
   validationResult,
+  receiverDetailAddressFocus,
 }: {
   title: string;
   orderRequestState: OrderRequestInterface;
   setOrderRequestState: SetOrderRequestType;
   validationResult: ValidationResultInterface;
+  receiverDetailAddressFocus: RefObject<HTMLInputElement>;
 }) {
   const detailAddressHandleChange = (event: any) => {
     setOrderRequestState({
@@ -32,6 +35,7 @@ export default function DetailAddressInputBox({
       <div>
         <input
           type="text"
+          ref={receiverDetailAddressFocus}
           className={`${styles.address_input} ${
             !validationResult.receiverDetailAddress && styles.invalid_input
           }`}

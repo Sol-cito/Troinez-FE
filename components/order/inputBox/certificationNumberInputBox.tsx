@@ -6,17 +6,20 @@ import {
 } from '@/interfaces/order/OrderRequestInterface';
 
 import styles from './inputBox.module.scss';
+import { RefObject } from 'react';
 
 export default function CertificationNumberInputBox({
   title,
   orderRequestState,
   isFirstTry,
   setOrderRequestState,
+  verificationCodeFocus,
 }: {
   title: string;
   orderRequestState: OrderRequestInterface;
   isFirstTry: boolean;
   setOrderRequestState: SetOrderRequestType;
+  verificationCodeFocus: RefObject<HTMLInputElement>;
 }) {
   const certificationNumberHandleChange = (event: any) => {
     const value = Number(event.target.value);
@@ -40,6 +43,7 @@ export default function CertificationNumberInputBox({
           styles.invalid_input
         }`}
         type="text"
+        ref={verificationCodeFocus}
         maxLength={6}
         value={orderRequestState.certificationNumber}
         placeholder="숫자6자리를 입력해주세요."
