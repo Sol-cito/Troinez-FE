@@ -177,11 +177,13 @@ export default function Order() {
     } else {
       const productIdParam = searchParams.get('productId');
       const productCountParam = searchParams.get('productCount');
-      const amountParam = searchParams.get('amount');
+      const totalOriginalPrice = searchParams.get('totalOriginalPrice');
+      const totalDiscountPrice = searchParams.get('totalDiscountPrice');
       if (
         productIdParam !== null &&
         productCountParam !== null &&
-        amountParam != null
+        totalOriginalPrice != null &&
+        totalDiscountPrice != null
       ) {
         const newOrderProductDto: OrderProductDtoInterface = {
           productId: parseInt(productIdParam, 10),
@@ -189,17 +191,20 @@ export default function Order() {
         };
 
         const deliveryPriceAdjustment: number =
-          parseInt(amountParam, 10) >= 30000 ? 0 : 3000;
+          parseInt(totalDiscountPrice, 10) >= 30000 ? 0 : 3000;
 
         setOrderType('single');
         setOrderProductId(parseInt(productIdParam, 10));
         setOrderProductCount(parseInt(productCountParam, 10));
-        setOrderProductAmount(parseInt(amountParam, 10));
+        setOrderProductAmount(parseInt(totalDiscountPrice, 10));
         setOrderRequest({
           ...orderRequest,
-          productTotalPrice: parseInt(amountParam, 10),
+          productTotalPrice: parseInt(totalOriginalPrice, 10),
           deliveryPrice: deliveryPriceAdjustment,
-          totalPrice: parseInt(amountParam, 10) + deliveryPriceAdjustment,
+          totalPrice:
+            parseInt(totalDiscountPrice, 10) + deliveryPriceAdjustment,
+          salePrice:
+            parseInt(totalOriginalPrice, 10) - parseInt(totalDiscountPrice, 10),
           orderProductDtoList: [newOrderProductDto],
         });
       } else {
