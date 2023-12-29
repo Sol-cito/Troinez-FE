@@ -7,6 +7,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { useSearchParams } from 'next/navigation';
 import { useEffect, useState } from 'react';
+import Image from 'next/image';
 import OrderProduct from '@/components/order/orderProduct';
 import { OrderSuccessResponseInterface } from '@/interfaces/order/OrderSuccessResponseInterface';
 import { GetParameter, getApiCall } from '@/service/restAPI.service';
@@ -14,12 +15,15 @@ import { useAppDispatch } from '@/redux/config';
 import { removeFromCart } from '@/redux/store/cart.store';
 import { Product } from '@/interfaces/product/product';
 import styles from './page.module.scss';
+import { isMobile } from 'react-device-detect';
 
 export default function OrderSuccessPage() {
   const dispatch = useAppDispatch();
 
   const [orderSuccessResponse, setOrderSuccessResponse] =
     useState<OrderSuccessResponseInterface>();
+
+  const [orderIdCopyMouseOver, setOrderIdCopyMouseOver] = useState(false);
 
   const searchParams = useSearchParams();
   const orderId = searchParams.get('orderId') || '';
@@ -86,20 +90,26 @@ export default function OrderSuccessPage() {
               </p>
             </div>
             <div className={styles.row_sub_title}>
-              <p>주문번호 : {orderSuccessResponse.orderId}</p>
-              <p
-                className={styles.small_text}
-                onClick={() => copyToClipboard(orderSuccessResponse.orderId)}
-                onKeyPress={(event) => {
-                  if (event.key === 'Enter' || event.key === ' ') {
-                    copyToClipboard(orderSuccessResponse.orderId);
-                  }
-                }}
-                role="button"
-                tabIndex={0}
-              >
-                ※ 여기를 마우스로 클릭하면 클립보드로 주문번호가 복사됩니다.
-              </p>
+              <span className={styles.order_id}>
+                주문번호 : {orderSuccessResponse.orderId}
+              </span>
+              <div>
+                <Image
+                  className={styles.order_id_copy_icon}
+                  src="/common/icon/text-copy.svg"
+                  onClick={() => copyToClipboard(orderSuccessResponse.orderId)}
+                  onMouseOver={() => setOrderIdCopyMouseOver(true)}
+                  onMouseOut={() => setOrderIdCopyMouseOver(false)}
+                  alt="TNZ"
+                  width={15}
+                  height={15}
+                />
+                {!isMobile && orderIdCopyMouseOver && (
+                  <span className={styles.order_id_copy_tooltip}>
+                    주문번호 복사
+                  </span>
+                )}
+              </div>
             </div>
             <div className={styles.center}>
               <input

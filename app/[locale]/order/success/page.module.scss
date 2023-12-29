@@ -12,11 +12,35 @@ $font_size: 0.9vw;
       font-weight: bolder;
     }
     .row_sub_title {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: center;
+      position: relative;
       font-size: 1.2vw;
       line-height: 5vw;
       margin-bottom: 5vh;
       font-weight: bolder;
-      text-align: center;
+
+      .order_id {
+        margin-right: 1vw;
+      }
+
+      .order_id_copy_icon {
+        cursor: pointer;
+      }
+
+      .order_id_copy_tooltip {
+        position: absolute;
+        display: inline-block;
+        border: grey 0.1px solid;
+        border-radius: 10%;
+        box-shadow: 2px 2px 1px #666;
+        font-size: 80%;
+        margin-left: 3px;
+        padding: 1%;
+        line-height: normal;
+      }
     }
   }
 }
