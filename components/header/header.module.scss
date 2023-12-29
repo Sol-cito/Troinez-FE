@@ -100,6 +100,10 @@ $header-fond-size: $header-fz;
     .left {
       width: 45%;
       text-align: left;
+
+      a {
+        height: inherit;
+      }
     }
 
     .mid {
