@@ -70,12 +70,16 @@ export default function ZipCodeAndAddressInputBox({
     <div className={styles.inputbox_div}>
       <Script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js" />
       <div className={styles.inputbox_tit}>{title}</div>
+      <span
+        className={styles.fake_focus_span}
+        tabIndex={1}
+        ref={receiverZipcodeFocus}
+      />
       <input
         className={` ${
           !validationResult.receiverZipcode && styles.invalid_input
         }`}
         type="text"
-        ref={receiverZipcodeFocus}
         readOnly
         value={orderRequestState.receiverZipcode}
         id="zipNo"
