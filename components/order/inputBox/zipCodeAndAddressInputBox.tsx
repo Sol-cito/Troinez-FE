@@ -8,7 +8,7 @@ import {
   ValidationResultInterface,
 } from '@/interfaces/order/OrderRequestInterface';
 
-import { useEffect } from 'react';
+import { RefObject, useEffect } from 'react';
 import getDeliveryPriceByZipCode from '@/utils/zipCodeUtil';
 import styles from './inputBox.module.scss';
 
@@ -28,11 +28,13 @@ export default function ZipCodeAndAddressInputBox({
   orderRequestState,
   setOrderRequestState,
   validationResult,
+  receiverZipcodeFocus,
 }: {
   title: string;
   orderRequestState: OrderRequestInterface;
   setOrderRequestState: SetOrderRequestType;
   validationResult: ValidationResultInterface;
+  receiverZipcodeFocus: RefObject<HTMLInputElement>;
 }) {
   useEffect(() => {
     let [deliveryPrice, deliveryType]: [number, string] =
@@ -73,6 +75,7 @@ export default function ZipCodeAndAddressInputBox({
           !validationResult.receiverZipcode && styles.invalid_input
         }`}
         type="text"
+        ref={receiverZipcodeFocus}
         readOnly
         value={orderRequestState.receiverZipcode}
         id="zipNo"

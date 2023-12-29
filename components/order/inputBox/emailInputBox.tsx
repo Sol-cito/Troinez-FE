@@ -4,17 +4,23 @@ import {
   OrderRequestInterface,
   SetOrderRequestType,
 } from '@/interfaces/order/OrderRequestInterface';
-
+import { RefObject } from 'react';
 import styles from './inputBox.module.scss';
 
 export default function EmailInputBox({
   title,
   orderRequestState,
+  isFirstTry,
   setOrderRequestState,
+  firstEmailFocus,
+  secondEmailFocus,
 }: {
   title: string;
   orderRequestState: OrderRequestInterface;
+  isFirstTry: boolean;
   setOrderRequestState: SetOrderRequestType;
+  firstEmailFocus: RefObject<HTMLInputElement>;
+  secondEmailFocus: RefObject<HTMLInputElement>;
 }) {
   const emailIdHandleChange = (event: any) => {
     setOrderRequestState({
@@ -48,18 +54,20 @@ export default function EmailInputBox({
         <div className={styles.email_input_box}>
           <input
             className={`${styles.email_input} ${
-              !orderRequestState.email[0] && styles.invalid_input
+              !isFirstTry && !orderRequestState.email[0] && styles.invalid_input
             }`}
             type="text"
+            ref={firstEmailFocus}
             value={orderRequestState.email[0]}
             onChange={emailIdHandleChange}
           />
           <span> @ </span>
           <input
             className={`${styles.email_input} ${
-              !orderRequestState.email[1] && styles.invalid_input
+              !isFirstTry && !orderRequestState.email[1] && styles.invalid_input
             }`}
             type="text"
+            ref={secondEmailFocus}
             value={orderRequestState.email[1]}
             onChange={emailDomainHandleChange}
           />
@@ -86,18 +94,24 @@ export default function EmailInputBox({
         <div className={styles.email_input_box}>
           <input
             className={`${styles.email_input} ${
-              !orderRequestState.receiverEmail[0] && styles.invalid_input
+              !isFirstTry &&
+              !orderRequestState.receiverEmail[0] &&
+              styles.invalid_input
             }`}
             type="text"
+            ref={firstEmailFocus}
             value={orderRequestState.receiverEmail[0]}
             onChange={receiverEmailIdHandleChange}
           />
           <span> @ </span>
           <input
             className={`${styles.email_input} ${
-              !orderRequestState.receiverEmail[1] && styles.invalid_input
+              !isFirstTry &&
+              !orderRequestState.receiverEmail[1] &&
+              styles.invalid_input
             }`}
             type="text"
+            ref={secondEmailFocus}
             value={orderRequestState.receiverEmail[1]}
             onChange={receiverEmailDomainHandleChange}
           />

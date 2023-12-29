@@ -155,7 +155,7 @@ export default function PrivatePolicy() {
             <th>위탁업무</th>
           </tr>
           <tr>
-            <td>NAVER PAY</td>
+            <td>토스페이먼츠㈜</td>
             <td>결제</td>
           </tr>
           <tr>

@@ -46,3 +46,23 @@ export interface ValidationResultInterface {
   receiverDetailAddress: boolean;
   allTermsAgreed: boolean;
 }
+
+export interface ValidationResultForFocusInterface {
+  userNameFocus: boolean;
+  userFirstPhoneNumberFocus: boolean;
+  userSecondPhoneNumberFocus: boolean;
+  userThirdPhoneNumberFocus: boolean;
+  userFirstEmailFocus: boolean;
+  userSecondEmailFocus: boolean;
+  verificationCodeFocus: boolean;
+  receiverFocus: boolean;
+  receiverFirstPhoneNumberFocus: boolean;
+  receiverSecondPhoneNumberFocus: boolean;
+  receiverThirdPhoneNumberFocus: boolean;
+  receiverFirstEmailFocus: boolean;
+  receiverSecondEmailFocus: boolean;
+  receiverZipcodeFocus: boolean;
+  receiverAddressFocus: boolean;
+  receiverDetailAddressFocus: boolean;
+  allTermsAgreedFocus: boolean;
+}
