@@ -50,7 +50,10 @@ function Header({
       </Link>
     );
     loginoutLink = (
-      <Link href={`${logOutUri}?token=${token}`} className={styles.menu_btn}>
+      <Link
+        href={`${logOutUri}?token=${token}&locale=${locale}`}
+        className={styles.menu_btn}
+      >
         LOGOUT
       </Link>
     );
