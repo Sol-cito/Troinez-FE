@@ -5,9 +5,8 @@ import {
   SetOrderRequestType,
   ValidationResultInterface,
 } from '@/interfaces/order/OrderRequestInterface';
-
-import styles from './inputBox.module.scss';
 import { RefObject } from 'react';
+import styles from './inputBox.module.scss';
 
 export default function DetailAddressInputBox({
   title,

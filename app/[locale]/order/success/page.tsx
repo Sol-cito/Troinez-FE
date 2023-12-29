@@ -14,8 +14,8 @@ import { GetParameter, getApiCall } from '@/service/restAPI.service';
 import { useAppDispatch } from '@/redux/config';
 import { removeFromCart } from '@/redux/store/cart.store';
 import { Product } from '@/interfaces/product/product';
-import styles from './page.module.scss';
 import { isMobile } from 'react-device-detect';
+import styles from './page.module.scss';
 
 export default function OrderSuccessPage() {
   const dispatch = useAppDispatch();

@@ -27,9 +27,9 @@ import {
 import { OrderResponseInterface } from '@/interfaces/order/OrderResponseInterface';
 import { PostParameter, postApiCall } from '@/service/restAPI.service';
 import { useTranslations } from 'next-intl';
+import { orderValidCheck, orderValidCheckForFocus } from '@/utils/orderUtil';
 import { useAppDispatch, useAppSelector } from '../../../redux/config';
 import styles from './page.module.scss';
-import { orderValidCheck, orderValidCheckForFocus } from '@/utils/orderUtil';
 
 export default function Order() {
   const dispatch = useAppDispatch();
