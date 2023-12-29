@@ -6,7 +6,8 @@ import styles from './PurchasePopUpModal.module.scss';
 export interface PurchaseInfo {
   selectedProductId: number;
   selectedProductCount: number;
-  selectedProductPrice: number;
+  selectedProductOriginalPrice: number;
+  selectedProductDiscountPrice: number;
 }
 
 export interface PurchaseContent {
@@ -32,8 +33,12 @@ export default function PurchasePopUpModal({
 
     orderUrl = `/order?type=single&productId=${
       purchaseInfo.selectedProductId
-    }&productCount=${selectedProductNumber}&amount=${
-      purchaseInfo.selectedProductPrice * purchaseInfo.selectedProductCount
+    }&productCount=${selectedProductNumber}&totalOriginalPrice=${
+      purchaseInfo.selectedProductOriginalPrice *
+      purchaseInfo.selectedProductCount
+    }&totalDiscountPrice=${
+      purchaseInfo.selectedProductDiscountPrice *
+      purchaseInfo.selectedProductCount
     }`;
   }
 

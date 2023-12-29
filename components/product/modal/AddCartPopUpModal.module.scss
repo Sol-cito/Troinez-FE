@@ -45,18 +45,21 @@
     height: fit-content;
 
     .title_container {
+      font-size: small;
       padding: 10% 0 10% 0;
       height: fit-content;
     }
 
     .button_container {
       button {
+        color: black;
         width: 50%;
         height: 5vh;
       }
 
       .link {
         button {
+          color: black;
           width: 50%;
           height: 5vh;
         }

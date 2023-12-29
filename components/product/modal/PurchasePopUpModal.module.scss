@@ -46,6 +46,7 @@
     height: fit-content;
 
     .title_container {
+      font-size: small;
       padding: 10% 0 10% 0;
       height: fit-content;
     }
@@ -54,12 +55,14 @@
       button {
         width: 50%;
         height: 5vh;
+        color: black;
       }
 
       .link {
         button {
           width: 50%;
           height: 5vh;
+          color: black;
         }
       }
     }

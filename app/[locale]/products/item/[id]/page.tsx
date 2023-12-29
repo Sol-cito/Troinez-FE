@@ -50,7 +50,8 @@ export default function ProductDetailPage({
     const purchaseInfo: PurchaseInfo = {
       selectedProductId: productId,
       selectedProductCount: selectedProductNumber,
-      selectedProductPrice: res.discountedPrice,
+      selectedProductOriginalPrice: res.productPrice,
+      selectedProductDiscountPrice: res.discountedPrice,
     };
 
     setPurchaseContent({
