@@ -88,6 +88,9 @@ $header-fond-size: $header-fz;
     background-color: white;
     position: fixed;
     width: 100%;
+
+    display: flex;
+
     height: max-content;
     z-index: 10;
   }
@@ -103,6 +106,8 @@ $header-fond-size: $header-fz;
 
       a {
         height: inherit;
+        margin: 0;
+        padding: 0;
       }
     }
 
@@ -113,6 +118,10 @@ $header-fond-size: $header-fz;
         font-size: 0.5rem;
         left: -170%;
         position: absolute;
+      }
+
+      div {
+        margin-top: 1%;
       }
     }
   }
