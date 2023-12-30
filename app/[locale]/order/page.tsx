@@ -516,7 +516,7 @@ export default function Order() {
         </div>
         <hr />
         <div className={styles.space_between}>
-          <span>최종 결재 금액</span>
+          <span>최종 결제 금액</span>
           <span>{orderRequest.totalPrice.toLocaleString() + priceUnit}</span>
         </div>
         <hr />

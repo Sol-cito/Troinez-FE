@@ -46,9 +46,8 @@ export default function ZipCodeAndAddressInputBox({
     }
     setOrderRequestState({
       ...orderRequestState,
-      deliveryPrice,
-      deliveryType,
-      totalPrice: orderRequestState.productTotalPrice + deliveryPrice,
+      deliveryPrice: deliveryPrice,
+      deliveryType: deliveryType,
     });
   }, [orderRequestState.receiverZipcode, orderRequestState.receiverAddress]);
 
